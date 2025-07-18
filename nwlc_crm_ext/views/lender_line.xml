@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="lenders_line_tree_view" model="ir.ui.view">
+        <field name="name">lenders History</field>
+        <field name="model">lender.line</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="crm_id"/>
+                <!-- <field name="name"/> -->
+                <field name="lender_id"/>
+                <field name="creditor_status_"/>
+                <field name="pre_approved_amount"/>
+                <field name="approved_amount"/>
+                <field name="max_amount"/>
+                <field name="loan_term"/>
+                <field name="interest_buy_rate"/>
+                <field name="payment"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="lender_line_form_view" model="ir.ui.view">
+        <field name="name">lender History</field>
+        <field name="model">lender.line</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="crm_id"/>
+                            <!-- <field name="name"/> -->
+                            <field name="lender_id"/>
+                            <field name="creditor_status_"/>
+                            <field name="pre_approved_amount"/>
+                            <field name="added_lender"/>
+                            <field name="collection_amount"/>
+                            <field name="original_fee"/>
+                            <field name="commission"/>
+                        </group>
+                        <group>
+                            <field name="funds_avail_date"/>
+                            <field name="app_run_date"/>
+                            <field name="approved_amount"/>
+                            <field name="max_amount"/>
+                            <field name="docs_loans"/>
+                            <field name="renewal_date"/>
+                            <field name="maturity_date"/>
+                            <field name="loan_term"/>
+                            <field name="fee_reduced_reason"/>
+                            <field name="notes"/>
+                            <field name="chargeback_reason"/>
+                            <field name="loan_outcome"/>
+                            <field name="interest_buy_rate"/>
+                            <field name="payment"/>
+                            <field name="fee_basis_amount"/>
+                            <field name="days_final_approval"/>
+                        </group>
+                    </group>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="lenders_history_action" model="ir.actions.act_window">
+        <field name="name">Lenders History</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">list,form</field>
+        <field name="res_model">lender.line</field>
+        <field name="help" type="html">
+            <p class= "h_p">
+               
+            </p>
+        </field>
+    </record>
+
+     <menuitem id="lenders_history_menu" 
+    name="Lenders Histroy" 
+    parent="crm.crm_menu_config"
+    action="lenders_history_action" 
+    sequence="10"/>
+
+
+</odoo>

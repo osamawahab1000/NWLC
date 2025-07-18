@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+   <template id="business_general_agreement">
+       <t t-call="web.html_container">
+           <t t-foreach="docs" t-as="o">
+               <t t-call="web.basic_layout">
+                   <div class="page" style="font-size:10px;padding-left:40px;padding-right:40px">
+        <div class="oe_structure"/>
+            <!-- <img t-att-src="image_data_uri(o.env['res.company'].browse(3).logo)" style="height: 80px; margin-top: 15px;" alt="header"/> -->
+            <!-- <img t-if="doc.env['res.company'].browse(3).logo" t-att-src="image_data_uri(doc.env['res.company'].browse(3).logo)" style="height: 80px; margin-top: 15px;" alt="header"/> -->
+         <div class="row mt-3 text-center">
+            <div class="col-5" style="text-align:right;padding:0px;">
+                <img t-att-src="image_data_uri(o.env['res.company'].browse(3).logo)" style="height: 100px; margin-top: 15px;" alt="header"/>
+            </div>
+            <div class="col-7" style="text-align:left;padding:0px;margin-top:42px;margin-left:-10px">
+                <div>
+                    <span style="color:#636363;">THE</span>
+                </div>
+                <div style="margin-top:-9px"> 
+                    <h3 style="color:#636363;">BORROWING CLUB</h3>
+                </div>
+            </div>
+        </div>
+        
+        <br/>
+        <br/>
+            <div>
+                <h5><b>Business Information</b></h5>
+            </div>
+            <div class="row" style="border:1px solid #00CC99;">
+                <div class="col-6" style="padding:5px">
+                    <span><b>Business Name (Not DBA):</b></span><br/>
+                    <span t-field="o.business_name"/>
+                </div>
+                <div class="col-6" style="border-left:1px solid #00CC99;padding:5px">
+                    <span><b>Business EIN:</b></span><br/>
+                    <span t-field="o.ein_encrypted"/>
+                </div>
+            </div>
+            
+            <div class="row" style="border:1px solid #00CC99;border-top:0">
+                <div class="col-12" style="padding:5px">
+                    <span><b>Business Address:</b></span><br/>
+                    <span t-field="o.business_street"/>
+                </div>
+            </div>
+            
+            <div class="row" style="border:1px solid #00CC99;border-top:0">
+                <div class="col-6" style="padding:5px">
+                    <span><b>Use Of Proceeds:</b></span><br/>
+                    <span t-field="o.use_of_proceeds"/>
+                </div>
+                <div class="col-6" style="border-left:1px solid #00CC99;padding:5px">
+                    <span><b>Time In Business:</b></span><br/>
+                    <span t-field="o.years_in_business"/>
+                </div>
+            </div>
+            
+            <div class="row" style="border:1px solid #00CC99;border-top:0">
+                <div class="col-4" style="padding:5px">
+                    <span><b>Credit Score:</b></span><br/>
+                    <span t-field="o.credit_score"/>
+                </div>
+                <div class="col-4" style="border-left:1px solid #00CC99;padding:5px">
+                    <span><b>Number Of Bank Accounts:</b></span><br/>
+                    <span t-field="o.no_of_bank_accounts"/>
+                </div>
+                <div class="col-4" style="border-left:1px solid #00CC99;padding:5px">
+                    <span><b>Open Business Loans/MCA:</b></span><br/>
+                    <span t-field="o.total_business_loans"/>
+                </div>
+            </div>
+            
+            <br/>
+            
+            
+            <div>
+                <h5><b>Funding Information</b></h5>
+            </div>
+            <div class="row" style="border:1px solid #00CC99;">
+                <div class="col-6" style="padding:5px">
+                    <span><b>Industry:</b></span><br/>
+                    <span t-field="o.industry_id"/>
+                </div>
+                <div class="col-6" style="border-left:1px solid #00CC99;padding:5px">
+                    <span><b>Average Daily Balance:</b></span><br/>
+                    <span t-field="o.avg_daily_balance"/>
+                </div>
+            </div>
+            
+            
+            <div class="row" style="border:1px solid #00CC99;border-top:0">
+                <div class="col-6" style="padding:5px">
+                    <span><b>Desired Funding Amount:</b></span><br/>
+                    <span t-field="o.requested_loan_amount"/>
+                </div>
+                <div class="col-6" style="border-left:1px solid #00CC99;padding:5px">
+                    <span><b>Average Monthly Revenue:</b></span><br/>
+                    <span t-field="o.avg_monthly_revenue"/>
+                </div>
+            </div>
+            
+            
+            <br/>
+            
+            <div>
+                <h5><b>Business Owner #1</b></h5>
+            </div>
+            <div class="row" style="border:1px solid #00CC99;">
+                <div class="col-6" style="padding:5px">
+                    <span><b>First Name:</b></span><br/>
+                    <span t-field="o.first_name"/>
+                </div>
+                <div class="col-6" style="border-left:1px solid #00CC99;padding:5px">
+                    <span><b>Last Name:</b></span><br/>
+                    <span t-field="o.last_name"/>
+                    <span/>
+                </div>
+            </div>
+            
+            <div class="row" style="border:1px solid #00CC99;border-top:0">
+                <div class="col-12" style="padding:5px">
+                    <span><b>Home Address:</b></span><br/>
+                    <!-- <span t-field="o.prev_address_street"/>
+                    <span t-field="o.prev_state"/>
+                    <span t-field="o.prev_address_city"/> -->
+                </div>
+            </div>
+            
+            <div class="row" style="border:1px solid #00CC99;border-top:0">
+                <div class="col-6" style="padding:5px">
+                    <span><b>SSN:</b></span><br/>
+                    <span t-field="o.social_security_number"/>
+                </div>
+                <div class="col-6" style="border-left:1px solid #00CC99;padding:5px">
+                    <span><b>DOB:</b></span><br/>
+                    <span t-field="o.date_of_birth"/>
+                </div>
+            </div>
+            
+            <div class="row" style="border:1px solid #00CC99;border-top:0">
+                <div class="col-6" style="padding:5px">
+                    <span><b>Home Phone:</b></span><br/>
+                    <span t-field="o.phone"/>
+                </div>
+                <div class="col-6" style="border-left:1px solid #00CC99;padding:5px">
+                    <span><b>Cell Phone:</b></span><br/>
+                    <span t-field="o.mobile"/>
+                    <span/>
+                </div>
+            </div>
+            
+            <div class="row" style="border:1px solid #00CC99;border-top:0">
+                <div class="col-6" style="padding:5px">
+                    <span><b>Email:</b></span><br/>
+                    <span t-field="o.email"/>
+                    <span/>
+                </div>
+                <div class="col-6" style="border-left:1px solid #00CC99;padding:5px">
+                    <span><b>Driver License Number:</b></span><br/>
+                    <!-- <span t-field="o.driver_licence_1"/> -->
+                    <span/>
+                </div>
+            </div>
+            
+            <div class="row" style="border:1px solid #00CC99;border-top:0">
+                <div class="col-6" style="padding:5px">
+                    <span><b>Percent Ownership:</b></span><br/>
+                    <span t-field="o.percent_owner_1"/>
+                </div>
+                <div class="col-6" style="border-left:1px solid #00CC99;padding:5px">
+                    <span><b>Annual Income:</b></span><br/>
+                    <span t-field="o.primary_gross_annual_income"/>
+                    <span/>
+                </div>
+            </div>
+            
+            
+            <br/>
+            
+            <div>
+                <h5><b>Business Owner #2</b></h5>
+            </div>
+            <div class="row" style="border:1px solid #00CC99;">
+                <div class="col-6" style="padding:5px">
+                    <span><b>First Name:</b></span><br/>
+                    <span t-field="o.ja_first_name"/>
+                    <span t-field="o.ja_middle_name"/>
+                </div>
+                <div class="col-6" style="border-left:1px solid #00CC99;padding:5px">
+                    <span><b>Last Name:</b></span><br/>
+                    <span t-field="o.ja_last_name"/>
+                    <span/>
+                </div>
+            </div>
+            
+            <div class="row" style="border:1px solid #00CC99;border-top:0">
+                <div class="col-12" style="padding:5px">
+                    <span><b>Home Address:</b></span><br/>
+                    <span t-field="o.ja_home_address"/>
+                </div>
+            </div>
+            
+            <div class="row" style="border:1px solid #00CC99;border-top:0">
+                <div class="col-6" style="padding:5px">
+                    <span><b>SSN:</b></span><br/>
+                    <span t-field="o.ja_social_security_number"/>
+                </div>
+                <div class="col-6" style="border-left:1px solid #00CC99;padding:5px">
+                    <span><b>DOB:</b></span><br/>
+                    <span t-field="o.ja_date_of_birth"/>
+                </div>
+            </div>
+            
+            <div class="row" style="border:1px solid #00CC99;border-top:0">
+                <div class="col-6" style="padding:5px">
+                    <span><b>Home Phone:</b></span><br/>
+                </div>
+                <div class="col-6" style="border-left:1px solid #00CC99;padding:5px">
+                    <span><b>Cell Phone:</b></span><br/>
+                    <span t-field="o.ja_work_phone"/>
+                </div>
+            </div>
+            
+            <div class="row" style="border:1px solid #00CC99;border-top:0">
+                <div class="col-6" style="padding:5px">
+                    <span><b>Email:</b></span><br/>
+                    <span t-field="o.ja_email"/>
+                    <span/>
+                </div>
+                <div class="col-6" style="border-left:1px solid #00CC99;padding:5px">
+                    <span><b>Driver License Number:</b></span><br/>
+                    <!-- <span t-field="o.driver_licence_2"/> -->
+                </div>
+            </div>
+            
+            <div class="row" style="border:1px solid #00CC99;border-top:0">
+                <div class="col-6" style="padding:5px">
+                    <span><b>Percent Ownership:</b></span><br/>
+                    <span t-field="o.percent_owner_2"/>
+                    <span/>
+                </div>
+                <div class="col-6" style="border-left:1px solid #00CC99;padding:5px">
+                    <span><b>Annual Income:</b></span><br/>
+                    <span t-field="o.ja_gross_annual_income"/>
+                </div>
+            </div>
+            
+            <p>By signing below, each of the above listed business and business owner/officer (individually and collectively, certify that all information and
+            documents submitted in connection with this Funding Application("Application") are accurate, true, correct and complete). You authorize The Borrowing
+            Club, LLC. and each of its representatives , successors, assigns and designees ("Recipients") that may be involved with or acuire commercial loans
+            having daily repayment features or purchases of future receivables including Merchant Cash Advance transactions, including without limitation
+            the application therefor (collectively , "Transactions") to obtain consumer and/or personal, business and investigative reports and other information
+            about you, including credit card processor statements and bank statements, from one or more consumer reporting agencies, such
+            as TransUnion, Experian and Equifax, and from other credit bureaus, banks, creditors and other third parties. You also authorize The Borrowing Club,
+            LLC to transmit this application form, with any of the foregoing information obtained in connection with this application, to
+            any or all of the Recipients for the foregoing purposes. You also consent to the release, by any creditor or financial institution, of any information
+            relating to any of you, to The Borrowing Club, LLC. and to each of the Recipients, on its own behalf.</p>
+            
+            
+            <br/>
+            <br/>
+            
+            <div class="row" style="font-size:13px">
+                <div class="col-7">
+                    <div class="row">
+                        <div class="col-3">
+                            <span><b>Signature:</b></span>
+                        </div>    
+                        <div class="col-9" style="border-bottom:1px solid black;margin-left:-20px">
+                        </div>    
+                    </div>
+                </div>
+                <div class="col-5">
+                    <div class="row">
+                        <div class="col-3">
+                            <span><b>Date:</b></span>
+                        </div>    
+                        <div class="col-9" style="border-bottom:1px solid black;margin-left:-16px">
+                        </div>    
+                    </div>
+                </div>
+            </div>
+            
+            
+          <br/>
+          <br/>
+          <br/>
+
+            <div class="row" style="font-size:13px">
+                <div class="col-7">
+                    <div class="row">
+                        <div class="col-3">
+                            <span><b>Signature:</b></span>
+                        </div>    
+                        <div class="col-9" style="border-bottom:1px solid black;margin-left:-20px">
+                        </div>    
+                    </div>
+                </div>
+                <div class="col-5">
+                    <div class="row">
+                        <div class="col-3">
+                            <span><b>Date:</b></span>
+                        </div>    
+                        <div class="col-9" style="border-bottom:1px solid black;margin-left:-16px">
+                        </div>    
+                    </div>
+                </div>
+            </div>
+
+
+        
+    
+    </div>
+               
+               </t>
+           </t>
+       </t>
+   </template>
+</odoo>

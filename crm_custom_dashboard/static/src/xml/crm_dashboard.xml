@@ -1,0 +1,934 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <!--DASHBOARD VIEW WITH NAVIGATION-BAR, INTERACTJS TEMPLATE-->
+    <t t-name="owl.OdooCRMDashboard" owl="1">
+        
+        <div class="container o_hr_dashboard" style="margin-top: 20px; overflow-y: scroll;vertical-align: middle;overflow-x: clip;max-height: -webkit-fill-available;background-color:#F5F5F5">
+            <div style="margin-top:10px;border:1px solid #DDDDDD;background-color:#FFFFFF;padding:10px">
+                    <div class="row">
+                        <div class="col-6">
+                            <span style="text-align:left"><b>Daily Leads Counts</b></span>
+                        </div>
+                        <div class="col-6" style="text-align:right">
+                            <span style="text-align:right">Affliliate: All</span>
+                            <span style="text-align:right">  Instance: NWLC</span>
+                        </div>
+                    </div>
+                    <br/> 
+                    <div class="row">
+                        <div class="col-2">
+                            <center>
+                                <span><b>Total Inbound</b></span>
+                                <br/>
+                                <span t-on-click="(e) => this.drilldown_function(e, state.open_leads_ids, 'Total Inbound')" style="cursor: pointer;"><t t-esc="state.total_open_leads"/></span>
+                            </center>
+                        </div>
+                        <div class="col-2">
+                            <center>
+                                <span><b>Duplicates</b></span>
+                                <br/>
+                                <span t-on-click="(e) => this.drilldown_function(e, state.duplicate_leads_ids,'Duplicates')" style="cursor: pointer;"><t t-esc="state.total_duplicate_leads"/></span>
+                            </center>
+                        </div>
+                        <div class="col-2">
+                            <center>
+                                <span><b>DNMC</b></span>
+                                <br/>
+                                <span t-on-click="(e) => this.drilldown_function(e, state.dnmc_leads_ids,'DNMC')" style="cursor: pointer;"><t t-esc="state.total_dnmc_leads"/></span>
+                            </center>
+                        </div>
+                        <div class="col-2">
+                            <center>
+                                <span><b>Workable</b></span>
+                                <br/>
+                                <span t-on-click="(e) => this.drilldown_function(e, state.duplicate_leads_ids.concat(state.dnmc_leads_ids),'Workable')" style="cursor: pointer;"><t t-esc="state.total_open_leads - (state.total_duplicate_leads + state.total_dnmc_leads)"/></span>
+                            </center>
+                        </div>
+                        <div class="col-2">
+                            <center>
+                                <span><b>Converted</b></span>
+                                <br/>
+                                <span t-on-click="(e) => this.drilldown_function(e,state.converted_leads_ids,'Converted')" style="cursor: pointer;"><t t-esc="state.total_converted_leads"/></span>
+                            </center>
+                        </div>
+                        <div class="col-2">
+                            <center>
+                                <span><b>Dead Declined Offer</b></span>
+                                <br/>
+                                <span t-on-click="(e) => this.drilldown_function(e, state.dead_leads_ids,'Dead Declined Offer')" style="cursor: pointer;"><t t-esc="state.total_dead_leads"/></span>
+                            </center>
+                        </div>
+                    </div>
+            </div>                
+                <br/>
+                <br/>
+                <!-- ________________Daily Processing Count_________________ -->
+            <div style="margin-top:10px;border:1px solid #DDDDDD;background-color:#FFFFFF;padding:10px">
+                    <div class="row">
+                        <div class="col-6">
+                            <span style="text-align:left"><b>Daily Processing Counts</b></span>
+                        </div>
+                        <div class="col-6" style="text-align:right">
+                            <span style="text-align:right">Affliliate: All</span>
+                            <span style="text-align:right">  Instance: NWLC</span>
+                        </div>
+                    </div>
+                    <br/> 
+                    <div class="row">
+                        <div class="col-2">
+                            <center>
+                                <span><b>Consultation</b></span>
+                                <br/>
+                                <span t-on-click="(e) => this.drilldown_function(e, state.consultation_processing_ids, 'Consultation Processing')" style="cursor: pointer;"><t t-esc="state.total_consultation_processing"/></span>
+                            </center>
+                        </div>
+                        <div class="col-2">
+                            <center>
+                                <span><b>Application In Process</b></span>
+                                <br/>
+                                <span t-on-click="(e) => this.drilldown_function(e, state.application_in_process_ids,'Application In Process')" style="cursor: pointer;"><t t-esc="state.total_application_in_process"/></span>
+                            </center>
+                        </div>
+                        <div class="col-1">
+                            <center>
+                                <span><b>Freeze</b></span>
+                                <br/>
+                                <span t-on-click="(e) => this.drilldown_function(e, state.freeze_processing_ids,'Freeze')" style="cursor: pointer;"><t t-esc="state.total_freeze_processing"/></span>
+                            </center>
+                        </div>
+                        <div class="col-1">
+                            <center>
+                                <span><b>Processing</b></span>
+                                <br/>
+                                <span t-on-click="(e) => this.drilldown_function(e, state.processing_ids,'Processing')" style="cursor: pointer;"><t t-esc="state.total_processing"/></span>
+                            </center>
+                        </div>
+                        <div class="col-1">
+                            <center>
+                                <span><b>Add Lender</b></span>
+                                <br/>
+                                <span t-on-click="(e) => this.drilldown_function(e,state.add_lender_ids,'Add Lender')" style="cursor: pointer;"><t t-esc="state.total_add_lender"/></span>
+                            </center>
+                        </div>
+                        <div class="col-1">
+                            <center>
+                                <span><b>Submitting Docs</b></span>
+                                <br/>
+                                <span t-on-click="(e) => this.drilldown_function(e, state.submitting_docs_ids,'Submitting Docs')" style="cursor: pointer;"><t t-esc="state.total_submitting_docs"/></span>
+                            </center>
+                        </div>
+                        <div class="col-2">
+                            <center>
+                                <span><b>Signed Closing Docs</b></span>
+                                <br/>
+                                <span t-on-click="(e) => this.drilldown_function(e, state.signed_closing_docs_ids,'Signed Closing Docs')" style="cursor: pointer;"><t t-esc="state.total_signed_closing_docs"/></span>
+                            </center>
+                        </div>
+                        <div class="col-2">
+                            <center>
+                                <span><b>Pending Processing</b></span>
+                                <br/>
+                                <span t-on-click="(e) => this.drilldown_function(e, state.pending_processing_ids,'Pending Processing')" style="cursor: pointer;"><t t-esc="state.total_pending_processing"/></span>
+                            </center>
+                        </div>
+                    </div>
+            </div>    
+                <br/>
+                <br/>
+                <!-- ________________ Weekly Sales Report _________________ -->
+            <div style="margin-top:10px;border:1px solid #DDDDDD;background-color:#FFFFFF;padding:10px">
+                <div class="row">
+                    <div class="col-4">
+                        <span style="text-align:left"><b>Weekly Sales Report</b></span>
+                    </div>
+                    <div class="col-4" style="text-align:center">
+                        <button class="btn btn-primary" t-on-click="print_pdf">Weekly Sales Report PDF</button>
+                        <!-- <button class="btn btn-primary" t-on-click="() => this.print_pdf()">Print PDF</button> -->
+                    </div>
+                    <div class="col-4" style="text-align:right">
+                        <span style="text-align:right">Affliliate: All</span>
+                        <span style="text-align:right">  Instance: NWLC</span>
+                    </div>
+                </div>
+                <br/> 
+
+                <div style="overflow-x: auto;overflow-y:auto;max-height:400px; max-width: 100%; border: 1px solid #DDDDDD; border-radius: 5px;">
+                    <table class="table table-bordered" style="border-collapse: collapse; width: 100%; text-align: left; table-layout: fixed;">
+                        <thead style="background-color: #f2f2f2;">
+                            <tr>
+                                <th style="width: 150px; padding: 10px; position: sticky; left: 0; background: #f2f2f2; z-index: 2; border-right: 2px solid #ddd;">Reps</th>
+                                <th style="width: 120px; padding: 10px; white-space: normal; word-wrap: break-word;">Leads</th>
+                                <th style="width: 120px; padding: 10px; white-space: normal; word-wrap: break-word;">Total Leads</th>
+                                <th style="width: 120px; padding: 10px; white-space: normal; word-wrap: break-word;">Combined</th>
+                                <th style="width: 120px; padding: 10px; white-space: normal; word-wrap: break-word;">Duplicates</th>
+                                <th style="width: 120px; padding: 10px; white-space: normal; word-wrap: break-word;">Duplicates %</th>
+                                <th style="width: 120px; padding: 10px; white-space: normal; word-wrap: break-word;">DNMC</th>
+                                <th style="width: 120px; padding: 10px; white-space: normal; word-wrap: break-word;">DNMC %</th>
+                                <th style="width: 120px; padding: 10px; white-space: normal; word-wrap: break-word;">Workable</th>
+                                <th style="width: 120px; padding: 10px; white-space: normal; word-wrap: break-word;">Workable %</th>
+                                <th style="width: 120px; padding: 10px; white-space: normal; word-wrap: break-word;">Total Workable</th>
+                                <th style="width: 120px; padding: 10px; white-space: normal; word-wrap: break-word;">Declined Offer</th>
+                                <th style="width: 120px; padding: 10px; white-space: normal; word-wrap: break-word;">Declined %</th>
+                                <th style="width: 120px; padding: 10px; white-space: normal; word-wrap: break-word;">DNC</th>
+                                <th style="width: 120px; padding: 10px; white-space: normal; word-wrap: break-word;">DNC %</th>
+                                <th style="width: 120px; padding: 10px; white-space: normal; word-wrap: break-word;">Transferred Out</th>
+                                <th style="width: 120px; padding: 10px; white-space: normal; word-wrap: break-word;">Transferred Out %</th>
+                                <th style="width: 120px; padding: 10px; white-space: normal; word-wrap: break-word;">No Contact</th>
+                                <th style="width: 120px; padding: 10px; white-space: normal; word-wrap: break-word;">No Contact %</th>
+                                <th style="width: 120px; padding: 10px; white-space: normal; word-wrap: break-word;">No Response</th>
+                                <th style="width: 120px; padding: 10px; white-space: normal; word-wrap: break-word;">No Response %</th>
+                                <th style="width: 120px; padding: 10px; white-space: normal; word-wrap: break-word;">Deals</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr t-foreach="state.weekly_sales_rep_dashboard" t-as="data" t-key="data.user_id">
+                                <td style="position: sticky; left: 0; background: white; z-index: 1; border-right: 2px solid #ddd;">    <!-- Reps -->
+                                    <span t-esc="data.user_name"></span>
+                                </td>
+                                <td style="width:70px">    <!-- Leads-->
+                                        <span>Live</span>
+                                        <br/>
+                                        <span>Portal</span>
+                                </td>
+                                <td style="width:70px">    <!-- Total Leads-->
+                                    
+                                        <span  t-on-click="(e) => this.drilldown_function(e,data.live_leads_ids,'Live Leads')" style="cursor: pointer;" t-esc="data.total_live_leads"></span>
+                                        <br/>
+                                        <span t-on-click="(e) => this.drilldown_function(e,data.portal_leads_ids,'Portal Leads')" style="cursor: pointer;" t-esc="data.total_portal_leads"></span>
+                                </td>
+                                <td style="width:70px">    <!-- Combined-->
+                                    <span t-on-click="(e) => this.drilldown_function(e,data.combined_leads_ids,'Combined Leads')" style="cursor: pointer;" t-esc="data.total_crm_leads"/>
+                                </td>
+                                <td style="width:70px">    <!-- Duplicates-->
+                                        <span t-on-click="(e) => this.drilldown_function(e,data.live_duplicates_ids,'Live Duplicate Leads')" style="cursor: pointer;" t-esc="data.total_live_duplicates"></span>
+                                        <br/>
+                                        <span t-on-click="(e) => this.drilldown_function(e,data.portal_duplicates_ids,'Portal Duplicate Leads')" style="cursor: pointer;" t-esc="data.total_portal_duplicates"></span>
+                                </td>
+                                <td style="width:70px">    <!-- Duplicates %-->
+                                    <span t-esc="data.total_live_duplicates_per"/>%
+                                    <br/>
+                                    <span t-esc="data.total_portal_duplicates_per"/>%
+                                </td>
+                                <td style="width:70px">    <!-- DNMC -->
+                                    <span t-on-click="(e) => this.drilldown_function(e,data.live_dnmc_lead_ids,'Live DNMC Leads')" style="cursor: pointer;" t-esc="data.total_live_dnmc_leads"/>
+                                    <br/>
+                                    <span t-on-click="(e) => this.drilldown_function(e,data.portal_dnmc_lead_ids,'Portal DNMC Leads')" style="cursor: pointer;" t-esc="data.total_portal_dnmc_leads"/>
+                                </td>
+                                <td style="width:70px">     <!-- DNMC % -->
+                                    <span t-esc="data.total_live_dnmc_leads_per"/>%
+                                    <br/>
+                                    <span t-esc="data.total_portal_dnmc_leads_per"/>%
+                                </td>
+                                <td style="width:70px">      <!-- Live & Portable Workable -->
+                                    <span t-on-click="(e) => this.drilldown_function(e,data.live_workable_ids,'Live Workable Leads')" style="cursor: pointer;" t-esc="data.total_live_workables"/>
+                                    <br/>
+                                    <span t-on-click="(e) => this.drilldown_function(e,data.portal_workable_ids,'Portal Workable Leads')" style="cursor: pointer;" t-esc="data.total_portal_workables"/>
+                                </td>
+                                <td style="width:70px">      <!-- Total Workable % -->
+                                    <span t-esc="data.total_live_workables_per"/>%
+                                    <br/>
+                                    <span t-esc="data.total_portal_workables_per"/>%
+                                </td>
+                                <td style="width:70px">     <!-- Total Workable (Combined)-->
+                                    <span t-on-click="(e) => this.drilldown_function(e,data.total_workable_ids,'Total Workable Leads')" style="cursor: pointer;" t-esc="data.total_workables"/>
+                                </td>
+                                <td style="width:70px">     <!-- live and portal declined-->
+                                    <span t-on-click="(e) => this.drilldown_function(e,data.live_declined_lead_ids,'Live Declined Leads')" style="cursor: pointer;" t-esc="data.total_live_declined_leads"/>
+                                    <br/>
+                                    <span t-on-click="(e) => this.drilldown_function(e,data.portal_declined_lead_ids,'Portal Declined Leads')" style="cursor: pointer;" t-esc="data.total_portal_declined_leads"/>
+                                </td>
+                                <td style="width:70px">     <!-- live and portal declined %-->
+                                    <span t-esc="data.total_live_declined_leads_per"/>%
+                                    <br/>
+                                    <span t-esc="data.total_portal_declined_leads_per"/>%
+                                </td>
+                                <td style="width:70px">      <!-- live and portal dnc-->
+                                    <span t-on-click="(e) => this.drilldown_function(e,data.live_dnc_lead_ids,'Live DNC Leads')" style="cursor: pointer;" t-esc="data.total_live_dnc_leads"/>
+                                    <br/>
+                                    <span t-on-click="(e) => this.drilldown_function(e,data.portal_dnc_lead_ids,'Portal DNC Leads')" style="cursor: pointer;" t-esc="data.total_portal_dnc_leads"/>
+                                </td>
+                                <td style="width:70px">      <!-- live and portal dnc %-->
+                                    <span t-esc="data.total_live_dnc_leads_per"/>%
+                                    <br/>
+                                    <span t-esc="data.total_portal_dnc_leads_per"/>%
+                                </td>
+                                <td style="width:70px">        <!-- live and portal transferred out -->
+                                    <span t-on-click="(e) => this.drilldown_function(e,data.live_transferred_lead_ids,'Live Transferred Leads')" style="cursor: pointer;" t-esc="data.total_live_transferred_leads"/>
+                                    <br/>
+                                    <span t-on-click="(e) => this.drilldown_function(e,data.portal_transferred_lead_ids,'Portal Transferred Leads')" style="cursor: pointer;" t-esc="data.total_portal_transferred_leads"/>
+                                </td>
+                                <td style="width:70px">       <!-- live and portal transferred out %-->
+                                    <span t-esc="data.total_live_transferred_leads_per"/>%
+                                    <br/>
+                                    <span t-esc="data.total_portal_transferred_leads_per"/>%
+                                </td>
+                                <td style="width:70px">       <!-- live and portal no contact-->
+                                    <span t-on-click="(e) => this.drilldown_function(e,data.live_no_contact_lead_ids,'Live No Contact Leads')" style="cursor: pointer;" t-esc="data.total_live_no_contact_leads"/>
+                                    <br/>
+                                    <span t-on-click="(e) => this.drilldown_function(e,data.portal_no_contact_lead_ids,'Portal No Contact Leads')" style="cursor: pointer;" t-esc="data.total_portal_no_contact_leads"/>
+                                </td>
+                                <td style="width:70px">       <!-- live and portal no contact %-->
+                                    <span t-esc="data.total_live_no_contact_leads_per"/>%
+                                    <br/>
+                                    <span t-esc="data.total_portal_no_contact_leads_per"/>%
+                                </td>
+                                <td style="width:70px">        <!-- live and portal no response -->
+                                    <span t-on-click="(e) => this.drilldown_function(e,data.live_no_response_lead_ids,'Live No Response Leads')" style="cursor: pointer;" t-esc="data.total_live_no_response_leads"/>
+                                    <br/>
+                                    <span t-on-click="(e) => this.drilldown_function(e,data.portal_no_response_lead_ids,'Live No Response Leads')" style="cursor: pointer;" t-esc="data.total_portal_no_response_leads"/>
+                                </td>
+                                <td style="width:70px">       <!-- live and portal no response %-->
+                                    <span t-esc="data.total_live_no_response_leads_per"/>%
+                                    <br/>
+                                    <span t-esc="data.total_portal_no_response_leads_per" />%
+                                </td>
+                                <td style="width:70px">
+                                    <span t-on-click="(e) => this.drilldown_function(e,data.live_deal_lead_ids,'Live Deal Leads')" style="cursor: pointer;" t-esc="data.total_live_deal_leads"/>
+                                    <br/>
+                                    <span t-on-click="(e) => this.drilldown_function(e,data.portal_deal_lead_ids,'Portal Deal Leads')" style="cursor: pointer;" t-esc="data.total_portal_deal_leads"/>
+                                </td>
+                            </tr>
+                            <tr style="background: #f2f2f2">
+                                <td/>
+                                <td/>
+                                <td> <!--total Crm leads -->
+                                    <span t-esc="state.totalCrmLeads"/>
+                                </td>
+                                <td>  <!--total Crm leads -->
+                                    <span t-esc="state.totalCrmLeads"/>
+                                </td>
+                                <td>   <!--total Crm Duplicates leads -->
+                                    <span t-esc="state.totalCrmDuplicates"/>
+                                </td>
+                                <td> <!-- total Crm Duplicates leads percentage-->
+                                    <span t-esc="state.totalCrmDuplicatesPer"/>
+                                </td>
+                                <td>   <!--total Crm DNMC leads -->
+                                    <span t-esc="state.totalCrmDnmc"/>
+                                </td>
+                                <td>  <!-- total Crm DNMC leads percentage-->
+                                    <span t-esc="state.totalCrmDnmcPer"/>
+                                </td>
+                                <td>   <!--total Crm Workable leads -->
+                                    <span t-esc="state.totalCrmWorkable"/>
+                                </td>
+                                <td> <!-- total Crm workable leads percentage-->
+                                    <span t-esc="state.totalCrmWorkablePer"/>
+                                </td>
+                                <td>  <!-- Total Crm Workable leads-->
+                                    <span t-esc="state.totalCrmWorkable"/>
+                                </td>
+                                <td>  <!-- Total Crm Declined leads-->
+                                    <span t-esc="state.totalCrmDeclinedLead"/>
+                                </td>
+                                <td>  <!--Total Crm Declined leads Per -->
+                                    <span t-esc="state.totalCrmDeclinedLeadPer"/>
+                                </td>
+                                <td>  <!-- Total Crm Dnc leads -->
+                                    <span t-esc="state.totalCrmDncLead"/>
+                                </td>
+                                <td>  <!--Total Crm Dnc leads Per -->
+                                    <span t-esc="state.totalCrmDncLeadPer"/>
+                                </td>
+                                <td>  <!-- Total Crm Transferred leads -->
+                                    <span t-esc="state.totalCrmTransferredLead"/>
+                                </td>
+                                <td>  <!--Total Crm Transferred leads Per -->
+                                    <span t-esc="state.totalCrmTransferredLeadPer"/>
+                                </td>
+                                <td>  <!-- Total Crm No Contact leads -->
+                                    <span t-esc="state.totalCrmNoContactLead"/>
+                                </td>
+                                <td>  <!--Total Crm No Contact leads Per -->
+                                    <span t-esc="state.totalCrmNoContactLeadPer"/>
+                                </td>
+                                <td>  <!-- Total Crm No Response leads -->
+                                    <span t-esc="state.totalCrmNoResponseLead"/>
+                                </td>
+                                <td>  <!-- Total Crm No Response leads Per -->
+                                    <span t-esc="state.totalCrmNoResponseLeadPer"/>
+                                </td>
+                                <td/>
+                            </tr>
+                            <tr>
+                                <td colspan="2">Total Live</td>
+                                <td> <!--total live leads -->
+                                    <span t-esc="state.totalLiveLeads"/>
+                                </td>
+                                <td> <!--total live leads -->
+                                    <span t-esc="state.totalLiveLeads"/>
+                                </td>
+                                <td>   <!--total live Duplicates leads -->
+                                    <span t-esc="state.totalLiveDuplicates"/>
+                                </td>
+                                <td/>
+                                <td> <!--tota Live dnmc leads -->
+                                    <span t-esc="state.totalLiveDnmc"/>
+                                </td>
+                                <td/>
+                                <td> <!--tota Live Workable leads -->
+                                    <span t-esc="state.totalLiveWorkable"/>
+                                </td>
+                                <td/>
+                                <td> <!--tota Live Workable leads -->
+                                    <span t-esc="state.totalLiveWorkable"/>
+                                </td>
+                                <td> <!--tota Live Declined leads -->
+                                    <span t-esc="state.totalLiveDeclinedLead"/>
+                                </td>
+                                <td/>
+                                <td> <!--tota Live Dnc leads -->
+                                    <span t-esc="state.totalLiveDncLead"/>
+                                </td>
+                                <td/>  <!--Total Live Dnc leads Per -->
+                                <td>  <!-- Total Live Transferred leads -->
+                                    <span t-esc="state.totalLiveTransferredLead"/>
+                                </td>
+                                <td/>  <!--Total Live Transferred leads Per -->
+                                <td>  <!-- Total Live No Contact leads -->
+                                    <span t-esc="state.totalLiveNoContactLead"/>
+                                </td>
+                                <td/>  <!--Total Live No Contact leads Per -->
+                                <td>  <!-- Total Live No Response leads -->
+                                    <span t-esc="state.totalLiveNoResponseLead"/>
+                                </td>
+                                <td/>
+                            </tr>
+                            <tr>
+                                <td colspan="2">Total Portal</td>
+                                <td> <!--total Portal leads -->
+                                    <span t-esc="state.totalPortalLeads"/>
+                                </td>
+                                <td> <!--total Portal leads -->
+                                    <span t-esc="state.totalPortalLeads"/>
+                                </td>
+                                <td> <!--total Portal Duplicates -->
+                                    <span t-esc="state.totalPortalDuplicates"/>
+                                </td>
+                                <td/>
+                                <td> <!--tota Portal dnmc leads -->
+                                    <span t-esc="state.totalPortalDnmc"/>
+                                </td>
+                                <td/>
+                                <td> <!--tota Portal Workable leads -->
+                                    <span t-esc="state.totalPortalWorkable"/>
+                                </td>
+                                <td/>
+                                <td> <!--tota Portal Workable leads -->
+                                    <span t-esc="state.totalPortalWorkable"/>
+                                </td>
+                                <td> <!--total Portal Declined leads -->
+                                    <span t-esc="state.totalPortalDeclinedLead"/>
+                                </td>
+                                <td/>
+                                <td> <!--tota Portal Dnc leads -->
+                                    <span t-esc="state.totalPortalDncLead"/>
+                                </td>
+                                <td/>  <!--Total Portal Dnc leads Per -->
+                                <td>  <!-- Total Portal Transferred leads -->
+                                    <span t-esc="state.totalPortalTransferredLead"/>
+                                </td>
+                                <td/>  <!--Total Portal Transferred leads Per -->
+                                <td>  <!-- Total Portal No Contact leads -->
+                                    <span t-esc="state.totalPortalNoContactLead"/>
+                                </td>
+                                <td/>  <!--Total Portal No Contact leads Per -->
+                                <td>  <!-- Total Portal No Response leads -->
+                                    <span t-esc="state.totalPortalNoResponseLead"/>
+                                </td>
+                                <td/>
+                            </tr>
+                            <tr>
+                                <td colspan="2">Total Prime</td>
+                                <td> <!--total Prime leads -->
+                                    <span t-esc="state.totalPrimeLead"/>
+                                </td>
+                                <td> <!--total Prime leads -->
+                                    <span t-esc="state.totalPrimeLead"/>
+                                </td>
+                                <td> <!--total Prime Duplicate leads -->
+                                    <span t-esc="state.totalPrimeDupLead"/>
+                                </td>
+                                <td/>
+                                <td> <!--total Prime Dnmc leads -->
+                                    <span t-esc="state.totalPrimeDnmcLead"/>
+                                </td>
+                                <td/>
+                                <td> <!--total Prime Workable leads -->
+                                    <span t-esc="state.totalPrimeWorkableLead"/>
+                                </td>
+                                <td/>
+                                <td> <!--total Prime Workable leads -->
+                                    <span t-esc="state.totalPrimeWorkableLead"/>
+                                </td>
+                                <td> <!--total Prime Declined leads -->
+                                    <span t-esc="state.totalPrimeDeclinedLead"/>
+                                </td>
+                                <td/>
+                                <td> <!--total Prime Dnc leads -->
+                                    <span t-esc="state.totalPrimeDncLead"/>
+                                </td>
+                                <td/>
+                                <td> <!--total Prime Transferred leads -->
+                                    <span t-esc="state.totalPrimeTransferredLead"/>
+                                </td>
+                                <td/>
+                                <td> <!--total Prime No Contact leads -->
+                                    <span t-esc="state.totalPrimeNoContactLead"/>
+                                </td>
+                                <td/>
+                                <td> <!--total Prime No Response leads -->
+                                    <span t-esc="state.totalPrimeNoResponseLead"/>
+                                </td>
+                                <td/>
+                            </tr>
+                            <tr>
+                                <td colspan="2">Total Sub-Prime</td>
+                                <td> <!--total Subprime leads -->
+                                    <span t-esc="state.totalSubPrimeLead"/>
+                                </td>
+                                <td> <!--total Subprime leads -->
+                                    <span t-esc="state.totalSubPrimeLead"/>
+                                </td>
+                                <td> <!--total Subprime Duplicate leads -->
+                                    <span t-esc="state.totalSubPrimeDupLead"/>
+                                </td>
+                                <td/>
+                                <td> <!--total Subprime Dnmc leads -->
+                                    <span t-esc="state.totalSubPrimeDnmcLead"/>
+                                </td>
+                                <td/>
+                                <td> <!--total Subprime Workable leads -->
+                                    <span t-esc="state.totalSubPrimeWorkableLead"/>
+                                </td>
+                                <td/>
+                                <td> <!--total Subprime Workable leads -->
+                                    <span t-esc="state.totalSubPrimeWorkableLead"/>
+                                </td>
+                                <td> <!--total Subprime Declined leads -->
+                                    <span t-esc="state.totalSubPrimeDeclinedLead"/>
+                                </td>
+                                <td/>
+                                <td> <!--total Subprime Dnc leads -->
+                                    <span t-esc="state.totalSubPrimeDncLead"/>
+                                </td>
+                                <td/>
+                                <td> <!--total Subprime Transferred leads -->
+                                    <span t-esc="state.totalSubPrimeTransferredLead"/>
+                                </td>
+                                <td/>
+                                <td> <!--total Subprime No Contact leads -->
+                                    <span t-esc="state.totalSubPrimeNoContactLead"/>
+                                </td>
+                                <td/>
+                                <td> <!--total Subprime No Response leads -->
+                                    <span t-esc="state.totalSubPrimeNoResponseLead"/>
+                                </td>
+                                <td/>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+            </div>
+                <br/>
+                <br/>
+            <div style="margin-top:10px;border:1px solid #DDDDDD;background-color:#FFFFFF;padding:10px">
+                <div class="row">
+                    <div class="col-6">
+                        <span style="text-align:left"><b>Weekly Affiliate Sales Report</b></span>
+                    </div>
+                    <div class="col-6" style="text-align:right">
+                        <span style="text-align:right">Affliliate: All</span>
+                        <span style="text-align:right">  Instance: NWLC</span>
+                    </div>
+                </div>
+                <br/> 
+                
+
+                <div style="overflow-x: auto;overflow-y:auto;max-height:400px; max-width: 100%; border: 1px solid #DDDDDD; border-radius: 5px;">
+                    <table class="table table-bordered" style="border-collapse: collapse; width: 100%; text-align: left; table-layout: fixed;">
+                        <thead style="background-color: #f2f2f2;">
+                            <tr>
+                                <th style="width: 150px; padding: 10px; position: sticky; left: 0; background: #f2f2f2; z-index: 2; border-right: 2px solid #ddd;">Reps</th>
+                                <th style="width: 120px; padding: 10px; white-space: normal; word-wrap: break-word;">Leads</th>
+                                <th style="width: 120px; padding: 10px; white-space: normal; word-wrap: break-word;">Total Leads</th>
+                                <th style="width: 120px; padding: 10px; white-space: normal; word-wrap: break-word;">Combined</th>
+                                <th style="width: 120px; padding: 10px; white-space: normal; word-wrap: break-word;">Duplicates</th>
+                                <th style="width: 120px; padding: 10px; white-space: normal; word-wrap: break-word;">Duplicates %</th>
+                                <th style="width: 120px; padding: 10px; white-space: normal; word-wrap: break-word;">DNMC</th>
+                                <th style="width: 120px; padding: 10px; white-space: normal; word-wrap: break-word;">DNMC %</th>
+                                <th style="width: 120px; padding: 10px; white-space: normal; word-wrap: break-word;">Workable</th>
+                                <th style="width: 120px; padding: 10px; white-space: normal; word-wrap: break-word;">Workable %</th>
+                                <th style="width: 120px; padding: 10px; white-space: normal; word-wrap: break-word;">Total Workable</th>
+                                <th style="width: 120px; padding: 10px; white-space: normal; word-wrap: break-word;">Declined Offer</th>
+                                <th style="width: 120px; padding: 10px; white-space: normal; word-wrap: break-word;">Declined %</th>
+                                <th style="width: 120px; padding: 10px; white-space: normal; word-wrap: break-word;">DNC</th>
+                                <th style="width: 120px; padding: 10px; white-space: normal; word-wrap: break-word;">DNC %</th>
+                                <th style="width: 120px; padding: 10px; white-space: normal; word-wrap: break-word;">Transferred Out</th>
+                                <th style="width: 120px; padding: 10px; white-space: normal; word-wrap: break-word;">Transferred Out %</th>
+                                <th style="width: 120px; padding: 10px; white-space: normal; word-wrap: break-word;">No Contact</th>
+                                <th style="width: 120px; padding: 10px; white-space: normal; word-wrap: break-word;">No Contact %</th>
+                                <th style="width: 120px; padding: 10px; white-space: normal; word-wrap: break-word;">No Response</th>
+                                <th style="width: 120px; padding: 10px; white-space: normal; word-wrap: break-word;">No Response %</th>
+                                <th style="width: 120px; padding: 10px; white-space: normal; word-wrap: break-word;">Deals</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr t-foreach="state.affiliateweekly_sales_rep_dashboard" t-as="data" t-key="data.user_id">
+                                <td style="position: sticky; left: 0; background: white; z-index: 1; border-right: 2px solid #ddd;">    <!-- Reps -->
+                                    <span t-esc="data.user_name"></span>
+                                </td>
+                                <td style="width:70px">    <!-- Leads-->
+                                        <span>Live</span>
+                                        <br/>
+                                        <span>Portal</span>
+                                </td>
+                                <td style="width:70px">    <!-- Total Leads-->
+                                        <span t-on-click="(e) => this.drilldown_function(e,data.live_leads_ids,'Live Leads')" style="cursor: pointer;" t-esc="data.total_live_leads"></span>
+                                        <br/>
+                                        <span t-on-click="(e) => this.drilldown_function(e,data.portal_leads_ids,'Portal Leads')" style="cursor: pointer;" t-esc="data.total_portal_leads"></span>
+                                </td>
+                                <td style="width:70px">    <!-- Combined-->
+                                    <span t-on-click="(e) => this.drilldown_function(e,data.combined_leads_ids,'Combined Leads')" style="cursor: pointer;" t-esc="data.total_crm_leads"/>
+                                </td>
+                                <td style="width:70px">    <!-- Duplicates-->
+                                        <span t-on-click="(e) => this.drilldown_function(e,data.live_duplicates_ids,'Live Duplicate Leads')" style="cursor: pointer;" t-esc="data.total_live_duplicates"></span>
+                                        <br/>
+                                        <span t-on-click="(e) => this.drilldown_function(e,data.portal_duplicates_ids,'Portal Duplicate Leads')" style="cursor: pointer;" t-esc="data.total_portal_duplicates"></span>
+                                </td>
+                                <td style="width:70px">    <!-- Duplicates %-->
+                                    <span t-esc="data.total_live_duplicates_per"/>%
+                                    <br/>
+                                    <span t-esc="data.total_portal_duplicates_per"/>%
+                                </td>
+                                <td style="width:70px">    <!-- DNMC -->
+                                    <span t-on-click="(e) => this.drilldown_function(e,data.live_dnmc_lead_ids,'Live DNMC Leads')" style="cursor: pointer;" t-esc="data.total_live_dnmc_leads"/>
+                                    <br/>
+                                    <span t-on-click="(e) => this.drilldown_function(e,data.portal_dnmc_lead_ids,'Portal DNMC Leads')" style="cursor: pointer;" t-esc="data.total_portal_dnmc_leads"/>
+                                </td>
+                                <td style="width:70px">     <!-- DNMC % -->
+                                    <span t-esc="data.total_live_dnmc_leads_per"/>%
+                                    <br/>
+                                    <span t-esc="data.total_portal_dnmc_leads_per"/>%
+                                </td>
+                                <td style="width:70px">      <!-- Live & Portable Workable -->
+                                    <span t-on-click="(e) => this.drilldown_function(e,data.live_workable_ids,'Live Workable Leads')" style="cursor: pointer;" t-esc="data.total_live_workables"/>
+                                    <br/>
+                                    <span t-on-click="(e) => this.drilldown_function(e,data.portal_workable_ids,'Portal Workable Leads')" style="cursor: pointer;" t-esc="data.total_portal_workables"/>
+                                </td>
+                                <td style="width:70px">      <!-- Total Workable % -->
+                                    <span t-esc="data.total_live_workables_per"/>%
+                                    <br/>
+                                    <span t-esc="data.total_portal_workables_per"/>%
+                                </td>
+                                <td style="width:70px">     <!-- Total Workable (Combined)-->
+                                    <span t-on-click="(e) => this.drilldown_function(e,data.total_workable_ids,'Total Workable Leads')" style="cursor: pointer;" t-esc="data.total_workables"/>
+                                </td>
+                                <td style="width:70px">     <!-- live and portal declined-->
+                                    <span t-on-click="(e) => this.drilldown_function(e,data.live_declined_lead_ids,'Live Declined Leads')" style="cursor: pointer;" t-esc="data.total_live_declined_leads"/>
+                                    <br/>
+                                    <span t-on-click="(e) => this.drilldown_function(e,data.portal_declined_lead_ids,'Portal Declined Leads')" style="cursor: pointer;" t-esc="data.total_portal_declined_leads"/>
+                                </td>
+                                <td style="width:70px">     <!-- live and portal declined %-->
+                                    <span t-esc="data.total_live_declined_leads_per"/>%
+                                    <br/>
+                                    <span t-esc="data.total_portal_declined_leads_per"/>%
+                                </td>
+                                <td style="width:70px">      <!-- live and portal dnc-->
+                                    <span t-on-click="(e) => this.drilldown_function(e,data.live_dnc_lead_ids,'Live DNC Leads')" style="cursor: pointer;" t-esc="data.total_live_dnc_leads"/>
+                                    <br/>
+                                    <span t-on-click="(e) => this.drilldown_function(e,data.portal_dnc_lead_ids,'Portal DNC Leads')" style="cursor: pointer;" t-esc="data.total_portal_dnc_leads"/>
+                                </td>
+                                <td style="width:70px">      <!-- live and portal dnc %-->
+                                    <span t-esc="data.total_live_dnc_leads_per"/>%
+                                    <br/>
+                                    <span t-esc="data.total_portal_dnc_leads_per"/>%
+                                </td>
+                                <td style="width:70px">        <!-- live and portal transferred out -->
+                                    <span t-on-click="(e) => this.drilldown_function(e,data.live_transferred_lead_ids,'Live Transferred Leads')" style="cursor: pointer;" t-esc="data.total_live_transferred_leads"/>
+                                    <br/>
+                                    <span t-on-click="(e) => this.drilldown_function(e,data.portal_transferred_lead_ids,'Portal Transferred Leads')" style="cursor: pointer;" t-esc="data.total_portal_transferred_leads"/>
+                                </td>
+                                <td style="width:70px">       <!-- live and portal transferred out %-->
+                                    <span t-esc="data.total_live_transferred_leads_per"/>%
+                                    <br/>
+                                    <span t-esc="data.total_portal_transferred_leads_per"/>%
+                                </td>
+                                <td style="width:70px">       <!-- live and portal no contact-->
+                                    <span t-on-click="(e) => this.drilldown_function(e,data.live_no_contact_lead_ids,'Live No Contact Leads')" style="cursor: pointer;" t-esc="data.total_live_no_contact_leads"/>
+                                    <br/>
+                                    <span t-on-click="(e) => this.drilldown_function(e,data.portal_no_contact_lead_ids,'Portal No Contact Leads')" style="cursor: pointer;" t-esc="data.total_portal_no_contact_leads"/>
+                                    
+                                </td>
+                                <td style="width:70px">       <!-- live and portal no contact %-->
+                                    <span t-esc="data.total_live_no_contact_leads_per"/>%
+                                    <br/>
+                                    <span t-esc="data.total_portal_no_contact_leads_per"/>%
+                                </td>
+                                <td style="width:70px">        <!-- live and portal no response -->
+                                    <span t-on-click="(e) => this.drilldown_function(e,data.live_no_response_lead_ids,'Live No Response Leads')" style="cursor: pointer;" t-esc="data.total_live_no_response_leads"/>
+                                    <br/>
+                                    <span t-on-click="(e) => this.drilldown_function(e,data.portal_no_response_lead_ids,'Live No Response Leads')" style="cursor: pointer;" t-esc="data.total_portal_no_response_leads"/>
+                                </td>
+                                <td style="width:70px">       <!-- live and portal no response %-->
+                                    <span t-esc="data.total_live_no_response_leads_per"/>%
+                                    <br/>
+                                    <span t-esc="data.total_portal_no_response_leads_per" />%
+                                </td>
+                                <td style="width:70px">
+                                    <span t-on-click="(e) => this.drilldown_function(e,data.live_deal_lead_ids,'Live Deal Leads')" style="cursor: pointer;" t-esc="data.total_live_deal_leads"/>
+                                    <br/>
+                                    <span t-on-click="(e) => this.drilldown_function(e,data.portal_deal_lead_ids,'Portal Deal Leads')" style="cursor: pointer;" t-esc="data.total_portal_deal_leads"/>
+                                </td>
+                            </tr>
+                            <tr style="background: #f2f2f2">
+                                <td/>
+                                <td/>
+                                <td> <!--total Crm leads -->
+                                    <span t-esc="state.affiliatetotalCrmLeads"/>
+                                </td>
+                                <td>  <!--total Crm leads -->
+                                    <span t-esc="state.affiliatetotalCrmLeads"/>
+                                </td>
+                                <td>   <!--total Crm Duplicates leads -->
+                                    <span t-esc="state.affiliatetotalCrmDuplicates"/>
+                                </td>
+                                <td> <!-- total Crm Duplicates leads percentage-->
+                                    <span t-esc="state.affiliatetotalCrmDuplicatesPer"/>
+                                </td>
+                                <td>   <!--total Crm DNMC leads -->
+                                    <span t-esc="state.affiliatetotalCrmDnmc"/>
+                                </td>
+                                <td>  <!-- total Crm DNMC leads percentage-->
+                                    <span t-esc="state.affiliatetotalCrmDnmcPer"/>
+                                </td>
+                                <td>   <!--total Crm Workable leads -->
+                                    <span t-esc="state.affiliatetotalCrmWorkable"/>
+                                </td>
+                                <td> <!-- total Crm workable leads percentage-->
+                                    <span t-esc="state.affiliatetotalCrmWorkablePer"/>
+                                </td>
+                                <td>  <!-- Total Crm Workable leads-->
+                                    <span t-esc="state.affiliatetotalCrmWorkable"/>
+                                </td>
+                                <td>  <!-- Total Crm Declined leads-->
+                                    <span t-esc="state.affiliatetotalCrmDeclinedLead"/>
+                                </td>
+                                <td>  <!--Total Crm Declined leads Per -->
+                                    <span t-esc="state.affiliatetotalCrmDeclinedLeadPer"/>
+                                </td>
+                                <td>  <!-- Total Crm Dnc leads -->
+                                    <span t-esc="state.affiliatetotalCrmDncLead"/>
+                                </td>
+                                <td>  <!--Total Crm Dnc leads Per -->
+                                    <span t-esc="state.affiliatetotalCrmDncLeadPer"/>
+                                </td>
+                                <td>  <!-- Total Crm Transferred leads -->
+                                    <span t-esc="state.affiliatetotalCrmTransferredLead"/>
+                                </td>
+                                <td>  <!--Total Crm Transferred leads Per -->
+                                    <span t-esc="state.affiliatetotalCrmTransferredLeadPer"/>
+                                </td>
+                                <td>  <!-- Total Crm No Contact leads -->
+                                    <span t-esc="state.affiliatetotalCrmNoContactLead"/>
+                                </td>
+                                <td>  <!--Total Crm No Contact leads Per -->
+                                    <span t-esc="state.affiliatetotalCrmNoContactLeadPer"/>
+                                </td>
+                                <td>  <!-- Total Crm No Response leads -->
+                                    <span t-esc="state.affiliatetotalCrmNoResponseLead"/>
+                                </td>
+                                <td>  <!-- Total Crm No Response leads Per -->
+                                    <span t-esc="state.affiliatetotalCrmNoResponseLeadPer"/>
+                                </td>
+                                <td/>
+                            </tr>
+                            <tr>
+                                <td colspan="2">Total Live</td>
+                                <td> <!--total live leads -->
+                                    <span t-esc="state.affiliatetotalLiveLeads"/>
+                                </td>
+                                <td> <!--total live leads -->
+                                    <span t-esc="state.affiliatetotalLiveLeads"/>
+                                </td>
+                                <td>   <!--total live Duplicates leads -->
+                                    <span t-esc="state.affiliatetotalLiveDuplicates"/>
+                                </td>
+                                <td/>
+                                <td> <!--tota Live dnmc leads -->
+                                    <span t-esc="state.affiliatetotalLiveDnmc"/>
+                                </td>
+                                <td/>
+                                <td> <!--tota Live Workable leads -->
+                                    <span t-esc="state.affiliatetotalLiveWorkable"/>
+                                </td>
+                                <td/>
+                                <td> <!--tota Live Workable leads -->
+                                    <span t-esc="state.affiliatetotalLiveWorkable"/>
+                                </td>
+                                <td> <!--tota Live Declined leads -->
+                                    <span t-esc="state.affiliatetotalLiveDeclinedLead"/>
+                                </td>
+                                <td/>
+                                <td> <!--tota Live Dnc leads -->
+                                    <span t-esc="state.affiliatetotalLiveDncLead"/>
+                                </td>
+                                <td/>  <!--Total Live Dnc leads Per -->
+                                <td>  <!-- Total Live Transferred leads -->
+                                    <span t-esc="state.affiliatetotalLiveTransferredLead"/>
+                                </td>
+                                <td/>  <!--Total Live Transferred leads Per -->
+                                <td>  <!-- Total Live No Contact leads -->
+                                    <span t-esc="state.affiliatetotalLiveNoContactLead"/>
+                                </td>
+                                <td/>  <!--Total Live No Contact leads Per -->
+                                <td>  <!-- Total Live No Response leads -->
+                                    <span t-esc="state.affiliatetotalLiveNoResponseLead"/>
+                                </td>
+                                <td/>
+                            </tr>
+                            <tr>
+                                <td colspan="2">Total Portal</td>
+                                <td> <!--total Portal leads -->
+                                    <span t-esc="state.affiliatetotalPortalLeads"/>
+                                </td>
+                                <td> <!--total Portal leads -->
+                                    <span t-esc="state.affiliatetotalPortalLeads"/>
+                                </td>
+                                <td> <!--total Portal Duplicates -->
+                                    <span t-esc="state.affiliatetotalPortalDuplicates"/>
+                                </td>
+                                <td/>
+                                <td> <!--tota Portal dnmc leads -->
+                                    <span t-esc="state.affiliatetotalPortalDnmc"/>
+                                </td>
+                                <td/>
+                                <td> <!--tota Portal Workable leads -->
+                                    <span t-esc="state.affiliatetotalPortalWorkable"/>
+                                </td>
+                                <td/>
+                                <td> <!--tota Portal Workable leads -->
+                                    <span t-esc="state.affiliatetotalPortalWorkable"/>
+                                </td>
+                                <td> <!--total Portal Declined leads -->
+                                    <span t-esc="state.affiliatetotalPortalDeclinedLead"/>
+                                </td>
+                                <td/>
+                                <td> <!--tota Portal Dnc leads -->
+                                    <span t-esc="state.affiliatetotalPortalDncLead"/>
+                                </td>
+                                <td/>  <!--Total Portal Dnc leads Per -->
+                                <td>  <!-- Total Portal Transferred leads -->
+                                    <span t-esc="state.affiliatetotalPortalTransferredLead"/>
+                                </td>
+                                <td/>  <!--Total Portal Transferred leads Per -->
+                                <td>  <!-- Total Portal No Contact leads -->
+                                    <span t-esc="state.affiliatetotalPortalNoContactLead"/>
+                                </td>
+                                <td/>  <!--Total Portal No Contact leads Per -->
+                                <td>  <!-- Total Portal No Response leads -->
+                                    <span t-esc="state.affiliatetotalPortalNoResponseLead"/>
+                                </td>
+                                <td/>
+                            </tr>
+                            <tr>
+                                <td colspan="2">Total Prime</td>
+                                <td> <!--total Prime leads -->
+                                    <span t-esc="state.affiliatetotalPrimeLead"/>
+                                </td>
+                                <td> <!--total Prime leads -->
+                                    <span t-esc="state.affiliatetotalPrimeLead"/>
+                                </td>
+                                <td> <!--total Prime Duplicate leads -->
+                                    <span t-esc="state.affiliatetotalPrimeDupLead"/>
+                                </td>
+                                <td/>
+                                <td> <!--total Prime Dnmc leads -->
+                                    <span t-esc="state.affiliatetotalPrimeDnmcLead"/>
+                                </td>
+                                <td/>
+                                <td> <!--total Prime Workable leads -->
+                                    <span t-esc="state.affiliatetotalPrimeWorkableLead"/>
+                                </td>
+                                <td/>
+                                <td> <!--total Prime Workable leads -->
+                                    <span t-esc="state.affiliatetotalPrimeWorkableLead"/>
+                                </td>
+                                <td> <!--total Prime Declined leads -->
+                                    <span t-esc="state.affiliatetotalPrimeDeclinedLead"/>
+                                </td>
+                                <td/>
+                                <td> <!--total Prime Dnc leads -->
+                                    <span t-esc="state.affiliatetotalPrimeDncLead"/>
+                                </td>
+                                <td/>
+                                <td> <!--total Prime Transferred leads -->
+                                    <span t-esc="state.affiliatetotalPrimeTransferredLead"/>
+                                </td>
+                                <td/>
+                                <td> <!--total Prime No Contact leads -->
+                                    <span t-esc="state.affiliatetotalPrimeNoContactLead"/>
+                                </td>
+                                <td/>
+                                <td> <!--total Prime No Response leads -->
+                                    <span t-esc="state.affiliatetotalPrimeNoResponseLead"/>
+                                </td>
+                                <td/>
+                            </tr>
+                            <tr>
+                                <td colspan="2">Total Sub-Prime</td>
+                                <td> <!--total Subprime leads -->
+                                    <span t-esc="state.affiliatetotalSubPrimeLead"/>
+                                </td>
+                                <td> <!--total Subprime leads -->
+                                    <span t-esc="state.affiliatetotalSubPrimeLead"/>
+                                </td>
+                                <td> <!--total Subprime Duplicate leads -->
+                                    <span t-esc="state.affiliatetotalSubPrimeDupLead"/>
+                                </td>
+                                <td/>
+                                <td> <!--total Subprime Dnmc leads -->
+                                    <span t-esc="state.affiliatetotalSubPrimeDnmcLead"/>
+                                </td>
+                                <td/>
+                                <td> <!--total Subprime Workable leads -->
+                                    <span t-esc="state.affiliatetotalSubPrimeWorkableLead"/>
+                                </td>
+                                <td/>
+                                <td> <!--total Subprime Workable leads -->
+                                    <span t-esc="state.affiliatetotalSubPrimeWorkableLead"/>
+                                </td>
+                                <td> <!--total Subprime Declined leads -->
+                                    <span t-esc="state.affiliatetotalSubPrimeDeclinedLead"/>
+                                </td>
+                                <td/>
+                                <td> <!--total Subprime Dnc leads -->
+                                    <span t-esc="state.affiliatetotalSubPrimeDncLead"/>
+                                </td>
+                                <td/>
+                                <td> <!--total Subprime Transferred leads -->
+                                    <span t-esc="state.affiliatetotalSubPrimeTransferredLead"/>
+                                </td>
+                                <td/>
+                                <td> <!--total Subprime No Contact leads -->
+                                    <span t-esc="state.affiliatetotalSubPrimeNoContactLead"/>
+                                </td>
+                                <td/>
+                                <td> <!--total Subprime No Response leads -->
+                                    <span t-esc="state.affiliatetotalSubPrimeNoResponseLead"/>
+                                </td>
+                                <td/>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+            </div>
+            <!-- <t t-call="owl.OdooCRMSalesDashboard"/> -->
+        </div>
+    
+    </t>
+</templates>

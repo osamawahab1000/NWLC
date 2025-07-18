@@ -1,0 +1,14 @@
+<odoo>
+
+    <record id="paperformat_weekly_sales_report" model="report.paperformat">
+        <field name="name">Weekly Sales Report Paper Format</field>
+        <field name="default" eval="False"/>
+        <field name="format">A4</field> <!-- Standard A4 size -->
+        <field name="orientation">Landscape</field> <!-- Orientation: Portrait or Landscape -->
+        <field name="margin_top">0</field> <!-- Top margin in mm -->
+        <field name="margin_bottom">0</field> <!-- Bottom margin in mm -->
+        <field name="margin_left">0</field> <!-- Left margin in mm -->
+        <field name="margin_right">0</field> <!-- Right margin in mm -->
+    </record>
+
+</odoo>

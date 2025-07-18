@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+
+        <record id="crm_lead_view_form_ext" model="ir.ui.view">
+            <field name="name">crm.lead.form.ext</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+            <field name="arch" type="xml">
+                
+                <xpath expr="//form" position="replace">
+                <form class="o_lead_opportunity_form">
+                    <header>
+                        <!-- <button name="action_set_won_rainbowman" string="Won" type="object" class="oe_highlight" data-hotkey="w" title="Mark as won" invisible="not active or probability == 100 or type == 'lead'"/> -->
+                        <button name="199" string="Lost" data-hotkey="l" title="Mark as lost" type="action" invisible="type == 'lead' or not active and probability &lt; 100"/>
+                        <button name="200" string="Convert to Opportunity" type="action" class="oe_highlight" invisible="type == 'opportunity' or not active" data-hotkey="v"/>
+                        <button name="toggle_active" string="Restore" type="object" data-hotkey="x" invisible="probability &gt; 0 or active"/>
+                        <button name="199" string="Lost" type="action" data-hotkey="l" title="Mark as lost" invisible="type == 'opportunity' or probability == 0 and not active"/>
+                        <field name="stage_id" widget="statusbar_duration" options="{'clickable': '1', 'fold_field': 'fold'}" domain="['|', ('team_id', '=', team_id), ('team_id', '=', False)]" invisible="not active or type == 'lead'"/>
+                        <field name="lead_state" widget="statusbar" options="{'clickable': '1',}"/>
+                        <button string="Pull Credit" />
+                                <!-- invisible="type == 'opportunity' and not active" -->
+                        <button string="Pull Equifax"/>
+                                <!-- invisible="type == 'opportunity' or probability == 0 and not active" -->
+                        <button string="Send to NWDR"/>
+                                <!-- invisible="type == 'opportunity' or probability == 0 and not active" -->
+                        <field name="disposition_head" style="background-color:#E7E9ED;border:1px;padding:5px;border-radius:5px;" widget="selection"/>
+                    </header>
+                    <!-- <header invisible="type != 'lead'">
+                        <button name="action_set_won_rainbowman" string="Won" type="object"
+                                class="oe_highlight" 
+                                invisible="not active or probability == 100 or type == 'lead'"/>
+                        <button name="199" string="Lost" type="action"
+                                invisible="type == 'lead' or not active and probability &lt; 100"/>
+                        <button name="200" string="Convert to Opportunity" type="action"
+                                class="oe_highlight" 
+                                invisible="bool(type == 'opportunity' and lead_state == 'transferred_out')" />
+            invisible="type == 'opportunity' and lead_state='transferred_out' or not active "
+                        <button name="toggle_active" string="Restore" type="object"
+                                invisible="probability &gt; 0 or active"/>
+                        <button name="199" string="Lost" type="action" 
+                                invisible="type == 'opportunity' or probability == 0 and not active"/>
+                        <button string="Pull Credit" />
+            invisible="type == 'opportunity' and not active"
+                        <button string="Pull Equifax"/>
+            invisible="type == 'opportunity' or probability == 0 and not active"
+                        <button string="Send to NWDR"/>
+            invisible="type == 'opportunity' or probability == 0 and not active"
+                        <field name="disposition_head" style="background-color:#E7E9ED;border:1px;padding:5px;border-radius:5px;" widget="selection"/>
+            invisible="type == 'opportunity' or probability == 0 and not active" 
+                        <field name="stage_id" widget="statusbar_duration" options="{'clickable': '1', 'fold_field': 'fold'}"
+                            domain="['|', ('team_id', '=', team_id), ('team_id', '=', False)]"
+                            invisible="not active or type == 'lead'"/>
+                    </header> -->
+        
+                    <sheet>
+                        <field name="active" invisible="1"/>
+                        <field name="probability" invisible="1"/>
+                        <field name="type" invisible="1"/>
+                        <field name="team_id" invisible="1"/>
+                        <field name="is_partner_visible" invisible="1"/>
+                        <field name="user_id" invisible="1"/>
+                        <field name="is_blacklisted" invisible="1"/>
+                        <field name="partner_email_update" invisible="1"/>
+                        <field name="phone_blacklisted" invisible="1"/>
+                        <field name="partner_phone_update" invisible="1"/>
+
+
+                        <group>
+                            <group name="opportunity_partner" invisible="type == 'lead'">
+                                <field name="source" string="Lead Source"/>
+                                <field name="full_name" string="Name"/>
+                                <field name="name" string="Name" invisible="1"/>
+                                <field name="user_id" widget="res_users_many2one" string="Sales rep" context="{'default_user_id': user_id}" invisible="not is_partner_visible"/>
+                                <field name="spanish_speaking"/>
+                                <!-- <field name="partner_id" widget="res_partner_many2one" context="{                                         'default_name': contact_name,                                         'default_title': title,                                         'default_street': street,                                         'default_street2': street2,                                         'default_city': city,                                         'default_state_id': state_id,                                         'default_zip': zip,                                         'default_country_id': country_id,                                         'default_function': function,                                         'default_phone': phone,                                         'default_mobile': mobile,                                         'default_email': email_from,                                         'default_user_id': user_id,                                         'default_team_id': team_id,                                         'default_website': website,                                         'default_lang': lang_code,                                         'show_vat': True                                     }" invisible="not is_partner_visible"/> -->
+                                <!-- <field name="partner_name"/> -->
+                                <label for="street" string="Address"/>
+                                <div class="o_address_format">
+                                    <field name="street" placeholder="Street..." class="o_address_street"/>
+                                    <field name="street2" placeholder="Street 2..." class="o_address_street"/>
+                                    <field name="city" placeholder="City" class="o_address_city"/>
+                                    <field name="state_id" class="o_address_state" placeholder="State" options="{&quot;no_open&quot;: True}" domain="[('country_id', '=', 233)]"/>
+                                    <field name="zip" placeholder="ZIP" class="o_address_zip"/>
+                                    <field name="country_id" placeholder="Country" class="o_address_country" options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}"/>
+                                </div>
+                                <field name="credit_score"/>
+                                <!-- <field name="phone"/> -->
+                                <label for="phone" class="oe_inline"/>
+                                <div class="o_row o_row_readonly">
+                                    <button name="phone_action_blacklist_remove" class="fa fa-ban text-danger" title="This phone number is blacklisted for SMS Marketing. Click to unblacklist." type="object" context="{'default_phone': phone}" groups="base.group_user" invisible="not phone_blacklisted"/>
+                                    <field name="phone" widget="phone"/>
+                                    <span class="fa fa-exclamation-triangle text-warning oe_edit_only" title="By saving this change, the customer phone number will also be updated." invisible="not partner_phone_update"/>
+                                </div>
+                                <label for="mobile" class="oe_inline"/>
+                                <div class="o_row o_row_readonly">
+                                    <button name="phone_action_blacklist_remove" class="fa fa-ban text-danger" title="This phone number is blacklisted for SMS Marketing. Click to unblacklist." type="object" context="{'default_phone': phone}" groups="base.group_user" invisible="not phone_blacklisted"/>
+                                    <field name="mobile" widget="phone"/>
+                                    <span class="fa fa-exclamation-triangle text-warning oe_edit_only" title="By saving this change, the customer phone number will also be updated." invisible="not partner_phone_update"/>
+                                </div>
+                                <field name="dead_sale_id"/>
+                                <field name="sp_declined_all_call"/>
+                                <field name="expected_revenue"/>
+                                <field name="transferred_out_reason_id"/>
+                                <field name="household_income"/>
+                                <field name="verifiable_income_type"/>
+                            </group>
+
+                            <group name="opportunity_partner" invisible="type  == 'lead'">
+                                <field name="affiliate_lead_id"/>
+                                <field name="affiliate_sales_rep"/>
+                                <label for="generated_email" class="oe_inline"/>
+                                <div class="o_row o_row_readonly">
+                                    <button name="mail_action_blacklist_remove" class="fa fa-ban text-danger" title="This email is blacklisted for mass mailings. Click to unblacklist." type="object" context="{'default_email': email_from}" groups="base.group_user" invisible="not is_blacklisted"/>
+                                    <field name="generated_email" string="Email" widget="email"/>
+                                    <span class="fa fa-exclamation-triangle text-warning oe_edit_only" title="By saving this change, the customer email will also be updated." invisible="not partner_email_update"/>
+                                </div>
+                                <field name="generated_password"/>
+                                <field name="requested_loan_amount"/>
+                                <field name="application_type"/>
+                                <field name="loan_type"/>
+                                <field name="client_fee"/>
+                                <field name="amount"/>
+                                <field name="loan_amount"/>
+                                <field name="add_app_loan_result"/>
+                                <!-- <field name="email_from"/> -->
+                                <label for="email_from" class="oe_inline"/>
+                                <div class="o_row o_row_readonly">
+                                    <button name="mail_action_blacklist_remove" class="fa fa-ban text-danger" title="This email is blacklisted for mass mailings. Click to unblacklist." type="object" context="{'default_email': email_from}" groups="base.group_user" invisible="not is_blacklisted"/>
+                                    <field name="email_from" string="Email" widget="email"/>
+                                    <span class="fa fa-exclamation-triangle text-warning oe_edit_only" title="By saving this change, the customer email will also be updated." invisible="not partner_email_update"/>
+                                </div>
+                                <field name="primary_gross_annual_income" string="Gross Annual Income"/>
+                                <field name="debt_to_income_ratio"/>
+                                <field name="add_result"/>
+                                <field name="close_date"/>
+                                <field name="lender_list"/>
+                                <field name="revolving_credit_utilization" string="Utilization Rate"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Detail Tab" name="internal_notes">
+                                <!-- <field name="description" placeholder="Add a description..." options="{'collaborative': true}"/> -->
+                                <notebook>
+                                    <page string="Primary Applicant Info" name="primary_applicant_info">
+                                        <street>
+                                            <group>
+                                                <group>    
+                                                    <!-- <field name="name" widget="res_partner_many2one" string="Full Name" context="{'default_name': name}" invisible="not is_partner_visible"/> -->
+                                                    <field name="full_name" string="Full Name"/>
+                                                    <field name="social_security_number"/>
+                                                    <field name="prev_address_street"/>
+                                                    <field name="prev_state" class="o_address_state" string="Prev State" placeholder="State" options="{&quot;no_open&quot;: True}" domain="[('country_id', '=', 233)]"/>
+                                                    <field name="years_at_previous_address"/>
+                                                    <field name="personal_banking_info"/>
+                                                    <field name="how_much_in_liquid_assets"/>
+                                                    <field name="amount_owed"/>
+                                                    <field name="employer_name"/>
+                                                    <field name="employer_street"/>
+                                                    <field name="employer_city"/>
+                                                    <field name="month_year_hired"/>
+                                                    <!-- <field name="work_phone"/> -->
+                                                    <label for="work_phone" class="oe_inline"/>
+                                                    <div class="o_row o_row_readonly">
+                                                        <button name="phone_action_blacklist_remove" class="fa fa-ban text-danger" title="This phone number is blacklisted for SMS Marketing. Click to unblacklist." type="object" context="{'default_phone': phone}" groups="base.group_user" invisible="not phone_blacklisted"/>
+                                                        <field name="work_phone" widget="phone"/>
+                                                        <span class="fa fa-exclamation-triangle text-warning oe_edit_only" title="By saving this change, the customer phone number will also be updated." invisible="not partner_phone_update"/>
+                                                    </div>
+                                                    <field name="prev_job_title"/>
+                                                    <!-- <field name="prev_work_phone"/> -->
+                                                    <label for="prev_work_phone" class="oe_inline"/>
+                                                    <div class="o_row o_row_readonly">
+                                                        <button name="phone_action_blacklist_remove" class="fa fa-ban text-danger" title="This phone number is blacklisted for SMS Marketing. Click to unblacklist." type="object" context="{'default_phone': phone}" groups="base.group_user" invisible="not phone_blacklisted"/>
+                                                        <field name="prev_work_phone" widget="phone"/>
+                                                        <span class="fa fa-exclamation-triangle text-warning oe_edit_only" title="By saving this change, the customer phone number will also be updated." invisible="not partner_phone_update"/>
+                                                    </div>
+                                                </group>  
+                                                <group>
+                                                    <field name="debt_relief_solutions"/>
+                                                    <field name="date_moved_to_address"/>
+                                                    <field name="us_citizen"/>
+                                                    <field name="date_of_birth"/>
+                                                    <field name="prev_address_city"/>
+                                                    <field name="prev_address_zip"/>
+                                                    <field name="marital_status"/>
+                                                    <field name="avg_bank_balance"/>
+                                                    <field name="ira"/>
+                                                    <field name="savings_account"/>
+                                                    <field name="business_owner"/>
+                                                    <field name="job_title"/>
+                                                    <field name="military"/>
+                                                    <field name="employer_state" class="o_address_state" string="Employer State" placeholder="State" options="{&quot;no_open&quot;: True}" domain="[('country_id', '=', 233)]"/>
+                                                    <field name="employer_zip"/>
+                                                    <field name="previous_employer"/>
+                                                    <field name="previous_employment_month_year_hired"/>
+                                                </group>
+                                            </group>
+                                        </street>
+                                    </page>
+                                    <page string="Mortgage and Rent" name="mortgage_and_rent">
+                                        <group>
+                                             <group>
+                                                    <field name="rent_own"/>
+                                                    <field name="rent_payment"/>
+                                                    <field name="mortgage_payment"/>
+                                                    <field name="mortgage_company"/>
+                                                    <field name="mortgage_amount_owed"/>
+                                                </group>
+                                        </group>
+                                    </page>
+                                    <page string="Business Info" name="business_info">
+                                        <group>
+                                             <group>
+                                                <field name="business_name"/>
+                                                <field name="business_street"/>
+                                                <field name="business_state" class="o_address_state" string="Business State" placeholder="State" options="{&quot;no_open&quot;: True}" domain="[('country_id', '=', 233)]"/>
+                                                <field name="business_city"/>
+                                                <!-- <field name="business_phone"/> -->
+                                                <label for="business_phone" class="oe_inline"/>
+                                                <div class="o_row o_row_readonly">
+                                                    <button name="phone_action_blacklist_remove" class="fa fa-ban text-danger" title="This phone number is blacklisted for SMS Marketing. Click to unblacklist." type="object" context="{'default_phone': phone}" groups="base.group_user" invisible="not phone_blacklisted"/>
+                                                    <field name="business_phone" widget="phone"/>
+                                                    <span class="fa fa-exclamation-triangle text-warning oe_edit_only" title="By saving this change, the customer phone number will also be updated." invisible="not partner_phone_update"/>
+                                                </div>
+                                                <field name="business_zip"/>
+                                                <field name="business_website"/>
+                                                <field name="use_of_proceeds"/>
+                                                <field name="no_of_employees"/>
+                                            </group>
+                                            <group>
+                                                <field name="messaging_disclosure"/>
+                                                <field name="ein_encrypted"/>
+                                                <field name="name_of_owner_and_percent_owned"/>
+                                                <field name="years_in_business"/>
+                                                <field name="avg_daily_balance"/>
+                                                <field name="avg_monthly_revenue"/>
+                                                <field name="no_of_bank_accounts"/>
+                                                <field name="no_of_owners"/>
+                                                <field name="annual_revenue"/>
+                                                <field name="industry_id"/>
+                                                <field name="total_business_loans"/>
+                                            </group>
+                                        </group>
+                                    </page>
+                                    <page string="Credit Card &amp; Payment Details" name="credit_card_payment_details">
+                                        <group>
+                                            <group>
+                                                <field name="credit_card_and_payment_details"/>
+                                            </group>
+                                        </group>
+                                    </page>
+                                    <page string="Affiliate Info" name="affiliate_info">
+                                        <group>
+                                            <group>
+                                                <!-- <field name="affiliate_email"/> -->
+                                                <label for="affiliate_email" class="oe_inline"/>
+                                                <div class="o_row o_row_readonly">
+                                                    <button name="mail_action_blacklist_remove" class="fa fa-ban text-danger" title="This email is blacklisted for mass mailings. Click to unblacklist." type="object" context="{'default_email': affiliate_email}" groups="base.group_user" invisible="not is_blacklisted"/>
+                                                    <field name="affiliate_email" string="Email" widget="email"/>
+                                                    <span class="fa fa-exclamation-triangle text-warning oe_edit_only" title="By saving this change, the customer email will also be updated." invisible="not partner_email_update"/>
+                                                </div>
+                                            </group>
+                                        </group>
+                                    </page>
+                                    <page string="Marketing/IP Address/Opt In/Misc" name="marketing_ip_address_opt_in_misc">
+                                        <group>
+                                            <group>
+                                                <field name="utm_keyword"/>
+                                                <field name="utm_campaign"/>
+                                                <field name="marketing_company"/>
+                                                <field name="disposition"/>
+                                                <field name="email_opt_out"/>
+                                                <field name="mailing_source"/>
+                                                <field name="remail"/>
+                                                <field name="promo_code"/>
+                                            </group>
+                                            <group>
+                                                <field name="utm_source"/>
+                                                <field name="utm_content"/>
+                                                <field name="utm_medium"/>
+                                                <field name="retention_access"/>
+                                                <field name="in_home_date"/>
+                                                <field name="mail_date"/>
+                                                <field name="creative"/>
+                                            </group>
+                                        </group>
+                                    </page>
+                                    <page string="System Information" name="system_information">
+                                        <group>
+                                            <group>
+                                                <field name="created_by" string="Created By"/>
+                                                <field name="write_uid"  string="Last Modified By" />
+                                                <!-- <field name="last_seen_by"/>
+                                                <field name="next_activity_by"/>
+                                                <field name="last_activity_by"/>
+                                                <field name="owner_last_modified_by"/> -->
+                                                <field name="timestamp_dead_decline_reason"/>
+                                                <field name="mgr_reviewed"/>
+                                                <field name="unused_field"/>
+                                                <field name="csa_signed"/>
+                                                <field name="tijuana_assigned_timestamp"/>
+                                            </group>
+                                            <group>
+                                                <field name="date_created"/>
+                                                <field name="date_last_modified"/>
+                                                <field name="date_last_seen"/>
+                                                <field name="date_next_activity"/>
+                                                <field name="date_last_activity"/>
+                                                <field name="owner_last_modified"/>
+                                                <field name="sales_error_audit"/>
+                                            </group>
+                                        </group>
+                                    </page>
+                                    <page string="JA Personal Info" name="ja_personal_info">
+                                        <group>
+                                            <group>
+                                                <field name="ja_first_name"/>
+                                                <field name="ja_middle_name"/>
+                                                <field name="ja_last_name"/>
+                                                <field name="ja_us_citizen"/>
+                                                <field name="ja_date_of_birth"/>
+                                                <field name="ja_social_security_number"/>
+                                                <field name="ja_home_address"/>
+                                                <field name="ja_moved_to_address"/>
+                                                <field name="ja_gross_annual_income"/>
+                                                <field name="ja_marital_status"/>
+                                                <field name="ja_email"/>
+                                                <field name="ja_employer_name"/>
+                                            </group>
+                                            <group>
+                                                <field name="ja_job_title"/>
+                                                <field name="ja_employer_street"/>
+                                                <field name="ja_employer_city"/>
+                                                <field name="ja_employer_state" class="o_address_state" placeholder="State" options="{&quot;no_open&quot;: True}" domain="[('country_id', '=', 233)]"/>
+                                                <field name="ja_employer_zip"/>
+                                                <!-- <field name="ja_work_phone"/> -->
+                                                <label for="ja_work_phone" class="oe_inline"/>
+                                                <div class="o_row o_row_readonly">
+                                                    <button name="phone_action_blacklist_remove" class="fa fa-ban text-danger" title="This phone number is blacklisted for SMS Marketing. Click to unblacklist." type="object" context="{'default_phone': phone}" groups="base.group_user" invisible="not phone_blacklisted"/>
+                                                    <field name="ja_work_phone" widget="phone"/>
+                                                    <span class="fa fa-exclamation-triangle text-warning oe_edit_only" title="By saving this change, the customer phone number will also be updated." invisible="not partner_phone_update"/>
+                                                </div>
+                                                <field name="ja_month_hired"/>
+                                                <field name="ja_rent_own"/>
+                                                <field name="ja_mortgage_company"/>
+                                                <field name="ja_mortgage_payment"/>
+                                                <field name="ja_landlord"/>
+                                                <field name="ja_rent_payment"/>
+                                            </group>
+                                        </group>
+                                    </page>
+                                    <page string="Array Info" name="array_info">
+                                        <group>
+                                            <group>
+                                                <field name="array_grade"/>
+                                                <field name="array_credit_score"/>
+                                                <field name="array_debt_load"/>
+                                            </group>
+                                        </group>
+                                    </page>
+                                </notebook>
+                                
+                                
+                            </page>
+                            <page string="Internal Notes" name="internal_notes">
+                                <field name="description" placeholder="Add a janotoo..." options="{'collaborative': true}"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+                </xpath>
+            </field>
+        </record>
+
+    <!-- </data> -->
+</odoo>

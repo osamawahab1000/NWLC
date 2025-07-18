@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- Form View for FA Template Wizard -->
+    <record id="view_fa_template_wizard_form" model="ir.ui.view">
+        <field name="name">FA Wizard Form</field>
+        <field name="model">fa.template</field>
+        <field name="arch" type="xml">
+            <form string="FA Wizard">
+                <sheet>
+                    <group>
+                        <!-- <group> -->
+                            <field name="full_name"/>
+                            <field name="monthly_payment"/>
+                            <field name="date_sent"/>
+                            <!-- <field name="yearly_income"/>
+                            <field name="is_income_verifiable"/> -->
+                        <!-- </group> 
+                        <group> -->
+                            <!-- <field name="no_10"/>
+                            <field name="no_11"/>
+                            <field name="change_fee"/> -->
+                        <!-- </group>  -->
+                    </group>    
+                </sheet>
+                <footer>
+                    <button string="Print" type="object" name="print_fa_template" class="btn-primary" />
+                    <button string="Send" type="object" name="send_fa_template" class="btn-primary" />
+                    <button string="Cancel" class="btn-secondary" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+
+    <!-- Action to Open CSA General Agreement Wizard -->
+    <record id="action_open_fa_wizard" model="ir.actions.act_window">
+        <field name="name">FA Form</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">fa.template</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_fa_template_wizard_form"/>
+        <field name="target">new</field>
+        <field name="context">{}</field>
+    </record>
+    
+
+    
+    <menuitem id="menu_fa_template"
+            name="FA Template Wizard"
+            action="action_open_fa_wizard"
+            parent="crm.crm_menu_config"
+            sequence="4" />
+
+   
+    
+</odoo>

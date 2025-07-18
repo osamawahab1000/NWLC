@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+
+<odoo>
+    <record id="view_flags_lead_form" model="ir.ui.view">
+        <field name="name">flags.lead.form</field>
+        <field name="model">flags.lead</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name" />
+                        <!-- <field name="flag_code_id" /> -->
+                        <field name="flag_description"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_flags_lead_tree" model="ir.ui.view">
+        <field name="name">flags.lead.tree</field>
+        <field name="model">flags.lead</field>
+        <field name="arch" type="xml">
+            <list >
+                <field name="name" />            
+                <!-- <field name="flag_code_id" /> -->
+                <field name="flag_description"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="action_flags_lead" model="ir.actions.act_window">
+        <field name="name">Flags</field>
+        <field name="res_model">flags.lead</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    
+    <menuitem id="menu_flags_lead_root" 
+        name="Flags"
+        sequence="10" 
+        parent="crm.crm_menu_config"
+        action="action_flags_lead"/>
+
+</odoo>

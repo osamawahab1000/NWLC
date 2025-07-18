@@ -1,0 +1,12 @@
+.o_main_navbar {
+    background-color: #2E3A47 !important; /* Change navbar color */
+}
+
+.o_home_menu {
+    background-color: #FF5733 !important; /* Change home screen background */
+}
+
+.o_app {
+    background-color: #33ff52 !important; /* Change individual app tile background */
+    border-radius: 10px;
+}

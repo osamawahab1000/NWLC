@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+
+<odoo>
+    <record id="view_affiliate_partner_form" model="ir.ui.view">
+        <field name="name">affiliate.partner.form</field>
+        <field name="model">affiliate.partner</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="affiliate_id" invisible="1"/>
+                        <field name="aff_id"/>
+                        <field name="affiliate_manager"/>
+                        <field name="affiliate_email"/>
+                    </group>
+                    <group>
+                        <!-- <field name="source_ids" context="{'default_parent_id': affiliate_id}">
+                            <list>
+                                <field name="aff_id"/>
+                                <field name="name"/>
+                            </list>
+                        </field> -->
+                        <field name="source_ids" context="{'default_parent_id': affiliate_id}"
+                           invisible="affiliate_id != False">
+                        <list>
+                            <field name="aff_id"/>
+                            <field name="name"/>
+                        </list>
+                    </field>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_affiliate_partner_tree" model="ir.ui.view">
+        <field name="name">affiliate.partner.tree</field>
+        <field name="model">affiliate.partner</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="source_ids"/>
+                <field name="aff_id"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="action_affiliate_partner" model="ir.actions.act_window">
+        <field name="name">affiliate Partners</field>
+        <field name="res_model">affiliate.partner</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    
+    <menuitem id="menu_affiliate_partner_root" 
+        name="Affiliate Partner"
+        sequence="10" 
+        parent="crm.crm_menu_config"
+        action="action_affiliate_partner"/>
+
+</odoo>

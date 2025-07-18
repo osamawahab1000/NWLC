@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    
+        <!-- Define the view -->
+    <record id="dead_sale_form_view" model="ir.ui.view">
+        <field name="name">dead.sale.form</field>
+        <field name="model">dead.sale</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_dead_sale_tree" model="ir.ui.view">
+        <field name="name">dead.sale.tree</field>
+        <field name="model">dead.sale</field>
+        <field name="arch" type="xml">
+            <list >
+                <field name="name" />            
+            </list>
+        </field>
+    </record>
+
+    <!-- Define the action -->
+    <record id="dead_sale_action" model="ir.actions.act_window">
+        <field name="name">Dead Sale</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">list,form</field>
+        <field name="res_model">dead.sale</field>
+        <field name="help" type="html">
+            <p class= "h_p">
+               
+            </p>
+        </field>
+    </record>
+   
+    <menuitem id="dead_sale_menu" 
+    name="Dead Sale" 
+    action="dead_sale_action" 
+    parent="crm.crm_menu_config"
+
+    sequence="10"/>
+
+
+
+
+</odoo>

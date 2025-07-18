@@ -1,0 +1,1511 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+   <template id="csa_general_agreement">
+            <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+            <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+            
+    <!-- ................. CSA FOR THE BORROWING CLUB Below NWLC Agreement ...................... -->
+            
+            <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+            <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+       <t t-call="web.html_container">
+           <t t-foreach="docs" t-as="o">
+                <t t-if="o.company_id.id == 1">
+                    <!-- <style>
+                        @media print {
+                            .oe_structure .header{
+                                display: none !important;
+                            } 
+                        
+
+                            .oe_structure {
+                                page-break-after: always;
+                            }
+                        }
+                    </style> -->
+                    
+                    <div class="page">
+                        <t t-call="web.basic_layout">
+                        <div class="oe_structure">
+                            <img t-att-src="'/nwlc_crm_ext/static/src/img/nwlc_cover_csa.png'"/>
+                        </div>
+                            <div style="page-break-before: always;"/>
+                        
+            <div class="header text-center mt-3">
+                <div class="row">
+                    <div class="col-4">
+                        <img t-if="o.company_id.logo and o.company_id.id == 1" t-att-src="image_data_uri(o.company_id.logo)" style="height: 80px; margin-top: 15px;" alt="header"/>
+                    </div>
+                    
+                    <div class="col-8" style="margin-top:60px;font-family:Montserrat">
+                        <h3>CUSTOMER SERVICE AGREEMENT</h3>
+                    </div>
+                </div>
+                        
+                    
+            </div>
+            
+            <div class="mt-3">
+                <!-- <div class="row">
+                    <center>
+                        <img t-if="doc.company_id.logo and doc.company_id.id == 1" t-att-src="image_data_uri(doc.company_id.logo)" style="height: 120px;width:300px;" alt="header"/>
+                        <br/>
+                    </center>
+                </div>
+                <h4 style="text-align:center;margin-top:18px;font-family:Times New Roman;font-style:italic">You're one step closer to <b>financial freedom</b></h4>
+                <div style="page-break-before: always;"/> -->
+                <p>
+                    Nationwide Loan Consultants &amp; Advisors, LLC, a Florida limited liability company
+                    (sometimes referred to in this Agreement as "Nationwide") and Customer (sometimes referred
+                    to in this Agreement as "Borrower," "I", "me," "my," "you," and "your") have agreed that
+                    Nationwide shall provide certain services in relation to you possibly obtaining a loan.
+                    Nationwide and Customer agree as follows:
+                </p>
+
+                <h5><b>GENERAL SERVICES OVERVIEW</b></h5>
+                <ol>
+                    <li>Nationwide represents that it is not acting as a lender or acting on behalf of any lender 
+                    with respect to this Agreement. Thus, Nationwide is not affiliated with any of the lenders to 
+                    which it will submit loan applications on your behalf. Nationwide utilizes its considerable 
+                    resources and data pool, along with its experienced professional staff in an effort to find 
+                    you the most suitable loan package(s) to fit your borrowing criteria.</li><br/>
+                    
+                    <li>Services provided by Nationwide ("Nationwide Services") consist of researching potential 
+                    loans/lenders applicable to your needs, advising you on such available loan products, referring 
+                    you to the lenders providing applicable loan products, and consulting with you throughout that 
+                    process. Therefore, Nationwide will submit or refer you to multiple lenders in our database. 
+                    Each individual lender will do its own credit check and underwriting.  As such, Nationwide has
+                    no liability for the actions/decisions of any such referred lenders or whether the final loan 
+                    product offered by any lender that meets the Borrower’s expectations as to terms, interest rates 
+                    or lender fees. You acknowledge and agree that the responsibilities of Nationwide shall be limited
+                    to the services listed above, and as such Nationwide shall not engage in any negotiations whatsoever
+                    on your behalf and Nationwide shall have no continuing obligations, duties, responsibilities, role,
+                    part in the negotiations, or in the relationship between the lender and you, whatsoever.</li><br/>
+                    
+                    <li>I fully understand and acknowledge that the loan packages offered by the lenders located by 
+                    Nationwide are also available to me without utilizing the services of Nationwide, and therefore,
+                    I could have tried to locate such packages on my own without the need to incur the Consulting Fee
+                    identified in the agreement. However, I have elected to utilize the services of Nationwide and pay
+                    the Consulting Fee as specified herein. I have elected to retain the services of Nationwide because
+                    Nationwide has experience in the consumer loan industry and has vast resources and knowledge to 
+                    assist me to properly complete the application process, which will increase my chances of finding
+                    a suitable loan package(s) with the best rates and terms available for my needs</li><br/>
+                <!--</ol>-->
+
+                <h5>THE PROCESS</h5>
+                <!--<ol>-->
+                    <li>I understand that by proceeding, I am authorizing Nationwide to represent me and act on my behalf 
+                    for the loan application process, in written form, electronically, verbally, or any other means in 
+                    which it is required in order to obtain the best loan option available for me. I further authorize
+                    Nationwide to communicate with all lenders on my behalf, verbally or through the e-mail process.
+                    I understand that Nationwide will need to create an email on my behalf in order to communicate 
+                    with various lenders and organize applications submitted on my behalf, therefore ,  I grant Nationwide
+                    the authority to  create and access an email on my behalf. </li><br/>
+                    <!-- <div style="page-break-before: always;"/> -->
+                    <li>I also grant Nationwide the authority to access my credit report and I understand that 
+                    Nationwide may pull and view my credit report for up to 120 days after I execute this Agreement.</li><br/>
+                    
+                    <li>If any actions of the Borrower are necessary or appropriate in connection with the loan applications
+                    contemplated hereunder, then the Borrower shall use his/her best efforts to perform such actions in a 
+                    timely manner and to cooperate with and assist Nationwide’s efforts, including but not limited to, 
+                    speaking (dealing) directly with a lender,  returning telephone calls, responding to communications
+                    including e-mails, verifying your identity, and  furnishing all documents and information requested by
+                    Nationwide and/or a lender.</li><br/>
+                    
+                    <li>Nationwide agrees that you are never under any obligation to accept or receive a loan or a line of credit.
+                    Nationwide cannot and will not accept any loans on your behalf without your approval. Nationwide endeavors to 
+                    provide you with the best options to choose from but all decisions regarding any loan offers, including closing
+                    on any of the loan options is solely your choice to make.</li><br/>
+                <!--</ol>-->
+
+                <h5>CONSULTING FEE AND ACH PAYMENT</h5>
+                <!--<ol>-->
+                    <li>Nationwide does not charge an UPFRONT FEE. Nationwide works completely risk free for you. The only time
+                    a charge for services is due to Nationwide, is after you are approved by a lender and receive access to the
+                    funds, or under the circumstances set forth in paragraph (10)  below. Any fees due and payable by you to Nationwide
+                    are for Nationwide Services I understand that some lenders have fees and that these fees are separate and in addition
+                    to any fees you owe Nationwide.</li><br/>
+                    
+                    <li>I agree to pay Nationwide a one-time Consulting Fee of ( <u><span t-field="o.change_fee"/></u> %) of the total dollar amount I accept and 
+                    receive from a bank or lending institution as a result of the services provided by Nationwide. I understand
+                    that this Consulting Fee is payable to Nationwide by me within 48 hours from the time I receive access to 
+                    funding. I understand that I will be charged and will owe Nationwide a late fee of five (5%) percent of the
+                    Consulting Fee if Nationwide does not receive the Consulting Fee within 72 hours of the date, I receive access
+                    to funding. I understand that in such event I will also be responsible for attorney’s fees and costs incurred 
+                    by Nationwide in connection with efforts to collect the Consulting Fee.</li><br/>
+                    
+                    <li>I agree not to circumvent Nationwide by applying for and/or obtaining financing from any of the lenders 
+                    located by Nationwide for a period of 90 days from the date of execution of this Agreement, without notifying
+                    Nationwide and paying the consulting fee hereunder. I understand that if I do, I will be in breach of this Agreement
+                    and I will be liable to pay the Consulting Fee specified in paragraph (9) below, based on the total dollar amount of
+                    any such funding. I understand that in such event I will also be responsible for attorney’s fees and costs incurred by
+                    Nationwide in connection with efforts to collect the Consulting Fee.</li><br/>
+                    
+                    <li>I agree that the Consulting Fee due under this Agreement shall be made through an automated clearing house (“ACH”)
+                    transfer from my designated account directly to Nationwide. Accordingly, upon execution of this Agreement, I agree to 
+                    deliver to Nationwide a completed One Time <b><u>ACH Authorization Form</u></b>, (a copy of which is attached and incorporated herein)
+                    whereby  I hereby irrevocably authorize Nationwide to initiate an ACH  transfer from my account to Nationwide in the amount 
+                    of the fee due under this Agreement. For so long as my obligations under this Agreement remain outstanding, I agree to: (i)
+                    not revoke Nationwide authority to initiate ACH debit as hereby contemplated; (ii) not change, modify, close or otherwise 
+                    affect the account; (iii) direct any lender deposit all loans contemplated herein into the account designated in the ACH 
+                    Form; and (iv) be responsible for all costs, expenses, or other fees and charges incurred by Nationwide as a result of any
+                    failed or returned ACH debits, whether resulting from insufficient sums being available in the account, or otherwise.
+                    I hereby certify that I am the authorized user of this bank account designated in the ACH Form and I will not dispute
+                    the transactions contemplated hereunder with my bank, so long as the transactions correspond to the terms indicated in
+                    this Agreement.</li><br/>
+                <!--</ol>-->
+
+                <h5>DISPUTE RESOLUTION</h5>
+                <!--<ol>-->
+                    <li>I understand and acknowledge that as part of its service promise, Nationwide has a mandatory dispute resolution process. 
+                    If I am dissatisfied with the services provided by Nationwide, I must first contact my customer service representative via 
+                    e-mail or telephone and request a Dispute Resolution Form. I must then complete and submit that form via e-mail as instructed 
+                    on the form. Nationwide will respond to all dispute resolution requests within two business days (weekends and legal holidays
+                    are not included) of receipt of a properly submitted Dispute Resolution Form.</li>
+                <!--</ol>-->
+                <br/>
+                <h5>LOANS EXCLUDED FROM CONSULTING FEE</h5>
+                <!--<ol>-->
+                    <li>I understand that I will not have to pay the Consulting Fee provided for in this Agreement for loans I obtain from lenders with
+                    which I have applied for an unsecured loan, credit card, or line of credit within the past (60) sixty days, as listed in paragraph
+                    (14) below. I further understand that I will not have to pay the Consulting Fee provided for in this Agreement for loans I obtain 
+                    from lenders with which I currently have an open unsecured loan or line of credit, as listed in paragraph (15) below. Nationwide 
+                    will not apply for loans on my behalf with the lenders I list in paragraphs (14) and (15) below.</li><br/>
+                
+                    <li>In the past 60 days have you or anyone representing you applied for an unsecured loan, credit card or line of credit? If so, 
+                    below please list the names of those institutions to which you have applied.<br/>
+                        <div class="row">
+                            <div class="col-4">Bank Name:</div>
+                            <div class="col-8"/>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">Bank Name:</div>
+                            <div class="col-8"/>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">Bank Name:</div>
+                            <div class="col-8"/>
+                        </div>
+                    </li><br/>
+                    <li>
+                        Please list below all open unsecured loans or lines of credit:<br/>
+                        <div class="row">
+                            <div class="col-4">Bank Name:</div>
+                            <div class="col-8"/>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">Bank Name:</div>
+                            <div class="col-8"/>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">Bank Name:</div>
+                            <div class="col-8"/>
+                        </div>
+                    </li>
+                <!--</ol>-->
+                <br/>
+                
+                <h5>Communication Consent</h5>
+                <!--<ol>-->
+                    <li>By signing this document, you authorize Nationwide to communicate with you by using the telephone number provided by you
+                    and any other telephone numbers associated or related to you that may be provided to us by you in the future. You consent to
+                    allow Nationwide to contact you by phone, text, email, mail, or by artificial or pre-recorded voice, even if you have listed
+                    yourself on any <b>Do-Not-Call List</b>. You also agree that any person or entity contacting you pursuant to your consent here may 
+                    use automatic telephone dialing system, even if the telephone number you provided (or any telephone number associated with 
+                    you) is connected to a mobile phone and even if you might be charged for the call. Your consent to receive automated calls
+                    or text messages is not required for any purchase or availability of goods/services from Nationwide; if you do not consent, 
+                    you may call us at 1-888-463-5255 to continue your inquiry.</li>
+                <!--</ol>-->
+                <br/>
+                
+                <h5>WARRANTIES AND REPRESENTATIONS</h5>
+                <!--<ol>-->
+                    <li>I represent and warrant that (a) I have the full right and authority to enter into this agreement, make the consents and 
+                    authorizations herein, and to grant the rights herein granted and agreed to be granted; (b) I have not made and shall not make
+                    any grant or agreement which will or might impair, encumber or conflict with any of the rights granted to Nationwide;(c) I shall
+                    at all times comply with any and all laws, statutes, regulations, codes and ordinances applicable to any financing; and (d) all 
+                    information and representations provided by me shall be true and accurate</li><br/>
+                    
+                    <li>I understand and agree that if any lender inquires as to whether I am working with a third party in relation to obtaining a 
+                    loan, I must disclose to the lender that I am working with Nationwide. In the event of such lender inquiry, I understand and 
+                    agree that I must notify Nationwide and provide the name of the lender(s) and the name of the lender’s representative to which 
+                    disclosure was made</li><br/>
+                    
+                    <li>I understand and agree that Nationwide will require me to review and approve any and all information provided to my loan 
+                    advisor prior to submission of any applications. I also agree that I will promptly notify Nationwide if any of the information
+                    provided later becomes inaccurate or changed for any reason. Further, I will promptly notify Nationwide if I provide any information
+                    to any prospective lender that differs from the information I provided to Nationwide or if I alter any information submitted to 
+                    any lender.</li><br/>
+                    
+                    <li>I shall defend, indemnify and hold harmless Nationwide (and/or its shareholders, directors, members, managers, officers, 
+                    representatives, employees, successors, licensees and assigns) from and against any and all claims, demands, losses, damages,
+                    actions, liabilities, judgments, penalties, costs and expenses (including, without limitation, attorneys 'fees and court costs,
+                    whether or not in connection with litigation) arising out of or otherwise relating to your breach of any representation or warranty
+                    hereunder and/or related to any claims arising from any negotiations or agreements with any lender</li><br/>
+                <!--</ol>-->
+                
+                    <h5>CANCELLATION POLICIES</h5>
+                <!--<ol>-->
+                    <li>This  Agreement can only be canceled after Nationwide receives written cancellation provided by me. Any such cancellation shall
+                    not relieve me from any payment or other obligations and responsibilities under paragraphs (9) and (10) above. From the date of 
+                    written cancellation, Nationwide has the right to review and access any and all credit reports for verification purposes only.
+                    I agree and accept that I do not have the right to cancel this ninety-day (90-day) credit review process.</li><br/>
+                
+                    <h5>COMMERCIAL LOANS</h5>
+                    
+                    <li>Nationwide Services are also available for commercial loans. In the event that you desire Nationwide Services regarding a commercial loan,
+                    including but not limited to merchant cash advance or accounts receivables based loans, then all terms and conditions of this Agreement shall 
+                    apply to any commercial loan, including but not limited to consents, authorizations, consulting fees, warranties and representations. 
+                    In addition to any information required as specified above, you understand that in order to provide Nationwide Services in relation to a
+                    commercial loan it may be necessary for Nationwide to obtain consumer, personal, business and investigative reports and other information
+                    about you and/or your company (if the loan is to be made to an entity), including credit card processor statements and bank statements, from
+                    one or more consumer reporting agencies, such as TransUnion, Experian and Equifax, and from other credit bureaus, banks, creditors and other
+                    third parties. It may also be necessary to transmit the foregoing information to third parties in order to provide of Nationwide Services in
+                    connection with a commercial loan. You  also consent to the release by any creditor or financial institution of any of the foregoing information
+                    to Nationwide and/or its representatives , successors, assigns and designees.  You authorize Nationwide to obtain and/or transmit the foregoing 
+                    information. You also warrant that you are authorized to act on behalf of and bind any entity for which you request that Nationwide Services be
+                    provided. You agree that you are individually responsible for payment of consulting fees regardless of whether the loan is funded to an entity.</li><br/>
+                
+                    <h5>MISCELLANEOUS</h5>
+                    
+                    <li>This Agreement contains the entire agreement of the Parties, and it may only be modified by an agreement in writing signed by
+                    all Parties. This Agreement shall be construed and interpreted in accordance with the substantive laws of the State of Florida, 
+                    without regard to its conflict of laws principles. This Agreement is deemed entered into in the State of Florida and for any 
+                    dispute arising out of or under this Agreement, or which are related to this Agreement, venue and jurisdiction shall be exclusively
+                    in Broward County, Florida and the Parties hereby consent to venue and jurisdiction in Broward County, Florida. In connection with 
+                    any litigation arising out of or under this Agreement, the prevailing party shall be entitled to recover all costs and reasonable 
+                    attorney's fees including appellate and post judgment proceedings. I hereby authorize Nationwide to communicate with me via the 
+                    e-mail address I have provided.
+                    <br/>
+                    <br/>
+                    
+                    I agree to the aforementioned terms and conditions making this a binding contract. I understand that this Agreement is bound by 
+                    electronic signature.  This electronic signature must be that of the actual individual applying for a loan otherwise it constitutes
+                    forgery under any and all applicable state and federal laws, statutes, rules, and regulations. The individual "signing" this document
+                    affirms that the facts stated herein are true.
+                    <br/>
+                    <br/>
+                    
+                    I understand that I am giving consent to Nationwide Loan Consultants and Advisors (Nationwide) permission to obtain a soft credit 
+                    check to qualify me for obtaining a loan.
+                    <br/>
+                    <br/>
+                    
+                    I understand that by clicking on the <b>I AGREE button</b> or typing my name whichever is applicable immediately following this notice 
+                    I am providing “written instructions” to Nationwide under the Fair Credit Reporting Act (FCRA) authorizing Nationwide to obtain
+                    information from my personal credit profile or other information from any credit bureau, including but not limited to, Experian,
+                    TransUnion and/or Equifax. I authorize Nationwide to obtain such information solely to prequalify me for credit options.
+                    <br/>
+                    <br/>
+                    </li>
+                
+                </ol>
+                
+                <div class="row"><div class="col-12">
+                    <span>IDENTITY VERIFICATION QUESTIONS:</span>
+                    <br/>
+                    <br/>
+                    <div class="row">
+                        <div class="col-5">
+                            <div class="row">
+                                <div class="col-4">
+                                        First Name :
+                                    </div>
+                                <div class="col-8">
+                                    <span t-field="o.first_name"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-7">
+                            <div class="row">
+                                <div class="col-3">
+                                        Last Name :
+                                    </div>
+                                <div class="col-9">
+                                    <span t-field="o.last_name"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <br/>
+                    
+                    <div class="row">
+                        <div class="col-2">Home Address :</div>
+                        <div class="col-10">
+                            <span t-field="o.street"/>
+                        </div>
+                    </div>
+                    
+                    <br/>
+                    
+                    <div class="row">
+                        <div class="col-5">
+                            <div class="row">
+                                <div class="col-4">Yearly Income :</div>
+                                <div class="col-8">
+                                    <span t-field="o.primary_gross_annual_income"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-7">
+                            <div class="row">
+                                <div class="col-6">Is The Income Verifiable? Yes_No :</div>
+                                <div class="col-6">
+                                    <span t-esc="o.is_income_verifiable"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <br/>
+                    <br/>
+                    <span>AGREE TO ALL TERMS AND CONDITIONS:</span>
+                    <br/>
+                    <br/>
+                
+                    <div class="row">
+                        <div class="col-5">
+                            <div class="row">
+                                <div class="col-5">Signature :</div>
+                                <div class="col-7"/>
+                            </div>
+                        </div>
+                        <div class="col-7">
+                            <div class="row">
+                                <div class="col-5">Date :</div>
+                                <div class="col-7"/>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <br/>
+                    
+                    <div class="row">
+                        <div class="col-6">AGREE TO ALL TERMS AND CONDITIONS:</div>
+                        <div class="col-6"/>
+                    </div>
+                    
+                    <br/>
+                    
+                    <div class="row">
+                        <div class="col-5">
+                            <div class="row">
+                                <div class="col-5">Signature :</div>
+                                <div class="col-7"/>
+                            </div>
+                        </div>
+                        <div class="col-7">
+                            <div class="row">
+                                <div class="col-7">Date :</div>
+                                <div class="col-5"/>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div></div>
+                <div style="page-break-before: always;"/>
+                
+                <div class="row text-left">
+                    <h3><center>THIRD-PARTY AUTHORIZATION FORM</center></h3>
+                </div>    
+                    <p>
+                        I,					with an address of						 (“Borrower” or “I” or “me” or “my”) hereby authorize 
+                        <b>NATIONWIDE LOAN CONSULTANTS &amp; ADVISORS, LLC,</b> its associates, agents and/or assigns (individually and collectively
+                        the “Agent”) the right to communicate with independent lenders (“Third-Parties”) on my behalf, and act as my agent,
+                        under the following terms:
+                        <br/>
+                        <ol>
+                            <li> I hereby give and grant unto my said Agent full <b>consent and authority</b> to act for me in any lawful way with 
+                            respect to the consent to obtain, share, release, discuss, and otherwise provide to Third Parties, and with each
+                            other, public and non-public personal information contained in or related to obtaining a consumer loan for the 
+                            Borrower. This information may include but is not limited to the name, mailing address, telephone number, social
+                            security number, credit score, credit report, income, account balances, program eligibility, and payment activity
+                            of the Borrower.</li>
+                            
+                            <br/>
+                            
+                            <li>I understand that I will be fully responsible for reviewing any information
+                            that is sent by Third Parties to my Agent.</li>
+                        
+                            <br/>
+                            
+                            <li>This Authorization expires one year from the date signed unless Borrower specifically notified 
+                            Agent in writing that this Authorization is of no further force and effect.</li>
+                        
+                            <br/>
+                            
+                            <li>I understand that this Form may not be accepted by some Third Parties, 
+                            and my Agent will notify me in writing if it is not accepted.</li>
+                            
+                            <br/>
+                        
+                            <li>I understand and agree that my Agent has no responsibility or liability to verify what the 
+                            Third Parties do with the information provided to it by my Agent, as authorized by this Form.</li>
+                        
+                            <br/>
+                        
+                            <li>I hereby agree to indemnify and forever hold my Agent harmless from any and all actions and causes of actions, 
+                            suits, claims, attorney’s fees, or demands against my Agent, resulting from my Agent discussing, or declining to 
+                            discuss, my information with Third-Parties, or resulting from my Agent providing, or declining to provide, any documents
+                            or other information to Third-Parties.</li>
+                        </ol>
+                        <br/>
+                        <span> I UNDERSTAND AND AGREE WITH THE TERMS OF THIS THIRD-PARTY AUTHORIZATION.</span>
+                        <br/>
+                        <br/>
+                        <span>Borrower's Signature: </span>
+                        <br/>
+                        <br/>
+                        <span>Borrower Printed Name: </span>
+                        <span t-field="o.full_name"/>
+                        <br/>
+                        <br/>
+                        <span>Date:</span>
+                        <br/>
+                        <br/>
+                    </p>
+
+
+
+                                            <!--For Maryland-->
+                    <t t-if="o.state_id.code == 'MD' ">
+                    <div style="page-break-before: always;"/>
+                    <h4><center><u>NOTICE OF CANCELLATION</u></center></h4>
+                    <br/>
+                    
+                    <p>You may cancel this contract, without any penalty or obligation, at any time prior to midnight of 
+                    the third business day after the date the contract is signed. If you cancel, any payment made by you 
+                    under this contract will be returned within 10 days following receipt by the seller of your cancellation
+                    notice. To cancel this contract, mail or deliver a signed and dated copy of this cancellation notice, or
+                    any other written notice, to </p><br/>
+                    
+                    <p>Nationwide Loan Consultants and Advisors, LLC 555 SW 12th Ave. Pompano Beach, FL 33069
+                        Not later than midnight 	(Date)______________I hereby cancel this transaction.</p><br/>
+                        
+                        <div class="row">
+                            <div class="col-5">
+                                <div class="row">
+                                    <div class="col-5">(Date) :</div>
+                                    <div class="col-7"/>
+                                </div>
+                            </div>
+                            <div class="col-7">
+                                <div class="row">
+                                    <div class="col-7">(Customer Signature) :</div>
+                                    <div class="col-5"/>
+                                </div>
+                            </div>
+                        </div>  
+                    
+                    </t>
+                    
+                                            <!--For Oklohama-->
+                    <t t-if="o.state_id.code == 'OK' ">
+                    <div style="page-break-before: always;"/>
+                    <h5><center><u><b>NOTICE OF CANCELLATION</b></u></center></h5>
+                    <br/>
+                    
+                    <p>You may cancel this contract, without any penalty or obligation, 
+                    within five (5) days from the date the contract is signed.</p>
+                    <br/>
+                    <p>If you cancel any payment made by you under this contract, will be returned with ten (10) days
+                    following receipt by the seller of your cancellation notice. To cancel this contract, mail or 
+                    deliver a signed dated copy of this cancellation notice, or any other written notice to Nationwide
+                    Loan Consultants &amp; Advisors, LLC at 555 SW 12th Ave. Ste. 202 Pompano Beach, FL 33069 not later than
+                    midnight on___________</p>
+                    <br/>
+                    <p>I hereby cancel this transaction,______________________(date).</p>
+                        <br/>
+                        <br/>
+                        <div class="row">
+                            <div class="col-5">
+                                <div class="row">
+                                    <div class="col-7">______________________</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-7">Signature :</div>
+                                </div>
+                            </div>
+                            <div class="col-7">
+                            </div>
+                        </div>  
+                    <div style="page-break-before: always;"/>
+                    <h4><center><u><b>INFORMATION STATEMENT</b></u></center></h4>
+                    <br/>
+                    
+                    <p>Nationwide Loan Consultants &amp; Advisors, LLC </p>
+                    
+                    <p>555 SW 12th Ave. Ste. 202</p>
+                    
+                    <p>Pompano Beach, FL 33069</p>
+                    
+                    <br/>
+                    
+                    <p>We are required by law to provide this information statement before the execution of a contract or 
+                    before the receipt of any money or other valuable consideration.</p>
+                    
+                    <ol>
+                        <li>You have the right to review any file maintained by any consumer credit reporting agency, as provided under 
+                        the Federal Fair Credit Reporting Act, 15 U.S.C., Sections 1681 through 1681t.</li>
+                        
+                        <br/>
+                        
+                        <li>You have the right to review the above-mentioned file at no charge if a request is made to the 
+                        consumer credit reporting agency within thirty (30) days after receiving notice that credit has been 
+                        denied. If credit was not denied the approximate price to review such file will be $100.00.</li>
+                        
+                        <br/>
+                        
+                        <li>You have the right to dispute the completeness or accuracy of any item contained in your file 
+                        which is maintained by a consumer credit reporting agency.</li>
+                        
+                        <br/>
+                        
+                        <li>In this paragraph give your customer a detailed description of the services to be performed 
+                        by your company including the total amount the buyer will have to pay, or become obligated to pay,
+                        for your services.</li>
+                        
+                        <br/>
+                        
+                        <li>You have the right to proceed against the bond or trust account we are required by law to maintain.
+                        The name and address of the surety company that issued the bond is International Fidelity Insurance 
+                        Company.</li>
+                        
+                        <br/>
+                    </ol>
+                    
+                    <p>I have received a copy of the above information statement.</p>
+                    
+                    
+                    <br/>
+                    <br/>
+                    
+                    <p>_______________________________</p>
+                    
+                    <p>Customer Signature</p>
+                    
+                    <p>_______________________________</p>
+                    
+                    <p>Date</p>
+                    
+                    
+                    </t>
+                    
+                    
+                                            <!--For Nebraska-->
+                    <t t-if="o.state_id.code == 'NE' ">
+                    <div style="page-break-before: always;"/>
+                    <h5><center><u><b>NOTICE OF CANCELLATION</b></u></center></h5>
+                    <br/>
+                    
+                    <p>You may cancel this contract, without any penalty or obligation, 
+                    within five (5) days from the date the contract is signed.</p>
+                    <br/>
+                    <p>If you cancel any payment made by you under this contract, will be returned with ten (10) days
+                    following receipt by the seller of your cancellation notice. To cancel this contract, mail or 
+                    deliver a signed dated copy of this cancellation notice, or any other written notice to Nationwide
+                    Loan Consultants &amp; Advisors, LLC at 555 SW 12th Ave. Ste. 202 Pompano Beach, FL 33069 not later than
+                    midnight on___________</p>
+                    <br/>
+                    <p>I hereby cancel this transaction,______________________(date).</p>
+                        <br/>
+                        <br/>
+                        <div class="row">
+                            <div class="col-5">
+                                <div class="row">
+                                    <div class="col-7">______________________</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-7">Signature :</div>
+                                </div>
+                            </div>
+                            <div class="col-7">
+                            </div>
+                        </div>  
+                    </t>
+                                                
+                                                
+                                                
+                                            <!--For Pennsylvania-->
+                    <t t-if="o.state_id.code == 'PA' ">
+                    <div style="page-break-before: always;"/>
+                    <h5><center><u><b>NOTICE OF CANCELLATION</b></u></center></h5>
+                    <br/>
+                    
+                    <p>You may cancel this contract, without any penalty or obligation, 
+                    within five (5) days from the date the contract is signed.</p>
+                    <br/>
+                    
+                    <p>If you cancel any payment made by you under this contract, will be returned with ten (10) days
+                    following receipt by the seller of your cancellation notice.</p>
+                    
+                    <p> To cancel this contract, mail or deliver a signed dated copy of this cancellation notice, 
+                    or any other written notice to:</p>
+                    
+                    <p><b>Nationwide Loan Consultants &amp; Advisors, LLC at 555 SW 12th Ave. Ste. 202 Pompano Beach, FL 33069</b> not later than
+                    midnight on___________</p>
+                    
+                    <p>I hereby cancel this transaction,______________________(date).</p>
+                        <br/>
+                        <br/>
+                        
+                        <table class="table-bordered">
+                            <tr>
+                                <td style="width:350px;padding:10px">Data</td>
+                            </tr>
+                            <tr>
+                                <td style="width:350px;padding:10px">Purchaser's Signature</td>
+                            </tr>
+                        </table>
+                    </t>
+                    
+                    
+                    
+                                            <!--For Wisconsin-->
+                    <t t-if="o.state_id.code == 'WI' ">
+                    <div style="page-break-before: always;"/>
+                    <h5><center><u><b>NOTICE OF CANCELLATION</b></u></center></h5>
+                    <br/>
+                    
+                    <p>You may cancel this contract, without any penalty or obligation, 
+                    within five (5) days after the date on <b>which the contract is signed.</b> </p>
+                    <br/>
+                    
+                    <p>If you cancel any payment made by you under this contract will be returned with 15 days
+                    following receipt by the seller of your cancellation notice.</p>
+                    
+                    <p> To cancel this contract, mail or deliver a signed and dated copy of this cancellation notice, 
+                    or any other written notice to: Nationwide Loan Consultants &amp; Advisors, LLC at 555 SW 12th 
+                    Ave. Ste. 202 Pompano Beach, FL 33069 not later than midnight (Date)___________</p>
+                    
+                    <p>I hereby cancel this transaction,______________________(date).</p>
+                        <br/>
+                        <br/>
+                        <div class="row">
+                            <div class="col-8">
+                                <div class="row">
+                                    <div class="col-6">Print Consumer Name</div>
+                                    <div class="col-6">_________________________________</div>
+                                </div>
+                                <br/>
+                                <div class="row">
+                                    <div class="col-6">Signature :</div>
+                                    <div class="col-6">_________________________________</div>
+                                </div>
+                                <br/>
+                                <div class="row">
+                                    <div class="col-6">Date :</div>
+                                    <div class="col-6">_________________________________</div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                            </div>
+                        </div>
+                        
+                    </t>
+                    
+                                            <!--For West Virginia-->
+                    <t t-if="o.state_id.code == 'WV' ">
+                    <div style="page-break-before: always;"/>
+                    <h5><center><u><b>NOTICE OF CANCELLATION</b></u></center></h5>
+                    <br/>
+                    
+                    <p>You may cancel this contract, without any penalty or obligation, 
+                    within three (3) days from the date the contract is signed.</p>
+                    <br/>
+                    
+                    <p>If you cancel any payment made by you under this contract, will be returned with ten (10) days
+                    following receipt by the seller of your cancellation notice.</p>
+                    
+                    <p> To cancel this contract, mail or deliver a signed dated copy of this cancellation notice, 
+                    or any other written notice to:</p>
+                    
+                    <p><b>Nationwide Loan Consultants &amp; Advisors, LLC at 555 SW 12th Ave. Ste. 202 Pompano Beach, FL 33069</b> not later than
+                    midnight on___________</p>
+                    
+                    <p>I hereby cancel this transaction,______________________(date).</p>
+                        <br/>
+                        <br/>
+                        
+                        <table class="table-bordered">
+                            <tr>
+                                <td style="width:350px;padding:10px">Data</td>
+                            </tr>
+                            <tr>
+                                <td style="width:350px;padding:10px">Purchaser's Signature</td>
+                            </tr>
+                        </table>
+                    </t>
+                    
+                    
+
+
+            </div>
+                    </t>
+                    </div>
+                </t>
+
+
+            <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+            <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+            
+               <!-- ................. CSA FOR THE BORROWING CLUB ...................... -->
+            
+            <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+            <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+
+
+
+                <t t-if="o.company_id.id == 3">
+                    <t t-call="web.basic_layout">
+                        <div class="page">
+                        <div class="oe_structure">
+                            <img t-att-src="'/nwlc_crm_ext/static/src/img/tbc_cover_csa.png'" />
+                        </div>
+                            <div style="page-break-before: always;"/>
+                    
+            <div class="header text-center mt-5">
+                <div class="row">
+                    <div class="col-4">
+                        <img t-if="o.company_id.logo and o.company_id.id == 3" t-att-src="image_data_uri(o.company_id.logo)" style="height: 80px;margin-top:30px;" alt="header"/>
+                    </div>
+                    
+                    <div class="col-8" style="margin-top:60px;font-family:Montserrat">
+                        <h3>CUSTOMER SERVICE AGREEMENT</h3>
+                        <!-- <h3><t t-esc="o.company_id.id"/></h3> -->
+                    </div>
+                </div>
+                        
+                    
+            </div>
+            <div class="mt-3">
+                <!-- <div class="row">
+                    <center>
+                        <img t-if="doc.company_id.logo and doc.company_id.id == 1" t-att-src="image_data_uri(doc.company_id.logo)" style="height: 120px;width:300px;" alt="header"/>
+                        <br/>
+                    </center>
+                </div>
+                <h4 style="text-align:center;margin-top:18px;font-family:Times New Roman;font-style:italic">You're one step closer to <b>financial freedom</b></h4>
+                <div style="page-break-before: always;"/> -->
+                <p>
+                    The Borrowing Club, LLC, a Florida limited liability company (sometimes referred to in 
+                    this Agreement as “TBC”) and Customer (sometimes referred to in this Agreement as 
+                    “Borrower,” “I”, “me,” “my,” “you,” and “your”) have agreed that TBC shall provide 
+                    certain services in relation to you possibly obtaining a loan. TBC and Customer 
+                    agree as follows: 
+                </p>
+
+                <h5><b>GENERAL SERVICES OVERVIEW</b></h5>
+                <ol>
+                    <li>TBC represents that it is not acting as a lender or acting on behalf of any lender with 
+                    respect to this Agreement. Thus, TBC is not affiliated with any of the lenders to which 
+                    it will submit loan applications on your behalf. TBC utilizes its considerable resources 
+                    and data pool, along with its experienced professional staff in an effort to find you the 
+                    most suitable loan package(s) to fit your borrowing criteria.</li><br/>
+                    
+                    <li>Services provided by TBC (“TBC Services”) consist of researching potential loans/lenders 
+                    applicable to your needs, advising you on such available loan products, referring you to the 
+                    lenders providing applicable loan products, and consulting with you throughout that process. 
+                    Therefore, TBC will submit or refer you to multiple lenders in our database. Each individual 
+                    lender will do its own credit check and underwriting.  As such, TBC has no liability for the 
+                    actions/decisions of any such referred lenders or whether the final loan product offered by 
+                    any lender that meets the Borrower’s expectations as to terms, interest rates or lender fees. 
+                    You acknowledge and agree that the responsibilities of TBC shall be limited to the services 
+                    listed above, and as such TBC shall not engage in any negotiations whatsoever on your behalf 
+                    and TBC shall have no continuing obligations, duties, responsibilities, role, part in the 
+                    negotiations, or in the relationship between the lender and you, whatsoever.</li><br/>
+                    
+                    <li><u>I fully understand and acknowledge that the loan packages offered by the lenders located 
+                    by TBC are also available to me without utilizing the services of TBC, and therefore, I could 
+                    have tried to locate such packages on my own without the need to incur the Consulting Fee identified 
+                    in the agreement. However, I have elected to utilize the services of TBC and pay the Consulting Fee 
+                    as specified herein. I have elected to retain the services of TBC because TBC has experience in the 
+                    consumer loan industry and has vast resources and knowledge to assist me to properly complete the 
+                    application process, which will increase my chances of finding a suitable loan package(s) with the 
+                    best rates and terms available for my needs.</u></li><br/>
+                <!--</ol>-->
+
+                <h5>THE PROCESS</h5>
+                <!--<ol>-->
+                    <li>I understand that by proceeding, I am authorizing TBC to represent me and act on my behalf for 
+                    the loan application process, in written form, electronically, verbally, or any other means in which 
+                    it is required in order to obtain the best loan option available for me. I further authorize TBC to 
+                    communicate with all lenders on my behalf, verbally or through the e-mail process. I understand that 
+                    TBC will need to create an email on my behalf in order to communicate with various lenders and organize 
+                    applications submitted on my behalf, therefore ,  I grant TBC the authority to  create and access an 
+                    email on my behalf.  </li><br/>
+                    
+                    <li>I also grant TBC the authority to access my credit report and I understand that TBC may pull and 
+                    view my credit report for up to 120 days after I execute this Agreement. </li>
+
+                    <li>If any actions of the Borrower are necessary or appropriate in connection with the loan applications 
+                    contemplated hereunder, then the Borrower shall use his/her best efforts to perform such actions in a 
+                    timely manner and to cooperate with and assist TBC’s efforts, including but not limited to, speaking 
+                    (dealing) directly with a lender,  returning telephone calls, responding to communications including 
+                    e-mails, verifying your identity, and  furnishing all documents and information requested by TBC and/or 
+                    a lender.</li><br/>
+                    
+                    <li> TBC agrees that you are never under any obligation to accept or receive a loan or a line of credit. 
+                    TBC cannot and will not accept any loans on your behalf without your approval. TBC endeavors to provide 
+                    you with the best options to choose from but all decisions regarding any loan offers, including closing 
+                    on any of the loan options is solely your choice to make.</li><br/>
+                <!--</ol>-->
+
+                <h5>CONSULTING FEE AND ACH PAYMENT</h5>
+                <!--<ol>-->
+                    <li>TBC does not charge an UPFRONT FEE. TBC works completely risk free for you. The only time a charge 
+                    for services is due to TBC, is after you are approved by a lender and receive access to the funds, or 
+                    under the circumstances set forth in paragraph (10)  below. Any fees due and payable by you to TBC are 
+                    for TBC Services I understand that some lenders have fees and that these fees are separate and in 
+                    addition to any fees you owe TBC.</li><br/>
+                    
+                    <li> I agree to pay TBC a one-time Consulting Fee of (_____%) of the total dollar amount I accept 
+                    and receive from a bank or lending institution as a result of the services provided by TBC. I understand 
+                    that this Consulting Fee is payable to TBC by me within 48 hours from the time I receive access to funding. 
+                    I understand that I will be charged and will owe TBC a late fee of five (5%) percent of the Consulting Fee 
+                    if TBC does not receive the Consulting Fee within 72 hours of the date, I receive access to funding. I 
+                    understand that in such event I will also be responsible for attorney’s fees and costs incurred by TBC 
+                    in connection with efforts to collect the Consulting Fee.</li><br/>
+                    
+                    <li>I agree not to circumvent TBC by applying for and/or obtaining financing from any of the lenders 
+                    located by TBC for a period of 90 days from the date of execution of this Agreement, without notifying 
+                    TBC and paying the consulting fee hereunder. I understand that if I do, I will be in breach of this 
+                    Agreement and I will be liable to pay the Consulting Fee specified in paragraph (9) below, based on 
+                    the total dollar amount of any such funding. I understand that in such event I will also be responsible 
+                    for attorney’s fees and costs incurred by TBC in connection with efforts to collect the Consulting Fee.</li><br/>
+                    
+                    <li>I agree that the Consulting Fee due under this Agreement shall be made through an automated clearing house 
+                    (“ACH”) transfer from my designated account directly to TBC. Accordingly, upon execution of this Agreement, I 
+                    agree to deliver to TBC a completed One Time <b>ACH Authorization Form</b>, (a copy of which is attached and incorporated 
+                    herein) whereby  I hereby irrevocably authorize TBC to initiate an ACH  transfer from my account to TBC in the 
+                    amount of the fee due under this Agreement. For so long as my obligations under this Agreement remain outstanding, 
+                    I agree to: (i) not revoke TBC authority to initiate ACH debit as hereby contemplated; (ii) not change, modify, 
+                    close or otherwise affect the account; (iii) direct any lender deposit all loans contemplated herein into the 
+                    account designated in the ACH Form; and (iv) be responsible for all costs, expenses, or other fees and charges 
+                    incurred by TBC as a result of any failed or returned ACH debits, whether resulting from insufficient sums being 
+                    available in the account, or otherwise. I hereby certify that I am the authorized user of this bank account 
+                    designated in the ACH Form and I will not dispute the transactions contemplated hereunder with my bank, so 
+                    long as the transactions correspond to the terms indicated in this Agreement.</li><br/>
+                <!--</ol>-->
+
+                <h5>DISPUTE RESOLUTION</h5>
+                <!--<ol>-->
+                    <li>I understand and acknowledge that as part of its service promise, TBC has a mandatory dispute resolution process. 
+                    If I am dissatisfied with the services provided by TBC, I must first contact my customer service representative via 
+                    e-mail or telephone and request a Dispute Resolution Form. I must then complete and submit that form via e-mail as 
+                    instructed on the form. TBC will respond to all dispute resolution requests within two business days (weekends and 
+                    legal holidays are not included) of receipt of a properly submitted Dispute Resolution Form.</li>
+                <!--</ol>-->
+
+                <h5>LOANS EXCLUDED FROM CONSULTING FEE</h5>
+                <!--<ol>-->
+                    <li>I understand that I will not have to pay the Consulting Fee provided for in this Agreement for loans I 
+                    obtain from lenders with which I have applied for an unsecured loan, credit card, or line of credit within 
+                    the past (60) sixty days, as listed in paragraph (14) below. I further understand that I will not have to 
+                    pay the Consulting Fee provided for in this Agreement for loans I obtain from lenders with which I currently 
+                    have an open unsecured loan or line of credit, as listed in paragraph (15) below. TBC will not apply for loans 
+                    on my behalf with the lenders I list in paragraphs (14) and (15) below.</li><br/>
+                
+                    <li> In the past 60 days have you or anyone representing you applied for an unsecured loan, credit card or line 
+                    of credit? If so, below please list the names of those institutions to which you have applied.<br/>
+                        <div class="row">
+                            <div class="col-4">Bank Name:</div>
+                            <div class="col-8"/>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">Bank Name:</div>
+                            <div class="col-8"/>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">Bank Name:</div>
+                            <div class="col-8"/>
+                        </div>
+                    </li><br/>
+                    <li>
+                        Please list below all open unsecured loans or lines of credit:<br/>
+                        <div class="row">
+                            <div class="col-4">Bank Name:</div>
+                            <div class="col-8"/>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">Bank Name:</div>
+                            <div class="col-8"/>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">Bank Name:</div>
+                            <div class="col-8"/>
+                        </div>
+                    </li>
+                <!--</ol>-->
+                <br/>
+                
+                <h5>Communication Consent</h5>
+                <!--<ol>-->
+                    <li> By signing this document, you authorize TBC to communicate with you by using the telephone number provided by 
+                    you and any other telephone numbers associated or related to you that may be provided to us by you in the future. 
+                    You consent to allow TBC to contact you by phone, text, email, mail, or by artificial or pre-recorded voice, even 
+                    if you have listed yourself on any <b>Do-Not-Call</b> List. You also agree that any person or entity contacting you pursuant 
+                    to your consent here may use automatic telephone dialing system, even if the telephone number you provided (or any 
+                    telephone number associated with you) is connected to a mobile phone and even if you might be charged for the call. 
+                    Your consent to receive automated calls or text messages is not required for any purchase or availability of goods/services 
+                    from TBC; if you do not consent, you may call us at 1-888-463-5255 to continue your inquiry.</li>
+                <!--</ol>-->
+                <br/>
+                
+                <h5>WARRANTIES AND REPRESENTATIONS</h5>
+                <!--<ol>-->
+                    <li>I represent and warrant that (a) I have the full right and authority to enter into this agreement, make the consents and 
+                    authorizations herein, and to grant the rights herein granted and agreed to be granted; (b) I have not made and shall not make 
+                    any grant or agreement which will or might impair, encumber or conflict with any of the rights granted to TBC;(c) I shall at all 
+                    times comply with any and all laws, statutes, regulations, codes and ordinances applicable to any financing; and (d) all information 
+                    and representations provided by me shall be true and accurate. </li><br/>
+                    
+                    <li> I understand and agree that if any lender inquires as to whether I am working with a third party in relation to obtaining a loan, 
+                    I must disclose to the lender that I am working with TBC. In the event of such lender inquiry, I understand and agree that I must notify 
+                    TBC and provide the name of the lender(s) and the name of the lender’s representative to which disclosure was made.</li><br/>
+                    
+                    <li> I understand and agree that TBC will require me to review and approve any and all information provided to my loan advisor prior to 
+                    submission of any applications. I also agree that I will promptly notify TBC if any of the information provided later becomes 
+                    inaccurate or changed for any reason. Further, I will promptly notify TBC if I provide any information to any prospective 
+                    lender that differs from the information I provided to TBC or if I alter any information submitted to any lender.</li><br/>
+                    
+                    <li>I shall defend, indemnify and hold harmless TBC (and/or its shareholders, directors, members, managers, officers, representatives, 
+                    employees, successors, licensees and assigns) from and against any and all claims, demands, losses, damages, actions, liabilities, 
+                    judgments, penalties, costs and expenses (including, without limitation, attorneys 'fees and court costs, whether or not in connection 
+                    with litigation) arising out of or otherwise relating to your breach of any representation or warranty hereunder and/or related to any 
+                    claims arising from any negotiations or agreements with any lender.</li><br/>
+                <!--</ol>-->
+                
+                    <h5>CANCELLATION POLICIES</h5>
+                <!--<ol>-->
+                    <li>This  Agreement can only be canceled after TBC receives written cancellation provided by me. Any such cancellation shall not 
+                    relieve me from any payment or other obligations and responsibilities under paragraphs (9) and (10) above. From the date of written 
+                    cancellation, TBC has the right to review and access any and all credit reports for verification purposes only. I agree and accept 
+                    that I do not have the right to cancel this ninety-day (90-day) credit review process.</li><br/>
+                
+                    <h5>COMMERCIAL LOANS</h5>
+                    
+                    <li>TBC Services are also available for commercial loans. In the event that you desire TBC Services regarding a commercial loan, 
+                    including but not limited to merchant cash advance or accounts receivables based loans, then all terms and conditions of this 
+                    Agreement shall apply to any commercial loan, including but not limited to consents, authorizations, consulting fees, warranties 
+                    and representations. In addition to any information required as specified above, you understand that in order to provide TBC 
+                    Services in relation to a commercial loan it may be necessary for TBC to obtain consumer, personal, business and investigative 
+                    reports and other information about you and/or your company (if the loan is to be made to an entity), including credit card 
+                    processor statements and bank statements, from one or more consumer reporting agencies, such as TransUnion, Experian and 
+                    Equifax, and from other credit bureaus, banks, creditors and other third parties. It may also be necessary to transmit the 
+                    foregoing information to third parties in order to provide of TBC Services in connection with a commercial loan. You  also 
+                    consent to the release by any creditor or financial institution of any of the foregoing information to TBC and/or its representatives 
+                    , successors, assigns and designees.  You authorize TBC to obtain and/or transmit the foregoing information. You also warrant that you 
+                    are authorized to act on behalf of and bind any entity for which you request that TBC Services be provided. You agree that you are 
+                    individually responsible for payment of consulting fees regardless of whether the loan is funded to an entity.</li><br/>
+                
+                    <h5>MISCELLANEOUS</h5>
+                    
+                    <li>This Agreement contains the entire agreement of the Parties, and it may only be modified by an agreement in writing signed by 
+                    all Parties. This Agreement shall be construed and interpreted in accordance with the substantive laws of the State of Florida, 
+                    without regard to its conflict of laws principles. This Agreement is deemed entered into in the State of Florida and for any 
+                    dispute arising out of or under this Agreement, or which are related to this Agreement, venue and jurisdiction shall be exclusively 
+                    in Broward County, Florida and the Parties hereby consent to venue and jurisdiction in Broward County, Florida. In connection with 
+                    any litigation arising out of or under this Agreement, the prevailing party shall be entitled to recover all costs and reasonable 
+                    attorney's fees including appellate and post judgment proceedings. I hereby authorize TBC to communicate with me via the e-mail 
+                    address I have provided.
+                    <br/>
+                    <br/>
+                    
+                    I agree to the aforementioned terms and conditions making this a binding contract. I understand that this Agreement is bound by 
+                    electronic signature.  This electronic signature must be that of the actual individual applying for a loan otherwise it constitutes 
+                    forgery under any and all applicable state and federal laws, statutes, rules, and regulations. The individual "signing" this document 
+                    affirms that the facts stated herein are true.
+                    <br/>
+                    <br/>
+                    
+                    I understand that I am giving consent to The Borrowing Club (TBC) permission to obtain a soft credit check to qualify me for obtaining 
+                    a loan.
+                    <br/>
+                    <br/>
+                    
+                    I understand that by clicking on the I AGREE button or typing my name whichever is applicable immediately following this notice I am 
+                    providing “written instructions” to TBC under the Fair Credit Reporting Act (FCRA) authorizing TBC to obtain information from my 
+                    personal credit profile or other information from any credit bureau, including but not limited to, Experian, TransUnion and/or 
+                    Equifax. I authorize TBC to obtain such information solely to prequalify me for credit options.
+                    <br/>
+                    <br/>
+                    </li>
+                
+                </ol>
+                <div style="page-break-before: always;"/>                
+                <div class="row"><div class="col-12">
+                    <span>IDENTITY VERIFICATION QUESTIONS:</span>
+                    <br/>
+                    <br/>
+                    <div class="row">
+                        <div class="col-5">
+                            <div class="row">
+                                <div class="col-4">
+                                        First Name :
+                                    </div>
+                                <div class="col-8">
+                                    <span t-field="o.first_name"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-7">
+                            <div class="row">
+                                <div class="col-3">
+                                        Last Name :
+                                    </div>
+                                <div class="col-9">
+                                    <span t-field="o.last_name"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <br/>
+                    
+                    <div class="row">
+                        <div class="col-2">Home Address :</div>
+                        <div class="col-10">
+                            <span t-field="o.street"/>
+                        </div>
+                    </div>
+                    
+                    <br/>
+                    
+                    <div class="row">
+                        <div class="col-5">
+                            <div class="row">
+                                <div class="col-4">Yearly Income :</div>
+                                <div class="col-8">
+                                    <span t-field="o.primary_gross_annual_income"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-7">
+                            <div class="row">
+                                <div class="col-6">Is The Income Verifiable? Yes_No :</div>
+                                <div class="col-6">
+                                    <span t-esc="o.is_income_verifiable"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <br/>
+                    <br/>
+                    <span>AGREE TO ALL TERMS AND CONDITIONS:</span>
+                    <br/>
+                    <br/>
+                
+                    <div class="row">
+                        <div class="col-5">
+                            <div class="row">
+                                <div class="col-5">Signature :</div>
+                                <div class="col-7"/>
+                            </div>
+                        </div>
+                        <div class="col-7">
+                            <div class="row">
+                                <div class="col-5">Date :</div>
+                                <div class="col-7"/>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <br/>
+                    
+                    <div class="row">
+                        <div class="col-6">AGREE TO ALL TERMS AND CONDITIONS:</div>
+                        <div class="col-6"/>
+                    </div>
+                    
+                    <br/>
+                    
+                    <div class="row">
+                        <div class="col-5">
+                            <div class="row">
+                                <div class="col-5">Signature :</div>
+                                <div class="col-7"/>
+                            </div>
+                        </div>
+                        <div class="col-7">
+                            <div class="row">
+                                <div class="col-7">Date :</div>
+                                <div class="col-5"/>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div></div>
+                <div style="page-break-before: always;"/>
+                
+                <div class="row text-left">
+                    <h3><center>THIRD-PARTY AUTHORIZATION FORM</center></h3>
+                </div>    
+                    <p>
+                        I,					with an address of						 (“Borrower” or “I” or “me” or “my”) hereby authorize 
+                        THE BORROWING CLUB, LLC, its associates, agents and/or assigns (individually and collectively the “Agent”) the 
+                        right to communicate with independent lenders (“Third-Parties”) on my behalf, and act as my agent, under the 
+                        following terms:
+                        <br/>
+                        <ol>
+                            <li> I hereby give and grant unto my said Agent full <b>consent and authority</b> to act for me in any lawful way 
+                            with respect to the consent to obtain, share, release, discuss, and otherwise provide to Third Parties, and 
+                            with each other, public and non-public personal information contained in or related to obtaining a consumer 
+                            loan for the Borrower. This information may include but is not limited to the name, mailing address, 
+                            telephone number, social security number, credit score, credit report, income, account balances, program 
+                            eligibility, and payment activity of the Borrower.</li>
+                            
+                            <br/>
+                            
+                            <li>I understand that I will be fully responsible for reviewing any information that is sent by Third Parties 
+                            to my Agent.</li>
+                        
+                            <br/>
+                            
+                            <li>This Authorization expires one year from the date signed unless Borrower specifically notified Agent in 
+                            writing that this Authorization is of no further force and effect.</li>
+                        
+                            <br/>
+                            
+                            <li>I understand that this Form may not be accepted by some Third Parties, and my Agent will notify me in 
+                            writing if it is not accepted.</li>
+                            
+                            <br/>
+                        
+                            <li>I understand and agree that my Agent has no responsibility or liability to verify what the Third 
+                            Parties do with the information provided to it by my Agent, as authorized by this Form.</li>
+                        
+                            <br/>
+                        
+                            <li>I hereby agree to indemnify and forever hold my Agent harmless from any and all actions and causes 
+                            of actions, suits, claims, attorney’s fees, or demands against my Agent, resulting from my Agent discussing, 
+                            or declining to discuss, my information with Third-Parties, or resulting from my Agent providing, or 
+                            declining to provide, any documents or other information to Third-Parties.</li>
+                        </ol>
+                        <br/>
+                        <span> I UNDERSTAND AND AGREE WITH THE TERMS OF THIS THIRD-PARTY AUTHORIZATION.</span>
+                        <br/>
+                        <br/>
+                        <span>Borrower's Signature</span>
+                        <br/>
+                        <br/>
+                        <span>Borrower Printed Name: </span>
+                        <span t-field="o.full_name"/>
+                        <br/>
+                        <br/>
+                        <span>Date</span>
+                        <br/>
+                        <br/>
+                    </p>
+
+
+
+                                            <!--For Maryland-->
+                    <t t-if="o.state_id.code == 'MD' ">
+                    <div style="page-break-before: always;"/>
+                    <h4><center><u>NOTICE OF CANCELLATION</u></center></h4>
+                    <br/>
+                    
+                    <p>You may cancel this contract, without any penalty or obligation, at any time prior to midnight of 
+                    the third business day after the date the contract is signed. If you cancel, any payment made by you 
+                    under this contract will be returned within 10 days following receipt by the seller of your cancellation
+                    notice. To cancel this contract, mail or deliver a signed and dated copy of this cancellation notice, or
+                    any other written notice, to </p><br/>
+                    
+                    <p>The Borrowing Club, LLC. At 555 SW 12th Ave. Ste. 202 Pompano Beach, FL 33069. <br/>
+                        Not later than midnight ______________(Date).<br/>
+                        I hereby cancel this transaction.</p><br/>
+                        
+                        <div class="row">
+                            <div class="col-5">
+                                <div class="row">
+                                    <div class="col-5">(Date) :</div>
+                                    <div class="col-7"/>
+                                </div>
+                            </div>
+                            <div class="col-7">
+                                <div class="row">
+                                    <div class="col-7">(Customer Signature) :</div>
+                                    <div class="col-5"/>
+                                </div>
+                            </div>
+                        </div>  
+                    
+                    </t>
+                    
+                                            <!--For Oklohama-->
+                    <t t-if="o.state_id.code == 'OK' ">
+                    <div style="page-break-before: always;"/>
+                    <h5><center><u><b>NOTICE OF CANCELLATION</b></u></center></h5>
+                    <br/>
+                    
+                    <p>You may cancel this contract, without any penalty or obligation, at any time prior to midnight of the third 
+                    business day after the date the contract is signed. If you cancel, any payment made by you under this 
+                    contract will be returned within 10 days following receipt by the seller of your cancellation notice. 
+                    To cancel this contract, mail or deliver a signed and dated copy of this cancellation notice, or any 
+                    other written notice, to The Borrowing Club, LLC at 555 SW 12th Ave. Ste. 202, Pompano Beach, FL 33069.</p>
+                    <br/>
+                    <p>Not later than midnight				(Date) </p>
+                    <p>I hereby cancel this transaction.</p>
+                        <br/>
+                        <br/>
+                        <div class="row">
+                            <div class="col-5">
+                                <div class="row">
+                                    <div class="col-7">______________________</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-7">(Date)</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-7">______________________</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-7">(Customer Signature) :</div>
+                                </div>
+                            </div>
+                            <div class="col-7">
+                            </div>
+                        </div>  
+                    <div style="page-break-before: always;"/>
+                    <h4><center><u><b>INFORMATION STATEMENT</b></u></center></h4>
+                    <br/>
+                    
+                    <p>The Borrowing Club, LLC </p>
+                    
+                    <p>555 SW 12th Ave. Ste. 202</p>
+                    
+                    <p>Pompano Beach, FL 33069</p>
+                    
+                    <br/>
+                    
+                    <p>We are required by law to provide this information statement before the execution of a contract or 
+                    before the receipt of any money or other valuable consideration.</p>
+                    
+                    <ol>
+                        <li>You have the right to review any file maintained by any consumer credit reporting agency, as provided under 
+                        the Federal Fair Credit Reporting Act, 15 U.S.C., Sections 1681 through 1681t.</li>
+                        
+                        <br/>
+                        
+                        <li>You have the right to review the above-mentioned file at no charge if a request is made to the 
+                        consumer credit reporting agency within thirty (30) days after receiving notice that credit has been 
+                        denied. If credit was not denied the approximate price to review such file will be $100.00.</li>
+                        
+                        <br/>
+                        
+                        <li>You have the right to dispute the completeness or accuracy of any item contained in your file 
+                        which is maintained by a consumer credit reporting agency.</li>
+                        
+                        <br/>
+                        
+                        <li>In this paragraph give your customer a detailed description of the services to be performed 
+                        by your company including the total amount the buyer will have to pay, or become obligated to pay,
+                        for your services.</li>
+                        
+                        <br/>
+                        
+                        <li>You have the right to proceed against the bond or trust account we are required by law to maintain.
+                        The name and address of the surety company that issued the bond is International Fidelity Insurance 
+                        Company.</li>
+                        
+                        <br/>
+                    </ol>
+                    
+                    <p>I have received a copy of the above information statement.</p>
+                    
+                    
+                    <br/>
+                    <br/>
+                    
+                    <p>_______________________________</p>
+                    
+                    <p>Customer Signature</p>
+                    
+                    <p>_______________________________</p>
+                    
+                    <p>Date</p>
+                    
+                    
+                    </t>
+                    
+                    
+                                            <!--For Nebraska-->
+                    <t t-if="o.state_id.code == 'NE' ">
+                    <div style="page-break-before: always;"/>
+                    <h5><center><u><b>NOTICE OF CANCELLATION</b></u></center></h5>
+                    <br/>
+                    
+                    <p>You may cancel this contract, without any penalty or obligation, 
+                    within five (5) days from the date the contract is signed.</p>
+                    <br/>
+                    <p>If you cancel any payment made by you under this contract, will be returned with ten (10) days
+                    following receipt by the seller of your cancellation notice. To cancel this contract, mail or 
+                    deliver a signed dated copy of this cancellation notice, or any other written notice to 
+                    The Borrowing Club, LLC at 555 SW 12th Ave. Ste. 202 Pompano Beach, FL 33069 not later than
+                    midnight on___________</p>
+                    <br/>
+                    <p>I hereby cancel this transaction,______________________(date).</p>
+                        <br/>
+                        <br/>
+                        <div class="row">
+                            <div class="col-5">
+                                <div class="row">
+                                    <div class="col-7">______________________</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-7">Signature :</div>
+                                </div>
+                            </div>
+                            <div class="col-7">
+                            </div>
+                        </div>  
+                    </t>
+                                                
+                                                
+                                                
+                                            <!--For Pennsylvania-->
+                    <t t-if="o.state_id.code == 'PA' ">
+                    <div style="page-break-before: always;"/>
+                    <h5><center><u><b>NOTICE OF CANCELLATION</b></u></center></h5>
+                    <br/>
+                    
+                    <p>You may cancel this contract, without any penalty or obligation, 
+                    within five (5) days from the date the contract is signed.</p>
+                    <br/>
+                    
+                    <p>If you cancel, any payment made by you under this contract will be returned within ten days 
+                    after the date of receipt by the seller of your cancellation notice.</p>
+                    
+                    <p> To cancel this contract, mail or deliver a signed dated copy of this cancellation notice, 
+                    or any other written notice to:</p>
+                    
+                    <p><b>The Borrowing Club, LLC at 555 SW 12th Ave. Ste. 202 Pompano Beach, FL 33069</b> not later than
+                    midnight (Date)___________</p>
+                    
+                    <p>I hereby cancel this transaction.</p>
+                        <br/>
+                        <br/>
+                        
+                        <div class="row">
+                            <div class="col-5">
+                                <div class="row">
+                                    <div class="col-7">______________________</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-7">Date :</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-7">______________________</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-7">Purchaser's Signature :</div>
+                                </div>
+                            </div>
+                            <div class="col-7">
+                            </div>
+                        </div>  
+                    </t>
+                    
+                    
+                    
+                                            <!--For Wisconsin-->
+                    <t t-if="o.state_id.code == 'WI' ">
+                    <div style="page-break-before: always;"/>
+                    <h5><center><u><b>NOTICE OF CANCELLATION</b></u></center></h5>
+                    <br/>
+                    
+                    <p>You may cancel this contract, without any penalty or obligation, 
+                    within five (5) days after the date on <b>which the contract is signed.</b> </p>
+                    <br/>
+                    
+                    <p>If you cancel any payment made by you under this contract will be returned within 15 days
+                    following receipt by the seller of your cancellation notice.</p>
+                    
+                    <p> To cancel this contract, mail or deliver a signed and dated copy of this cancellation notice, 
+                    or any other written notice to: The Borrowing Club, LLC at 555 SW 12th 
+                    Ave. Ste. 202 Pompano Beach, FL 33069 not later than midnight (Date)___________</p>
+                    
+                    <p>I hereby cancel this transaction.</p>
+                        <br/>
+                        <br/>
+                        <div class="row">
+                            <div class="col-8">
+                                <div class="row">
+                                    <div class="col-6">Print Consumer Name</div>
+                                    <div class="col-6">_________________________________</div>
+                                </div>
+                                <br/>
+                                <div class="row">
+                                    <div class="col-6">Signature :</div>
+                                    <div class="col-6">_________________________________</div>
+                                </div>
+                                <br/>
+                                <div class="row">
+                                    <div class="col-6">Date :</div>
+                                    <div class="col-6">_________________________________</div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                            </div>
+                        </div>
+                        
+                    </t>
+                    
+                                            <!--For West Virginia-->
+                    <t t-if="o.state_id.code == 'WV' ">
+                    <div style="page-break-before: always;"/>
+                    <h5><center><u><b>NOTICE OF CANCELLATION</b></u></center></h5>
+                    <br/>
+                    
+                    <p>You may cancel this contract, without any penalty or obligation, 
+                    within three (3) days after the date the contract is signed.</p>
+                    <br/>
+                    
+                    <p>If you cancel any payment made by you under this contract will be returned within ten (10) days
+                    after the date of receipt by the seller of your cancellation notice.</p>
+                    
+                    <p> To cancel this contract, mail or deliver a signed dated copy of this cancellation notice, 
+                    or any other written notice to:</p>
+                    
+                    <p><b>The Borrowing Club, LLC at 555 SW 12th Ave. Ste. 202 Pompano Beach, FL 33069</b> not later than
+                    midnight (Date)___________</p>
+                    
+                    <p>I hereby cancel this transaction.</p>
+                        <br/>
+                        <br/>
+                        
+                        <div class="row">
+                            <div class="col-5">
+                                <div class="row">
+                                    <div class="col-7">______________________</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-7">Date :</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-7">______________________</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-7">Purchaser's Signature :</div>
+                                </div>
+                            </div>
+                            <div class="col-7">
+                            </div>
+                        </div>
+                    </t>
+                    
+                    
+
+
+            </div>
+                    
+                        </div>
+                    </t>
+                </t>
+           </t>
+       </t>
+   </template>
+</odoo>

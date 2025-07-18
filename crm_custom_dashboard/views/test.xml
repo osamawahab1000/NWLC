@@ -1,0 +1,106 @@
+<tr>
+                                <td style="width:70px">    <!-- Reps -->
+                                    Abraham Rodriguez
+                                </td>
+                                <td style="width:70px">    <!-- Leads-->
+                                        <span>Live</span>
+                                        <br/>
+                                        <span>Portal</span>
+                                </td>
+                                <td style="width:70px">    <!-- Total Leads-->
+                                        <span t-esc="state.total_live_leads"></span>
+                                        <br/>
+                                        <span t-esc="state.total_portal_leads"></span>
+                                </td>
+                                <td style="width:70px">    <!-- Combined-->
+                                    <span t-esc="state.total_crm_leads"/>
+                                </td>
+                                <td style="width:70px">    <!-- Duplicates-->
+                                        <span t-esc="state.total_live_duplicates"></span>
+                                        <br/>
+                                        <span t-esc="state.total_portal_duplicates"></span>
+                                </td>
+                                <td style="width:70px">    <!-- Duplicates %-->
+                                    <span t-esc="(state.total_live_duplicates/state.total_live_leads)*100"/>%
+                                    <br/>
+                                    <span t-esc="(state.total_portal_duplicates/state.total_portal_leads)*100"/>%
+                                </td>
+                                <td style="width:70px">    <!-- DNMC -->
+                                    <span t-esc="state.total_live_dnmc_leads"/>
+                                    <br/>
+                                    <span t-esc="state.total_portal_dnmc_leads"/>
+                                </td>
+                                <td style="width:70px">     <!-- DNMC % -->
+                                    <span t-esc="(state.total_live_dnmc_leads/state.total_live_leads)*100"/>
+                                    <br/>
+                                    <span t-esc="(state.total_portal_dnmc_leads/state.total_portal_leads)*100"/>
+                                </td>
+                                <td style="width:70px">      <!-- Live & Portable Workable -->
+                                    <span t-esc="state.total_live_workables"/>
+                                    <br/>
+                                    <span t-esc="state.total_portal_workables"/>
+                                </td>
+                                <td style="width:70px">      <!-- Total Workable % -->
+                                    <span t-esc="(state.total_live_workables/state.total_live_leads)*100"/>%
+                                    <br/>
+                                    <span t-esc="(state.total_portal_workables/state.total_portal_leads)*100"/>%
+                                </td>
+                                <td style="width:70px">     <!-- Total Workable (Combined)-->
+                                    <span t-esc="state.total_workables"/>
+                                </td>
+                                <td style="width:70px">     <!-- live and portal declined-->
+                                    <span t-esc="state.total_live_declined_leads"/>
+                                    <br/>
+                                    <span t-esc="state.total_portal_declined_leads"/>
+                                </td>
+                                <td style="width:70px">     <!-- live and portal declined %-->
+                                    <span t-esc="(state.total_live_declined_leads/state.total_live_workables)*100"/>
+                                    <br/>
+                                    <span t-esc="(state.total_portal_declined_leads/state.total_live_workables)*100"/>
+                                </td>
+                                <td style="width:70px">      <!-- live and portal dnc-->
+                                    <span t-esc="state.total_live_dnc_leads"/>
+                                    <br/>
+                                    <span t-esc="state.total_portal_dnc_leads"/>
+                                </td>
+                                <td style="width:70px">      <!-- live and portal dnc %-->
+                                    <span t-esc="(state.total_live_dnc_leads/state.total_live_workables) * 100"/>%
+                                    <br/>
+                                    <span t-esc="(state.total_portal_dnc_leads/state.total_portal_workables) * 100"/>%
+                                </td>
+                                <td style="width:70px">        <!-- live and portal transferred out -->
+                                    <span t-esc="state.total_live_transferred_leads"/>
+                                    <br/>
+                                    <span t-esc="state.total_portal_transferred_leads"/>
+                                </td>
+                                <td style="width:70px">       <!-- live and portal transferred out %-->
+                                    <span t-esc="(state.total_live_transferred_leads/state.total_live_workables) * 100"/>%
+                                    <br/>
+                                    <span t-esc="(state.total_portal_transferred_leads/state.total_portal_workables) * 100"/>%
+                                </td>
+                                <td style="width:70px">       <!-- live and portal no contact-->
+                                    <span t-esc="state.total_live_no_contact_leads"/>
+                                    <br/>
+                                    <span t-esc="state.total_portal_no_contact_leads"/>
+                                </td>
+                                <td style="width:70px">       <!-- live and portal no contact %-->
+                                    <span t-esc="(state.total_live_no_contact_leads/state.total_live_workables) * 100"/>%
+                                    <br/>
+                                    <span t-esc="(state.total_portal_no_contact_leads/state.total_portal_workables) * 100"/>%
+                                </td>
+                                <td style="width:70px">        <!-- live and portal no response -->
+                                    <span t-esc="state.total_live_no_response_leads"/>
+                                    <br/>
+                                    <span t-esc="state.total_portal_no_response_leads"/>
+                                </td>
+                                <td style="width:70px">       <!-- live and portal no response %-->
+                                    <span t-esc="(state.total_live_no_response_leads/state.total_live_workables) * 100"/>%
+                                    <br/>
+                                    <span t-esc="(state.total_portal_no_response_leads/state.total_portal_workables) * 100"/>%
+                                </td>
+                                <td style="width:70px">
+                                    <span t-esc="state.total_live_deal_leads"/>
+                                    <br/>
+                                    <span t-esc="state.total_portal_deal_leads"/>
+                                </td>
+                            </tr>

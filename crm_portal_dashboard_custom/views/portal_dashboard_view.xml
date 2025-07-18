@@ -1,0 +1,501 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <template id="portal_my_home_crm_dashboard" name="Affliate Dashboard" customize_show="True"
+        inherit_id="portal.portal_my_home" priority="21">
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="before">
+            <t t-set="portal_client_category_enable" t-value="True" />
+            <t t-set="portal_alert_category_enable" t-value="True" />
+        </xpath>
+        <div id="portal_client_category" position="inside">
+            <t t-call="portal.portal_docs_entry">
+                <!--  -->
+                <t t-set="icon" t-value="'/spreadsheet_dashboard/static/description/icon.svg'" />
+                <t t-set="title">Affiliate Dashboard</t>
+                <t t-set="url" t-value="'/my/lead/dashboard'" />
+                <t t-set="text">Follow, view your leads Dashboard</t>
+                <t t-set="placeholder_count" t-value="'crm_lead_dashboard_count'" />
+
+            </t>
+        </div>
+    </template>
+
+    <template id="portal_my_home_menu_crm_dashboard" name="Portal layout: CRM Dashboard menu entries"
+        inherit_id="portal.portal_breadcrumbs" priority="30">
+        <xpath expr="//ol" position="inside">
+            <li t-attf-class="breadcrumb-item #{'active' if active else ''}" t-if="page_name == 'crm_lead_dashboard'">
+                <a t-if="dashboard" t-attf-href="/my/lead/dashboard">Dashboard</a>
+            </li>
+        </xpath>
+    </template>
+
+    <template id="portal_my_crm_lead_dashboard" name="My Dashboard">
+        <t t-call="portal.portal_layout">
+            <style>
+                .card-shadow {
+                    -webkit-box-shadow: 1px 3px 5px 0px rgba(222, 222, 222, 1);
+                    -moz-box-shadow: 1px 3px 5px 0px rgba(222, 222, 222, 1);
+                    box-shadow: 1px 3px 5px 0px rgba(222, 222, 222, 1);
+                }
+                .chart-container {
+                    border-radius: 0.3rem;
+                    padding: 1rem;
+                    margin: 1rem auto;
+                }
+
+                .chart-container.card-shadow {
+                height: 100%;
+                }
+                .chart-container h2 {
+                font-weight: 700;
+                font-size: 1.125rem;
+                }
+                thead {
+                background-color: #e9ecf0;
+                border-bottom: none;
+                }
+
+                .table thead th {
+                border-bottom: none;
+                }
+
+                .table td,.table th {
+                border-top: 1px solid #eceff2;
+                }
+                
+                h2.section-header {
+                    font-weight: 700;
+                    font-size: 1.5rem;
+                }
+                .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+                    background-color: #674B60;
+                    color:white
+                    }
+
+                .fixed-button {
+                    white-space: nowrap; /* Prevents text wrapping */
+                    width: 100px;       /* Fixed width for the button */
+                    height: 35px;       /* Fixed height for the button */
+                    overflow: hidden;   /* Ensures any overflow is hidden */
+                    text-align: center; /* Centers the text inside the button */
+                }
+
+                /* Align the form in the table cell */
+                td {
+                    vertical-align: middle; /* Ensures proper vertical alignment */
+                }
+
+            </style>
+            <div class="oh_dashboards"
+                style="margin-top: 20px;vertical-align: middle;overflow-x: clip;max-height: -webkit-fill-available;">
+                <t t-set="breadcrumbs_searchbar" t-value="True" />
+                <t t-call="portal.portal_searchbar">
+                    <t t-set="title">Dashboards</t>
+                </t>
+                <div class="container-fluid my-5 o_hr_dashboard">
+                    <t t-name="LoginUser">
+                        <section class="dashboard_main_section" id="main_section_login">
+                            <div class="row">
+                                <div class="col-sm-12 mb-4">
+                                    <div class="row align-items-center">
+                                        <div class="col-12 col-md-6">
+                                            <h2 class="section-header">CRM Dashboard</h2>
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <form class="form-inline d-flex justify-content-end align-items-center" 
+                                                t-attf-action="/my/lead/dashboard" 
+                                                 method="GET" >
+                                                
+                                                <!-- Start Date Field -->
+                                                <div class="form-group mx-2">
+                                                    <label class="col-form-label mr-2" for="start_date">Start Date</label>
+                                                    <input type="date" name="start_date" class="form-control" t-att-value="start_date" />
+                                                </div>
+                                                
+                                                <!-- End Date Field -->
+                                                <div class="form-group mx-2">
+                                                    <label class="col-form-label mr-2" for="end_date">End Date</label>
+                                                    <input type="date" name="end_date" class="form-control" t-att-value="end_date" />
+                                                </div>
+                                                
+                                                <!-- Submit Button -->
+                                                <div class="form-group mx-2 mt-4">
+                                                    <button type="submit" class="btn btn-primary mt-2">
+                                                        Confirm <span class="fa fa-long-arrow-right"></span>
+                                                    </button>
+                                                </div>
+                                                
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                </div>
+                            </div>
+                        </section>
+
+                    </t>
+                     <!-- <t t-name="LoginUser">
+                        <section class="dashboard_main_section" id="main_section_login">
+                            <div class="row">
+                                <div class="col-sm-12 mb-4">
+                                    <div class="row">
+                                        <div class="col-12 col-sm-12 col-md-8">
+                                            <h2 class="section-header">CRM Dashboard
+                                            </h2>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-4">
+                                            <form class="form-group">
+                                                <select id="income_expense_values"
+                                                        t-on-change="(e) => this.on_change_income_expense_values(e)"
+                                                        class="form-control">
+                                                    <option id="this_year"
+                                                            value="this_year">This Year
+                                                    </option>
+                                                    <option id="this_quarter"
+                                                            value="this_quarter">This
+                                                        Quarter
+                                                    </option>
+                                                    <option id="this_month"
+                                                            value="this_month"
+                                                            selected="">This Month
+                                                    </option>
+                                                    <option id="this_week"
+                                                            value="this_week">This Week
+                                                    </option>
+                                                </select>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <hr/>
+                                </div>
+                            </div>
+                        </section>
+                    </t> -->
+                    <t t-name="Admincrm">
+                        <section class="dashboard_main_section" id="main_section_admin">
+                            <div class="row mt-5">
+                                <div class="top_sp_revenue_div col-12 col-sm-12 col-md-12">
+                                    <div class="chart-container card-shadow" >
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <h3 class="h3">Leads</h3>
+                                            </div>
+                                        
+                                            <div class="col-4" style="text-align: right; padding-top:15px">
+                                                <h4 class="h6">Total Count: <span><t t-esc="grand_total"/></span></h4>
+                                            </div>
+
+                                            <div class="col-4" style="text-align: right; padding-top:15px">
+                                                <h4 class="h6">Percentage: <span>100%</span></h4>
+                                            </div>
+                                        </div>
+                                        <hr />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-5">
+                                <div class="top_sp_revenue_div col-12 col-sm-12 col-md-6">
+                                    <div class="chart-container card-shadow card-hover-effect" >
+                                        <h3 class="h5">Duplicates Leads</h3>
+                                        <hr />
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <h4 class="h6">Total Count: <span> <t t-esc="totals['duplicate_lead_total']"/> </span></h4>
+                                            </div>
+
+                                            <div class="col-6" style="text-align: left;">
+                                                <h4 class="h6">Percentage: <span><t t-esc="percentages['duplicate_lead_total']"/>%</span></h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="top_sp_revenue_div col-12 col-sm-12 col-md-6">
+                                    <div class="chart-container card-shadow" >
+                                        <h3 class="h5">Converted Leads</h3>
+                                        <hr />
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <h4 class="h6">Total Count: <span>10</span></h4>
+                                            </div>
+
+                                            <div class="col-6" style="text-align: left;">
+                                                <h4 class="h6">Percentage: <span>20%</span></h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-5">
+                                
+                                <div class="top_sp_revenue_div col-12 col-sm-12 col-md-4">
+                                    <div class="chart-container card-shadow" >
+                                        <h3 class="h5">Open Leads</h3>
+                                        
+                                        <hr />
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <h4 class="h6">Total Count: <span><t t-esc="totals['open_lead_total']"/></span></h4>
+                                            </div>
+
+                                            <div class="col-6" style="text-align: left;">
+                                                <h4 class="h6">Percentage: <span><t t-esc="percentages['open_lead_total']"/>%</span></h4>
+                                            </div>
+                                        </div>
+                                        <br />
+
+                                        <table class="table table-hover"
+                                            id="salesperson_revenue_table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Action</th>
+                                                    <th>Sub Type</th>
+                                                    <th>Count</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <t t-foreach="lead_open_lead" t-as="open_leads" t-key="open_leads">
+                                                <tr>
+                                                    <td style="width: 150px; text-align: center;">
+                                                        <form method="GET" action="/my/crm/lead" style="margin: 0;">
+                                                            <input type="hidden" name="leads_data" t-att-value="open_leads['data']" />
+                                                            <button type="submit" class="btn btn-primary btn-sm fixed-button">View Lead</button>
+                                                        </form>
+                                                    </td>
+                                                    <td>
+                                                        <t t-esc="open_leads['stage_name']"/>
+                                                    </td>
+                                                    <td>
+                                                        <t t-esc="open_leads['count']"/>
+                                                    </td>
+                                                
+                                                </tr>
+                                                </t>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="top_sp_revenue_div col-12 col-sm-12 col-md-4">
+                                    <div class="chart-container card-shadow">
+                                        <h3 class="h5">Dead Leads</h3>
+                                        <hr />
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <h4 class="h6">Total Count: <span><t t-esc="totals['dead_lead_total']"/></span></h4>
+                                            </div>
+
+                                            <div class="col-6" style="text-align: left;">
+                                                <h4 class="h6">Percentage: <span><t t-esc="percentages['dead_lead_total']"/>%</span></h4>
+                                            </div>
+                                        </div>
+                                        <br />
+
+                                        <table class="table table-hover"
+                                            id="salesperson_revenue_table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Action</th>
+                                                    <th>Sub Type</th>
+                                                    <th>Count</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                               <t t-foreach="lead_dead_lead" t-as="dead"
+                                                t-key="activity">
+                                                <tr>
+                                                    <td style="width: 150px; text-align: center;">
+                                                        <form method="GET" action="/my/crm/lead" style="margin: 0;">
+                                                            <input type="hidden" name="leads_data" t-att-value="dead['data']" />
+                                                            <button type="submit" class="btn btn-primary btn-sm fixed-button">View Lead</button>
+                                                        </form>
+                                                    </td>
+                                                    <td>
+                                                       <t t-esc="dead['stage_name']"/>
+
+                                                    </td>
+                                                    <td>
+                                                       <t t-esc="dead['count']"/>
+                                                    </td>
+                                                </tr>
+                                                
+                                                </t>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="top_sp_revenue_div col-12 col-sm-12 col-md-4">
+                                    <div class="chart-container card-shadow">
+                                        <h3 class="h5">Unworkable Leads</h3>
+                                        <hr />
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <h4 class="h6">Total Count: <span><t t-esc="totals['unworkable_total']"/></span></h4>
+                                            </div>
+
+                                            <div class="col-6" style="text-align: left;">
+                                                <h4 class="h6">Percentage: <span><t t-esc="percentages['unworkable_total']"/>%</span></h4>
+                                            </div>
+                                        </div>
+                                        <br />
+
+                                        <table class="table table-hover"
+                                            id="salesperson_revenue_table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Action</th>
+                                                    <th>Sub Type</th>
+                                                    <th>Count</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <t t-foreach="lead_unworkable_lead" t-as="unworkable"
+                                                t-key="activity">
+                                                <tr>
+                                                    <td style="width: 150px; text-align: center;">
+                                                        <form method="GET" action="/my/crm/lead" style="margin: 0;">
+                                                            <input type="hidden" name="leads_data" t-att-value="unworkable['data']" />
+                                                            <button type="submit" class="btn btn-primary btn-sm fixed-button">View Lead</button>
+                                                        </form>
+                                                    </td>
+                                                    <td>
+                                                       <t t-esc="unworkable['stage_name']"/>
+
+                                                    </td>
+                                                    <td>
+                                                       <t t-esc="unworkable['count']"/>
+                                                    </td>
+                                                </tr>
+                                                
+                                                </t>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                    </t>
+
+                    <t t-name="Admincrm">
+                        <section class="dashboard_main_section" id="main_section_admin">
+                            <div class="row mt-5">
+                                <div class="col-8">
+                                    <div class="row">
+                                
+                                        <div class="top_sp_revenue_div col-12 col-sm-12 col-md-6">
+                                            <div class="chart-container card-shadow" >
+                                                <h3 class="h5">Open Sales</h3>
+                                                <hr />
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <h4 class="h6">Total Count: <span>10</span></h4>
+                                                    </div>
+                                                </div>
+                                                <br />
+
+                                                <table class="table table-hover"
+                                                    id="salesperson_revenue_table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Sub Type</th>
+                                                            <th>Count</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <!-- <t t-foreach="" t-as="activity"
+                                                        t-key="activity"> -->
+                                                        <tr>
+                                                            <td>
+                                                                Stage 1
+                                                            </td>
+                                                            <td>
+                                                                10
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                Stage 1
+                                                            </td>
+                                                            <td>
+                                                                10
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                Stage 1
+                                                            </td>
+                                                            <td>
+                                                                10
+                                                            </td>
+                                                        </tr>
+                                                        <!-- </t> -->
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="top_sp_revenue_div col-12 col-sm-12 col-md-6">
+                                            <div class="chart-container card-shadow" >
+                                                <h3 class="h5">Dead Sales</h3>
+                                                <hr />
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <h4 class="h6">Total Count: <span>10</span></h4>
+                                                    </div>
+                                                </div>
+                                                <br />
+
+                                                <table class="table table-hover"
+                                                    id="salesperson_revenue_table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Sub Type</th>
+                                                            <th>Count</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <!-- <t t-foreach="" t-as="activity"
+                                                        t-key="activity"> -->
+                                                        <tr>
+                                                            <td>
+                                                                Stage 1
+                                                            </td>
+                                                            <td>
+                                                                10
+                                                            </td>
+                                                        </tr>
+                                                        <!-- </t> -->
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="row">
+                                
+                                        <div class="top_sp_revenue_div col-12 col-sm-12 col-md-12">
+                                            <div class="chart-container card-shadow" >
+                                                <h3 class="h5">Closed Won Sales</h3>
+                                                <hr />
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <h4 class="h6">Total Count: <span>10</span></h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </section>
+                    </t>
+                </div>
+            </div>
+
+        </t>
+
+
+    </template>
+
+</odoo>

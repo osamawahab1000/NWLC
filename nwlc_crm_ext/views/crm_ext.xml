@@ -1,0 +1,1206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+
+        <record id="crm_lead_view_search_ext" model="ir.ui.view">   
+            <field name="name">crm.lead.search.view</field>   
+            <field name="model">crm.lead</field>   
+            <field name="inherit_id" ref="crm.view_crm_case_leads_filter"/>
+            <field name="arch" type="xml">       
+                    <xpath expr="//filter" position="inside">
+                        <filter name="lead_status_search" 
+                                string="NWLC Lead State" 
+                                domain="[('company_id', '=', 1)]"
+                                icon="terp-partner"
+                                context="{'group_by':'lead_state'}"/>
+                    </xpath>
+            </field>
+        </record>
+
+        <record id="crm_lead_action_window_ext" model="ir.actions.act_window">
+            <field name="name">NWLC Leads</field>
+            <field name="res_model">crm.lead</field>
+            <field name="view_mode">list,form</field>
+            <field name="context">{'search_default_lead_state': 1}</field>
+        </record>
+
+        <record id="action_send_nwlc_csa_general_spanish" model="ir.actions.server">
+            <field name="name" >Send CSA-General(Spanish)</field>
+            <field name="model_id" ref="crm.model_crm_lead"/>
+            <field name="binding_model_id" ref="crm.model_crm_lead"/>
+            <field name="state">code</field>
+            <field name="code">
+action = {
+    'name': record.custom_action_name,
+    'type': 'ir.actions.act_window',
+    'res_model': 'spanish.csa.agreement',
+    'view_mode': 'form',
+    'target': 'new',
+    'context': {
+        'default_crm_lead_id': record.id or '',
+        'default_email': record.email or '',
+        'default_phone': record.phone or '',
+        'default_street': record.street or '',
+        'default_yearly_income': record.primary_gross_annual_income or '0.0',
+        'default_is_income_verifiable': '',
+        'default_no_10': '',
+        'default_no_11': '',
+        'default_change_fee': '',
+    }
+}
+action
+            </field>
+        </record>
+        
+        
+        <record id="action_send_nwlc_csa_general" model="ir.actions.server">
+            <field name="name">Send CSA-General</field>
+            <field name="model_id" ref="crm.model_crm_lead"/>
+            <field name="binding_model_id" ref="crm.model_crm_lead"/>
+            <field name="state">code</field>
+            <field name="code">
+action = {
+    'name': record.custom_action_name_csa,
+    'type': 'ir.actions.act_window',
+    'res_model': 'csageneral.agreement',
+    'view_mode': 'form',
+    'target': 'new',
+    'context': {
+        'default_crm_lead_id': record.id or '',
+        'default_email': record.email or '',
+        'default_phone': record.phone or '',
+        'default_street': record.street or '',
+        'default_yearly_income': record.primary_gross_annual_income or '0.0',
+        'default_is_income_verifiable': '',
+        'default_no_10': '',
+        'default_no_11': '',
+        'default_change_fee': '',
+    }
+}
+action
+            </field>
+        </record>
+                
+
+
+        <record id="action_send_nwlc_business" model="ir.actions.server">
+            <field name="name">Send Business-General</field>
+            <field name="model_id" ref="crm.model_crm_lead"/>
+            <field name="binding_model_id" ref="crm.model_crm_lead"/>
+            <field name="state">code</field>
+            <field name="code">
+action = {
+    'name': 'Business General Agreement',
+    'type': 'ir.actions.act_window',
+    'res_model': 'business.general.agreement',
+    'view_mode': 'form',
+    'target': 'new',
+    'context': {
+        'default_crm_lead_id': record.id or '',
+        'default_email': record.email or '',
+        'default_phone': record.phone or '',
+        'default_street': record.street or '',
+        'default_yearly_income': record.primary_gross_annual_income or '0.0',
+        'default_is_income_verifiable': '',
+        'default_no_10': '',
+        'default_no_11': '',
+        'default_change_fee': '',
+    }
+}
+action
+            </field>
+        </record>
+
+        <!-- Bulk Sales Person Assign Action -->
+
+        <!-- <record id="action_open_bulk_salesperson_assign" model="ir.actions.server">
+            <field name="name" >Bulk Salesperson Assign</field>
+            <field name="model_id" ref="crm.model_crm_lead"/>
+            <field name="binding_model_id" ref="crm.model_crm_lead"/>
+            <field name="state">code</field>           
+            <field name="code">
+env['crm.lead'].search([]).action_open_bulk_wizard(records)
+            </field>
+        </record> -->
+
+        <record id="crm_lead_view_form_ext" model="ir.ui.view">
+            <field name="name">crm.lead.form.ext</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+            <field name="arch" type="xml">
+                
+                <xpath expr="//form" position="replace">
+                
+                <form >
+                    
+                    <!-- <header invisible="type != 'lead' and nwdr == True"> -->
+                    <header invisible="nwdr == True">
+                        <button name="200" string="Convert to Opportunity" type="action"
+                                class="oe_highlight" 
+                                invisible="bool(type == 'opportunity')" />
+                                <!-- invisible="type == 'opportunity' and lead_state='transferred_out' or not active " -->
+                        <!-- <button class="btn-primary" 
+                            type="object" 
+                            string="CSA General Agreement"                      
+                            name="action_open_csa_general_wizard">
+                        </button> -->
+                        
+                        <!-- <button name="199" string="Lost" type="action" 
+                                invisible="type == 'opportunity' or probability == 0 and not active"/> -->
+                        <button string="Pull Credit" name="pull_credit_transunion_json" type="object" invisible="type != 'lead'"/>
+                        <button string="Send FA" name="action_send_fa" type="object"/>
+                                <!-- invisible="type == 'opportunity' and not active" -->
+                        <button string="Pull Equifax" name="action_pull_equifax" type="object" invisible="type != 'lead'"/>
+                                <!-- invisible="type == 'opportunity' or probability == 0 and not active" -->
+                        <button string="Send to NWDR" name="action_send_to_nwdr" type="object" invisible="send_to_nwdr == True or nwdr == True"/>
+                        <!-- <button string="ACH Form" name="send_request" invisible="type == 'lead'" type="object"/> -->
+                        <button string="ACH Form" name="action_ach_form" invisible="type == 'lead'" type="object"/>
+                        <button string="Credit Card Form" name="action_credit_card_form" invisible="type == 'lead'" type="object"/>
+                                <!-- invisible="type == 'opportunity' or probability == 0 and not active" -->
+                        <field name="disposition_head" style="background-color:#E7E9ED;border:1px;padding:5px;border-radius:5px;" widget="selection"/>
+                            <!-- invisible="type == 'opportunity' or probability == 0 and not active"  -->
+                        <field name="stage_id" widget="statusbar_duration" options="{'clickable': '1', 'fold_field': 'fold'}"
+                            domain="['|', ('team_id', '=', team_id), ('team_id', '=', False)]"
+                            invisible="not active or type == 'lead'"/>
+                        <field name="lead_stage_id" widget="statusbar_duration" options="{'clickable': '1','fold_field': 'fold'}" invisible="not active or type == 'opportunity'"/>
+                    
+                    </header>
+                    
+                    
+        
+                    <sheet invisible="nwdr == True">
+                        <div class="oe_button_box" name="button_box">
+                            <button name="action_schedule_meeting" type="object" class="oe_stat_button" icon="fa-calendar" context="{'partner_id': partner_id}" invisible="not id or type == 'lead'">
+                                <div class="o_stat_info">
+                                    <span class="o_stat_text"><field name="meeting_display_label"/></span>
+                                    <field name="meeting_display_date" class="o_stat_value" invisible="not meeting_display_date"/>
+                                </div>
+                            </button>
+                            <button name="action_show_potential_duplicates" type="object" class="oe_stat_button" icon="fa-star" invisible="duplicate_lead_count &lt; 1">
+                                <div class="o_stat_info">
+                                    <field name="duplicate_lead_count" class="o_stat_value"/>
+                                    <span class="o_stat_text" invisible="duplicate_lead_count &lt; 2">Similar Leads</span>
+                                    <span class="o_stat_text" invisible="duplicate_lead_count &gt; 1">Similar Lead</span>
+                                </div>
+                            </button>
+                        </div>
+                        <widget name="web_ribbon" title="Sent To NWDR" bg_color="text-bg-success" invisible="send_to_nwdr != True"/>
+
+                        
+                        <field name="send_to_nwdr" invisible="1"/>
+                        <field name="company_id_new" invisible="1"/>
+                        <field name="nwdr" invisible="1"/>
+                        <field name="active" invisible="1"/>
+                        <field name="probability" invisible="1"/>
+                        <field name="type" invisible="1"/>
+                        <field name="team_id" invisible="1"/>
+                        <field name="is_partner_visible" invisible="1"/>
+                        <field name="user_id" invisible="1"/>
+                        <field name="is_blacklisted" invisible="1"/>
+                        <field name="partner_email_update" invisible="1"/>
+                        <field name="phone_blacklisted" invisible="1"/>
+                        <field name="partner_phone_update" invisible="1"/>
+                        <field name="partner_id" invisible="1"/>
+
+<!-- View for LEAD form (type "LEAD")                 -->
+                        <group>
+                            <group name="lead_partner" invisible="type != 'lead'">
+                            <!-- <group name="lead_partner"> -->
+                                <field name="name" invisible="1"/>
+                                <field name="affiliate_name"/>
+                                <field name="source_ids"/>
+                                <field name="full_name" string="Lead Name"/>
+                                <field name="user_id" widget="res_users_many2one" string="Owner" context="{'default_user_id': user_id}" />
+                                <field name="live_transfer"/>
+                                <field name="stage_reason"/>
+                                <field name="spanish_speaking"/>
+                                <!-- <field name="partner_id" widget="res_partner_many2one" context="{                                         'default_name': contact_name,                                         'default_title': title,                                         'default_street': street,                                         'default_street2': street2,                                         'default_city': city,                                         'default_state_id': state_id,                                         'default_zip': zip,                                         'default_country_id': country_id,                                         'default_function': function,                                         'default_phone': phone,                                         'default_mobile': mobile,                                         'default_email': email_from,                                         'default_user_id': user_id,                                         'default_team_id': team_id,                                         'default_website': website,                                         'default_lang': lang_code,                                         'show_vat': True                                     }" invisible="not is_partner_visible"/> -->
+                                <!-- <field name="partner_name"/> -->
+                                <label for="street" string="Address"/>
+                                <div class="o_address_format">
+                                    <field name="street" placeholder="Street..." class="o_address_street"/>
+                                    <field name="street2" placeholder="Street 2..." class="o_address_street"/>
+                                    <field name="city" placeholder="City" class="o_address_city"/>
+                                    <field name="state_id" class="o_address_state" placeholder="State" options="{&quot;no_open&quot;: True}" domain="[('country_id', '=', 233)]"/>
+                                    <field name="zip" placeholder="ZIP" class="o_address_zip"/>
+                                    <field name="country_id" placeholder="Country" class="o_address_country" options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}"/>
+                                </div>
+                                <field name="credit_score"/>
+                                <field name="team_id" string="CRM Team"/>
+                                <!-- <field name="phone"/> -->
+                                <label for="phone" class="oe_inline"/>
+                                <div class="o_row o_row_readonly">
+                                    <button name="phone_action_blacklist_remove" class="fa fa-ban text-danger" title="This phone number is blacklisted for SMS Marketing. Click to unblacklist." type="object" context="{'default_phone': phone}" groups="base.group_user" invisible="not phone_blacklisted"/>
+                                    <field name="phone" widget="phone"/>
+                                    <span class="fa fa-exclamation-triangle text-warning oe_edit_only" title="By saving this change, the customer phone number will also be updated." invisible="not partner_phone_update"/>
+                                </div>
+                                <label for="mobile" class="oe_inline"/>
+                                <div class="o_row o_row_readonly">
+                                    <button name="phone_action_blacklist_remove" class="fa fa-ban text-danger" title="This phone number is blacklisted for SMS Marketing. Click to unblacklist." type="object" context="{'default_phone': phone}" groups="base.group_user" invisible="not phone_blacklisted"/>
+                                    <field name="mobile" widget="phone"/>
+                                    <span class="fa fa-exclamation-triangle text-warning oe_edit_only" title="By saving this change, the customer phone number will also be updated." invisible="not partner_phone_update"/>
+                                </div>
+                                <field name="best_contact_time_id"/>
+                                <field name="transferred_out_reason_id"/>
+                                <field name="household_income"/>
+                                <field name="verifiable_income_type"/>
+                                <field name="expedite_file"/>
+                                <field name="total_unsecure_debt_payment"/>
+                            </group>
+
+                            <group name="lead_partner" invisible="type != 'lead'">
+                            <!-- <group name="lead_partner"> -->
+                                <field name="converted_lead" readonly="1"/>
+                                <field name="converted_lead_date" readonly="1"/>
+                                <field name="api_lead"/>
+                                <field name="affiliate_id"/>
+                                <field name="affiliate_sales_rep"/>
+                                <label for="generated_email" class="oe_inline"/>
+                                <div class="o_row o_row_readonly">
+                                    <button name="mail_action_blacklist_remove" class="fa fa-ban text-danger" title="This email is blacklisted for mass mailings. Click to unblacklist." type="object" context="{'default_email': email_from}" groups="base.group_user" invisible="not is_blacklisted"/>
+                                    <field name="generated_email" string="Generated Email" widget="email"/>
+                                    <span class="fa fa-exclamation-triangle text-warning oe_edit_only" title="By saving this change, the customer email will also be updated." invisible="not partner_email_update"/>
+                                </div>
+                                <field name="generated_password"/>
+                                <field name="requested_loan_amount"/>
+                                <field name="application_type"/>
+                                <field name="loan_type"/>
+                                <field name="client_fee"/>
+                                <field name="employed"/>
+                                <field name="cc_debt"/>
+                                <!-- <field name="email_from"/> -->
+                                <label for="email" class="oe_inline"/>
+                                <div class="o_row o_row_readonly">
+                                    <button name="mail_action_blacklist_remove" class="fa fa-ban text-danger" title="This email is blacklisted for mass mailings. Click to unblacklist." type="object" context="{'default_email': email_from}" groups="base.group_user" invisible="not is_blacklisted"/>
+                                    <field name="email" string="Email" widget="email" />
+                                    <span class="fa fa-exclamation-triangle text-warning oe_edit_only" title="By saving this change, the customer email will also be updated." invisible="not partner_email_update"/>
+                                </div>
+                                <field name="dead_reason_id"/>
+                                <field name="object_reason_id"/>
+                                <field name="primary_gross_annual_income"/>
+                                <field name="total_unsecure_debt"/>
+                                <field name="debt_to_income_ratio"  widget="percentage"/>
+                                <field name="revolving_credit_utilization" widget="percentage"/>
+                                
+
+                            </group>
+                        </group>
+
+        <!-- View for processing form (type "Opportunity")                 -->
+                        <group>
+                            <group name="opportunity_partner" invisible="type == 'lead'">
+                                <field name="source_ids" string="Lead Source"/>
+                                <field name="full_name" string="Name"/>
+                                <field name="name" string="Name" invisible="1"/>
+                                <field name="processing_owner"/>
+                                <field name="second_owner"/>
+                                <field name="user_id" widget="res_users_many2one" string="Sales rep" context="{'default_user_id': user_id}" invisible="not is_partner_visible"/>
+                                <field name="spanish_speaking"/>
+                                <field name="stage_reason"/>
+
+                                <!-- <field name="partner_id" widget="res_partner_many2one" context="{                                         'default_name': contact_name,                                         'default_title': title,                                         'default_street': street,                                         'default_street2': street2,                                         'default_city': city,                                         'default_state_id': state_id,                                         'default_zip': zip,                                         'default_country_id': country_id,                                         'default_function': function,                                         'default_phone': phone,                                         'default_mobile': mobile,                                         'default_email': email_from,                                         'default_user_id': user_id,                                         'default_team_id': team_id,                                         'default_website': website,                                         'default_lang': lang_code,                                         'show_vat': True                                     }" invisible="not is_partner_visible"/> -->
+                                <!-- <field name="partner_name"/> -->
+                                <label for="street" string="Address"/>
+                                <div class="o_address_format">
+                                    <field name="street" placeholder="Street..." class="o_address_street"/>
+                                    <field name="street2" placeholder="Street 2..." class="o_address_street"/>
+                                    <field name="city" placeholder="City" class="o_address_city"/>
+                                    <field name="state_id" class="o_address_state" placeholder="State" options="{&quot;no_open&quot;: True}" domain="[('country_id', '=', 233)]"/>
+                                    <field name="zip" placeholder="ZIP" class="o_address_zip"/>
+                                    <field name="country_id" placeholder="Country" class="o_address_country" options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}"/>
+                                </div>
+                                <field name="credit_score"/>
+                                <field name="team_id" string="CRM Team"/>
+                                <!-- <field name="phone"/> -->
+                                <label for="phone" class="oe_inline"/>
+                                <div class="o_row o_row_readonly">
+                                    <button name="phone_action_blacklist_remove" class="fa fa-ban text-danger" title="This phone number is blacklisted for SMS Marketing. Click to unblacklist." type="object" context="{'default_phone': phone}" groups="base.group_user" invisible="not phone_blacklisted"/>
+                                    <field name="phone" widget="phone"/>
+                                    <span class="fa fa-exclamation-triangle text-warning oe_edit_only" title="By saving this change, the customer phone number will also be updated." invisible="not partner_phone_update"/>
+                                </div>
+                                <label for="mobile" class="oe_inline"/>
+                                <div class="o_row o_row_readonly">
+                                    <button name="phone_action_blacklist_remove" class="fa fa-ban text-danger" title="This phone number is blacklisted for SMS Marketing. Click to unblacklist." type="object" context="{'default_phone': phone}" groups="base.group_user" invisible="not phone_blacklisted"/>
+                                    <field name="mobile" widget="phone"/>
+                                    <span class="fa fa-exclamation-triangle text-warning oe_edit_only" title="By saving this change, the customer phone number will also be updated." invisible="not partner_phone_update"/>
+                                </div>
+                                <field name="employed"/>
+                                <field name="dead_sale_id"/>
+                                <field name="sp_declined_all_call"/>
+                                <field name="expected_revenue"/>
+                                <field name="object_reason_id"/>
+                                <field name="dead_reason_id"/>
+                                <field name="best_contact_time_id"/>                                
+                                <field name="transferred_out_reason_id"/>
+                                <field name="household_income"/>
+                                <field name="total_unsecure_debt_payment"/>
+                                <field name="verifiable_income_type"/>
+                                <field name="revolving_credit_utilization" string="Utilization Rate" widget="percentage"/>
+                                <field name="app_specialist" />
+                                <field name="cr_specialist" />
+
+                            </group>
+
+                            <group name="opportunity_partner" invisible="type  == 'lead'">
+                                <!-- <field name="affiliate_id"/>
+                                <field name="affiliate_sales_rep"/> -->
+                                <field name="converted_lead" readonly="1"/>
+                                <field name="converted_lead_date" readonly="1"/>
+                                <label for="generated_email" class="oe_inline"/>
+                                <div class="o_row o_row_readonly">
+                                    <button name="mail_action_blacklist_remove" class="fa fa-ban text-danger" title="This email is blacklisted for mass mailings. Click to unblacklist." type="object" context="{'default_email': email_from}" groups="base.group_user" invisible="not is_blacklisted"/>
+                                    <field name="generated_email" string="Generated Email" widget="email"/>
+                                    <span class="fa fa-exclamation-triangle text-warning oe_edit_only" title="By saving this change, the customer email will also be updated." invisible="not partner_email_update"/>
+                                </div>
+                                <field name="generated_password"/>
+                                <field name="requested_loan_amount"/>
+                                <field name="application_type"/>
+                                <field name="loan_type"/>
+                                <field name="client_fee"/>
+                                <field name="cc_debt"/>
+                                <field name="amount"/>
+                                <field name="loan_amount"/>
+                                <field name="add_app_loan_result"/>
+                                <!-- <field name="email_from"/> -->
+                                <label for="email" class="oe_inline"/>
+                                <div class="o_row o_row_readonly">
+                                    <button name="mail_action_blacklist_remove" class="fa fa-ban text-danger" title="This email is blacklisted for mass mailings. Click to unblacklist." type="object" context="{'default_email': email_from}" groups="base.group_user" invisible="not is_blacklisted"/>
+                                    <field name="email" string="Email" widget="email"/>
+                                    <span class="fa fa-exclamation-triangle text-warning oe_edit_only" title="By saving this change, the customer email will also be updated." invisible="not partner_email_update"/>
+                                </div>
+                                <field name="expedite_file"/>
+                                <field name="primary_gross_annual_income" string="Gross Annual Income"/>
+                                <field name="debt_to_income_ratio" widget="percentage"/>
+                                <field name="total_unsecure_debt"/>
+                                <field name="app_result"/>
+                                <field name="close_date"/>
+                                <field name="lender_list"/>
+                                <field name="al_specialist" />
+                                
+                                <div invisible="nwdr == True">
+                                    <button string="Send Applied Lenders" class="btn-dark" style="background-color:#E7E9ED;border:1px;border-radius:5px;" type="object" name="sendAppliedLenders"/>
+                                    <button string="Send After Consultation" type="object" name="sendAfterConsultation" />
+                                    <button string="Send Truth And Closure" type="object" class="btn-primary" name="sendTruthEncloser"/>
+                                    <button string="Send Survey" name="action_send_survey" type="object" class="btn-outline-primary"/>
+                                </div>
+
+                            </group>
+                        </group>
+
+
+                        <notebook>
+                            <page string="Detail Tab" name="detail_tab">
+                                <!-- <field name="description" placeholder="Add a description..." options="{'collaborative': true}"/> -->
+                                <notebook>
+                                    <page string="Primary Applicant Info" name="primary_applicant_info">
+                                        <sheet>
+                                            <group>
+                                                <group>    
+                                                    <!-- <field name="name" widget="res_partner_many2one" string="Full Name" context="{'default_name': name}" invisible="not is_partner_visible"/> -->
+                                                    <!-- <field name="full_name" string="Full Name"/> -->
+                                                    <field name="first_name"/>
+                                                    <field name="last_name"/>
+                                                    <field name="social_security_number"/>
+                                                    <!-- <field name="prev_address_street"/>
+                                                    <field name="prev_state" class="o_address_state" string="Prev State" placeholder="State" options="{&quot;no_open&quot;: True}" domain="[('country_id', '=', 233)]"/>
+                                                    <field name="years_at_previous_address"/> -->
+                                                    <field name="personal_banking_info"/>
+                                                    <field name="how_much_in_liquid_assets"/>
+                                                    <field name="amount_owed"/>
+                                                    <field name="employer_name"/>
+                                                    <field name="employer_street"/>
+                                                    <field name="employer_city"/>
+                                                    <field name="month_year_hired"/>
+                                                    <!-- <field name="work_phone"/> -->
+                                                    <label for="work_phone" class="oe_inline"/>
+                                                    <div class="o_row o_row_readonly">
+                                                        <button name="phone_action_blacklist_remove" class="fa fa-ban text-danger" title="This phone number is blacklisted for SMS Marketing. Click to unblacklist." type="object" context="{'default_phone': phone}" groups="base.group_user" invisible="not phone_blacklisted"/>
+                                                        <field name="work_phone" widget="phone"/>
+                                                        <span class="fa fa-exclamation-triangle text-warning oe_edit_only" title="By saving this change, the customer phone number will also be updated." invisible="not partner_phone_update"/>
+                                                    </div>
+                                                    <!-- <field name="prev_job_title"/> -->
+                                                    <!-- <field name="prev_work_phone"/> -->
+                                                    <!-- <label for="prev_work_phone" class="oe_inline"/>
+                                                    <div class="o_row o_row_readonly">
+                                                        <button name="phone_action_blacklist_remove" class="fa fa-ban text-danger" title="This phone number is blacklisted for SMS Marketing. Click to unblacklist." type="object" context="{'default_phone': phone}" groups="base.group_user" invisible="not phone_blacklisted"/>
+                                                        <field name="prev_work_phone" widget="phone"/>
+                                                        <span class="fa fa-exclamation-triangle text-warning oe_edit_only" title="By saving this change, the customer phone number will also be updated." invisible="not partner_phone_update"/>
+                                                    </div> -->
+                                                </group>  
+                                                <group>
+                                                    <field name="debt_relief_solutions"/>
+                                                    <field name="date_moved_to_address"/>
+                                                    <field name="us_citizen"/>
+                                                    <field name="date_of_birth"/>
+                                                    <!-- <field name="prev_address_city"/>
+                                                    <field name="prev_address_zip"/> -->
+                                                    <field name="marital_status"/>
+                                                    <field name="avg_bank_balance"/>
+                                                    <field name="ira"/>
+                                                    <field name="savings_account"/>
+                                                    <field name="business_owner"/>
+                                                    <field name="job_title"/>
+                                                    <field name="military"/>
+                                                    <field name="employer_state" class="o_address_state" string="Employer State" placeholder="State" options="{&quot;no_open&quot;: True}" domain="[('country_id', '=', 233)]"/>
+                                                    <field name="employer_zip"/>
+                                                    <!-- <field name="previous_employer"/>
+                                                    <field name="previous_employment_month_year_hired"/> -->
+                                                </group>
+                                            </group>
+                                        </sheet>
+                                    </page>
+                                    <page string="Truth And Closure Fields" name="truth_and_closure_fields" invisible="type != 'opportunity'">
+                                        <sheet>
+                                        <group>
+                                             <group>
+                                                    <field name="deposit_amount"/>
+                                                    <field name="amount_client_w"/>
+                                                    <field name="date_funds_scheduled"/>
+                                                    <field name="loan_amount"/>
+                                                    <field name="lender_origination_fee"/>
+                                                </group>
+                                        </group>
+                                        </sheet>
+                                    </page>
+                                    <page string="Mortgage and Rent" name="mortgage_and_rent">
+                                        <sheet>
+                                        <group>
+                                             <group>
+                                                    <field name="rent_own"/>
+                                                    <field name="rent_payment"/>
+                                                    <field name="mortgage_payment"/>
+                                                    <field name="mortgage_company"/>
+                                                    <field name="mortgage_amount_owed"/>
+                                                </group>
+                                        </group>
+                                        </sheet>
+                                    </page>
+                                    <page string="Business Info" name="business_info">
+                                        <sheet>
+                                        <group>
+                                             <group>
+                                                <field name="business_name"/>
+                                                <field name="business_street"/>
+                                                <field name="business_state" class="o_address_state" string="Business State" placeholder="State" options="{&quot;no_open&quot;: True}" domain="[('country_id', '=', 233)]"/>
+                                                <field name="business_city"/>
+                                                <!-- <field name="business_phone"/> -->
+                                                <label for="business_phone" class="oe_inline"/>
+                                                <div class="o_row o_row_readonly">
+                                                    <button name="phone_action_blacklist_remove" class="fa fa-ban text-danger" title="This phone number is blacklisted for SMS Marketing. Click to unblacklist." type="object" context="{'default_phone': phone}" groups="base.group_user" invisible="not phone_blacklisted"/>
+                                                    <field name="business_phone" widget="phone"/>
+                                                    <span class="fa fa-exclamation-triangle text-warning oe_edit_only" title="By saving this change, the customer phone number will also be updated." invisible="not partner_phone_update"/>
+                                                </div>
+                                                <field name="business_zip"/>
+                                                <field name="business_website"/>
+                                                <field name="use_of_proceeds"/>
+                                                <field name="no_of_employees"/>
+                                                <field name="percent_owner_1"/>
+                                                <field name="percent_owner_2"/>
+                                                <!-- <field name="driver_licence_1"/>
+                                                <field name="driver_licence_2"/> -->
+                                            </group>
+                                            <group>
+                                                <field name="messaging_disclosure"/>
+                                                <field name="ein_encrypted"/>
+                                                <field name="name_of_owner_and_percent_owned"/>
+                                                <field name="years_in_business"/>
+                                                <field name="avg_daily_balance"/>
+                                                <field name="avg_monthly_revenue"/>
+                                                <field name="no_of_bank_accounts"/>
+                                                <field name="no_of_owners"/>
+                                                <field name="annual_revenue"/>
+                                                <field name="industry_id"/>
+                                                <field name="total_business_loans"/>
+                                            </group>
+                                        </group>
+                                        </sheet>
+                                    </page>
+                                    <page string="Credit Card &amp; Payment Details" name="credit_card_payment_details">
+                                        <sheet>
+                                        <group>
+                                            <group>
+                                                <field name="credit_card_and_payment_details"/>
+                                            </group>
+                                        </group>
+                                        </sheet>
+                                    </page>
+                                    <page string="Affiliate Info" name="affiliate_info">
+                                        <sheet>
+                                        <group>
+                                            <group>
+                                                <!-- <field name="affiliate_email"/> -->
+                                                <!-- <label for="affiliate_email" class="oe_inline"/>
+                                                <div class="o_row o_row_readonly">
+                                                    <button name="mail_action_blacklist_remove" class="fa fa-ban text-danger" title="This email is blacklisted for mass mailings. Click to unblacklist." type="object" context="{'default_email': affiliate_email}" groups="base.group_user" invisible="not is_blacklisted"/>
+                                                    <field name="affiliate_email" string="Email" widget="email"/>
+                                                    <span class="fa fa-exclamation-triangle text-warning oe_edit_only" title="By saving this change, the customer email will also be updated." invisible="not partner_email_update"/>
+                                                </div> -->
+                                                <field name="affiliate_name"/>
+                                                <field name="affiliate_sales_rep"/>
+                                                <field name="affiliate_id"/>
+                                            </group>
+                                        </group>
+                                        </sheet>
+                                    </page>
+                                    <page string="Marketing/IP Address/Opt In/Misc" name="marketing_ip_address_opt_in_misc">
+                                        <sheet>
+                                        <group>
+                                            <group>
+                                                <field name="utm_keyword"/>
+                                                <field name="utm_campaign"/>
+                                                <field name="marketing_company"/>
+                                                <field name="disposition"/>
+                                                <field name="email_opt_out"/>
+                                                <field name="mailing_source"/>
+                                                <field name="remail"/>
+                                                <field name="promo_code"/>
+                                            </group>
+                                            <group>
+                                                <field name="bbb_review"/>
+                                                <field name="dead_sent"/>
+                                                <field name="res_ncnr_wf"/>
+                                                <field name="utm_source"/>
+                                                <field name="utm_content"/>
+                                                <field name="utm_medium"/>
+                                                <field name="retention_access"/>
+                                                <field name="in_home_date"/>
+                                                <field name="mail_date"/>
+                                                <field name="creative"/>
+                                            </group>
+                                        </group>
+                                        </sheet>
+                                    </page>
+                                    <page string="System Information" name="system_information">
+                                        <sheet>
+                                        <group>
+                                            <group>
+                                                <field name="created_by" string="Created By"/>
+                                                <field name="write_uid"  string="Last Modified By" />
+                                                <!-- <field name="last_seen_by"/>
+                                                <field name="next_activity_by"/>
+                                                <field name="last_activity_by"/>
+                                                <field name="owner_last_modified_by"/> -->
+                                                <field name="timestamp_dead_decline_reason"/>
+                                                <field name="mgr_reviewed"/>
+                                                <field name="unused_field"/>
+                                                <field name="csa_signed"/>
+                                                <field name="tijuana_assigned_timestamp"/>
+                                            </group>
+                                            <group>
+                                                <field name="date_created"/>
+                                                <field name="date_last_modified"/>
+                                                <field name="date_last_seen"/>
+                                                <field name="date_next_activity"/>
+                                                <field name="date_last_activity"/>
+                                                <field name="owner_last_modified"/>
+                                                <field name="sales_error_audit"/>
+                                            </group>
+                                        </group>
+                                        </sheet>
+                                    </page>
+                                    <page string="JA Personal Info" name="ja_personal_info">
+                                        <sheet>
+                                        <group>
+                                            <group>
+                                                <field name="ja_first_name"/>
+                                                <field name="ja_middle_name"/>
+                                                <field name="ja_last_name"/>
+                                                <field name="ja_us_citizen"/>
+                                                <field name="ja_date_of_birth"/>
+                                                <field name="ja_social_security_number"/>
+                                                <field name="ja_home_address"/>
+                                                <field name="ja_moved_to_address"/>
+                                                <field name="ja_gross_annual_income"/>
+                                                <field name="ja_marital_status"/>
+                                                <field name="ja_email"/>
+                                                <field name="ja_employer_name"/>
+                                            </group>
+                                            <group>
+                                                <field name="ja_job_title"/>
+                                                <field name="ja_employer_street"/>
+                                                <field name="ja_employer_city"/>
+                                                <field name="ja_employer_state" class="o_address_state" placeholder="State" options="{&quot;no_open&quot;: True}" domain="[('country_id', '=', 233)]"/>
+                                                <field name="ja_employer_zip"/>
+                                                <!-- <field name="ja_work_phone"/> -->
+                                                <label for="ja_work_phone" class="oe_inline"/>
+                                                <div class="o_row o_row_readonly">
+                                                    <button name="phone_action_blacklist_remove" class="fa fa-ban text-danger" title="This phone number is blacklisted for SMS Marketing. Click to unblacklist." type="object" context="{'default_phone': phone}" groups="base.group_user" invisible="not phone_blacklisted"/>
+                                                    <field name="ja_work_phone" widget="phone"/>
+                                                    <span class="fa fa-exclamation-triangle text-warning oe_edit_only" title="By saving this change, the customer phone number will also be updated." invisible="not partner_phone_update"/>
+                                                </div>
+                                                <field name="ja_month_hired"/>
+                                                <field name="ja_rent_own"/>
+                                                <field name="ja_mortgage_company"/>
+                                                <field name="ja_mortgage_payment"/>
+                                                <field name="ja_landlord"/>
+                                                <field name="ja_rent_payment"/>
+                                            </group>
+                                        </group>
+                                        </sheet>
+                                    </page>
+                                    <page string="Array Info" name="array_info">
+                                        <sheet>
+                                        <group>
+                                            <group>
+                                                <field name="array_grade"/>
+                                                <field name="array_credit_score"/>
+                                                <field name="array_debt_load"/>
+                                            </group>
+                                        </group>
+                                        </sheet>
+                                    </page>
+                                    <page string="Closest Relative" name="closest_relative">
+                                        <sheet>
+                                        <group>
+                                            <group>
+                                                <field name="closest_relative"/>
+                                                <field name="relative_phone_number"/>
+                                                <field name="affiliate_email"/>
+                                                <field name="closest_relative_address"/>
+                                            </group>
+                                        </group>
+                                        </sheet>
+                                    </page>
+                                    <page string="Verification Info" name="verification_info">
+                                        <sheet>
+                                            <field name="verification_line_ids">
+                                                <form>
+                                                    <field name="credit_check_date"/>
+                                                    <field name="new_credit_score"/>
+                                                    <field name="need_cr_check"/>
+                                                    <field name="verified"/>
+                                                    <field name="discrepancy"/>
+                                                    <field name="discrepancy_loan_amt"/>
+                                                    <field name="mgr_reviewed"/>
+                                                    <field name="new_fee_collected_date"/>
+                                                    <field name="processor_audit"/>
+                                                    <field name="apps_error"/>
+                                                    <field name="new_amt_collected"/>
+                                                    <field name="discrepancy_reason"/>
+                                                    <field name="discrepancy_status"/>
+                                                    <field name="discrepancy_loan_date"/>
+                                                    <field name="discrepancy_lender"/>
+                                                    <field name="potential_fee_due"/>
+                                                    <field name="added_lender_error"/>
+                                                    <field name="sales_error"/>
+                                                    <field name="to_call"/>
+                                                    <field name="shark_tank"/>
+                                                    <field name="apps_audit"/>
+                                                </form>
+                                            </field>
+                                        </sheet>
+                                    </page>
+                                </notebook>
+                                
+                                
+                            </page>
+                            <page string="Creditor" name="creditor">
+                                <sheet>
+                                <field name="line_id" invisible="type == 'lead'">
+                                        <list editable="bottom">
+                                            <field name="select_creditor"/>
+                                            <field name="name"/>
+                                            <field name="current_balance"/>
+                                            <field name="monthly_payment"/>
+                                            <field name="type"/>
+                                        </list>
+                                        <!-- <form>
+                                            <group>
+                                            <field name="name"/>
+                                            <field name="portfolio_type"/>
+                                            <field name="type"/>
+                                            <field name="account_number"/>
+                                            <field name="date_reported"/>
+                                            <field name="date_opened"/>
+                                            <field name="credit_limit"/>
+                                            <field name="balance"/>
+                                            <field name="term"/>
+                                            <field name="monthly_payment"/>
+                                            <field name="status"/>
+                                            <field name="customer_number"/>
+                                            </group>
+                                        </form> -->
+                                    </field>
+                                        <!-- <group> -->
+                                <!-- Bilal COMMIT here because of multipe fields errors in this code  -->
+                                <field name="line_id" invisible="type == 'opportunity'">
+                                    <list editable="bottom">
+                                        <field name="select_creditor"/>
+                                        <field name="name"/>
+                                        <field name="lead_name"/>
+                                        <field name="portfolio_type"/>
+                                        <field name="type"/>
+                                        <field name="account_number"/>
+                                        <field name="effective_date"/>
+                                        <field name="date_opened"/>
+                                        <field name="current_balance"/>
+                                        <field name="term"/>
+                                        <field name="monthly_payment"/>
+                                        <field name="high_credit"/>
+                                        <field name="status"/>
+                                        <field name="customer_number"/>
+                                    </list>
+                                        <!-- <list editable="bottom">
+                                            <field name="select_creditor"/>
+                                            <field name="name"/>
+                                            <field name="portfolio_type"/>
+                                            <field name="type"/>
+                                            <field name="credit_status"/>
+                                            <field name="account_number"/>
+                                            <field name="effective_date"/>
+                                            <field name="date_reported"/>
+                                            <field name="date_opened"/>
+                                            <field name="credit_limit"/>
+                                            <field name="current_balance"/>
+                                            <field name="term"/>
+                                            <field name="monthly_payment"/>
+                                            <field name="high_credit"/>
+                                            <field name="status"/>
+                                            <field name="customer_number"/>
+                                        </list> -->
+                                        <!-- <form>
+                                            <group>
+                                            <field name="name"/>
+                                            <field name="portfolio_type"/>
+                                            <field name="type"/>
+                                            <field name="account_number"/>
+                                            <field name="date_reported"/>
+                                            <field name="date_opened"/>
+                                            <field name="credit_limit"/>
+                                            <field name="balance"/>
+                                            <field name="term"/>
+                                            <field name="monthly_payment"/>
+                                            <field name="status"/>
+                                            <field name="customer_number"/>
+                                            </group>
+                                        </form> -->
+                                    </field>
+                                        <group>
+                                            <group>        
+                                                    
+                                                        <h2>Current Debt</h2><br/>
+                                                        <field name="debt_monthly_payment"/>
+                                                        <field name="total_current_balance"/>
+                                                        <field name="total_high_credit"/>
+                                                    
+                                                        <h2>Loan Program</h2><br/>
+                                                        <field name="loan_amount"/>
+                                                    
+                                                        <field name="loan_monthly_payment"/>
+                                                    
+                                                        <field name="loan_term"/>
+                                                    
+                                                        <h2>Lender Name(s)</h2>
+                                                    
+                                                        <field name="lender_name"/>
+                                                        <br/>
+                                                        <button name="computetcb" string="Calculate &amp; Save" type="object"/>
+                                                    
+                                            </group>
+                                        </group>
+                                                
+                                </sheet>
+                            </page>
+                            <page string="Lenders">
+                                <!-- <sheet> -->
+                                    <field name="lender_line_id">
+                                        <list editable="bottom">
+                                            <field name="select"/>
+                                            <field name="lender_id"/>
+                                            <field name="creditor_status_"/>
+                                            <field name="pre_approved_amount"/>
+                                            <field name="approved_amount"/>
+                                            <field name="max_amount"/>
+                                            <field name="loan_term"/>
+                                            <field name="interest_buy_rate"/>
+                                            <!-- <field name="notes"/> -->
+                                            <field name="payment"/>
+                                        </list>
+                                    </field>
+                                <!-- </sheet> -->
+                            </page>
+                            <page string="Flags">
+                                <sheet>
+
+                                    <field name="flag_code_line">
+                                        <list editable="bottom">
+                                            <field name="flag_code"/>
+                                            <field name="flag_description"/>
+                                        </list>
+                                    </field>
+                                </sheet>
+                            </page>
+                            <page string="Scripts" name="scripts">
+                                <sheet>
+                                <group>
+                                    <field name="script_id"/>
+                                    <field name="description" />
+                                </group>
+                                </sheet>
+                            </page>
+                            <page string="Notes">
+                                <sheet>
+                                <group>
+                                    <field name="notes"/>
+                                    <field name="processor_notes"/>
+                                </group>
+                                </sheet>
+                            </page>
+                            <page string="Introduction">
+                                <sheet>
+                                    <group>
+                                        <group>
+                                            <field name="introduction_ssn"/>
+                                            <field name="introduction_email"/>
+                                            <field name="introduction_phone"/>
+                                            <field name="introduction_loan_amount"/>
+                                            <field name="introduction_search"/>
+                                            <field name="introduction_interest_rate"/>
+                                        </group>
+                                        <group>
+                                            <field name="introduction_amount_debt"/>
+                                            <field name="introduction_vgi"/>
+                                            <field name="introduction_tax_return"/>
+                                            <field name="introduction_pay_frequency"/>
+                                            <field name="introduction_co_app"/>
+                                            <field name="introduction_self_employed"/>
+                                            <field name="introduction_docs"/>
+                                        </group>
+                                    </group>
+                                </sheet>
+                            </page>
+                            <page string="Attachments">
+                                <sheet>
+                                     <field name="attachment_ids">
+                                        <list editable="bottom">
+                                            <field name="attachment_ids" widget="many2many_binary"/>
+                                            <field name="uploaded_by"/>
+                                            <field name="upload_date"/>
+                                        </list>
+                                    </field>
+                                </sheet>
+                            </page>
+                                <page string="Messages And Notes">
+                                    <field name="custom_message_ids" widget="mail_thread">
+                                        <list editable="bottom">
+                                            <field name="author_id"/>
+                                            <field name="body"/>
+                                        </list>
+                                    </field>
+                                </page>
+
+                        </notebook>
+                    </sheet>
+
+                    
+                    
+                    
+                    
+                    
+                                <!-- """      NWDR FORM VIEW         """ -->
+                    
+                    
+                    <header invisible="type == 'lead'">
+                        <!-- <button name="200" string="Convert to Opportunity" type="action"
+                            class="oe_highlight" invisible="bool(type == 'opportunity' and lead_state == 'transferred_out')" /> -->
+                        <button string="Send To TBC" name="action_send_to_tbc" type="object"/>
+                        <button name="199" string="Lost" type="action" 
+                                invisible="type == 'opportunity' or probability == 0 and not active"/>
+                        <button string="Send To Cap" name="action_send_to_cap" type="object"/>
+                        <button string="Send Old FA" name="action_send_old_fa" type="object"/>
+                        <button string="Send to NWLC" name="action_send_to_nwlc" type="object"/>
+                                <!-- invisible="type == 'opportunity' or probability == 0 and not active" -->
+                        <field name="disposition_head" style="background-color:#E7E9ED;border:1px;padding:5px;border-radius:5px;" widget="selection"/>
+                            <!-- invisible="type == 'opportunity' or probability == 0 and not active"  -->
+                        <!-- <field name="stage_id" widget="statusbar_duration" options="{'clickable': '1', 'fold_field': 'fold'}"
+                            domain="['|', ('team_id', '=', team_id), ('team_id', '=', False)]"
+                            invisible="not active or type == 'lead'"/> -->
+                        <field name="nwdr_lead_state" widget="statusbar" options="{'clickable': '1',}"/>
+                    </header>
+                    
+                    
+                    
+                    <sheet invisible="nwdr != True">
+
+                        <group >
+                            <group>
+                                <field name="company_id" invisible="1"/>
+                                <field name="company_name"/>
+                                <field name="nwdr" invisible="1"/>
+                                <!-- <field name="nwdr"/> -->
+                                <field name="owner"/>
+                                <field name="lead_name"/>
+                                <field name="lead_type"/>
+                                <field name="lead_phase"/>
+                                <field name="affiliate"/>
+                                <field name="source"/>
+                            </group>
+                            <group>
+                                <!-- <field name="phone"/> -->
+                                <field name="mobile"/>
+                                <field name="email"/>
+                                <field name="access_code"/>
+                            
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Detail Tab">
+                                <notebook>
+                                    <page string="Primary Applicant Info" name="primary_applicant_info">
+                                        <sheet>
+                                            <group>
+                                                <group>    
+                                                    <!-- <field name="name" widget="res_partner_many2one" string="Full Name" context="{'default_name': name}" invisible="not is_partner_visible"/> -->
+                                                    <field name="primary_first_name"/>
+                                                    <field name="last_name"/>
+                                                    <field name="spanish_speaking"/>
+                                                    <field name="social_security_number"/>
+                                                    <field name="current_behind_payments"/>
+                                                    <field name="amount_owed"/>
+                                                    <field name="street"/>
+                                                    <field name="city"/>
+                                                    <field name="state"/>
+                                                </group>  
+                                                <group>
+                                                    <field name="currently_enrolled_in_nwdr"/>
+                                                    <field name="hardship_details"/>
+                                                    <field name="date_of_birth"/>
+                                                    <field name="marital_status"/>
+                                                    <field name="gender"/>
+                                                    <field name="postal_code"/>
+                                                    <field name="savings_account"/>
+                                                </group>
+                                            </group>
+                                        </sheet>
+                                    </page>
+                                    <page string="System Information" name="system_info">
+                                        <sheet>
+                                            <group>    
+                                                <group>
+                                                    <field name="created_by"/>
+                                                    <field name="last_seen_by"/>
+                                                    <field name="next_activity_by"/>
+                                                    <field name="last_activity_by"/>
+                                                    <field name="owner_last_modified_by"/>
+                                                    <field name="timestamp_dead_decline_reason"/>
+                                                    <field name="csa_signed"/>
+                                                </group>
+                                                <group>
+                                                    <field name="date_created"/>
+                                                    <field name="date_last_modified"/>
+                                                    <field name="date_last_seen"/>
+                                                    <field name="date_next_activity"/>
+                                                    <field name="date_last_activity"/>
+                                                    <field name="owner_last_modified"/>
+                                                    <field name="sales_error_audit"/>
+                                                </group>
+                                            </group>    
+                                        </sheet>
+                                    </page>
+                                    <page string="JA PERSONAL INFO" name="ja_personal_info">
+                                        <sheet>
+                                            <group>
+                                                <group>
+                                                    <field name="ja_first_name"/>
+                                                    <field name="ja_middle_name"/>
+                                                    <field name="ja_last_name"/>
+                                                    <field name="ja_date_of_birth"/>
+                                                    <field name="ja_social_security_number"/>
+                                                </group>
+                                            </group>
+                                        </sheet>
+                                    </page>
+                                    <page string="LOAN APPLICATION" name="loan_application">
+                                        <sheet>
+                                        <group>
+                                            <group>
+                                                <field name="profession"/>
+                                                <field name="employed"/>
+                                                <field name="monthly_income"/>
+                                                <field name="net_income"/>
+                                                <field name="requested_loan_amount"/>
+                                            </group>
+                                            <group>
+                                                <field name="bank_relationship"/>
+                                                <field name="credit_store"/>
+                                                <field name="application_stage"/>
+                                                <field name="application_status"/>
+                                                <field name="reject_reason"/>
+                                                <field name="loan_offer_status"/>
+                                            </group>
+                                        </group>
+                                        </sheet>
+                                    </page>
+                                    <page string="CLIENT FINANCIAL DATA" name="client_financial_data">
+                                        <sheet>
+                                        <group>
+                                            <group>
+                                                <field name="document"/>
+                                                <field name="total_unsecured_debt"/>
+                                                <field name="total_unsecured_debt_payment"/>
+                                                <field name="total_monthly_expenses"/>
+                                                <field name="debt_to_income_ratio"/>
+                                            </group>
+                                            <group>
+                                                <field name="bankruptcy"/>
+                                                <field name="mortgage_amount_owed"/>
+                                                <field name="mortgage_tradeline_age"/>
+                                                <field name="mortgage_history"/>
+                                                <field name="score_models"/>
+                                                <field name="revolving_credit_utilization"/>
+                                            </group>
+                                        </group>
+                                        </sheet>
+                                    </page>
+                                    <page string="FINANCIAL ANALYSIS" name="financial_analysis">
+                                        <sheet>
+                                        <h2>Financial Analysis</h2><br/>
+                                        <h3>Credit Card Calculator</h3><br/>
+                                        <group>
+                                            <group style="display:block">
+                                                <field name="monthly_payment" style="display: block; border: 1px solid #ccc; padding: 5px; width: 70%;"/>
+                                                <field name="minimum_payment" style="display: block; border: 1px solid #ccc; padding: 5px; width: 70%;"/>
+                                                <field name="payoff_time" style="display: block; border: 1px solid #ccc; padding: 5px; width: 70%;"/>
+                                                <field name="min_payment" style="display: block; border: 1px solid #ccc; padding: 5px; width: 70%;"/>
+                                                <field name="national_cc" style="display: block; border: 1px solid #ccc; padding: 5px; width: 70%;"/>
+                                            </group>
+                                            <group style="display:block">
+                                                <field name="current_debt" style="display: block; border: 1px solid #ccc; padding: 5px; width: 70%;"/>
+                                                <field name="interest_cost" style="display: block; border: 1px solid #ccc; padding: 5px; width: 70%;"/>
+                                                <field name="total_cost" style="display: block; border: 1px solid #ccc; padding: 5px; width: 70%;"/>
+                                                <field name="remaining_balance" style="display: block; border: 1px solid #ccc; padding: 5px; width: 70%;"/>
+                                            </group>
+                                        </group><br/>
+                                        <h3>Term Loan Calculator #1</h3><br/>
+                                        <group>
+                                            <group style="display:block">
+                                                <field name="monthly_payment" style="display: block; border: 1px solid #ccc; padding: 5px; width: 70%;"/>
+                                                <field name="interest" style="display: block; border: 1px solid #ccc; padding: 5px; width: 70%;"/>
+                                                <field name="payoff_time" style="display: block; border: 1px solid #ccc; padding: 5px; width: 70%;"/>
+                                                <!-- <field name="min_payment"/> -->
+                                                <!-- <field name="national_cc"/> -->
+                                            </group>
+                                            <group style="display:block">
+                                                <field name="current_debt" style="display: block; border: 1px solid #ccc; padding: 5px; width: 70%;"/>
+                                                <field name="interest_cost" style="display: block; border: 1px solid #ccc; padding: 5px; width: 70%;"/>
+                                                <field name="total_cost" style="display: block; border: 1px solid #ccc; padding: 5px; width: 70%;"/>
+                                                <field name="remaining_balance" style="display: block; border: 1px solid #ccc; padding: 5px; width: 70%;"/>
+                                            </group>
+                                        </group><br/>
+                                        <h3>Resolution Program(Entered Manually From CAP)</h3><br/>
+                                        <group>
+                                            <group style="display:block">
+                                                <field name="monthly_payment" style="display: block; border: 1px solid #ccc; padding: 5px; width: 70%;"/>
+                                                <field name="interest_cost" style="display: block; border: 1px solid #ccc; padding: 5px; width: 70%;"/>
+                                                <field name="payoff_time" style="display: block; border: 1px solid #ccc; padding: 5px; width: 70%;"/>
+                                                <field name="total_cost" style="display: block; border: 1px solid #ccc; padding: 5px; width: 70%;"/>
+                                                <field name="remaining_balance" style="display: block; border: 1px solid #ccc; padding: 5px; width: 70%;"/>
+                                            </group>
+                                        </group><br/>
+                                        <group>
+                                            <group style="display:block">
+                                                <field name="consolidated_payment_two" style="display: block; border: 1px solid #ccc; padding: 5px; width: 70%;"/>
+                                                <field name="consolidated_payment_three" style="display: block; border: 1px solid #ccc; padding: 5px; width: 70%;"/>
+                                                <field name="consolidated_payment_four" style="display: block; border: 1px solid #ccc; padding: 5px; width: 70%;"/>
+                                            </group>
+
+                                            <group style="display: block">
+                                                <field name="payoff_time_two" style="display: block; border: 1px solid #ccc; padding: 5px; width: 70%;" />
+                                                <field name="payoff_time_three" style="display: block; border: 1px solid #ccc; padding: 5px; width: 70%;" />
+                                                <field name="payoff_time_four" style="display: block; border: 1px solid #ccc; padding: 5px; width: 70%;" />
+                                            </group>
+                                        </group><br/>
+                                        
+                                        </sheet>
+                                    </page>
+                                </notebook>
+                            </page>
+                            <page string="Creditor" name="creditor">
+                                <sheet>
+                                <field name="line_id">
+                                        <list editable="bottom">
+                                            <field name="select_creditor"/>
+                                            <field name="name"/>
+                                            <field name="current_balance"/>
+                                            <field name="monthly_payment"/>
+                                            <field name="type"/>
+                                        </list>
+                                        <!-- <form>
+                                            <group>
+                                            <field name="name"/>
+                                            <field name="portfolio_type"/>
+                                            <field name="type"/>
+                                            <field name="account_number"/>
+                                            <field name="date_reported"/>
+                                            <field name="date_opened"/>
+                                            <field name="credit_limit"/>
+                                            <field name="balance"/>
+                                            <field name="term"/>
+                                            <field name="monthly_payment"/>
+                                            <field name="status"/>
+                                            <field name="customer_number"/>
+                                            </group>
+                                        </form> -->
+                                    </field>
+                                        <group>
+                                            <group>        
+                                                    
+                                                        <h2>Current Debt</h2><br/>
+                                                        <field name="debt_monthly_payment"/>
+                                                    
+                                                        <h2>Loan Program</h2><br/>
+                                                        <field name="loan_amount"/>
+                                                    
+                                                        <field name="loan_monthly_payment"/>
+                                                    
+                                                        <field name="loan_term"/>
+                                                    
+                                                        <h2>Lender Name(s)</h2>
+                                                    
+                                                        <field name="lender_name"/>
+                                                    
+                                            </group>
+                                        </group>
+                                                
+                                </sheet>
+                            </page>
+                            <page string="Flags">
+                                <sheet>
+                                    <field name="flag_code_line">
+                                        <list editable="bottom">
+                                            <field name="flag_code"/>
+                                            <field name="flag_description"/>
+                                        </list>
+                                    </field>
+                                </sheet> 
+                            </page>
+                             <page string="Messages And Notes">
+                                    <field name="custom_message_ids" widget="mail_thread">
+                                        <list editable="bottom">
+                                            <field name="author_id"/>
+                                            <field name="body"/>
+                                        </list>
+                                    </field>
+                                </page>
+
+                                
+                        </notebook>
+                    </sheet>
+
+
+                                <chatter/>
+
+                </form>
+
+                                
+                                
+
+                
+
+
+
+                </xpath>
+            </field>
+        </record>
+
+</odoo>

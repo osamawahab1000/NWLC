@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <record id="crm_case_kanban_view_leads_view_custom" model="ir.ui.view">
+            <field name="name">crm.lead.kanban.lead.custom</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.view_crm_lead_kanban"/>
+            <field name="priority" eval="1"/>
+            <field name="arch" type="xml">
+                <xpath expr="//kanban" position="replace">
+                    <kanban  highlight_color="color" default_group_by="lead_stage_id" class="o_kanban_small_column o_opportunity_kanban" on_create="quick_create" quick_create_view="nwlc_crm_ext.quick_create_opportunity_form_custom"
+                        archivable="false" sample="1" js_class="crm_kanban">
+                        <field name="lead_stage_id" />
+                        <field name="probability"/>
+                        <field name="active"/>
+                        <field name="company_currency"/>
+                        <field name="recurring_revenue_monthly"/>
+                        <field name="team_id"/>
+                        <progressbar field="activity_state" colors='{"planned": "success", "today": "warning", "overdue": "danger"}'
+                            sum_field="expected_revenue" recurring_revenue_sum_field="recurring_revenue_monthly"
+                            help="This bar allows to filter the opportunities based on scheduled activities."/>
+                        <templates>
+                            <t t-name="menu">
+                                <t t-if="widget.editable"><a role="menuitem" type="open" class="dropdown-item">Edit</a></t>
+                                <t t-if="widget.deletable"><a role="menuitem" type="delete" class="dropdown-item">Delete</a></t>
+                                <field name="color" widget="kanban_color_picker"/>
+                            </t>
+                            <t t-name="card">
+                                <t t-set="lost_ribbon" t-value="!record.active.raw_value and record.probability and record.probability.raw_value == 0"/>
+                                <widget name="web_ribbon" title="lost" bg_color="text-bg-danger" invisible="probability &gt; 0 or active"/>
+                                <field class="fw-bold fs-5" name="name"/>
+                                <div>
+                                    <t t-if="record.expected_revenue.raw_value">
+                                        <field name="expected_revenue" widget="monetary" options="{'currency_field': 'company_currency'}"/>
+                                        <span t-if="record.recurring_revenue and record.recurring_revenue.raw_value" groups="crm.group_use_recurring_revenues"> + </span>
+                                    </t>
+                                    <t t-if="record.recurring_revenue and record.recurring_revenue.raw_value">
+                                        <field class="me-1" name="recurring_revenue" widget="monetary" options="{'currency_field': 'company_currency'}" groups="crm.group_use_recurring_revenues"/>
+                                        <field name="recurring_plan" groups="crm.group_use_recurring_revenues"/>
+                                    </t>
+                                </div>
+                                <field name="partner_id" class="text-truncate" />
+                                <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                                <field name="lead_properties" widget="properties"/>
+                                <footer class="pt-1">
+                                    <div class="d-flex mt-auto align-items-center">
+                                        <field name="priority" widget="priority" groups="base.group_user" class="me-2"/>
+                                        <field name="activity_ids" widget="kanban_activity"/>
+                                    </div>
+                                    <field name="user_id" widget="many2one_avatar_user" domain="[('share', '=', False)]" class="ms-auto"/>
+                                </footer>
+                            </t>
+                        </templates>
+                    </kanban>
+                </xpath>
+            </field>
+        </record>
+    
+
+    <record id="quick_create_opportunity_form_custom" model="ir.ui.view">
+            <field name="name">crm.lead.form.quick_create.custom</field>
+            <field name="model">crm.lead</field>
+            <field name="priority">1000</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="partner_id" widget="res_partner_many2one"
+                            class="o_field_highlight"
+                            string='Contact'
+                            context="{
+                            'res_partner_search_mode': type == 'opportunity' and 'customer' or False,
+                            'default_name': contact_name or partner_name,
+                            'default_is_company': type == 'opportunity' and contact_name == False,
+                            'default_company_name': type == 'opportunity' and partner_name,
+                            'default_type': 'contact',
+                            'default_phone': phone,
+                            'default_email': email_from,
+                            'default_user_id': user_id,
+                            'default_team_id': team_id,
+                            'show_vat': True}"/>
+                        <field name="name" placeholder="e.g. Product Pricing" />
+                        <field name="email_from" string="Email" placeholder='e.g. "email@address.com"' />
+                        <field name="phone" string="Phone" placeholder='e.g. "0123456789"' />
+                        <label for="expected_revenue"/>
+                        <div>
+                            <div class="o_row">
+                                <field name="expected_revenue" class="oe_inline me-5 o_field_highlight" widget="monetary" options="{'currency_field': 'company_currency'}"/>
+                                <field name="priority" class="oe_inline" nolabel="1" widget="priority"/>
+                            </div>
+                            <div class="o_row" groups="crm.group_use_recurring_revenues">
+                                <field name="recurring_revenue" class="oe_inline o_field_highlight" widget="monetary" options="{'currency_field': 'company_currency'}"/>
+                                <field name="recurring_plan" class="oe_inline" placeholder='e.g. "Monthly"'
+                                    required="recurring_revenue != 0" options="{'no_create': True, 'no_open': True}"/>
+                            </div>
+                        </div>
+                        <field name="company_currency" invisible="1"/>
+                        <field name="company_id" invisible="1"/>
+                        <field name="user_id" invisible="1"/>
+                        <field name="user_company_ids" invisible="1"/>
+                        <field name="team_id" invisible="1"/>
+                        <field name="type" invisible="1"/>
+                        <field name="partner_name" invisible="1"/>
+                        <field name="contact_name" invisible="1"/>
+                        <field name="country_id" invisible="1"/>
+                        <field name="state_id" invisible="1"/>
+                        <field name="city" invisible="1"/>
+                        <field name="street" invisible="1"/>
+                        <field name="street2" invisible="1"/>
+                        <field name="zip" invisible="1"/>
+                        <field name="mobile" invisible="1"/>
+                        <field name="website" invisible="1"/>
+                        <field name="function" invisible="1"/>
+                        <field name="title" invisible="1"/>
+                        <field name="activity_ids" invisible="1"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+
+</odoo>

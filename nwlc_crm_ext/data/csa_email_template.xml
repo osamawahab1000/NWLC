@@ -1,0 +1,90 @@
+<odoo>
+    <record id="email_template_csa_general_agreement" model="mail.template">
+        <field name="name">CSA General Agreement Email</field>
+        <field name="email_from">{{ (object.user_id.email_formatted or object.company_id.email_formatted or user.email_formatted) }}</field>        <field name="subject">CSA General Agreement Report</field>
+        <field name="model_id" ref="crm.model_crm_lead"/>
+        <field name="body_html">
+            <![CDATA[
+                <p>Dear <t t-esc="object.full_name.name or 'Customer'"/>,</p>
+                <p>Please find attached the CSA General Agreement Report.</p>
+                <p>Best regards,<br/>Your Team</p>
+            ]]>
+        </field>
+        <field name="attachment_ids" eval="[(6, 0, [])]"/> <!-- Placeholder -->
+    </record>
+
+
+    <record id="email_template_spanish_csa_rev" model="mail.template">
+        <field name="name">Spanish CSA Rev Email</field>
+        <field name="email_from">{{ (object.user_id.email_formatted or object.company_id.email_formatted or user.email_formatted) }}</field>        <field name="subject">Spanish CSA Rev Report</field>
+        <field name="model_id" ref="crm.model_crm_lead"/>
+        <field name="body_html">
+            <![CDATA[
+                <p>Dear <t t-esc="object.full_name.name or 'Customer'"/>,</p>
+                <p>Please find attached the CSA General Agreement Report.</p>
+                <p>Best regards,<br/>Your Team</p>
+            ]]>
+        </field>
+        <field name="attachment_ids" eval="[(6, 0, [])]"/> <!-- Placeholder -->
+    </record>
+    
+    
+    <record id="email_template_business_general_agreement" model="mail.template">
+        <field name="name">Business General Agreement Email</field>
+        <field name="email_from">{{ (object.user_id.email_formatted or object.company_id.email_formatted or user.email_formatted) }}</field>        <field name="subject">Business General Agreement Report</field>
+        <field name="model_id" ref="crm.model_crm_lead"/>
+        <field name="body_html">
+            <![CDATA[
+                <p>Dear <t t-esc="object.full_name.name or 'Customer'"/>,</p>
+                <p>Please find attached the Business General Agreement Report.</p>
+                <p>Best regards,<br/>Your Team</p>
+            ]]>
+        </field>
+        <field name="attachment_ids" eval="[(6, 0, [])]"/> <!-- Placeholder -->
+    </record>
+    
+    
+    <record id="email_template_credit_card_form" model="mail.template">
+        <field name="name">Credit Card Form Email</field>
+        <field name="email_from">{{ (object.user_id.email_formatted or object.company_id.email_formatted or user.email_formatted) }}</field>        <field name="subject">Credit Card Form</field>
+        <field name="model_id" ref="crm.model_crm_lead"/>
+        <field name="body_html">
+            <![CDATA[
+                <p>Dear <t t-esc="object.full_name.name or 'Customer'"/>,</p>
+                <p>Please find attached the Credit Card Form.</p>
+                <p>Best regards,<br/>Your Team</p>
+            ]]>
+        </field>
+        <field name="attachment_ids" eval="[(6, 0, [])]"/> <!-- Placeholder -->
+    </record>
+    
+    
+    <record id="email_template_ach_form" model="mail.template">
+        <field name="name">ACH Form Email</field>
+        <field name="email_from">{{ (object.user_id.email_formatted or object.company_id.email_formatted or user.email_formatted) }}</field>        <field name="subject">ACH Form</field>
+        <field name="model_id" ref="crm.model_crm_lead"/>
+        <field name="body_html">
+            <![CDATA[
+                <p>Dear <t t-esc="object.full_name.name or 'Customer'"/>,</p>
+                <p>Please find attached the ACH Form.</p>
+                <p>Best regards,<br/>Your Team</p>
+            ]]>
+        </field>
+        <field name="attachment_ids" eval="[(6, 0, [])]"/> <!-- Placeholder -->
+    </record>
+    
+    
+    <record id="email_template_fa_template" model="mail.template">
+        <field name="name">FA Template Email</field>
+        <field name="email_from">{{ (object.user_id.email_formatted or object.company_id.email_formatted or user.email_formatted) }}</field>        <field name="subject">FA Template</field>
+        <field name="model_id" ref="crm.model_crm_lead"/>
+        <field name="body_html">
+            <![CDATA[
+                <p>Dear <t t-esc="object.full_name.name or 'Customer'"/>,</p>
+                <p>Please find attached the FA.</p>
+                <p>Best regards,<br/>Your Team</p>
+            ]]>
+        </field>
+        <field name="attachment_ids" eval="[(6, 0, [])]"/> <!-- Placeholder -->
+    </record>
+</odoo>

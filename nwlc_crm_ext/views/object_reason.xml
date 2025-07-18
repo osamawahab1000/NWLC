@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    
+        <!-- Define the view -->
+    <record id="object_reason_form_view" model="ir.ui.view">
+        <field name="name">object.reason.form</field>
+        <field name="model">object.reason</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_object_reason_tree" model="ir.ui.view">
+        <field name="name">object.reason.tree</field>
+        <field name="model">object.reason</field>
+        <field name="arch" type="xml">
+            <list >
+                <field name="name" />            
+            </list>
+        </field>
+    </record>
+
+
+    <!-- Define the action -->
+    <record id="object_reason_action" model="ir.actions.act_window">
+        <field name="name">Objection Reason</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">list,form</field>
+        <field name="res_model">object.reason</field>
+        <!-- <field name="view_id" ref="object_reason_form_view"/> -->
+        <field name="help" type="html">
+            <p class= "h_p">
+               
+            </p>
+        </field>
+    </record>
+   
+    <menuitem id="object_reason_menu" 
+    name="Objection Reason" 
+    action="object_reason_action"
+    parent="crm.crm_menu_config"
+    sequence="10"/>
+
+
+
+
+</odoo>

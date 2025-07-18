@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- Form View for CSA General Agreement Wizard -->
+    <record id="view_spanish_csa_rev_wizard_form" model="ir.ui.view">
+        <field name="name">Spanish CSA Rev Wizard Form</field>
+        <field name="model">spanish.csa.agreement</field>
+        <field name="arch" type="xml">
+            <form string="CSA Agreement Wizard">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="email"/>
+                            <field name="phone"/>
+                            <field name="street"/>
+                            <field name="yearly_income"/>
+                            <field name="is_income_verifiable"/>
+                        </group> 
+                        <group>
+                            <field name="no_10"/>
+                            <field name="no_11"/>
+                            <field name="change_fee"/>
+                        </group> 
+                    </group>    
+                </sheet>
+                <footer>
+                    <button string="Print" type="object" name="print_report_spanish" class="btn-primary" />
+                    <button string="Send" type="object" name="send_csa_spanish" class="btn-primary" />
+                    <button string="Cancel" class="btn-secondary" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+
+    <!-- Action to Open CSA General Agreement Wizard -->
+    
+    
+    <record id="action_open_spanish_csa_wizard" model="ir.actions.act_window">
+        <field name="name">Spanish CSA Rev</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">spanish.csa.agreement</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_spanish_csa_rev_wizard_form"/>
+        <field name="target">new</field>
+        <field name="context">{}</field>
+    </record>
+    
+
+
+    <menuitem id="menu_spanish_csa_agreement"
+            name="Spanish CSA Rev Wizard"
+            action="action_open_spanish_csa_wizard"
+            parent="crm.crm_menu_config"
+            sequence="3" />
+    
+</odoo>

@@ -1,0 +1,83 @@
+<odoo>
+    <record id="email_template_Converted_lead_With_Processing_Owner_Name" model="mail.template">
+        <field name="name">Converted lead With Processing Owner Name</field>
+        <field name="email_from">{{ (object.user_id.email_formatted or object.company_id.email_formatted or user.email_formatted) }}</field>        <field name="subject">CSA General Agreement Report</field>
+        <field name="model_id" ref="crm.model_crm_lead"/>
+        <field name="subject">Meet your Loan Concierge</field>
+        <field name="body_html">
+            <![CDATA[
+                <p>Dear <t t-esc="object.full_name.name or 'Customer'"/>,</p>
+                <p>email introducing Processing Owner after file is assigned</p>
+                <p>processing person is <t t-esc="object.source_ids.name"/></p>
+                <p>Best regards,<br/>Your Team</p>
+            ]]>
+        </field>
+
+    </record>
+    <!-- Closed and Won Partner -->
+    <record id="email_template_close_and_won_partner" model="mail.template">
+        <field name="name">Closed and won Partner</field>
+        <field name="email_from">{{ (object.user_id.email_formatted or object.company_id.email_formatted or user.email_formatted) }}</field>        <field name="subject">CSA General Agreement Report</field>
+        <field name="model_id" ref="crm.model_crm_lead"/>
+        <field name="subject">Closed Won Partner</field>
+        <field name="body_html">
+            <![CDATA[
+                <p>Dear <t t-esc="object.full_name.name or 'Customer'"/>,</p>
+                <p>Closed and won Partner</p>
+                <p>Best regards,<br/>Your Team</p>
+            ]]>
+        </field>
+
+    </record>
+    <!-- Closed and won Affiliate  -->
+    <record id="email_template_close_and_won_affiliate" model="mail.template">
+        <field name="name">Closed and Won Affiliate</field>
+        <field name="email_from">{{ (object.user_id.email_formatted or object.company_id.email_formatted or user.email_formatted) }}</field>        <field name="subject">CSA General Agreement Report</field>
+        <field name="model_id" ref="crm.model_crm_lead"/>
+        <field name="subject">Closed Won Affiliate</field>
+        <field name="body_html">
+            <![CDATA[
+                <p>Dear <t t-esc="object.source_ids.name or 'Customer'"/>,</p>
+                <p>Close and Won affiliate</p>
+                <p>Best regards,<br/>Your Team</p>
+            ]]>
+        </field>
+
+    </record>
+
+    <!-- Declined Reason - Declined by All -->
+    <!-- Affiliate -->
+    <record id="email_template_declined_by_all_affiliate" model="mail.template">
+        <field name="name">Declined By All Affiliate</field>
+        <field name="email_from">{{ (object.user_id.email_formatted or object.company_id.email_formatted or user.email_formatted) }}</field>        <field name="subject">CSA General Agreement Report</field>
+        <field name="model_id" ref="crm.model_crm_lead"/>
+        <field name="subject">Declined By ALL (Affiliate)</field>
+        <field name="body_html">
+            <![CDATA[
+                <p>Dear <t t-esc="object.source_ids.name or 'Customer'"/>,</p>
+                <p>Declined By ALL affiliate</p>
+                <p>Best regards,<br/>Your Team</p>
+            ]]>
+        </field>
+
+    </record>
+    <!-- Partner -->
+    <record id="email_template_declined_by_all_partner" model="mail.template">
+        <field name="name">Declined By All Partner</field>
+        <field name="email_from">{{ (object.user_id.email_formatted or object.company_id.email_formatted or user.email_formatted) }}</field>        <field name="subject">CSA General Agreement Report</field>
+        <field name="model_id" ref="crm.model_crm_lead"/>
+        <field name="subject">Declined By ALL (partner)</field>
+        <field name="body_html">
+            <![CDATA[
+                <p>Dear <t t-esc="object.full_name.name or 'Customer'"/>,</p>
+                <p>Declined By ALL Partner</p>
+                <p>Best regards,<br/>Your Team</p>
+            ]]>
+        </field>
+    </record>
+
+
+    <!-- Declined Reason - No contact No response -->
+     
+
+</odoo>

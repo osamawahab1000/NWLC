@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="crm_lead_stage_new_search" model="ir.ui.view">
+        <field name="name">Crm Lead Stage - Search</field>
+        <field name="model">crm.lead.stage</field>
+        <field name="arch" type="xml">
+            <search string="Stage Search">
+                <field name="name"/>
+                <field name="sequence"/>
+                
+            </search>
+        </field>
+    </record>
+
+    <!-- STAGES TREE VIEW + MUTI_EDIT -->
+    <record id="crm_lead_stage_new_tree" model="ir.ui.view">
+        <field name="name">crm.lead.stage.new.tree</field>
+        <field name="model">crm.lead.stage</field>
+        <field name="arch" type="xml">
+            <list string="Stages" multi_edit="1">
+                <field name="sequence" widget="handle"/>
+                <field name="name" readonly="1"/>
+                <!-- <field name="company_id" readonly="1"/> -->
+            </list>
+        </field>
+    </record>
+
+    <record id="crm_stage_new_form" model="ir.ui.view">
+        <field name="name">crm.lead.stage.new.form</field>
+        <field name="model">crm.lead.stage</field>
+        <field name="priority" eval="1"/>
+        <field name="arch" type="xml">
+            <form string="Stage">
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1>
+                            <field name="name" placeholder="e.g. Negotiation"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            
+                            <!-- <field name="company_id"/> -->
+                            <!-- <field name="company_ids" options="{'no_open': True, 'no_create': True}" groups="base.group_multi_company" widget="many2many_tags"/> -->
+                            <field name="is_duplicate_stage"/>
+                            <field name="is_dead_stage"/>
+                            <field name="is_dnc_stage"/>
+
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="crm_stage_new_action" model="ir.actions.act_window">
+        <field name="name">Stages</field>
+        <field name="res_model">crm.lead.stage</field>
+        <field name="view_id" ref="nwlc_crm_ext.crm_lead_stage_new_tree"/>
+        <field name="help" type="html">
+          <p class="o_view_nocontent_smiling_face">
+            Set a new Lead stage in your opportunity pipeline
+          </p>
+          <p>
+            Lead Stages allow salespersons to easily track how a specific Lead
+            is positioned in the Lead cycle.
+          </p>
+        </field>
+    </record>
+    
+    <menuitem id="crm_lead_stage_new_menu" 
+        name="Lead Stages" 
+        action="crm_stage_new_action" 
+        parent="crm.menu_crm_config_lead"
+        sequence="10"
+    />
+</odoo>

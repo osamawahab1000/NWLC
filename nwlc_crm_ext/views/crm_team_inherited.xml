@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+
+    <record id="crm_team_form_inherited" model="ir.ui.view">
+        <field name="name">crm.team.form</field>
+        <field name="model">crm.team</field>
+        <field name="inherit_id" ref="sales_team.crm_team_view_form"/>
+        <field name="arch" type="xml">
+            <!-- <field name="fold" position="after"> -->
+            <!-- <field name="company_id" invisible="1"/> -->
+            <xpath expr="//field[@name='alias_contact']" position="after">
+                <field name="company"/>
+            </xpath>
+            <!-- </field> -->
+        </field>
+    </record>
+
+
+
+
+</odoo>

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+   <template id="ach_form">
+       <t t-call="web.html_container">
+           <t t-foreach="docs" t-as="doc">
+               <t t-call="web.basic_layout">
+                       <div class="page" >
+        <!-- <div class="oe_structure" t-att-style="'background: url(/nwlc_crm_ext/static/description/header_ach_form.png) no-repeat center center; background-size: cover; height: 200px;"/> -->
+        <div class="oe_structure" 
+        t-att-style="'background-image: url(\'/nwlc_crm_ext/static/description/header_ach_form.png\'); 
+                    background-repeat: no-repeat; 
+                    background-position: center-top; 
+                    background-size: cover; 
+                    height: 300px; top:20px;
+                    padding:0;
+                    margin-left:-15px;
+                    margin-right:-15px;
+                    '"/>
+<!-- top: 30px; -->
+                    <!-- position: absolute;  -->
+            <!-- <header t-att-style="'background: url(/nwlc_crm_ext/static/description/header_ach_form.png) no-repeat center center; background-size: cover; height: 200px;'"></header> -->
+
+
+
+            <div style="padding:20px;padding-left:40px;padding-right:40px;background-color:white;text-align: justify;border-radius:8px;margin-top:-140px;margin-left:70px;margin-right:70px">
+                <h4 style="text-align: center;font-weight:bold">
+                    <span style="color:#479891">ONE-TIME</span> ACH AUTHORIZATION FORM
+                </h4>
+
+                    <p>Please sign and complete this form in order to authorize a one-time debit to your account listed
+                        below. By signing this form, you agree that all services have been rendered per the signed contract
+                        giving Nationwide Loan Consultants &amp; Advisors, LLC (“Nationwide”) permission to debit your
+                        account for the amount indicate donor after the indicated date. By signing this form, you also
+                        confirm that you are fully satisfied with the services rendered by Nationwide.This permission is for
+                        a single transaction only and will not provide any additional authorizations, unrelated debits, or
+                        credits to your account. ____________________________________</p>
+                    <br/>
+                    <p>Thank you very much for allowing us to assist you, <span style="color:#479891">Nationwide Loan Consultants &amp; Advisors, LLC</span></p>
+                    <br/>
+                    <h5><b>Account Information:</b></h5>
+                    
+                    <div>
+                    <style>
+                            <!-- /* Style for the circle checkbox */ -->
+                            .circle-checkbox {
+                                appearance: none;
+                                -webkit-appearance: none;
+                                -moz-appearance: none;
+                                width: 20px;
+                                height: 20px;
+                                border: 2px solid #000;
+                                 <!-- /* Black border */ -->
+                                border-radius: 50%; 
+                                <!-- /* Make it a circle */ -->
+                                outline: none;
+                                cursor: pointer;
+                                transition: all 0.3s ease;
+                            }
+
+                            <!-- /* Style when the checkbox is checked */ -->
+                            .circle-checkbox:checked {
+                                background-color: #479891; 
+                                <!-- /* Green fill */ -->
+                                border-color:rgb(0, 0, 0); 
+                                <!-- /* Match the border color */ -->
+                            }
+                        </style>
+                        <p>
+                            <b>Account Type:</b>
+                            <t t-if="doc.account_type == 'checking'">
+                                <input type="checkbox" id="advancecb" class="circle-checkbox" checked="checked"/>
+                            </t>
+                            <t t-else="">
+                                <input type="checkbox" id="advancecb" class="circle-checkbox"/>
+                            </t>
+                            <label for="advancecb">Checking</label>
+                            <span style="display:inline-block; width: 15px;"/>
+                            <t t-if=" doc.account_type == 'savings'">
+                                <input type="checkbox" id="arrearscb" class="circle-checkbox" checked="checked"/>
+                            </t>
+                            <t t-else="">
+                                <input type="checkbox" id="arrearscb" class="circle-checkbox"/>
+                            </t>
+                            <label for="arrearscb">Savings</label>
+                            <span style="display:inline-block; width: 15px;"/>
+                        </p>
+                        <p>
+                            <strong>Customer Name:</strong> <u><span t-esc="doc.full_name.name"/></u>
+                        </p>
+                        <p>
+                            <strong>Amount:</strong> <u>$ <span t-esc="doc.amount"/></u>
+                        </p>
+                        <p>
+                            <strong>Bank Name:</strong> <u><span t-esc="doc.bank_name"/></u>
+                        </p>
+                        <p>
+                            <strong>Bank Routing Number:</strong> <u><span t-esc="doc.bank_routing_number" /></u>
+                        </p>
+                    <!--</div>-->
+                    <!--<div style="padding:10px;border:3px solid #479891;border-radius:10px">-->
+                        <p>
+                            <strong>Bank Account Number:</strong> <u><span t-esc="doc.bank_account_number"/></u>
+                        </p>
+                        <p>
+                            <strong>Date Funds Available:</strong> <u><span t-esc="doc.date_funds_avail" widget="date"/></u>
+                        </p>
+                    </div>
+                    
+                    <br/>
+                    
+                    <p>By typing your name, you agree to the aforementioned terms and conditions making this a binding
+                    signature. You understand that this agreement is bound by electronic signature. Said client never has the
+                    right to cancel this one-time payment. Authorization of this payment constitutes a waiver(subject to any
+                    state or federal statutes or regulations as to such) of any claim, dispute, demand or cause of action regarding
+                    the services rendered by Nationwide. This signature must be that of the individual signing this document
+                    electronically otherwise it constitutes forgery under Chapter .831, Florida Statutes. The individual "signing" 
+                    this document affirms that the facts stated here in are true.</p>
+                    
+                    <br/>
+                    <br/>
+                    
+                    <div class="row">
+                        <div class="col-12">
+                            <p><strong>Signature:</strong> _________________________________
+                            <strong>Date:</strong> _______________________</p>
+                        </div>
+                    </div>
+                    <p>I authorize the above-named business to charge the credit card indicated in this authorization form according to the terms outlined above. This payment authorization is for the goods/services described above, for the amount indicated above only, and is valid for one-time use only. I certify that I am an authorized user of this credit card and that I will not dispute the payment with my credit card company, so long as the transaction corresponds to the terms indicated in this form.</p>
+            </div>
+        </div>
+               
+               </t>
+           </t>
+       </t>
+   </template>
+</odoo>

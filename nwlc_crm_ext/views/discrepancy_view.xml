@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    
+
+
+    <record id="discrepancy_tree_view" model="ir.ui.view">
+        <field name="name">Discrepancy View</field>
+        <field name="model">lead.verification.line</field>
+        <field name="arch" type="xml">
+            <list >
+                <field name="credit_check_date"/>
+                <field name="new_credit_score"/>
+                <field name="need_cr_check"/>
+                <field name="verified"/>
+                <field name="discrepancy"/>
+                <field name="discrepancy_loan_amt"/>
+                <field name="mgr_reviewed"/>
+                <field name="new_fee_collected_date"/>
+                <field name="processor_audit"/>
+                <field name="apps_error"/>
+                <field name="new_amt_collected"/>
+                <field name="discrepancy_reason"/>
+                <field name="discrepancy_status"/>
+                <field name="discrepancy_loan_date"/>
+                <field name="discrepancy_lender"/>
+                <field name="potential_fee_due"/>
+                <field name="added_lender_error"/>
+                <field name="sales_error"/>
+                <field name="to_call"/>
+                <field name="shark_tank"/>
+                <field name="apps_audit"/>
+            </list>
+        </field>
+    </record>
+
+
+
+
+        <!-- Define the view -->
+    <record id="discrepancy_form_view" model="ir.ui.view">
+        <field name="name">Discrepancy View</field>
+        <field name="model">lead.verification.line</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="credit_check_date"/>
+                            <field name="new_credit_score"/>
+                            <field name="need_cr_check"/>
+                            <field name="verified"/>
+                            <field name="discrepancy"/>
+                            <field name="discrepancy_loan_amt"/>
+                            <field name="mgr_reviewed"/>
+                            <field name="new_fee_collected_date"/>
+                            <field name="processor_audit"/>
+                            <field name="apps_error"/>
+                            <field name="new_amt_collected"/>
+                        </group>
+                        <group>
+                            <field name="discrepancy_reason"/>
+                            <field name="discrepancy_status"/>
+                            <field name="discrepancy_loan_date"/>
+                            <field name="discrepancy_lender"/>
+                            <field name="potential_fee_due"/>
+                            <field name="added_lender_error"/>
+                            <field name="sales_error"/>
+                            <field name="to_call"/>
+                            <field name="shark_tank"/>
+                            <field name="apps_audit"/>
+                        </group>
+                       
+                        
+                    </group>
+                </sheet>
+                    <chatter/>
+            </form>
+        </field>
+    </record>
+    
+
+    <!-- Define the action -->
+    <record id="discrepancy_action" model="ir.actions.act_window">
+        <field name="name">Discrepancy View</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">list,form</field>
+        <field name="res_model">lead.verification.line</field>
+        <field name="help" type="html">
+            <p class= "h_p">
+               
+            </p>
+        </field>
+    </record>
+   
+    <menuitem id="discrepancy_menu" 
+    name="Discrepancy View" 
+    action="discrepancy_action" 
+    parent="crm.crm_menu_root"
+
+    sequence="10"/>
+
+
+
+
+</odoo>

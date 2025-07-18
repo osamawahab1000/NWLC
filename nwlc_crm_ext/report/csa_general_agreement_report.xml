@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+   <record id="action_csa_general_agreement_template" model="ir.actions.report">
+       <field name="name">CSA General Agreement</field>
+       <field name="model">crm.lead</field>
+       <field name="report_type">qweb-pdf</field>
+       <field name="report_name">nwlc_crm_ext.csa_general_agreement</field>
+       <field name="report_file">nwlc_crm_ext.csa_general_agreement</field>
+       <field name="print_report_name">'Csa General Agreement - %s' % (object.state_id.name if object.state_id else 'N/A')</field>
+       <field name="binding_model_id" ref="crm.model_crm_lead"/>
+       <field name="binding_type">report</field>
+       <field name="paperformat_id" ref="nwlc_crm_ext.paperformat_csa_general"/>
+   </record>
+   
+   
+   
+   
+   <record id="action_spanish_csa_template" model="ir.actions.report">
+       <field name="name">Spanish CSA Rev</field>
+       <field name="model">crm.lead</field>
+       <field name="report_type">qweb-pdf</field>
+       <field name="report_name">nwlc_crm_ext.spanish_csa_rev</field>
+       <field name="report_file">nwlc_crm_ext.spanish_csa_rev</field>
+       <field name="print_report_name">'Spanish Csa Rev - %s' % (object.state_id.name if object.state_id else 'N/A')</field>
+       <field name="binding_model_id" ref="crm.model_crm_lead"/>
+       <field name="binding_type">report</field>
+       <field name="paperformat_id" ref="nwlc_crm_ext.paperformat_csa_spanish"/>
+   </record>
+   
+   
+   <record id="action_business_general_agreement_template" model="ir.actions.report">
+       <field name="name">Business General Agreement</field>
+       <field name="model">crm.lead</field>
+       <field name="report_type">qweb-pdf</field>
+       <field name="report_name">nwlc_crm_ext.business_general_agreement</field>
+       <field name="report_file">nwlc_crm_ext.business_general_agreement</field>
+       <field name="print_report_name">'Business General Agreement - %s' % (object.state_id.name if object.state_id else 'N/A')</field>
+       <field name="binding_model_id" ref="crm.model_crm_lead"/>
+       <field name="binding_type">report</field>
+       <field name="paperformat_id" ref="nwlc_crm_ext.paperformat_business_general"/>
+   </record>
+
+
+   <record id="action_credit_card_form_template" model="ir.actions.report">
+       <field name="name">Credit Card Form</field>
+       <field name="model">crm.lead</field>
+       <field name="report_type">qweb-pdf</field>
+       <field name="report_name">nwlc_crm_ext.credit_card_form</field>
+       <field name="report_file">nwlc_crm_ext.credit_card_form</field>
+       <field name="print_report_name">'Credit Card Form - %s' % (object.state_id.name if object.state_id else 'N/A')</field>
+       <field name="binding_model_id" ref="crm.model_crm_lead"/>
+       <field name="binding_type">report</field>
+       <field name="paperformat_id" ref="nwlc_crm_ext.paperformat_credit_card"/>
+   </record>
+
+
+   <record id="action_ach_form_template" model="ir.actions.report">
+       <field name="name">ACH Form</field>
+       <field name="model">crm.lead</field>
+       <field name="report_type">qweb-pdf</field>
+       <field name="report_name">nwlc_crm_ext.ach_form</field>
+       <field name="report_file">nwlc_crm_ext.ach_form</field>
+       <field name="print_report_name">'ACH Form - %s' % (object.state_id.name if object.state_id else 'N/A')</field>
+       <field name="binding_model_id" ref="crm.model_crm_lead"/>
+       <field name="binding_type">report</field>
+       <field name="paperformat_id" ref="nwlc_crm_ext.paperformat_credit_card"/>
+   </record>
+   
+   
+   <record id="action_fa_template" model="ir.actions.report">
+       <field name="name">FA Template</field>
+       <field name="model">crm.lead</field>
+       <field name="report_type">qweb-pdf</field>
+       <field name="report_name">nwlc_crm_ext.fa_template</field>
+       <field name="report_file">nwlc_crm_ext.fa_template</field>
+       <field name="print_report_name">'FA Template '</field>
+       <!-- <field name="print_report_name">'FA Template - %s' % (object.state_id.name if object.state_id else 'N/A')</field> -->
+       <field name="binding_model_id" ref="crm.model_crm_lead"/>
+       <field name="binding_type">report</field>
+       <!-- <field name="paperformat_id" ref="nwlc_crm_ext.paperformat_credit_card"/> -->
+   </record>
+
+</odoo>

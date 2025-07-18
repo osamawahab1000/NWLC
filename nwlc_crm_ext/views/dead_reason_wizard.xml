@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_dead_reason_wizard_form" model="ir.ui.view">
+        <field name="name">dead.reason.wizard.form</field>
+        <field name="model">dead.reason.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Set Dead Reason">
+                <sheet>
+                    <group>
+                        <field name="dead_reason_id" />
+                        <field name="object_reason_id" />
+                    </group>
+                </sheet>
+                <footer>
+                    <button string="Apply" type="object" name="apply_dead_reason" class="btn-primary" />
+                    <button string="Cancel" class="btn-secondary" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_dead_reason_wizard" model="ir.actions.act_window">
+        <field name="name">Set Dead Reason</field>
+        <field name="res_model">dead.reason.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="context">
+            {'default_lead_id': active_id}
+        </field>
+    </record>
+
+    <!-- <menuitem id="menu_csageneral_agreement"
+            name="Dead Reason Wizard"
+            action="action_dead_reason_wizard"
+            parent="crm.crm_menu_config"
+            sequence="4" /> -->
+
+
+</odoo>

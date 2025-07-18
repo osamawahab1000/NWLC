@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- Form View for ACH Form Wizard -->
+    <record id="view_ach_wizard_form" model="ir.ui.view">
+        <field name="name">ACH Wizard Form</field>
+        <field name="model">ach.form</field>
+        <field name="arch" type="xml">
+            <form string="ACH Form Wizard">
+                <sheet>
+                    <group>
+                        <!-- <group> -->
+                            <field name="account_type"/>
+                            <field name="full_name"/>
+                            <field name="amount" />
+                            <field name="bank_name"/>
+                            <field name="bank_routing_number"/>
+                        <!-- </group> 
+                        <group> -->
+                            <field name="bank_account_number"/>
+                            <field name="date_funds_avail" widget="date"/>
+                        <!-- </group>  -->
+                    </group>    
+                </sheet>
+                <footer>
+                    <button string="Print" type="object" name="print_ach_form" class="btn-primary" />
+                    <button string="Send" type="object" name="send_ach_form" class="btn-primary" />
+                    <button string="Cancel" class="btn-secondary" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+
+    <!-- Action to Open ACH Form Wizard -->
+    <record id="action_open_ach_form_wizard" model="ir.actions.act_window">
+        <field name="name">ACH Form Form</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">ach.form</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_ach_wizard_form"/>
+        <field name="target">new</field>
+        <field name="context">{}</field>
+    </record>
+    
+
+    
+    <menuitem id="menu_ach_form"
+            name="ACH Form Wizard"
+            action="action_open_ach_form_wizard"
+            parent="crm.crm_menu_config"
+            sequence="6" />
+
+   
+    
+</odoo>

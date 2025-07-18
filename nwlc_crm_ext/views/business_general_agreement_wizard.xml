@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- Form View for Business General Agreement Wizard -->
+    <record id="view_business_general_agreement_wizard_form" model="ir.ui.view">
+        <field name="name">Business General Agreement Wizard Form</field>
+        <field name="model">business.general.agreement</field>
+        <field name="arch" type="xml">
+            <form string="Business General Agreement Wizard">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="email"/>
+                            <field name="phone"/>
+                            <!-- <field name="street"/>
+                            <field name="yearly_income"/>
+                            <field name="is_income_verifiable"/> -->
+                        </group> 
+                        <!-- <group>
+                            <field name="no_10"/>
+                            <field name="no_11"/>
+                            <field name="change_fee"/>
+                        </group>  -->
+                    </group>    
+                </sheet>
+                <footer>
+                    <button string="Print" type="object" name="print_report_business" class="btn-primary" />
+                    <button string="Send" type="object" name="send_business_agreement" class="btn-primary" />
+                    <button string="Cancel" class="btn-secondary" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+
+    <!-- Action to Open Business General Agreement Wizard -->
+    
+    
+    <record id="action_open_business_general_agreement_wizard" model="ir.actions.act_window">
+        <field name="name">Business General Agreement</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">business.general.agreement</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_business_general_agreement_wizard_form"/>
+        <field name="target">new</field>
+        <field name="context">{}</field>
+    </record>
+    
+
+
+    <menuitem id="menu_business_general_agreement"
+            name="Business General Agreement Wizard"
+            action="action_open_business_general_agreement_wizard"
+            parent="crm.crm_menu_config"
+            sequence="3" />
+    
+</odoo>

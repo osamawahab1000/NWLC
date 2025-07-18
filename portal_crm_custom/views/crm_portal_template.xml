@@ -1,0 +1,1103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <template id="portal_my_home_crm" name="Show Leads" customize_show="True"
+        inherit_id="portal.portal_my_home" priority="20">
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="before">
+            <t t-set="portal_client_category_enable" t-value="True" />
+            <t t-set="portal_alert_category_enable" t-value="True" />
+        </xpath>
+        <div id="portal_client_category" position="inside">
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="icon" t-value="'/sale/static/src/img/bag.svg'" />
+                <t t-set="title">Leads</t>
+                <t t-set="url" t-value="'/my/crm/lead'" />
+                <t t-set="text">Follow, view your leads</t>
+                <t t-set="placeholder_count" t-value="'crm_lead_count'" />
+            </t>
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="icon" t-value="'/sale/static/src/img/bag.svg'" />
+                <t t-set="title">Opportunities</t>
+                <t t-set="url" t-value="'/my/crm/opportunity'" />
+                <t t-set="text">Follow, view your Opportunities</t>
+                <t t-set="placeholder_count" t-value="'crm_lead_count'" />
+            </t>
+        </div>
+    </template>
+
+    <template id="portal_my_home_menu_crm" name="Portal layout : CRM menu entries"
+        inherit_id="portal.portal_breadcrumbs" priority="20">
+        <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
+
+            <li t-attf-class="breadcrumb-item #{'active ' if not leads else ''}">
+                <a t-if="leads and type == 'lead'" t-attf-href="/my/crm/lead?{{ keep_query() }}">Leads</a>
+                <t t-if="leads and type == 'opportunity'"  t-attf-href="/my/crm/lead?{{ keep_query() }}">Opportunities</t>
+            </li>
+        </xpath>
+    </template>
+
+
+    <template id="portal_my_crm_lead" name="My Leads">
+        <t t-call="portal.portal_layout">
+            <t t-set="breadcrumbs_searchbar" t-value="True" />
+            <t t-call="portal.portal_searchbar">
+                <t t-set="title">Leads</t>
+            </t>
+            <t t-if="leads">
+                <t t-call="portal.portal_table">
+                    <thead>
+                        <tr class="active">
+                            <th>Lead</th>
+                            <th>Contact Name</th>
+                            <th>Email</th>
+                            <th>Sales Person</th>
+                            <th>Activities</th>
+                            <th>Expected Revenue</th>
+                            <th>Stage</th>
+
+                        </tr>
+                    </thead>
+                    <t t-foreach="leads" t-as="lead">
+                        <tr>
+                            <td>
+                                <a t-attf-href="/my/crm/lead/#{lead.id}?{{ keep_query() }}">
+                                    <t t-out="lead.name" />
+                                </a>
+                            </td>
+                            <td>
+                                <span t-field="lead.contact_name" />
+                            </td>
+                            <td>
+                                <span t-field="lead.email_from" />
+                            </td>
+                            <td>
+                                <span t-field="lead.user_id.name" />
+                            </td>
+                            <td style="white-space: collapse;overflow: auto;">
+                                <t t-foreach="lead.activity_ids" t-as="value">
+
+                                    <span class="badge rounded-pill text-bg-secondary"
+                                        t-attf-style="#{'background: #38aa44 !important;font-size: inherit;' if value.date_deadline &gt; datetime.date.today() else 'background: #aa3838 !important;font-size: inherit;'}"
+                                        t-esc="str(value.date_deadline.day)+'-'+str(value.date_deadline.month)+'-'+str(value.date_deadline.year) + ' || ' + value.activity_type_id.name + ' -->' + ' ' +value.user_id.name" />
+                                </t>
+                            </td>
+
+                            <td>
+                                <span t-field="lead.expected_revenue" />
+                            </td>
+                            <td>
+                                <t t-if="lead.lead_stage_id">
+                                    <span t-field="lead.lead_stage_id.name" />
+                                </t>
+                                <t t-else="">
+                                    <span t-field="lead.stage_id.name" />
+                                </t>
+                                <!-- <span t-field="lead.stage_id.name" /> -->
+                            </td>
+                        </tr>
+                    </t>
+                </t>
+            </t>
+            <t t-else="">
+                <p>There are currently no Leads for your account.</p>
+            </t>
+        </t>
+    </template>
+
+
+    <template id="lead_portal_template" name="Lead Form Portal Template"
+        inherit_id="portal.portal_sidebar"
+        primary="True">
+        <xpath expr="//div[hasclass('o_portal_sidebar')]" position="inside">
+            <t t-set="lead" t-value="lead" />
+            <div class="row o_portal_sale_sidebar">
+                <!-- Sidebar -->
+                <t t-call="portal.portal_record_sidebar">
+                    <t t-set="classes" t-value="'col-lg-auto d-print-none'" />
+
+                    <t t-set="title">
+
+                    </t>
+                    <t t-set="entries">
+                        <ul class="list-group list-group-flush flex-wrap flex-row flex-lg-column">
+                            <li t-if="lead.user_id" class="list-group-item flex-grow-1">
+                                <div class="small mb-1">
+                                    <strong class="text-muted">Responsible</strong>
+                                </div>
+                                <div class="row flex-nowrap">
+
+                                    <div class="col ps-0" style="min-width: 150px">
+                                        <span t-field="lead.user_id"
+                                            t-options='{"widget": "contact", "fields": ["name", "phone"], "no_marker": True}' />
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </t>
+                </t>
+
+                <!-- Page content -->
+                <div id="leads_content" class="col-12 col-lg justify-content-end">
+                    <!-- main content -->
+                    <div t-attf-class="card #{'pb-5' if report_type == 'html' else ''}"
+                        id="portal_leads_content">
+                        <div t-call="portal_crm_custom.crm_leads_portal_content" />
+                    </div>
+
+
+                    <!-- chatter -->
+                    <hr />
+                    <t t-if="not request.env.user.affiliate_id">
+                        <div id="crm_leads_communication" >
+                            <div class="row">
+                                <div col="8">
+                                    <h4>Communication history</h4>
+                                </div>
+                                <div col="4" style="text-align: end;">
+                                    <button
+                                        class="btn btn-primary"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#ScheduleActivity">
+                                        Schedule Activity
+                                    </button>
+                                </div>
+                            </div>
+                            <t t-call="portal.message_thread">
+                                <t t-set="object" t-value="lead" />
+                                <t t-set="token" t-value="lead.access_token" />
+                            </t>
+                            <div class="modal fade" id="ScheduleActivity" tabindex="-1" role="dialog"
+                                aria-labelledby="Schedule Activity" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLongTitle">Schedule
+                                                Activity</h5>
+                                            <button type="button" class="close" data-bs-dismiss="modal"
+                                                aria-label="Close">
+                                                <span aria-hidden="true">&amp;times</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body table_wrapper o_send_by_email"
+                                            style="padding: 1.5rem;">
+                                            <form action="/crm/schedule/activity" method="post"
+                                                role="form" enctype="multipart/form-data">
+                                                <div class="mb-2">
+                                                    <strong>Activity Type:</strong>
+                                                    <select required="1" class="form-control"
+                                                        width="10px;" id="activity_type_id"
+                                                        name="activity_type_id"
+                                                        placeholder="Select Type">
+                                                        <t t-foreach="activity_type_ids" t-as="cus">
+                                                            <option t-att-value="cus.id">
+                                                                <t t-esc="cus.name" />
+                                                            </option>
+                                                        </t>
+                                                    </select>
+                                                </div>
+                                                <div class="mb-2">
+                                                    <strong>Assign To:</strong>
+                                                    <select required="1" class="form-control"
+                                                        width="10px;" id="assign_to" name="assign_to"
+                                                        placeholder="Select User">
+                                                        <t t-foreach="users" t-as="cus">
+                                                            <option t-att-value="cus.id">
+                                                                <t t-esc="cus.name" />
+                                                            </option>
+                                                        </t>
+                                                    </select>
+                                                </div>
+                                                <div class="mb-2">
+                                                    <strong>Due Date:</strong>
+                                                    <input required="1" type="text"
+                                                        data-widget="datetime-picker"
+                                                        data-widget-type="date" id="due_date"
+                                                        name="due_date"
+                                                        class="datetimepicker-input form-control due_date" />
+                                                </div>
+                                                <div class="mb-2">
+                                                    <strong>Summary:</strong>
+                                                    <input required="1" type="text" class="form-control"
+                                                        id="'summary" name="summary" />
+                                                </div>
+                                                <div class="mb-2 request_text_editor"
+                                                    style="display:none;">
+                                                    <div id="request-body-text-editor">
+                                                        <div class="editor-control">
+                                                            <button class="btn btn-success btn-save">
+                                                                Save</button>
+                                                            <button
+                                                                class="btn btn-danger btn-cancel pull-right">
+                                                                Cancel</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="mb-2">
+                                                    <textarea rows="6" cols="50"
+                                                        id="request-body-text-editor-box"
+                                                        name="request_body_text_editor_box"></textarea>
+                                                </div>
+
+
+                                                <input type="hidden" name="csrf_token"
+                                                    t-att-value="request.csrf_token()" />
+                                                <input type="hidden" id="portal_user_id"
+                                                    class="form-control" name="portal_user_id"
+                                                    t-att-value="request.env.user.id" />
+                                                <input type="hidden" id="lead_id" class="form-control"
+                                                    name="lead_id" t-att-value="lead.id" />
+
+
+                                                <footer class="modal-footer">
+                                                    <button type="submit" class="btn btn-primary">
+                                                        Schedule</button>
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">Discard</button>
+                                                </footer>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </t>
+                </div>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="crm_leads_portal_content" name="Picking Portal Content">
+        <head>
+            <style>
+
+                #crumbs {
+                text-align: center;
+                }
+
+                #crumbs ul {
+                list-style: none;
+                display: inline-table;
+                }
+
+                #crumbs ul li {
+                display: inline;
+                }
+
+                #crumbs ul li a {
+                display: block;
+                float: left;
+                height: 40px;
+                background: #bfb9f5;
+                text-align: center;
+                padding: 5px 10px 0 20px;
+                position: relative;
+                margin: 0 10px 0 0;
+                font-size: 20px;
+                text-decoration: none;
+                color: #fff;
+                }
+
+                #crumbs ul li a:after {
+                content: "";
+                border-top: 20px solid transparent;
+                border-bottom: 20px solid transparent;
+                border-left: 20px solid #bfb9f5;
+                position: absolute;
+                right: -20px;
+                top: 0;
+                z-index: 1;
+                }
+
+                #crumbs ul li a:before {
+                content: "";
+                border-top: 20px solid transparent;
+                border-bottom: 20px solid transparent;
+                border-left: 20px solid #d4f2ff;
+                position: absolute;
+                left: 0;
+                top: 0;
+                }
+
+                #crumbs ul li:first-child a {
+                border-top-left-radius: 10px;
+                border-bottom-left-radius: 10px;
+                }
+
+                #crumbs ul li:first-child a:before {
+                display: none;
+                }
+
+                #crumbs ul li:last-child a {
+                padding-right: 80px;
+                border-top-right-radius: 10px;
+                border-bottom-right-radius: 10px;
+                }
+
+                #crumbs ul li:last-child a:after {
+                display: none;
+                }
+
+                #crumbs ul li a:hover {
+                background: #229b04;
+                }
+
+                #crumbs ul li a:hover:after {
+                border-left-color: #229b04;
+                }
+
+
+                .ribbon-2 {
+                --f: 2px; /* control the folded part*/
+                --r: 15px; /* control the ribbon shape */
+                --t: 10px; /* the top offset */
+
+                position: absolute;
+                inset: var(--t) calc(-1*var(--f)) auto auto;
+                padding: 0 15px var(--f) calc(15px + var(--r));
+                clip-path:
+                polygon(0 0,100% 0,100% calc(100% - var(--f)),calc(100% - var(--f)) 100%,
+                calc(100% - var(--f)) calc(100% - var(--f)),0 calc(100% - var(--f)),
+                var(--r) calc(50% - var(--f)/2));
+                background: #BD1550;
+                box-shadow: 0 calc(-1*var(--f)) 0 inset #0005;
+                }
+
+
+                .ribbon-3 {
+                --f: 0px; /* control the folded part*/
+                --r: 0px; /* control the ribbon shape */
+                --t: 15px; /* the top offset */
+
+                position: absolute;
+                inset: var(--t) calc(-1*var(--f)) auto auto;
+                padding: 0 25px var(--f) calc(28px + var(--r));
+                clip-path:
+                polygon(0 0,100% 0,100% calc(100% - var(--f)),calc(100% - var(--f)) 100%,
+                calc(100% - var(--f)) calc(100% - var(--f)),0 calc(100% - var(--f)),
+                var(--r) calc(50% - var(--f)/2));
+                background: #93B8FF;
+                box-shadow: 0 calc(-1*var(--f)) 0 inset #0005;
+                }
+
+
+            </style>
+            <!-- <script src="/portal_crm_custom/static/src/js/jquery.min.js"></script> -->
+
+        </head>
+
+        <form t-att-data-token="request.csrf_token()" id="update_crm_portal_form"
+            action="/update/portal/crm/record" method="post" role="form"
+            enctype="multipart/form-data">
+            <input form="update_crm_portal_form" type="hidden" name="csrf_token"
+                t-att-value="request.csrf_token()" />
+            <input type="hidden" id="lead_id" name="lead_id" t-att-value="lead.id" />
+        </form>
+        <div id="introduction"
+            t-attf-class="pb-2 pt-3 #{'card-header bg-white' if report_type == 'html' else ''}">
+
+
+            <div class="crm_stages_crumbs row" t-att-id="lead.id">
+                <div class="col-lg-4">
+
+                </div>
+
+                <div class="col-lg-8" style="text-align-last: right;" t-if="not lead.active">
+                    <div class="ribbon-2" style="color:white;font-weight: bold;">Lost </div>
+                </div>
+                <div id="crumbs" class="col-lg-8" style="text-align-last: right;" t-if="lead.active">
+                    <div class="ribbon-3" style="color:white;font-weight: bold;">
+                        <t t-if="lead.lead_stage_id">
+                            <t t-esc="lead.lead_stage_id.name" />
+                        </t>
+                        <t t-else="">
+                            <t t-esc="lead.stage_id.name" />
+                        </t>
+                    </div>
+                </div>
+
+
+                <div class="modal fade" id="ButtonLostModel" tabindex="-1" role="dialog"
+                    aria-labelledby="Button Lost Model" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">Mark Lost</h5>
+                                <button type="button" class="close" data-bs-dismiss="modal"
+                                    aria-label="Close">
+                                    <span aria-hidden="true">&amp;times</span>
+                                </button>
+                            </div>
+                            <div class="modal-body table_wrapper" style="padding: 1.5rem;">
+                                <form action="/crm/button/lost" method="post" role="form"
+                                    enctype="multipart/form-data">
+                                    <div class="mb-2">
+                                        <strong>Lost Reason:</strong>
+                                        <select id="lost_reason_id" name="lost_reason_id"
+                                            class="form-select">
+                                            <option value="">Lost Reasons...</option>
+                                            <t t-foreach="lost_reasons" t-as="lost">
+                                                <option t-att-value="lost.id">
+                                                    <t t-esc="lost.name" />
+                                                </option>
+                                            </t>
+                                        </select>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="col-form-label" for="activity_summary">Closing
+                                            Note:</label>
+                                        <textarea rows="6" name="lost_feedback" id="lost_feedback"
+                                            class="form-control"></textarea>
+                                    </div>
+
+
+                                    <input type="hidden" name="csrf_token"
+                                        t-att-value="request.csrf_token()" />
+                                    <input type="hidden" id="portal_user_id" class="form-control"
+                                        name="portal_user_id" t-att-value="request.env.user.id" />
+                                    <input type="hidden" id="lead_id" class="form-control"
+                                        name="lead_id" t-att-value="lead.id" />
+
+
+                                    <footer class="modal-footer">
+                                        <button type="submit" class="btn btn-primary">Mark as Lost</button>
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Cancel</button>
+                                    </footer>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+        </div>
+        <!-- Intro -->
+
+        <div id="introduction"
+            t-attf-class="pb-2 pt-3 #{'card-header bg-white' if report_type == 'html' else ''}">
+            <div class="row">
+                <h2 class="my-0 col-8">
+                    <div t-out="lead.name" class="non-editable" />
+                </h2>
+                <div style="text-align-last: right;" class="col-4">
+                </div>
+            </div>
+
+
+        </div>
+
+
+        <div t-attf-class="#{'card-body' if report_type == 'html' else ''}">
+            <!-- Informations -->
+            <div id="informations" style="font-size:15px">
+                <div class="row" id="information" name="affiliate" t-if="request.env.user.affiliate_id">
+                    <div class="col-lg-6">
+                        <t t-if="request.env.user.affiliate_id">
+                        <strong>
+                            <t>
+                                Source:
+                            </t>
+                        </strong>
+                        <span  t-field="request.env.user.affiliate_id" class="non-editable" />
+                        </t>
+
+                        <br />
+                        <br />
+                        <t t-if="request.env.user.affiliate_id">
+                        <strong>
+                            <t>
+                                Stage Reason:
+                            </t>
+                        </strong>
+                        <span  t-field="lead.stage_reason" class="non-editable" />
+                        </t>
+
+                        <br />
+                        <br />
+                        <strong>
+                            <t>
+                                Lead Name:
+                            </t>
+                        </strong>
+                        <span t-field="lead.full_name.name" class="non-editable" />
+                        <br />
+                        <br />
+                        <strong>
+                            <t>
+                                Owner:
+                            </t>
+                        </strong>
+                        <span class="non-editable" t-field="lead.user_id.name" />
+                        <br />
+                        <br />
+                        <strong>
+                            <t>
+                                Live Transfer:
+                            </t>
+                        </strong>
+                        <span class="non-editable" t-field="lead.live_transfer" />
+                        <br />
+                        <br />
+                        <strong>
+                            <t>
+                                Street:
+                            </t>
+                        </strong>
+                        <span class="non-editable" t-field="lead.street" />
+                        <br />
+                        <br />
+                        <strong>
+                            <t>
+                                City:
+                            </t>
+                        </strong>
+                        <span class="non-editable" t-field="lead.city" />
+                        <br />
+                        <br />
+                        <strong>
+                            <t>
+                                State:
+                            </t>
+                        </strong>
+                        <span class="non-editable" t-field="lead.state" />
+                        <br />
+                        <br />
+                        <strong>
+                            <t>
+                                Postal Code:
+                            </t>
+                        </strong>
+                        <span class="non-editable" t-field="lead.zip" />
+                        <br />
+                        <br />
+                        <strong>
+                            <t>
+                                Credit Score:
+                            </t>
+                        </strong>
+                        <span class="non-editable" t-field="lead.credit_score" />
+                        <br />
+                        <br />
+                        <strong>
+                            <t>
+                                Phone:
+                            </t>
+                        </strong>
+                        <span class="non-editable" t-field="lead.phone" />
+                        <br />
+                        <br />
+                        <strong>
+                            <t>
+                                Mobile:
+                            </t>
+                        </strong>
+                        <span class="non-editable" t-field="lead.mobile" />
+                        <br />
+                        <br />
+                        <strong>
+                            <t>
+                                Email:
+                            </t>
+                        </strong>
+                        <span class="non-editable" t-field="lead.email" />
+                        <br />
+                        <br />
+                        <strong>
+                            <t>
+                                Transferred Out Reason:
+                            </t>
+                        </strong>
+                        <span class="non-editable" t-field="lead.transferred_out_reason_id.name" />
+                        <br />
+                        <br />
+                        <strong>
+                            <t>
+                                Dead Reason:
+                            </t>
+                        </strong>
+                        <span class="non-editable" t-field="lead.dead_reason_id.name" />
+                    </div>
+                    <div class="col-lg-6">
+                        <strong>
+                            <t>
+                                Affiliate Name:
+                            </t>
+                        </strong>
+                        <span class="non-editable" t-field="lead.affiliate_name.name" />
+                        <br />
+                        <br />
+                        <strong>
+                            <t>
+                                Affiliate Lead ID:
+                            </t>
+                        </strong>
+                        <span class="non-editable" t-field="lead.affiliate_id" />
+                        <br />
+                        <br />
+                        <strong>
+                            <t>
+                                Affiliate Sale Rep:
+                            </t>
+                        </strong>
+                        <span class="non-editable" t-field="lead.affiliate_sales_rep" />
+                        <br />
+                        <br />
+                        <strong>
+                            <t>
+                                Spanish Speaking:
+                            </t>
+                        </strong>
+                        <span class="non-editable" t-field="lead.spanish_speaking" />
+                        <br />
+                        <br />
+                        <strong>
+                            <t>
+                                Country:
+                            </t>
+                        </strong>
+                        <span class="non-editable" t-field="lead.country_id.name" />
+                        <br />
+                        <br />
+                        <strong>
+                            <t>
+                                Requested Loan Amount:
+                            </t>
+                        </strong>
+                        <span class="non-editable" t-field="lead.requested_loan_amount" />
+                        <br />
+                        <br />
+                        <strong>
+                            <t>
+                                Application Type:
+                            </t>
+                        </strong>
+                        <span class="non-editable" t-field="lead.application_type" />
+                        <br />
+                        <br />
+                        <strong>
+                            <t>
+                                Loan Type:
+                            </t>
+                        </strong>
+                        <span class="non-editable" t-field="lead.loan_type" />
+                        <br />
+                        <br />
+                        <strong>
+                            <t>
+                                Client Fee:
+                            </t>
+                        </strong>
+                        <span class="non-editable" t-field="lead.client_fee" />
+                        <br />
+                        <br />
+                        <strong>
+                            <t>
+                                Employed:
+                            </t>
+                        </strong>
+                        <span class="non-editable" t-field="lead.employed" />
+                        <br />
+                        <br />
+                        <strong>
+                            <t>
+                                CC Debt:
+                            </t>
+                        </strong>
+                        <span class="non-editable" t-field="lead.cc_debt" />
+                        <br />
+                        <br />
+                        <strong>
+                            <t>
+                                Primary Gross Annual Income:
+                            </t>
+                        </strong>
+                        <span class="non-editable" t-field="lead.primary_gross_annual_income" />
+                    </div>
+                </div>
+                <div class="row" id="information" name="customer" t-if="not request.env.user.affiliate_id">
+                    <div class="col-lg-6">
+                        <strong>
+                            <t>
+                                Lead Name:
+                            </t>
+                        </strong>
+                        <span t-field="lead.full_name.name" class="non-editable" />
+                        <br />
+                        <br />
+                        <strong>
+                            <t>
+                                Spanish Speaking:
+                            </t>
+                        </strong>
+                        <span class="non-editable" t-field="lead.spanish_speaking" />
+                        <br />
+                        <br />
+                        <strong>
+                            <t>
+                                City:
+                            </t>
+                        </strong>
+                        <span class="non-editable" t-field="lead.city" />
+                        <br />
+                        <br />
+                        <strong>
+                            <t>
+                                State:
+                            </t>
+                        </strong>
+                        <span class="non-editable" t-field="lead.state" />
+                        <br />
+                        <br />
+                        <strong>
+                            <t>
+                                Postal Code:
+                            </t>
+                        </strong>
+                        <span class="non-editable" t-field="lead.zip" />
+                        <br />
+                        <br />
+                        <strong>
+                            <t>
+                                Street:
+                            </t>
+                        </strong>
+                        <span class="non-editable" t-field="lead.street" />
+                        <br />
+                        <br />
+                        <strong>
+                            <t>
+                                Country:
+                            </t>
+                        </strong>
+                        <span class="non-editable" t-field="lead.country_id.name" />
+                        <br />
+                        <br />
+                        <strong>
+                            <t>
+                                Requested Loan Amount:
+                            </t>
+                        </strong>
+                        <span class="non-editable" t-field="lead.requested_loan_amount" />
+                        <br />
+                        <br />
+                        <strong>
+                            <t>
+                                Application Type:
+                            </t>
+                        </strong>
+                        <span class="non-editable" t-field="lead.application_type" />
+                        <br />
+                        <br />
+                        <strong>
+                            <t>
+                                Loan Type:
+                            </t>
+                        </strong>
+                        <span class="non-editable" t-field="lead.loan_type" />
+                        <br />
+                        <br />
+                        <strong>
+                            <t>
+                                Credit Score:
+                            </t>
+                        </strong>
+                        <span class="non-editable" t-field="lead.credit_score" />
+                        <br />
+                        <br />
+                        <strong>
+                            <t>
+                                Phone:
+                            </t>
+                        </strong>
+                        <span class="non-editable" t-field="lead.phone" />
+                        <!-- <br />
+                        <br />
+                        <strong>
+                            <t>
+                                Mobile:
+                            </t>
+                        </strong>
+                        <span class="non-editable" t-field="lead.mobile" />
+                        <br />
+                        <br />
+                        <strong>
+                            <t>
+                                Email:
+                            </t>
+                        </strong>
+                        <span class="non-editable" t-field="lead.email" />
+                        <br />
+                        <br />
+                        <strong>
+                            <t>
+                                Transferred Out Reason:
+                            </t>
+                        </strong>
+                        <span class="non-editable" t-field="lead.transferred_out_reason_id.name" />
+                        <br />
+                        <br />
+                        <strong>
+                            <t>
+                                Dead Reason:
+                            </t>
+                        </strong>
+                        <span class="non-editable" t-field="lead.dead_reason_id.name" /> -->
+                    </div>
+                    <div class="col-lg-6">
+                        <strong>
+                            <t>
+                                Employed:
+                            </t>
+                        </strong>
+                        <span class="non-editable" t-field="lead.employed" />
+                        <br />
+                        <br />
+                        <strong>
+                            <t>
+                                Mobile:
+                            </t>
+                        </strong>
+                        <span class="non-editable" t-field="lead.mobile" />
+                        <br></br>
+                        <br></br>
+                         <strong>
+                            <t>
+                                CC Debt:
+                            </t>
+                        </strong>
+                        <span class="non-editable" t-field="lead.cc_debt" />
+                        <br></br>
+                        <br></br>
+                         <strong>
+                            <t>
+                                Email:
+                            </t>
+                        </strong>
+                        <span class="non-editable" t-field="lead.email" />
+                        <br />
+                        <br />
+                        <strong>
+                            <t>
+                                Primary Gross Annual Income:
+                            </t>
+                        </strong>
+                        <br />
+                        <br />
+                        <!-- <strong>
+                            <t>
+                                Affiliate Lead ID:
+                            </t>
+                        </strong>
+                        <span class="non-editable" t-field="lead.affiliate_id" /> -->
+                        <br />
+                        <br />
+                        <strong>
+                            <t>
+                                Employed:
+                            </t>
+                        </strong>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- <section id="payment_info" class="mt-5">
+                <h4 class="">Credit Card And Payment Details</h4>
+                <hr class="mt-0 mb-1" />
+                <div class="row" id="information">
+                    <div class="col-lg-12">
+                        <strong>
+                            <t>
+                                Credit Card and Payment Details:
+                            </t>
+                        </strong>
+                        <span class="non-editable" t-field="lead.credit_card_and_payment_details" />
+                    </div>
+                </div>
+            </section> -->
+            <section id="business_info" class="mt-5">
+                <h4 class="">Business Information</h4>
+                <hr class="mt-0 mb-1" />
+                <div class="row" id="information">
+                    <div class="col-lg-12">
+                        <strong>
+                            <t>
+                                Business Name:
+                            </t>
+                        </strong>
+                        <span class="non-editable" t-field="lead.business_name" />
+                        <br></br>
+                        <br></br>
+                        <strong>
+                            <t>
+                                Business Street:
+                            </t>
+                        </strong>
+                        <span class="non-editable" t-field="lead.business_street" />
+                        <br></br>
+                        <br></br>
+                        <strong>
+                            <t>
+                                Business State:
+                            </t>
+                        </strong>
+                        <span class="non-editable" t-field="lead.business_state" />
+                    </div>
+                    <!-- <div class="col-lg-6">
+                        <strong>
+                            <t>
+                                Business Name:
+                            </t>
+                        </strong>
+                        <span class="non-editable" t-field="lead.business_name" />
+                        <br></br>
+                        <br></br>
+                        <strong>
+                            <t>
+                                Business Street:
+                            </t>
+                        </strong>
+                        <span class="non-editable" t-field="lead.business_street" />
+                    </div> -->
+                </div>
+            </section>
+            <section id="lender_info" class="mt-5">
+                <h4 class="">Lenders Informatoin</h4>
+                <hr class="mt-0 mb-1" />
+                <div class="row" id="information">
+                    <div >
+                        <table style="font-size:12px">
+                            <thead>
+                                <tr class="active">
+                                    <th>Lender</th>
+                                    <th>Status</th>
+                                    <th>Pre-Approved Amount</th>
+                                    <th>Approved Amount</th>
+                                    <th>Max Amount</th>
+                                    <th>Loan Term</th>
+                                    <th>Interest/Buy Rate</th>
+                                    <th>Payment</th>
+                                </tr>
+                            </thead>
+                            <t t-foreach="lead.lender_line_id" t-as="line">
+                                <tr>
+                                    <td>
+                                        <span t-field="line.lender_id" />
+                                    </td>
+                                    <td>
+                                        <span t-esc="line.status" />
+                                    </td>
+                                    <td>
+                                        <span t-esc="line.pre_approved_amount" />
+                                    </td>
+                                    <td>
+                                        <span t-esc="line.approved_amount" />
+                                    </td>
+                                    <td>
+                                        <span t-esc="line.max_amount" />
+                                    </td>
+                                    <td>
+                                        <span t-esc="line.loan_term" />
+                                    </td>
+                                    <td>
+                                        <span t-esc="line.interest_buy_rate" />
+                                    </td>
+                                    <td>
+                                        <span t-esc="line.payment" />
+                                    </td>
+                                </tr>
+                            </t>
+                        </table>
+                    </div>
+                </div>
+            </section>
+            <section id="creditor_info" class="mt-5">
+
+                <h4 class="">Creditor Informatoin</h4>
+                <hr class="mt-0 mb-1" />
+                <div class="row" id="information">
+                    <div >
+                        <table style="font-size:12px">
+                            <thead>
+                                <tr class="active">
+                                    <th colspan="3">Creditor</th>
+                                    <th colspan="3">Portfolio Type</th>
+                                    <th>Type</th>
+                                    <th colspan="3">Account Number</th>
+                                    <th colspan="3">Date Reported</th>
+                                    <th colspan="2">Date Opened</th>
+                                    <th colspan="2">Credit Limit</th>
+                                    <th colspan="2">Balance</th>
+                                    <th>Term</th>
+                                    <th colspan="3">Monthly Payment</th>
+                                    <th>Status</th>
+                                    <th colspan="3">Customer Number</th>
+                                </tr>
+                            </thead>
+                            <t t-foreach="lead.line_id" t-as="line">
+                                <tr>
+
+                                    <td colspan="3">
+                                        <span t-field="line.name" />
+                                    </td>
+                                    <td colspan="3">
+                                        <span t-field="line.portfolio_type" />
+                                    </td>
+                                    <td>
+                                        <span t-field="line.type" />
+                                    </td>
+                                    <td colspan="3">
+                                        <span t-field="line.account_number" />
+                                    </td>
+                                    <td colspan="3">
+                                        <span t-field="line.date_reported" />
+                                    </td>
+                                    <td colspan="2">
+                                        <span t-field="line.effective_date" />
+                                    </td>
+                                    <td colspan="2">
+                                        <span t-field="line.credit_limit" />
+                                    </td>
+                                    <td colspan="2">
+                                        <span t-field="line.current_balance" />
+                                    </td>
+                                    <td>
+                                        <span t-field="line.term" />
+                                    </td>
+                                    <td colspan="3">
+                                        <span t-field="line.monthly_payment" />
+                                    </td>
+                                    <td>
+                                        <span t-field="line.status" />
+                                    </td>
+                                    <td colspan="3">
+                                        <span t-field="line.customer_number" />
+                                    </td>
+                                </tr>
+                            </t>
+                        </table>
+                    </div>
+                </div>
+            </section>
+            <hr/>
+            <div class="row">
+                <div col="8">
+                    <h4>Communication history</h4>
+                </div>
+            </div>
+            <t t-call="portal.message_thread">
+                <t t-set="object" t-value="lead" />
+                <t t-set="token" t-value="lead.access_token" />
+            </t>
+        </div>
+
+    </template>
+
+</odoo>

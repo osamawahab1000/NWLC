@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    
+        <!-- Define the view -->
+    <record id="transferred_out_reason_form_view" model="ir.ui.view">
+        <field name="name">transferred.out.reason.form</field>
+        <field name="model">transferred.out.reason</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_transferred_out_reason_tree" model="ir.ui.view">
+        <field name="name">transferred.out.reason.tree</field>
+        <field name="model">transferred.out.reason</field>
+        <field name="arch" type="xml">
+            <list >
+                <field name="name" />            
+            </list>
+        </field>
+    </record>
+
+
+
+    <!-- Define the action -->
+    <record id="transferred_out_reason_action" model="ir.actions.act_window">
+        <field name="name">Transferred Out Reason</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">list,form</field>
+        <field name="res_model">transferred.out.reason</field>
+        <!-- <field name="view_id" ref="object_reason_form_view"/> -->
+        <field name="help" type="html">
+            <p class= "h_p">
+               
+            </p>
+        </field>
+    </record>
+   
+    <menuitem id="transferred_out_reason_menu" 
+    name="Transferred Out Reason" 
+    action="transferred_out_reason_action"
+    parent="crm.crm_menu_config"
+    sequence="10"/>
+
+
+
+
+</odoo>

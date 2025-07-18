@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    
+
+
+    <record id="lenders_tree_view" model="ir.ui.view">
+        <field name="name">lenders.list</field>
+        <field name="model">lenders</field>
+        <field name="arch" type="xml">
+            <list >
+                <field name="name"/>
+                <field name="lender_update"/>
+                <field name="lender_benefit"/>
+                <field name="lender_description"/>
+                <field name="how_to_secure"/>
+                <field name="how_to_present_lender"/>
+                <field name="static_note"/>
+                <field name="phone"/>
+                <field name="status"/>
+                <field name="web_address"/>
+                <field name="lender_support_email"/>
+            </list>
+        </field>
+    </record>
+
+
+
+
+        <!-- Define the view -->
+    <record id="lenders_form_view" model="ir.ui.view">
+        <field name="name">lenders.form</field>
+        <field name="model">lenders</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="lender_update"/>
+                            <field name="lender_benefit"/>
+                            <field name="lender_description"/>
+                            <field name="creditor_status_" invisible="1"/>
+                        </group>
+                        <group>
+                            <field name="how_to_secure"/>
+                            <field name="how_to_present_lender"/>
+                            <field name="static_note"/>
+                            <field name="phone"/>
+                            <field name="status"/>
+                            <field name="web_address"/>
+                            <field name="lender_support_email"/>
+                        </group>
+                    </group>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+    
+
+    <!-- Define the action -->
+    <record id="lenders_action" model="ir.actions.act_window">
+        <field name="name">Lenders</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">list,form</field>
+        <field name="res_model">lenders</field>
+        <field name="help" type="html">
+            <p class= "h_p">
+               
+            </p>
+        </field>
+    </record>
+   
+    <menuitem id="lenders_menu" 
+    name="Lenders" 
+    action="lenders_action" 
+    parent="crm.crm_menu_config"
+
+    sequence="10"/>
+
+
+
+
+</odoo>

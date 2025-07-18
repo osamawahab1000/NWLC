@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+
+    <record id="nwdr_res_company_view_form_ext" model="ir.ui.view">
+            <field name="name">res.company.form.ext</field>
+            <field name="model">res.company</field>
+            <field name="inherit_id" ref="base.view_company_form"/>
+            <field name="arch" type="xml">
+                
+                <xpath expr="//form" position="inside">
+                    <form>
+                    <!-- <form> -->
+                        <group>
+                            <group>
+                                <field name="is_nwdr"/>
+                            </group>
+                        </group>
+                    </form>
+                </xpath>        
+            </field>
+        </record>
+
+
+
+
+
+
+
+
+</odoo>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="action_weekly_sales_pdf" model="ir.actions.report">
+        <field name="name">Weekly Sales Report</field>
+        <field name="model">crm.lead</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">crm_custom_dashboard.report_weekly_sales_pdf</field>
+        <field name="report_file">crm_custom_dashboard.report_weekly_sales_pdf</field>
+        <field name="paperformat_id" ref="crm_custom_dashboard.paperformat_weekly_sales_report"/>
+    </record>
+</odoo>

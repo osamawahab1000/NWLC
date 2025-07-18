@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+   <template id="credit_card_form">
+       <t t-call="web.html_container">
+           <t t-foreach="docs" t-as="doc">
+               <t t-call="web.basic_layout">
+                       <div class="page">
+        <div class="oe_structure" 
+        t-att-style="'background-image: url(\'/nwlc_crm_ext/static/description/header_ach_form.png\'); 
+                    background-repeat: no-repeat; 
+                    background-position: center-top; 
+                    background-size: cover; 
+                    height: 300px; top:20px;
+                    padding:0;
+                    margin-left:-15px;
+                    margin-right:-15px;
+                    '"/>
+        <div style="padding:20px;padding-left:40px;padding-right:40px;background-color:white;text-align: justify;border-radius:8px;margin-top:-140px;margin-left:70px;margin-right:70px">
+            <h4 style="text-align: center;font-weight:bold"><span style="color:#479891">One-Time</span> Credit Card Payment Authorization Form</h4>
+                <p>Please sign and complete this form to authorize a one-time debit to your account listed below. 
+                By signing this form, you agree that all services have been rendered per the signed contract, 
+                giving NWLC permission to debit your account for the amount indicated on or after the indicated 
+                date. This permission is for a single transaction only and will not provide any additional authorizations, 
+                unrelated debits, or credits to your account. _______ (please initial)</p>
+                <br/>
+                <h5><b>Please complete the information below:</b></h5>
+                
+                <div>
+                    <p>
+                        I <u><t t-esc="doc.full_name.name"/></u> authorize a one time charge my credit card account indicated
+                    below for <u><t t-esc="doc.client_fee"/></u> on or after ___________. This payment is for _______________________
+                    </p><br/>
+                    <p>
+                        <strong>Billing Address:</strong> <u><span t-esc="doc.street"/></u>
+                    </p>
+                    <p>
+                        <strong>City, State, Zip:</strong> <u><span t-esc="doc.city"/> , <span t-esc="doc.state_id.name"/> , <span t-esc="doc.zip"/></u>
+                    </p>
+                    <p>
+                        <strong>Email:</strong> <u><span t-esc="doc.email"/></u>
+                    </p>
+                    <p>
+                        <strong>Phone:</strong> <u><span t-esc="doc.phone"/></u>
+                    </p>
+                </div>
+                <h5><b>Credit Card Information</b></h5>
+                <div style="padding:10px;border:3px solid #479891;background-color:#EBEBEB;border-radius:10px">
+                    <p>
+                        <!-- if visa:
+                            <input type="checkbox" id="advancecb" checked="checked"/>
+                        else:
+                            <input type="checkbox" id="advancecb"/> -->
+                        <!-- if debit:
+                            <input type="checkbox" id="advancecb" chceck=tue/>
+                        else
+                            <input type="checkbox" id="advancecb" chceck=tue/> -->
+                        <style>
+                            <!-- /* Style for the circle checkbox */ -->
+                            .circle-checkbox {
+                                appearance: none;
+                                -webkit-appearance: none;
+                                -moz-appearance: none;
+                                width: 20px;
+                                height: 20px;
+                                border: 2px solid #000;
+                                 <!-- /* Black border */ -->
+                                border-radius: 50%; 
+                                <!-- /* Make it a circle */ -->
+                                outline: none;
+                                cursor: pointer;
+                                transition: all 0.3s ease;
+                            }
+
+                            <!-- /* Style when the checkbox is checked */ -->
+                            .circle-checkbox:checked {
+                                background-color: #479891; 
+                                <!-- /* Green fill */ -->
+                                border-color:rgb(0, 0, 0); 
+                                <!-- /* Match the border color */ -->
+                            }
+                        </style>
+                        
+                        
+                        <strong>Account Type</strong>
+                        <span style="margin-left:30px"/>
+                        <t t-if="doc.account_type == 'visa'">
+                            <input type="checkbox" id="advancecb" class="circle-checkbox" checked="checked"/>
+                        </t>
+                        <t t-else="">
+                            <input type="checkbox" id="advancecb" class="circle-checkbox"/>
+                        </t>
+                        <label for="advancecb">
+                            <div>
+                                <img t-att-src="'/nwlc_crm_ext/static/src/img/nwlc_cover_csa.png'"/> 
+                            </div>
+                             <!-- style="width: 40px; height: auto; vertical-align: middle;" -->
+                        </label>
+                        <span style="display:inline-block; width: 15px;"/>
+                        <t t-if=" doc.account_type == 'debit'">
+                            <input type="checkbox" id="arrearscb" class="circle-checkbox" checked="checked"/>
+                        </t>
+                        <t t-else="">
+                            <input type="checkbox" id="arrearscb" class="circle-checkbox"/>
+                        </t>
+                        <label for="arrearscb">
+                            <img t-att-src="'/nwlc_crm_ext/static/src/img/master_card.jpg'" 
+                             alt="Debit" style="width: 40px; height: auto; vertical-align: middle;"/>
+                        </label>
+                        <span style="display:inline-block; width: 15px;"/>
+                        <t t-if=" doc.account_type == 'discover'">
+                            <input type="checkbox" id="othercb" class="circle-checkbox" checked="checked"/>
+                        </t>
+                        <t t-else="">
+                            <input type="checkbox" id="othercb" class="circle-checkbox"/>
+                        </t>
+                        <label for="othercb">
+                            <img t-att-src="'/nwlc_crm_ext/static/src/img/discover_card.png'" 
+                             alt="Discover" style="width: 40px; height: auto; vertical-align: middle;"/>
+                        </label>
+                        <span style="display:inline-block; width: 15px;"/>
+                        <t t-if=" doc.account_type == 'american_express'">
+                            <input type="checkbox" id="othercb" class="circle-checkbox" checked="checked"/>
+                        </t>
+                        <t t-else="">
+                            <input type="checkbox" id="othercb" class="circle-checkbox"/>
+                        </t>
+                        <label for="othercb">
+                            <img t-att-src="'/nwlc_crm_ext/static/src/img/american_express.png'" 
+                             alt="American Express" style="width: 40px; height: auto; vertical-align: middle;"/>
+                        </label>
+                    </p>
+                    <br/>
+                    <p>
+                        Cardholder Name: 
+                    </p>
+                    <p>
+                        Account Number:
+                    </p>
+                    <p>
+                        Exp Date:
+                    </p>
+                    <p>
+                        CVV2 :
+                    </p>
+                </div>
+                
+                <br/>
+                <br/>
+                
+                <div class="row">
+                    <div class="col-12">
+                        <p><strong>Signature:</strong> ___________________________________________
+                        <strong>Date:</strong> _______________________</p>
+                    </div>
+                </div>
+                <p>I authorize the above-named business to charge the credit card indicated in this authorization form according to the terms outlined above. This payment authorization is for the goods/services described above, for the amount indicated above only, and is valid for one-time use only. I certify that I am an authorized user of this credit card and that I will not dispute the payment with my credit card company, so long as the transaction corresponds to the terms indicated in this form.</p>
+        </div>
+    </div>
+               
+               </t>
+           </t>
+       </t>
+   </template>
+</odoo>

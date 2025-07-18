@@ -1,0 +1,50 @@
+<odoo>
+    <record id="paperformat_credit_card" model="report.paperformat">
+        <field name="name">Credit Card Report Paper Format</field>
+        <field name="default" eval="False"/>
+        <field name="format">A4</field> <!-- Standard A4 size -->
+        <field name="orientation">Portrait</field> <!-- Orientation: Portrait or Landscape -->
+        <field name="margin_top">0</field> <!-- Top margin in mm -->
+        <field name="margin_bottom">0</field> <!-- Bottom margin in mm -->
+        <field name="margin_left">0</field> <!-- Left margin in mm -->
+        <field name="margin_right">0</field> <!-- Right margin in mm -->
+    </record>
+    
+    
+    <record id="paperformat_business_general" model="report.paperformat">
+        <field name="name">Business General Paper Format</field>
+        <field name="default" eval="False"/>
+        <field name="format">A4</field> <!-- Standard A4 size -->
+        <field name="orientation">Portrait</field> <!-- Orientation: Portrait or Landscape -->
+        <field name="margin_top">10</field> <!-- Top margin in mm -->
+        <field name="margin_bottom">10</field> <!-- Bottom margin in mm -->
+        <field name="margin_left">15</field> <!-- Left margin in mm -->
+        <field name="margin_right">15</field> <!-- Right margin in mm -->
+    </record>
+    
+    
+    <record id="paperformat_csa_general" model="report.paperformat">
+        <field name="name">CSA General Paper Format</field>
+        <field name="default" eval="False"/>
+        <field name="format">A4</field> <!-- Standard A4 size -->
+        <field name="orientation">Portrait</field> <!-- Orientation: Portrait or Landscape -->
+        <field name="margin_top">40</field> <!-- Top margin in mm -->
+        <field name="margin_bottom">10</field> <!-- Bottom margin in mm -->
+        <field name="margin_left">10</field> <!-- Left margin in mm -->
+        <field name="margin_right">10</field> <!-- Right margin in mm -->
+    </record>
+    
+    
+    <record id="paperformat_csa_spanish" model="report.paperformat">
+        <field name="name">CSA Spanish Paper Format</field>
+        <field name="default" eval="False"/>
+        <field name="format">A4</field> <!-- Standard A4 size -->
+        <field name="orientation">Portrait</field> <!-- Orientation: Portrait or Landscape -->
+        <field name="margin_top">40</field> <!-- Top margin in mm -->
+        <field name="margin_bottom">10</field> <!-- Bottom margin in mm -->
+        <field name="margin_left">10</field> <!-- Left margin in mm -->
+        <field name="margin_right">10</field> <!-- Right margin in mm -->
+    </record>
+
+
+</odoo>

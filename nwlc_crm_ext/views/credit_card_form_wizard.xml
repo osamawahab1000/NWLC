@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- Form View for Credit Card Form Wizard -->
+    <record id="view_credit_card_wizard_form" model="ir.ui.view">
+        <field name="name">Credit Card Wizard Form</field>
+        <field name="model">credit.card</field>
+        <field name="arch" type="xml">
+            <form string="Credit Card Form Wizard">
+                <sheet>
+                    <group>
+                        <!-- <group> -->
+                            <field name="full_name"/>
+                            <field name="street" string="Billing Address"/>
+                            <field name="email"/>
+                            <field name="phone"/>
+                            <field name="account_type"/>
+                        <!-- </group> 
+                        <group> -->
+                            <field name="cardholder_name"/>
+                            <field name="account_number"/>
+                            <field name="exp_date"/>
+                        <!-- </group>  -->
+                    </group>    
+                </sheet>
+                <footer>
+                    <button string="Print" type="object" name="print_credit_card" class="btn-primary" />
+                    <button string="Send" type="object" name="send_cc_form" class="btn-primary" />
+                    <button string="Cancel" class="btn-secondary" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+
+    <!-- Action to Open CSA General Agreement Wizard -->
+    <record id="action_open_credit_card_wizard" model="ir.actions.act_window">
+        <field name="name">Credit Card Form</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">credit.card</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_credit_card_wizard_form"/>
+        <field name="target">new</field>
+        <field name="context">{}</field>
+    </record>
+    
+
+    
+    <menuitem id="menu_credit_card"
+            name="Credit Card Form Wizard"
+            action="action_open_credit_card_wizard"
+            parent="crm.crm_menu_config"
+            sequence="6" />
+
+   
+    
+</odoo>

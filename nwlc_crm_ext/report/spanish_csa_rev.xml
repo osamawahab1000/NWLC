@@ -1,0 +1,1510 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+   <template id="spanish_csa_rev">
+       <t t-call="web.html_container">
+           <t t-foreach="docs" t-as="o">
+            <t t-if="o.company_id.id == 1">
+               <t t-call="web.basic_layout">
+                   <div class="page">
+        <div class="oe_structure">
+            <img t-att-src="'/nwlc_crm_ext/static/src/img/nwlc_cover_csa.png'" />
+        </div>
+            <div style="page-break-before: always;"/>
+          <div class="header text-center mt-3">
+              <div class="row">
+                <div class="col-5">
+                    <img t-if="o.company_id.logo and o.company_id.id == 1" t-att-src="image_data_uri(o.company_id.logo)" style="height: 80px; margin-top: 15px;" alt="header"/>
+                </div>
+                
+                <div class="col-7" style="margin-top:60px;font-family:Montserrat">
+                    <h4>ACUERDO DE SERVICIO DE ATENCIÓN AL CLIENTE</h4>
+                </div>
+              </div>
+                    
+                  
+          </div>
+          <div class="mt-3">
+            <!-- <div class="row">
+                <center>
+                    <img t-if="doc.company_id.logo and doc.company_id.id == 1" t-att-src="image_data_uri(doc.company_id.logo)" style="height: 120px;width:300px;" alt="header"/>
+                    <br/>
+      <img src="/web/image/1124-2dff64cf/Screenshot%202024-12-04%20101247.png" alt="" class="img-thumbnail img img-fluid o_we_custom_image" style="height: 120px;width:300px;margin-top:15px"/>
+                    </center>
+            </div>
+            <h4 style="text-align:center;margin-top:20px;font-family:Times New Roman;font-style:italic">Esta un paso más cerca de la libertad financiera</h4>
+            <div style="page-break-before: always;"/> -->
+            <p>
+                Nationwide Loan Consultants &amp; Advisors, LLC, una sociedad de responsabilidad limitada de 
+                Florida (a veces referida en este Acuerdo como "Nationwide") y el Cliente (a veces referido
+                en este Acuerdo como "Prestatario", "Yo", "mi", "usted" y "su") han acordado que Nationwide
+                proporcionará ciertos servicios en relación con la posible obtención de un préstamo. 
+                Nationwide y el Cliente acuerdan lo siguiente:
+            </p>
+
+            <h5><b>DESCRIPCIÓN GENERAL DE LOS SERVICIOS</b></h5>
+            <ol>
+                <li>Nationwide representa que no está actuando como prestamista o actuando en nombre de cualquier
+                prestamista con respecto a este Acuerdo. Por lo tanto, Nationwide no está afiliada con ninguno de
+                los prestamistas a los que presentará solicitudes de préstamo en su nombre. Nationwide utiliza sus
+                considerables recursos y conjunto de datos, junto con su experimentado personal profesional en un 
+                esfuerzo por encontrarle el(los) paquete(s) de préstamo más adecuado(s) a sus criterios de préstamo.</li><br/>
+                
+                <li>Los servicios prestados por Nationwide ("Servicios de Nationwide") consisten en la búsqueda de 
+                préstamos/prestamistas potenciales aplicables a sus necesidades, asesorándole sobre dichos productos
+                de préstamo disponibles, remitiéndole a los prestamistas que proporcionan los productos de préstamo 
+                aplicables, y consultándole a lo largo de dicho proceso. Por lo tanto, Nationwide le presentará o 
+                remitirá a múltiples prestamistas de nuestra base de datos. Cada prestamista individual hará su 
+                propia verificación de crédito y suscripción.  Como tal, Nationwide no tiene ninguna responsabilidad
+                por las acciones/decisiones de cualquiera de los prestamistas referidos o si el producto final del 
+                préstamo ofrecido por cualquier prestamista que cumpla con las expectativas del Prestatario en 
+                cuanto a términos, tasas de interés o comisiones del prestamista. Usted reconoce y acepta que 
+                las responsabilidades de Nationwide se limitarán a los servicios mencionados anteriormente, y, 
+                como tal, Nationwide no participará en ninguna negociación en su nombre, y Nationwide no tendrá
+                ninguna obligación continua, deberes, responsabilidades, papel, parte en las negociaciones, o en
+                la relación entre el prestamista y usted, de ninguna manera.</li><br/>
+                
+                <li>
+                  <u>Entiendo y reconozco plenamente que los paquetes de préstamos ofrecidos por los prestamistas
+                localizados por Nationwide también están disponibles para mí sin utilizar los servicios de Nationwide,
+                y, por lo tanto, podría haber tratado de localizar dichos paquetes por mi cuenta sin la necesidad de 
+                incurrir en los Honorarios de Consultoría identificados en el acuerdo. Sin embargo, he optado por utilizar
+                los servicios de Nationwide y pagar los Honorarios de Consultoría como se especifica en el presente 
+                documento. He optado por contratar los servicios de Nationwide porque Nationwide tiene experiencia 
+                en la industria de préstamos al consumidor y tiene vastos recursos y conocimientos para ayudarme a
+                completar adecuadamente el proceso de solicitud, lo que aumentará mis posibilidades de encontrar 
+                un(os) paquete(s) de préstamo adecuado(s) con las mejores tasas y términos disponibles para mis 
+                necesidades.
+                  </u>
+                </li><br/>
+            <!--</ol>-->
+
+            <h5>EL PROCESO</h5>
+            <!--<ol>-->
+                <li>Entiendo que, al proceder, estoy autorizando a Nationwide a representarme y actuar en mi nombre 
+                para el proceso de solicitud de préstamo, en forma escrita, electrónica, verbal, o cualquier otro 
+                medio en que se requiera con el fin de obtener la mejor opción de préstamo disponible para mí. Autorizo
+                además a Nationwide a comunicarse con todos los prestamistas en mi nombre, verbalmente o a través del 
+                proceso de correo electrónico. Entiendo que Nationwide necesitará crear un correo electrónico en mi 
+                nombre con el fin de comunicarse con varios prestamistas y organizar las solicitudes presentadas en
+                mi nombre, en este sentido, concedo a Nationwide la autoridad para crear y acceder a un correo 
+                electrónico en mi nombre. </li><br/>
+                <!--<div style="page-break-before: always;"/>-->
+                <li>También otorgo a Nationwide la autoridad para acceder a mi informe crediticio y entiendo que Nationwide
+                puede extraer y ver dicho informe hasta 120 días después de que suscriba este Acuerdo.</li><br/>
+                
+                <li>Si cualquier acción del Prestatario es necesaria o apropiada en relación con las solicitudes de préstamo
+                contempladas en el presente, entonces el Prestatario hará su mejor esfuerzo para realizar dichas acciones de
+                manera oportuna y para cooperar y ayudar a los esfuerzos de Nationwide, incluyendo, entre otros, hablar 
+                (tratar) directamente con un prestamista, devolver las llamadas telefónicas, responder a las comunicaciones
+                incluyendo correos electrónicos, verificar su identidad y proporcionar todos los documentos e información 
+                solicitada por Nationwide y/o un prestamista.</li><br/>
+                
+                <li>Nationwide acuerda que usted nunca está bajo ninguna obligación de aceptar o recibir un préstamo o una 
+                línea de crédito. Nationwide no puede y no aceptará ningún préstamo en su nombre sin su aprobación. 
+                Nationwide se esfuerza por ofrecerle las mejores opciones para elegir, pero todas las decisiones con
+                respecto a cualquier oferta de préstamo, incluyendo el cierre de cualquiera de las opciones de préstamo
+                es exclusivamente su decisión.</li><br/>
+            <!--</ol>-->
+
+            <h5>HONORARIO DE CONSULTORÍA Y PAGO DE ACH</h5>
+            <!--<ol>-->
+                <li>Nationwide no cobra una CUOTA POR ADELANTADO. Nationwide trabaja completamente libre de riesgo para usted. 
+                El único momento en que un cargo por servicios es debido a Nationwide, es después de que usted es aprobado por
+                un prestamista y recibe el acceso a los fondos, o en las circunstancias establecidas en el párrafo (10) a 
+                continuación. Cualquier cargo debido y pagadero por usted a Nationwide es por los Servicios de Nationwide.
+                Entiendo que algunos prestamistas tienen cargos y que estos cargos son separados y adicionales a cualquier 
+                cargo que usted deba a Nationwide.</li><br/>
+                
+                <li>Estoy de acuerdo en pagar a Nationwide un Honorario único de Consultoría de ( <u><span t-field="o.change_fee"/></u> %) de la cantidad total 
+                en dólares que acepto y recibo de un banco o institución de crédito como resultado de los servicios prestados
+                por Nationwide. Entiendo que este Honorario de Consultoría es pagadero a Nationwide por mí dentro de las 48 
+                horas desde el momento en que recibo el acceso a la financiación. Entiendo que se me cobrará y deberé a Nationwide
+                un cargo por mora del cinco (5%) por ciento del Honorario de Consultoría si Nationwide no recibe el mencionado 
+                honorario dentro de las 72 horas de la fecha en que recibo el acceso a la financiación. Entiendo que en tal caso
+                también seré responsable de los honorarios de abogados y costos incurridos por Nationwide en relación con los 
+                esfuerzos para cobrar el Honorario de Consultoría.</li><br/>
+                
+                <li>Me comprometo a no eludir a Nationwide solicitando y/u obteniendo financiación de cualquiera de los prestamistas
+                localizados por Nationwide durante un período de 90 días a partir de la fecha de ejecución de este Acuerdo, sin 
+                notificar a Nationwide y pagar el honorario de consultoría aquí establecido. Entiendo que, si lo hago, estaré 
+                incumpliendo este Acuerdo y seré responsable de pagar el Honorario de Consultoría especificado en el párrafo 
+                (9) anterior, basado en el monto total en dólares de cualquier financiación de este tipo. Entiendo que en tal
+                caso también seré responsable de los honorarios de abogados y costos incurridos por Nationwide en relación con
+                los esfuerzos para cobrar el Honorario de Consultoría.</li><br/>
+                
+                <li>Estoy de acuerdo en que el Honorario de Consultoría adeudado en virtud del presente Acuerdo se hará a 
+                través de una transferencia de una cámara de compensación automatizada ("ACH", por sus siglas en inglés) 
+                de mi cuenta designada directamente a Nationwide. En consecuencia, a la firma de este Acuerdo, me comprometo
+                a entregar a Nationwide un <b><u>Formulario de Autorización de ACH</u></b> de Uso Único, (una copia del cual se adjunta e 
+                incorpora al presente) por el cual autorizo irrevocablemente a Nationwide a iniciar una transferencia ACH 
+                desde mi cuenta a Nationwide por el importe de la cuota adeudada en virtud del presente Acuerdo. Mientras
+                mis obligaciones en virtud del presente Acuerdo sigan pendientes, me comprometo a: (i) no revocar la autoridad
+                de Nationwide para iniciar el débito ACH como se contempla en el presente; (ii) no cambiar, modificar, cerrar 
+                o afectar de otro modo la cuenta; (iii) ordenar a cualquier prestamista que deposite todos los préstamos contemplados
+                en el presente en la cuenta designada en el Formulario ACH; y (iv) ser responsable de todos los costos, gastos u otros
+                honorarios y cargos incurridos por Nationwide como resultado de cualquier débito ACH fallido o devuelto, ya sea como 
+                resultado de sumas insuficientes disponibles en la cuenta o de otro modo. Por la presente certifico que soy el usuario
+                autorizado de esta cuenta bancaria designada en el Formulario ACH y que no impugnaré las transacciones contempladas en
+                el presente con mi banco, siempre y cuando las transacciones correspondan a los términos indicados en este Acuerdo.</li><br/>
+            <!--</ol>-->
+
+            <h5>RESOLUCIÓN DE CONFLICTOS</h5>
+            <!--<ol>-->
+                <li>Entiendo y reconozco que, como parte de su promesa de servicio, Nationwide tiene un proceso obligatorio de resolución
+                de conflictos. Si no estoy satisfecho con los servicios prestados por Nationwide, primero debo ponerme en contacto con mi
+                representante de servicio al cliente por correo electrónico o por teléfono y solicitar un Formulario de Resolución de 
+                Conflictos. Luego debo completar y enviar ese formulario por correo electrónico según las instrucciones del formulario.
+                Nationwide responderá a todas las solicitudes de resolución de conflictos en el plazo de dos días hábiles (no se incluyen
+                fines de semana ni festivos legales) a partir de la recepción de un Formulario de Resolución de Conflictos debidamente 
+                enviado.</li><br/>
+            <!--</ol>-->
+
+            <h5>PRÉSTAMOS EXCLUIDOS DEL HONORARIO DE CONSULTORÍA</h5>
+            <!--<ol>-->
+                <li>Entiendo que no tendré que pagar el Honorario de Consultoría previsto en este Acuerdo por los préstamos que obtenga de
+                prestamistas con los que haya solicitado un préstamo no garantizado, tarjeta de crédito o línea de crédito en los últimos 
+                (60) sesenta días, según se enumera en el párrafo (14) a continuación. Además, entiendo que no tendré que pagar el Honorario
+                de Consultoría previsto en el presente Acuerdo para los préstamos que obtenga de los prestamistas con los que actualmente 
+                tengo un préstamo no garantizado abierto o línea de crédito, como se indica en el párrafo (15) a continuación. Nationwide
+                no solicitará préstamos en mi nombre con los prestamistas que enumero en los párrafos (14) y (15) a continuación.</li><br/>
+            
+                <li>En los últimos 60 días, ¿ha solicitado usted o alguien que le represente un préstamo sin garantía, una tarjeta de crédito
+                o una línea de crédito? En caso afirmativo, enumere a continuación los nombres de las instituciones a las que ha presentado 
+                la solicitud.<br/>
+                    <div class="row">
+                        <div class="col-4">Nombre del Banco:</div>
+                        <div class="col-8"/>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">Nombre del Banco:</div>
+                        <div class="col-8"/>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">Nombre del Banco:</div>
+                        <div class="col-8"/>
+                    </div>
+                </li><br/>
+                <li>
+                    Enumere a continuación todos los préstamos o líneas de crédito no garantizados que tenga abiertos:<br/>
+                    <div class="row">
+                        <div class="col-4">Nombre del Banco:</div>
+                        <div class="col-8"/>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">Nombre del Banco:</div>
+                        <div class="col-8"/>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">Nombre del Banco:</div>
+                        <div class="col-8"/>
+                    </div>
+                </li>
+            <!--</ol>-->
+            <br/>
+            
+            <h5>CONSENTIMIENTO DE COMUNICACIÓN</h5>
+            <!--<ol>-->
+                <li>Al firmar este documento, usted autoriza a Nationwide a comunicarse con usted utilizando el número de teléfono proporcionado
+                por usted y cualquier otro número de teléfono asociado o relacionado con usted que nos pueda ser proporcionado por usted en el 
+                futuro. Usted otorga su consentimiento para que Nationwide lo contacte por teléfono, texto, correo electrónico, correo postal 
+                o por voz artificial o pregrabada, incluso si usted se ha inscrito en alguna <b>Lista de No Llamar</b>. Usted también acepta que cualquier
+                persona o entidad que se ponga en contacto con usted de conformidad con su consentimiento aquí puede utilizar el sistema de marcación
+                telefónica automática, incluso si el número de teléfono que usted proporcionó (o cualquier número de teléfono asociado con usted) 
+                está conectado a un teléfono móvil e incluso si se le puede cobrar por la llamada. Su consentimiento para recibir llamadas automáticas
+                o mensajes de texto no es necesario para ninguna compra o disponibilidad de bienes/servicios de Nationwide; si no da su consentimiento,
+                puede llamarnos al 1-888-463-5255 para continuar con su consulta.</li>
+            <!--</ol>-->
+            <br/>
+            
+            <h5>GARANTÍAS Y DECLARACIONES</h5>
+            <!--<ol>-->
+                <li>Declaro y garantizo que (a) tengo pleno derecho y autoridad para celebrar este acuerdo, hacer los consentimientos y autorizaciones en 
+                este documento, y para conceder los derechos aquí otorgados y acordados para ser otorgados; (b) no he hecho y no haré ninguna concesión o
+                acuerdo que perjudique o pueda perjudicar, gravar o entrar en conflicto con cualquiera de los derechos otorgados a Nationwide; (c) cumpliré
+                en todo momento con todas y cada una de las leyes, estatutos, reglamentos, códigos y ordenanzas aplicables a cualquier financiación; y (d) 
+                toda la información y declaraciones proporcionadas por mí serán verdaderas y precisas. </li><br/>
+                
+                <li>Entiendo y acepto que si cualquier prestamista pregunta si estoy trabajando con un tercero en relación con la obtención de un préstamo,
+                debo divulgar al prestamista que estoy trabajando con Nationwide. En el caso de dicha investigación del prestamista, entiendo y acepto que 
+                debo notificar a Nationwide y proporcionar el nombre del(de los) prestamista(s) y el nombre del representante del prestamista al que se hizo
+                la divulgación. </li><br/>
+                
+                <li>Entiendo y acepto que Nationwide me exigirá que revise y apruebe toda la información proporcionada a mi asesor de préstamos antes de 
+                presentar cualquier solicitud. También estoy de acuerdo en que voy a notificar de inmediato a Nationwide si cualquiera de la información
+                proporcionada más tarde se convierte en inexacta o modificada por cualquier motivo. Además, notificaré inmediatamente a Nationwide si 
+                proporciono cualquier información a cualquier prestamista potencial que difiera de la información que proporcioné a Nationwide o si 
+                altero cualquier información presentada a cualquier prestamista. </li><br/>
+                
+                <li>Defenderé, indemnizaré y eximiré a Nationwide (y/o a sus accionistas, directores, miembros, gerentes, funcionarios, representantes,
+                empleados, sucesores, licenciatarios y cesionarios) de y contra cualquier reclamación, demanda, pérdida, daño, acción, responsabilidad,
+                sentencia, penalización, costes y gastos (incluyendo, sin limitación, honorarios de abogados y costas judiciales, estén o no relacionados
+                con litigios) que surjan o estén relacionados con el incumplimiento por su parte de cualquier declaración o garantía en virtud del presente
+                documento y/o relacionados con cualquier reclamación derivada de cualquier negociación o acuerdo con cualquier prestamista. </li><br/>
+            <!--</ol>-->
+            
+                <h5>POLÍTICAS DE CANCELACIÓN</h5>
+            <!--<ol>-->
+                <li>Este Acuerdo sólo puede ser cancelado después de que Nationwide reciba la cancelación por escrito proporcionada por mí. Dicha cancelación
+                no me eximirá de ningún pago u otras obligaciones y responsabilidades en virtud de los párrafos (9) y (10) anteriores. A partir de la fecha 
+                de cancelación por escrito, Nationwide tiene el derecho de revisar y acceder a todos y cada uno de los informes de crédito sólo con fines de
+                verificación. Estoy de acuerdo y acepto que no tengo derecho a cancelar este proceso de revisión de crédito de noventa (90) días.</li><br/>
+            
+                <h5>Préstamos Comerciales</h5>
+                
+                <li>Los servicios de Nationwide también están disponibles para préstamos comerciales. En el caso de que desee servicios de Nationwide con 
+                respecto a un préstamo comercial, incluidos, entre otros, adelantos en efectivo para comerciantes o préstamos basados en cuentas por cobrar,
+                todos los términos y condiciones de este Acuerdo se aplicarán a cualquier préstamo comercial, incluidos, entre otros, consentimientos, 
+                autorizaciones. , honorarios de consultoría, garantías y representaciones. Además de cualquier información requerida como se especifica
+                anteriormente, usted comprende que para brindar Servicios de Nationwide en relación con un préstamo comercial, puede ser necesario que 
+                Nationwide obtenga informes personales, comerciales, de investigación y del consumidor y otra información sobre usted y/o su empresa (si
+                el préstamo se va a otorgar a una entidad), incluidos extractos del procesador de tarjetas de crédito y extractos bancarios, de una o más
+                agencias de informes del consumidor, como TransUnion, Experian y Equifax, y de otras agencias de crédito, bancos, acreedores y otros 
+                terceros. También puede ser necesario transmitir la información anterior a terceros para poder proporcionar Servicios Nationwide en 
+                relación con un préstamo comercial. También aceptas que cualquier acreedor o institución financiera divulgue cualquiera de la 
+                información anterior a Nationwide y/o sus representantes, sucesores, cesionarios y personas designadas. Usted autoriza a Nationwide
+                a obtener y/o transmitir la información anterior. También garantiza que está autorizado a actuar en nombre y vincular a cualquier 
+                entidad para la cual solicita que se proporcionen Servicios Nationwide. Usted acepta que es individualmente responsable del pago de
+                los honorarios de consultoría, independientemente de si el préstamo está financiado a una entidad.</li><br/>
+            
+                <h5>VARIOS</h5>
+                
+                <li>El presente Acuerdo contiene el acuerdo completo entre las Partes, y sólo podrá ser modificado mediante un acuerdo por escrito 
+                firmado por todas las Partes. Este Acuerdo se interpretará de conformidad con las leyes sustantivas del estado de Florida, sin tener
+                en cuenta sus principios de conflicto de leyes. Este Acuerdo se considera celebrado en el estado de Florida y para cualquier conflicto
+                que surja de o en virtud de este Acuerdo, o que estén relacionados con este Acuerdo, el lugar y la jurisdicción será exclusivamente en
+                el condado de Broward, Florida y las Partes por el presente dan su consentimiento a la sede y jurisdicción en el condado de Broward, 
+                Florida. En relación con cualquier litigio que surja de o en virtud del presente Acuerdo, la parte ganadora tendrá derecho a recuperar
+                todos los costos y honorarios razonables de abogados, incluidos los procedimientos de apelación y posteriores a la sentencia. Por la 
+                presente autorizo a Nationwide a comunicarse conmigo a través de la dirección de correo electrónico que he proporcionado. 
+                <br/>
+                <br/>
+                
+                Estoy de acuerdo con los términos y condiciones antes mencionados que hacen de este un contrato vinculante. Entiendo que el presente 
+                Acuerdo es vinculante mediante firma electrónica. Esta firma electrónica debe ser la de la persona real que solicita un préstamo, de
+                lo contrario, constituye una falsificación en virtud de todas y cada una de las leyes, estatutos, normas y reglamentos estatales y 
+                federales aplicables. La persona que "firma" este documento afirma que los hechos aquí expuestos son ciertos.
+                <br/>
+                <br/>
+                
+                Entiendo que doy mi consentimiento a Nationwide Loan Consultants and Advisors (Nationwide) para obtener una verificación de crédito 
+                suave que me califique para obtener un préstamo.
+                <br/>
+                <br/>
+                
+                Entiendo que al hacer clic en el botón ACEPTO o al escribir mi nombre, lo que corresponda, inmediatamente después de este aviso, 
+                estoy proporcionando "instrucciones por escrito" a Nationwide en virtud de la Ley de Informes Crediticios Justos (FCRA) que 
+                autoriza a Nationwide a obtener información de mi perfil crediticio personal u otra información de cualquier oficina de crédito,
+                incluidas, entre otras, Experian, TransUnion y/o Equifax. Autorizo a Nationwide a obtener dicha información únicamente para precalificarme
+                para opciones de crédito.
+                <br/>
+                <br/>
+                </li>
+            
+            </ol>
+            
+            <div class="row"><div class="col-12">
+                <span>PREGUNTAS DE VERIFICACIÓN DE IDENTIDAD:</span>
+                <br/>
+                <br/>
+                <div class="row">
+                    <div class="col-5">
+                        <div class="row">
+                            <div class="col-3">
+                                    Nombre :
+                                </div>
+                            <div class="col-9">
+                                <span t-field="o.first_name"/>                            
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-7">
+                        <div class="row">
+                            <div class="col-2">
+                                    Apellido :
+                                </div>
+                            <div class="col-10">
+                                <span t-field="o.last_name"/>                            
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <br/>
+                
+                <div class="row">
+                    <div class="col-2">Dirección :</div>
+                    <div class="col-10">
+                        <span t-field="o.street"/>                        
+                    </div>
+                </div>
+                
+                <br/>
+                
+                <div class="row">
+                    <div class="col-5">
+                        <div class="row">
+                            <div class="col-5">Ingresos Anuales :</div>
+                            <div class="col-7">
+                                <span t-field="o.primary_gross_annual_income"/>                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-7">
+                        <div class="row">
+                            <div class="col-8">¿Se pueden verificar los ingresos? Sí__No__  :</div>
+                            <div class="col-4">
+                                <span t-field="o.is_income_verifiable"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <br/>
+                <br/>
+                <span>ACEPTO TODOS LOS TÉRMINOS Y CONDICIONES:</span>
+                <br/>
+                <br/>
+            
+                <div class="row">
+                    <div class="col-5">
+                        <div class="row">
+                            <div class="col-5">Firma :</div>
+                            <div class="col-7"/>
+                        </div>
+                    </div>
+                    <div class="col-7">
+                        <div class="row">
+                            <div class="col-5">Fecha :</div>
+                            <div class="col-7"/>
+                        </div>
+                    </div>
+                </div>
+                
+                <br/>
+                
+                <div class="row">
+                    <div class="col-6">ACEPTO TODOS LOS TÉRMINOS Y CONDICIONES:</div>
+                    <div class="col-6"/>
+                </div>
+                
+                <br/>
+                
+                <div class="row">
+                    <div class="col-5">
+                        <div class="row">
+                            <div class="col-5">Firma :</div>
+                            <div class="col-7"/>
+                        </div>
+                    </div>
+                    <div class="col-7">
+                        <div class="row">
+                            <div class="col-7">Fecha :</div>
+                            <div class="col-5"/>
+                        </div>
+                    </div>
+                </div>
+                
+            </div></div>
+            <div style="page-break-before: always;"/>
+            
+            <div class="row text-left">
+                <h3><center>FORMULARIO DE AUTORIZACIÓN DE TERCEROS</center></h3>
+            </div>    
+                <p>
+                    Yo,____________________con domicilio en__________________________("Prestatario" o "Yo" o "mi") por la presente autorizo a <b>NATIONWIDE 
+                    LOAN CONSULTANTS &amp; ADVISORS, LLC</b>, sus asociados, agentes y/o cesionarios (individual y colectivamente el "Agente") el derecho de
+                    comunicarse con prestamistas independientes ("Terceros") en mi nombre, y actuar como mi agente, bajo los siguientes términos:
+                    <br/>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                </p>
+      <ol>
+                        <li> Por la presente otorgo y concedo a mi mencionado Agente pleno <b>consentimiento y autoridad</b> para actuar en mi nombre de cualquier 
+                        forma legal con respecto al consentimiento para obtener, compartir, divulgar, discutir y proporcionar de cualquier otra forma a 
+                        Terceros, y entre sí, información personal pública y no pública contenida en o relacionada con la obtención de un préstamo al consumo
+                        para el Prestatario. Esta información puede incluir, entre otros, el nombre, la dirección postal, el número de teléfono, el número de
+                        la seguridad social, la puntuación crediticia, el informe crediticio, los ingresos, los saldos de las cuentas, la elegibilidad para el
+                        programa y la actividad de pago del Prestatario.</li>
+                        
+                        <br/>
+                        
+                        <li>Entiendo que seré plenamente responsable de revisar cualquier información que sea enviada por Terceros a mi Agente.</li>
+                    
+                        <br/>
+                        
+                        <li>Esta Autorización expira en un año a partir de la fecha en que se firme, a menos que el Prestatario notifique específicamente por
+                        escrito al Agente que esta Autorización no tiene más validez y vigencia.</li>
+                    
+                        <br/>
+                        
+                        <li>Entiendo que este Formulario puede no ser aceptado por algunos Terceros y que mi Agente me notificará por escrito si no es aceptado..</li>
+                        
+                        <br/>
+                    
+                        <li>Entiendo y acepto que mi Agente no tiene ninguna responsabilidad u obligación de verificar lo que los Terceros hacen con
+                        la información que les proporciona mi Agente, según lo autorizado por este Formulario.</li>
+                    
+                        <br/>
+                    
+                        <li>Por la presente, me comprometo a indemnizar y eximir para siempre a mi Agente de cualquier acción y causa de acción, pleito,
+                        reclamación, honorarios de abogado o demandas contra mi Agente, resultante de que mi Agente discuta, o se niegue a discutir, mi 
+                        información con Terceros, o resultante de que mi Agente proporcione, o se niegue a proporcionar, cualquier documento u otra información
+                        a Terceros.</li>
+                    </ol>
+      <br/>
+      <span> ENTIENDO Y ESTOY DE ACUERDO CON LOS TÉRMINOS DE ESTA AUTORIZACIÓN A TERCEROS.</span>
+      <br/>
+      <br/>
+      <span>Firma del Prestatario: </span>
+      <br/>
+      <br/>
+      <span>Nombre del Prestatario en letra de imprenta: </span>
+        <span t-field="o.full_name"/>
+      <br/>
+      <br/>
+      <span>Fecha: </span>
+      <br/>
+      <br/>
+      <p/>
+            
+                                 <!--For Maryland-->
+                <t t-if="o.state_id.code == 'MD' ">
+                  <div style="page-break-before: always;"/>
+                  <h4><center><u>NOTIFICACIÓN DE CANCELACIÓN</u></center></h4>
+                  <br/>
+                  
+                  <p>Usted puede cancelar este contrato, sin penalización ni obligación alguna, en cualquier momento antes 
+                  de la medianoche del tercer día hábil posterior a la fecha de la firma del contrato. Si cancela, 
+                  cualquier pago realizado por usted en virtud de este contrato será devuelto dentro de los
+                   10 días posteriores a la recepción por parte del vendedor de su notificación de cancelación.
+                   Para cancelar este contrato, envíe por correo o entregue una copia firmada y fechada de esta
+                   notificación de cancelación, o cualquier otra notificación por escrito, a </p><br/>
+                  
+                  <p>Nationwide Loan Consultants and Advisors, LLC 555 SW 12th Ave. Ste. 202, Pompano Beach, FL 33069<br/>
+                    A más tardar a la medianoche de (fecha)_____________ por la presente cancelo esta transacción.</p><br/>
+                    
+                    <div class="row">
+                        <div class="col-5">
+                            <div class="row">
+                                <div class="col-5">(Fecha) :</div>
+                                <div class="col-7"/>
+                            </div>
+                        </div>
+                        <div class="col-7">
+                            <div class="row">
+                                <div class="col-7">(Firma del consumidor) :</div>
+                                <div class="col-5"/>
+                            </div>
+                        </div>
+                    </div>  
+                  
+                </t>       
+
+
+                                    <!--For Oklohama-->
+                <t t-if="o.state_id.code == 'OK' ">
+                  <div style="page-break-before: always;"/>
+                  <h5><center><u><b>NOTIFICACIÓN DE CANCELACIÓN</b></u></center></h5>
+                  <br/>
+                  
+                  <p>Usted podrá cancelar este contrato, sin penalización ni obligación alguna, dentro de los cinco 
+                  (5) días siguientes a la fecha de la firma del contrato.</p>
+                  <br/>
+                  <p>Si cancela, cualquier pago realizado por usted en virtud de este contrato, será devuelto dentro 
+                     de los diez (10) días siguientes a la recepción por parte del vendedor de su notificación de
+                     cancelación. Para cancelar este contrato, envíe por correo o entregue una copia fechada y
+                     firmada de esta notificación de cancelación, o cualquier otro aviso por escrito a Nationwide
+                     Loan Consultants &amp; Advisors, LLC en 555 SW 12th Ave. Ste. 202, Pompano Beach, FL 
+                     33069 antes de la media noche del __________</p>
+                  <br/>
+                  <p>Por la presente cancelo esta transacción, __________________ (fecha)</p>
+                    <br/>
+                    <br/>
+                    <div class="row">
+                        <div class="col-5">
+                            <div class="row">
+                                <div class="col-7">______________________</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-7">Firma :</div>
+                            </div>
+                        </div>
+                        <div class="col-7">
+                        </div>
+                    </div>  
+                  <div style="page-break-before: always;"/>
+                  <h4><center><u><b>DECLARACIÓN DE INFORMACIÓN</b></u></center></h4>
+                  <br/>
+                  
+                  <p>Nationwide Loan Consultants &amp; Advisors, LLC </p>
+                  
+                  <p>555 SW 12th Ave. Ste. 202</p>
+                  
+                  <p>Pompano Beach, FL 33069</p>
+                  
+                  <br/>
+                  
+                  <p>Estamos obligados por ley a proporcionar esta declaración de información antes de la ejecución de un 
+                  contrato o antes de recibir cualquier dinero u otra contraprestación económica.</p>
+                  
+                  <ol>
+                      <li>Tiene derecho a revisar cualquier archivo mantenido por cualquier agencia de informes 
+                      crediticios del consumidor, según lo dispuesto en la Ley Federal de Informes Justos
+                      de Crédito, 15 U.S.C., Secciones 1681 a 1681t.</li>
+                      
+                      <br/>
+                      
+                      <li>Tiene derecho a revisar el archivo mencionado anteriormente sin cargo si se realiza una 
+                      solicitud a la agencia de informes crediticios del consumidor dentro de los treinta (30) 
+                      días posteriores a la recepción de la notificación de que se ha denegado el crédito. Si 
+                      no se denegó el crédito, el precio aproximado para revisar dicho expediente será de $100,00.</li>
+                      
+                      <br/>
+                      
+                      <li>Tiene derecho a disputar la integridad o precisión de cualquier elemento contenido en su
+                       archivo que mantiene una agencia de informes crediticios del consumidor.</li>
+                      
+                      <br/>
+                      
+                      <li>En este párrafo, proporcione a su cliente una descripción detallada de los servicios que 
+                      realizará su compañía, incluido el monto total que el comprador deberá pagar, o estará 
+                      obligado a pagar, por sus servicios.</li>
+                      
+                      <br/>
+                      
+                      <li>Tiene derecho a proceder contra la cuenta de fianza o fideicomiso que la ley nos exige mantener. 
+                      El nombre y dirección de la compañía garante que emitió la fianza es International Fidelity
+                       Insurance Company.</li>
+                      
+                      <br/>
+                  </ol>
+                  
+                  <p>He recibido una copia de la declaración de información anterior.</p>
+                  
+                  
+                  <br/>
+                  <br/>
+                  
+                  <p>_______________________________</p>
+                  
+                  <p>Firma del cliente</p>
+                  
+                  <p>_______________________________</p>
+                  
+                  <p>Fecha</p>
+                  
+                  
+                </t> 
+
+                                        <!--For Nebraska-->
+                <t t-if="o.state_id.code == 'NE' ">
+                  <div style="page-break-before: always;"/>
+                  <h5><center><u><b>NOTIFICACIÓN DE CANCELACIÓN</b></u></center></h5>
+                  <br/>
+                  
+                
+                  <p>Tiene cinco días hábiles en los que puede cancelar este acuerdo por cualquier motivo enviando 
+                    por correo o entregando una notificación por escrito al corredor de préstamos. Los cinco
+                    días hábiles vencerán el ________________ (última fecha para enviar por correo o entregar
+                    una notificación) y la notificación de cancelación debe enviarse por correo a 555 SW 12th Ave. 
+                    Ste. 202, Pompano Beach, FL 33069. Si elige enviar su notificación por correo, debe colocarse 
+                    en el correo de los Estados Unidos con la dirección correcta, franqueo de primera clase prepago
+                    y matasellos antes de la medianoche de la fecha anterior. Si elige entregar su notificación al 
+                    corredor de préstamos directamente, debe enviarse al corredor de préstamos al final del día hábil
+                    normal en la fecha anterior. Dentro de los cinco días hábiles posteriores a la recepción de la 
+                    notificación de cancelación, el corredor de préstamos le devolverá todas las sumas pagadas por 
+                    usted al corredor de préstamos de conformidad con este acuerdo.</p>
+                  <br/>
+                  <br/>
+                  <p>ACEPTO TODOS LOS TÉRMINOS Y CONDICIONES:</p>
+                    <br/>
+                    <div class="row">
+                        <div class="col-5">
+                            <div class="row">
+                                <div class="col-5">Firma:</div>
+                                <div class="col-7">______________________</div>
+                            </div>
+                        </div>
+                        <div class="col-5">
+                            <div class="row">
+                                <div class="col-5">Firma:</div>
+                                <div class="col-7">______________________</div>
+                            </div>
+                        </div>
+                        <div class="col-2"/>
+                    </div>  
+                  <p>ACEPTO TODOS LOS TÉRMINOS Y CONDICIONES:</p>
+                    <br/>
+                    <div class="row">
+                        <div class="col-5">
+                            <div class="row">
+                                <div class="col-5">Firma:</div>
+                                <div class="col-7">______________________</div>
+                            </div>
+                        </div>
+                        <div class="col-5">
+                            <div class="row">
+                                <div class="col-5">Firma:</div>
+                                <div class="col-7">______________________</div>
+                            </div>
+                        </div>
+                        <div class="col-2"/>
+                    </div>  
+                </t>
+
+                                    <!--For Pennsylvania-->
+                 <t t-if="o.state_id.code == 'PA' ">
+                  <div style="page-break-before: always;"/>
+                  <h5><center><u><b>NOTIFICACIÓN DE CANCELACIÓN</b></u></center></h5>
+                  <br/>
+                  
+                  <p>Usted puede cancelar este contrato, sin penalización ni obligación alguna, en cualquier momento 
+                  antes de la medianoche del quinto día hábil posterior a la fecha de la firma del contrato. </p>
+                  <br/>
+                  
+                  <p>Si cancela, cualquier pago realizado por usted en virtud de este contrato será devuelto dentro
+                   de los 10 días posteriores a la recepción por parte del vendedor de su notificación de cancelación. </p>
+                  
+                  <p> Para cancelar este contrato, envíe por correo o entregue una copia firmada y fechada de esta notificación 
+                  de cancelación, o cualquier otra notificación por escrito, a Nationwide Loan Consultants and 
+                  Advisors, LLC 555 SW 12th Ave. Ste. 202, Pompano Beach, FL 33069. A más tardar a la medianoche 
+                  de (fecha)_____________ </p>
+                  
+                  <p><b>por la presente cancelo esta transacción.</b></p>
+                  
+                    <br/>
+                    <br/>
+                  <p>(Fecha)</p>    
+                  <p>_________________________________</p><br/>
+                  <p>(Firma del consumidor)</p>    
+                  <p>___________________________</p>
+
+                </t>
+
+                                        <!--For Wisconsin-->
+                <t t-if="o.state_id.code == 'WI' ">
+                  <div style="page-break-before: always;"/>
+                  <h5><center><u><b>NOTIFICACIÓN DE CANCELACIÓN</b></u></center></h5>
+                  <br/>
+                  
+                  <p>Usted puede cancelar este contrato, sin penalización ni obligación alguna, en cualquier 
+                  momento antes de la medianoche del quinto día hábil posterior a la fecha de la firma del 
+                  contrato.</p>
+                  <br/>
+                  
+                  <p>Si cancela, cualquier pago realizado por usted en virtud de este contrato será devuelto dentro 
+                  de los 15 días posteriores a la recepción por parte del vendedor de su notificación de cancelación.</p>
+                  
+                  <p>Para cancelar este contrato, envíe por correo o entregue una copia firmada y fechada de esta 
+                  notificación de cancelación, o cualquier otra notificación por escrito, a Nationwide Loan Consultants 
+                  and Advisors, LLC 555 SW 12th Ave. Ste. 202, Pompano Beach, FL 33069. A más tardar a la 
+                  medianoche de (fecha)_____________ </p>
+                  
+                  <p>por la presente cancelo esta transacción.</p>
+                    <br/>
+                    <br/>
+                    <div class="row">
+                        <div class="col-8">
+                            <div class="row">
+                                <div class="col-6">(Impresión del nombre del consumidor)</div>
+                                <div class="col-6">_________________________________</div>
+                            </div>
+                            <br/>
+                            <div class="row">
+                                <div class="col-6">(Fecha) :</div>
+                                <div class="col-6">_________________________________</div>
+                            </div>
+                            <br/>
+                            <div class="row">
+                                <div class="col-6">(Firma del consumidor) :</div>
+                                <div class="col-6">_________________________________</div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                        </div>
+                    </div>
+                    
+                </t>
+
+
+
+
+
+          </div>
+    </div>
+                </t>
+               </t>
+            
+            
+            <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+            <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+            
+               <!-- .................SPANISH CSA FOR THE BORROWING CLUB ...................... -->
+            
+            <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+            <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+            
+            
+            
+            
+            
+            <t t-if="o.company_id.id == 3">
+               <t t-call="web.basic_layout">
+                   <div class="page">
+            <div class="oe_structure">
+                <img t-att-src="'/nwlc_crm_ext/static/src/img/tbc_cover_csa.png'" />
+            </div>
+                            <div style="page-break-before: always;"/>
+          <div class="header text-center mt-3">
+              <div class="row">
+                <div class="col-5">
+                    <!-- <img t-if="doc.company_id.logo and doc.company_id.id == 3" t-att-src="image_data_uri(doc.company_id.logo)" style="height: 80px; margin-top: 15px;" alt="header"/> -->
+                </div>
+                
+                <div class="col-7" style="margin-top:60px;font-family:Montserrat" >
+                    <h3>ACUERDO DE SERVICIO DE ATENCIÓN AL CLIENTE</h3>
+                </div>
+              </div>
+                    
+                  
+          </div>
+           <div class="mt-3">
+           <!-- <div class="row">
+                <center>
+                    <img t-if="doc.company_id.logo and doc.company_id.id == 1" t-att-src="image_data_uri(doc.company_id.logo)" style="height: 120px;width:300px;" alt="header"/>
+                    <br/>
+      <img src="/web/image/1124-2dff64cf/Screenshot%202024-12-04%20101247.png" alt="" class="img-thumbnail img img-fluid o_we_custom_image" style="height: 120px;width:300px;margin-top:15px"/>
+                    </center>
+            </div>
+            <h4 style="text-align:center;margin-top:20px;font-family:Times New Roman;font-style:italic">Esta un paso más cerca de la libertad financiera</h4>
+            <div style="page-break-before: always;"/> -->
+            <p>
+                The Borrowing Club, LLC, una sociedad de responsabilidad limitada de Florida (a veces referida 
+                en este Acuerdo como "TBC") y el Cliente (a veces referido en este Acuerdo como "Prestatario", 
+                "Yo", "mi", "usted" y "su") han acordado que TBC proporcionará ciertos servicios en relación 
+                con la posible obtención de un préstamo. TBC y el Cliente acuerdan lo siguiente: 
+            </p>
+
+            <h5><b>DESCRIPCIÓN GENERAL DE LOS SERVICIOS</b></h5>
+            <ol>
+                <li> TBC representa que no está actuando como prestamista o actuando en nombre de cualquier 
+                prestamista con respecto a este Acuerdo. Por lo tanto, TBC no está afiliada con ninguno de 
+                los prestamistas a los que presentará solicitudes de préstamo en su nombre. TBC utiliza sus 
+                considerables recursos y conjunto de datos, junto con su experimentado personal profesional 
+                en un esfuerzo por encontrarle el(los) paquete(s) de préstamo más adecuado(s) a sus criterios 
+                de préstamo.</li><br/>
+                
+                <li>Los servicios prestados por TBC ("Servicios de TBC") consisten en la búsqueda de préstamos/prestamistas 
+                potenciales aplicables a sus necesidades, asesorándole sobre dichos productos de préstamo disponibles, 
+                remitiéndole a los prestamistas que proporcionan los productos de préstamo aplicables, y consultándole 
+                a lo largo de dicho proceso. Por lo tanto, TBC le presentará o remitirá a múltiples prestamistas de 
+                nuestra base de datos. Cada prestamista individual hará su propia verificación de crédito y 
+                suscripción.  Como tal, TBC no tiene ninguna responsabilidad por las acciones/decisiones de 
+                cualquiera de los prestamistas referidos o si el producto final del préstamo ofrecido por 
+                cualquier prestamista que cumpla con las expectativas del Prestatario en cuanto a términos, 
+                tasas de interés o comisiones del prestamista. Usted reconoce y acepta que las responsabilidades 
+                de TBC se limitarán a los servicios mencionados anteriormente, y, como tal, TBC no participará 
+                en ninguna negociación en su nombre, y TBC no tendrá ninguna obligación continua, deberes, 
+                responsabilidades, papel, parte en las negociaciones, o en la relación entre el prestamista 
+                y usted, de ninguna manera.</li><br/>
+                
+                <li>
+                  <u>Entiendo y reconozco plenamente que los paquetes de préstamos ofrecidos por los prestamistas 
+                  localizados por TBC también están disponibles para mí sin utilizar los servicios de TBC, y, por 
+                  lo tanto, podría haber tratado de localizar dichos paquetes por mi cuenta sin la necesidad de 
+                  incurrir en los Honorarios de Consultoría identificados en el acuerdo. Sin embargo, he optado 
+                  por utilizar los servicios de TBC y pagar los Honorarios de Consultoría como se especifica en 
+                  el presente documento. He optado por contratar los servicios de TBC porque TBC tiene 
+                  experiencia en la industria de préstamos al consumidor y tiene vastos recursos y conocimientos
+                  para ayudarme a completar adecuadamente el proceso de solicitud, lo que aumentará mis posibilidades
+                  de encontrar un(os) paquete(s) de préstamo adecuado(s) con las mejores tasas y términos disponibles 
+                  para mis necesidades.
+                  </u>
+                </li><br/>
+            <!--</ol>-->
+
+            <h5>EL PROCESO</h5>
+            <!--<ol>-->
+                <li>Entiendo que, al proceder, estoy autorizando a TBC a representarme y actuar en mi nombre para el 
+                proceso de solicitud de préstamo, en forma escrita, electrónica, verbal, o cualquier otro medio en 
+                que se requiera con el fin de obtener la mejor opción de préstamo disponible para mí. Autorizo además 
+                a TBC a comunicarse con todos los prestamistas en mi nombre, verbalmente o a través del proceso de 
+                correo electrónico. Entiendo que TBC necesitará crear un correo electrónico en mi nombre con el fin 
+                de comunicarse con varios prestamistas y organizar las solicitudes presentadas en mi nombre, en este 
+                sentido, concedo a TBC la autoridad para crear y acceder a un correo electrónico en mi nombre.
+                </li><br/>
+                <!--<div style="page-break-before: always;"/>-->
+                <li>También otorgo a TBC la autoridad para acceder a mi informe crediticio y entiendo que TBC puede 
+                extraer y ver dicho informe hasta 120 días después de que suscriba este Acuerdo. </li><br/>
+                
+                <li>Si cualquier acción del Prestatario es necesaria o apropiada en relación con las solicitudes de 
+                préstamo contempladas en el presente, entonces el Prestatario hará su mejor esfuerzo para realizar 
+                dichas acciones de manera oportuna y para cooperar y ayudar a los esfuerzos de TBC, incluyendo, 
+                entre otros, hablar (tratar) directamente con un prestamista, devolver las llamadas telefónicas, 
+                responder a las comunicaciones incluyendo correos electrónicos, verificar su identidad y proporcionar 
+                todos los documentos e información solicitada por TBC y/o un prestamista.</li><br/>
+                
+                <li>TBC acuerda que usted nunca está bajo ninguna obligación de aceptar o recibir un préstamo o una 
+                línea de crédito. TBC no puede y no aceptará ningún préstamo en su nombre sin su aprobación. TBC se 
+                esfuerza por ofrecerle las mejores opciones para elegir, pero todas las decisiones con respecto a 
+                cualquier oferta de préstamo, incluyendo el cierre de cualquiera de las opciones de préstamo es 
+                exclusivamente su decisión.</li><br/>
+            <!--</ol>-->
+
+            <h5>HONORARIO DE CONSULTORÍA Y PAGO DE ACH</h5>
+            <!--<ol>-->
+                <li>TBC no cobra una CUOTA POR ADELANTADO. TBC trabaja completamente libre de riesgo para usted. El único 
+                momento en que un cargo por servicios es debido a TBC, es después de que usted es aprobado por un 
+                prestamista y recibe el acceso a los fondos, o en las circunstancias establecidas en el párrafo (10)
+                 a continuación. Cualquier cargo debido y pagadero por usted a TBC es por los Servicios de TBC. 
+                 Entiendo que algunos prestamistas tienen cargos y que estos cargos son separados y adicionales 
+                 a cualquier cargo que usted deba a TBC.</li><br/>
+                
+                <li>Estoy de acuerdo en pagar a TBC un Honorario único de Consultoría de ( <u><span t-field="o.change_fee"/></u> %) 
+                de la cantidad total en dólares que acepto y recibo de un banco o institución de crédito como resultado de los 
+                servicios prestados por TBC. Entiendo que este Honorario de Consultoría es pagadero a TBC por mí dentro de 
+                las 48 horas desde el momento en que recibo el acceso a la financiación. Entiendo que se me cobrará y 
+                deberé a TBC un cargo por mora del cinco (5%) por ciento del Honorario de Consultoría si TBC no recibe 
+                el mencionado honorario dentro de las 72 horas de la fecha en que recibo el acceso a la financiación. 
+                Entiendo que en tal caso también seré responsable de los honorarios de abogados y costos incurridos por 
+                TBC en relación con los esfuerzos para cobrar el Honorario de Consultoría.</li><br/>
+                
+                <li>Me comprometo a no eludir a TBC solicitando y/u obteniendo financiación de cualquiera de los prestamistas 
+                localizados por TBC durante un período de 90 días a partir de la fecha de ejecución de este Acuerdo, sin 
+                notificar a TBC y pagar el honorario de consultoría aquí establecido. Entiendo que, si lo hago, estaré 
+                incumpliendo este Acuerdo y seré responsable de pagar el Honorario de Consultoría especificado en el 
+                párrafo (9) anterior, basado en el monto total en dólares de cualquier financiación de este tipo. 
+                Entiendo que en tal caso también seré responsable de los honorarios de abogados y costos incurridos 
+                por TBC en relación con los esfuerzos para cobrar el Honorario de Consultoría.</li><br/>
+                
+                <li>Estoy de acuerdo en que el Honorario de Consultoría adeudado en virtud del presente Acuerdo se hará 
+                a través de una transferencia de una cámara de compensación automatizada ("ACH", por sus siglas en inglés) 
+                de mi cuenta designada directamente a TBC. En consecuencia, a la firma de este Acuerdo, me comprometo a 
+                entregar a TBC un <b><u>Formulario de Autorización de ACH</u></b> de Uso Único, (una copia del cual se adjunta e 
+                incorpora al presente) por el cual autorizo irrevocablemente a TBC a iniciar una transferencia ACH 
+                desde mi cuenta a TBC por el importe de la cuota adeudada en virtud del presente Acuerdo. Mientras 
+                mis obligaciones en virtud del presente Acuerdo sigan pendientes, me comprometo a: (i) no revocar 
+                la autoridad de TBC para iniciar el débito ACH como se contempla en el presente; (ii) no cambiar, 
+                modificar, cerrar o afectar de otro modo la cuenta; (iii) ordenar a cualquier prestamista que 
+                deposite todos los préstamos contemplados en el presente en la cuenta designada en el Formulario 
+                ACH; y (iv) ser responsable de todos los costos, gastos u otros honorarios y cargos incurridos 
+                por TBC como resultado de cualquier débito ACH fallido o devuelto, ya sea como resultado de sumas 
+                insuficientes disponibles en la cuenta o de otro modo. Por la presente certifico que soy el usuario 
+                autorizado de esta cuenta bancaria designada en el Formulario ACH y que no impugnaré las transacciones 
+                contempladas en el presente con mi banco, siempre y cuando las transacciones correspondan a los términos 
+                indicados en este Acuerdo.</li><br/>
+            <!--</ol>-->
+
+            <h5>RESOLUCIÓN DE CONFLICTOS</h5>
+            <!--<ol>-->
+                <li>Entiendo y reconozco que, como parte de su promesa de servicio, TBC tiene un proceso obligatorio de 
+                resolución de conflictos. Si no estoy satisfecho con los servicios prestados por TBC, primero debo 
+                ponerme en contacto con mi representante de servicio al cliente por correo electrónico o por 
+                teléfono y solicitar un Formulario de Resolución de Conflictos. Luego debo completar y enviar ese 
+                formulario por correo electrónico según las instrucciones del formulario. TBC responderá a todas 
+                las solicitudes de resolución de conflictos en el plazo de dos días hábiles (no se incluyen fines 
+                de semana ni festivos legales) a partir de la recepción de un Formulario de Resolución de Conflictos 
+                debidamente enviado.</li><br/>
+            <!--</ol>-->
+
+            <h5>PRÉSTAMOS EXCLUIDOS DEL HONORARIO DE CONSULTORÍA</h5>
+            <!--<ol>-->
+                <li>Entiendo que no tendré que pagar el Honorario de Consultoría previsto en este Acuerdo por los préstamos que obtenga 
+                de prestamistas con los que haya solicitado un préstamo no garantizado, tarjeta de crédito o línea de crédito en los 
+                últimos (60) sesenta días, según se enumera en el párrafo (14) a continuación. Además, entiendo que no tendré que pagar 
+                el Honorario de Consultoría previsto en el presente Acuerdo para los préstamos que obtenga de los prestamistas con los 
+                que actualmente tengo un préstamo no garantizado abierto o línea de crédito, como se indica en el párrafo (15) a continuación. 
+                TBC no solicitará préstamos en mi nombre con los prestamistas que enumero en los párrafos (14) y (15) a continuación.
+                </li><br/>
+            
+                <li>En los últimos 60 días, ¿ha solicitado usted o alguien que le represente un préstamo sin garantía, una tarjeta de 
+                crédito o una línea de crédito? En caso afirmativo, enumere a continuación los nombres de las instituciones a las que 
+                ha presentado la solicitud.<br/>
+                    <div class="row">
+                        <div class="col-4">Nombre del Banco:</div>
+                        <div class="col-8"/>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">Nombre del Banco:</div>
+                        <div class="col-8"/>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">Nombre del Banco:</div>
+                        <div class="col-8"/>
+                    </div>
+                </li><br/>
+                <li>
+                    Enumere a continuación todos los préstamos o líneas de crédito no garantizados que tenga abiertos:<br/>
+                    <div class="row">
+                        <div class="col-4">Nombre del Banco:</div>
+                        <div class="col-8"/>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">Nombre del Banco:</div>
+                        <div class="col-8"/>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">Nombre del Banco:</div>
+                        <div class="col-8"/>
+                    </div>
+                </li>
+            <!--</ol>-->
+            <br/>
+            
+            <h5>CONSENTIMIENTO DE COMUNICACIÓN</h5>
+            <!--<ol>-->
+                <li>Al firmar este documento, usted autoriza a TBC a comunicarse con usted utilizando el número de teléfono proporcionado 
+                por usted y cualquier otro número de teléfono asociado o relacionado con usted que nos pueda ser proporcionado por usted 
+                en el futuro. Usted otorga su consentimiento para que TBC lo contacte por teléfono, texto, correo electrónico, correo 
+                postal o por voz artificial o pregrabada, incluso si usted se ha inscrito en alguna <b>Lista de No Llamar</b>. Usted 
+                también acepta que cualquier persona o entidad que se ponga en contacto con usted de conformidad con su consentimiento 
+                aquí puede utilizar el sistema de marcación telefónica automática, incluso si el número de teléfono que usted proporcionó 
+                (o cualquier número de teléfono asociado con usted) está conectado a un teléfono móvil e incluso si se le puede cobrar por 
+                la llamada. Su consentimiento para recibir llamadas automáticas o mensajes de texto no es necesario para ninguna compra o 
+                disponibilidad de bienes/servicios de TBC; si no da su consentimiento, puede llamarnos al 1-888-463-5255 para continuar 
+                con su consulta.</li>
+            <!--</ol>-->
+            <br/>
+            
+            <h5>GARANTÍAS Y DECLARACIONES</h5>
+            <!--<ol>-->
+                <li>Declaro y garantizo que (a) tengo pleno derecho y autoridad para celebrar este acuerdo, hacer los consentimientos y 
+                autorizaciones en este documento, y para conceder los derechos aquí otorgados y acordados para ser otorgados; (b) no 
+                he hecho y no haré ninguna concesión o acuerdo que perjudique o pueda perjudicar, gravar o entrar en conflicto con 
+                cualquiera de los derechos otorgados a TBC; (c) cumpliré en todo momento con todas y cada una de las leyes, 
+                estatutos, reglamentos, códigos y ordenanzas aplicables a cualquier financiación; y (d) toda la información 
+                y declaraciones proporcionadas por mí serán verdaderas y precisas.</li><br/>
+                
+                <li>Entiendo y acepto que si cualquier prestamista pregunta si estoy trabajando con un tercero en relación con la 
+                obtención de un préstamo, debo divulgar al prestamista que estoy trabajando con TBC. En el caso de dicha investigación 
+                del prestamista, entiendo y acepto que debo notificar a TBC y proporcionar el nombre del(de los) prestamista(s) y el 
+                nombre del representante del prestamista al que se hizo la divulgación. </li><br/>
+                
+                <li>Entiendo y acepto que TBC me exigirá que revise y apruebe toda la información proporcionada a mi asesor de préstamos 
+                antes de presentar cualquier solicitud. También estoy de acuerdo en que voy a notificar de inmediato a TBC si cualquiera 
+                de la información proporcionada más tarde se convierte en inexacta o modificada por cualquier motivo. Además, notificaré 
+                inmediatamente a TBC si proporciono cualquier información a cualquier prestamista potencial que difiera de la información 
+                que proporcioné a TBC o si altero cualquier información presentada a cualquier prestamista. </li><br/>
+                
+                <li>Defenderé, indemnizaré y eximiré a TBC (y/o a sus accionistas, directores, miembros, gerentes, funcionarios, 
+                representantes, empleados, sucesores, licenciatarios y cesionarios) de y contra cualquier reclamación, demanda, 
+                pérdida, daño, acción, responsabilidad, sentencia, penalización, costes y gastos (incluyendo, sin limitación, honorarios 
+                de abogados y costas judiciales, estén o no relacionados con litigios) que surjan o estén relacionados con el incumplimiento 
+                por su parte de cualquier declaración o garantía en virtud del presente documento y/o relacionados con cualquier reclamación 
+                derivada de cualquier negociación o acuerdo con cualquier prestamista. </li><br/>
+            <!--</ol>-->
+            
+                <h5>POLÍTICAS DE CANCELACIÓN</h5>
+            <!--<ol>-->
+                <li>Este Acuerdo sólo puede ser cancelado después de que TBC reciba la cancelación por escrito proporcionada por mí. Dicha 
+                cancelación no me eximirá de ningún pago u otras obligaciones y responsabilidades en virtud de los párrafos (9) y (10) 
+                anteriores. A partir de la fecha de cancelación por escrito, TBC tiene el derecho de revisar y acceder a todos y cada 
+                uno de los informes de crédito sólo con fines de verificación. Estoy de acuerdo y acepto que no tengo derecho a cancelar 
+                este proceso de revisión de crédito de noventa (90) días.</li><br/>
+            
+                <h5>Préstamos Comerciales</h5>
+                
+                <li>Los servicios de TBC también están disponibles para préstamos comerciales. En el caso de que desee servicios de TBC 
+                con respecto a un préstamo comercial, incluidos, entre otros, adelantos en efectivo para comerciantes o préstamos basados 
+                en cuentas por cobrar, todos los términos y condiciones de este Acuerdo se aplicarán a cualquier préstamo comercial, 
+                incluidos, entre otros, consentimientos, autorizaciones. , honorarios de consultoría, garantías y representaciones. 
+                Además de cualquier información requerida como se especifica anteriormente, usted comprende que para brindar 
+                Servicios de TBC en relación con un préstamo comercial, puede ser necesario que TBC obtenga informes personales, 
+                comerciales, de investigación y del consumidor y otra información sobre usted y/o su empresa (si el préstamo se 
+                va a otorgar a una entidad), incluidos extractos del procesador de tarjetas de crédito y extractos bancarios, de 
+                una o más agencias de informes del consumidor, como TransUnion, Experian y Equifax, y de otras agencias de 
+                crédito, bancos, acreedores y otros terceros. También puede ser necesario transmitir la información 
+                anterior a terceros para poder proporcionar Servicios TBC en relación con un préstamo comercial. También 
+                aceptas que cualquier acreedor o institución financiera divulgue cualquiera de la información anterior a 
+                TBC y/o sus representantes, sucesores, cesionarios y personas designadas. Usted autoriza a TBC a obtener 
+                y/o transmitir la información anterior. También garantiza que está autorizado a actuar en nombre y vincular 
+                a cualquier entidad para la cual solicita que se proporcionen Servicios TBC. Usted acepta que es individualmente 
+                responsable del pago de los honorarios de consultoría, independientemente de si el préstamo está financiado a una 
+                entidad.</li><br/>
+            
+                <h5>VARIOS</h5>
+                
+                <li>El presente Acuerdo contiene el acuerdo completo entre las Partes, y sólo podrá ser modificado mediante un 
+                acuerdo por escrito firmado por todas las Partes. Este Acuerdo se interpretará de conformidad con las leyes 
+                sustantivas del estado de Florida, sin tener en cuenta sus principios de conflicto de leyes. Este Acuerdo 
+                se considera celebrado en el estado de Florida y para cualquier conflicto que surja de o en virtud de este 
+                Acuerdo, o que estén relacionados con este Acuerdo, el lugar y la jurisdicción será exclusivamente en el 
+                condado de Broward, Florida y las Partes por el presente dan su consentimiento a la sede y jurisdicción 
+                en el condado de Broward, Florida. En relación con cualquier litigio que surja de o en virtud del 
+                presente Acuerdo, la parte ganadora tendrá derecho a recuperar todos los costos y honorarios razonables 
+                de abogados, incluidos los procedimientos de apelación y posteriores a la sentencia. Por la presente 
+                autorizo a TBC a comunicarse conmigo a través de la dirección de correo electrónico que he proporcionado.  
+                <br/>
+                <br/>
+                
+                Estoy de acuerdo con los términos y condiciones antes mencionados que hacen de este un contrato vinculante. 
+                Entiendo que el presente Acuerdo es vinculante mediante firma electrónica. Esta firma electrónica debe ser 
+                la de la persona real que solicita un préstamo, de lo contrario, constituye una falsificación en virtud de 
+                todas y cada una de las leyes, estatutos, normas y reglamentos estatales y federales aplicables. La persona 
+                que "firma" este documento afirma que los hechos aquí expuestos son ciertos.
+                <br/>
+                <br/>
+                
+                Entiendo que doy mi consentimiento a The Borrowing Club (TBC) para obtener una verificación de crédito suave 
+                que me califique para obtener un préstamo.
+                <br/>
+                <br/>
+                
+                Entiendo que al hacer clic en el botón ACEPTO o al escribir mi nombre, lo que corresponda, inmediatamente 
+                después de este aviso, estoy proporcionando "instrucciones por escrito" a TBC en virtud de la Ley de 
+                Informes Crediticios Justos (FCRA) que autoriza a TBC a obtener información de mi perfil crediticio personal 
+                u otra información de cualquier oficina de crédito, incluidas, entre otras, Experian, TransUnion y/o Equifax. 
+                Autorizo a TBC a obtener dicha información únicamente para precalificarme para opciones de crédito.
+                <br/>
+                <br/>
+                </li>
+            
+            </ol>
+            
+            <div class="row"><div class="col-12">
+                <span>PREGUNTAS DE VERIFICACIÓN DE IDENTIDAD:</span>
+                <br/>
+                <br/>
+                <div class="row">
+                    <div class="col-5">
+                        <div class="row">
+                            <div class="col-3">
+                                    Nombre :
+                                </div>
+                            <div class="col-9">
+                                <span t-field="o.first_name"/>                            
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-7">
+                        <div class="row">
+                            <div class="col-2">
+                                    Apellido :
+                                </div>
+                            <div class="col-10">
+                                <span t-field="o.last_name"/>                            
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <br/>
+                
+                <div class="row">
+                    <div class="col-2">Dirección :</div>
+                    <div class="col-10">
+                        <span t-field="o.street"/>                        
+                    </div>
+                </div>
+                
+                <br/>
+                
+                <div class="row">
+                    <div class="col-5">
+                        <div class="row">
+                            <div class="col-5">Ingresos Anuales :</div>
+                            <div class="col-7">
+                                <span t-field="o.primary_gross_annual_income"/>                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-7">
+                        <div class="row">
+                            <div class="col-8">¿Se pueden verificar los ingresos? Sí__No__  :</div>
+                            <div class="col-4">
+                                <span t-field="o.is_income_verifiable"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <br/>
+                <br/>
+                <span>ACEPTO TODOS LOS TÉRMINOS Y CONDICIONES:</span>
+                <br/>
+                <br/>
+            
+                <div class="row">
+                    <div class="col-5">
+                        <div class="row">
+                            <div class="col-5">Firma :</div>
+                            <div class="col-7"/>
+                        </div>
+                    </div>
+                    <div class="col-7">
+                        <div class="row">
+                            <div class="col-5">Fecha :</div>
+                            <div class="col-7"/>
+                        </div>
+                    </div>
+                </div>
+                
+                <br/>
+                
+                <div class="row">
+                    <div class="col-6">ACEPTO TODOS LOS TÉRMINOS Y CONDICIONES:</div>
+                    <div class="col-6"/>
+                </div>
+                
+                <br/>
+                
+                <div class="row">
+                    <div class="col-5">
+                        <div class="row">
+                            <div class="col-5">Firma :</div>
+                            <div class="col-7"/>
+                        </div>
+                    </div>
+                    <div class="col-7">
+                        <div class="row">
+                            <div class="col-7">Fecha :</div>
+                            <div class="col-5"/>
+                        </div>
+                    </div>
+                </div>
+                
+            </div></div>
+            <div style="page-break-before: always;"/>
+            
+            <div class="row text-left">
+                <h3><center>FORMULARIO DE AUTORIZACIÓN DE TERCEROS</center></h3>
+            </div>    
+                <p>
+                    Yo,					con domicilio en						 ("Prestatario" o "Yo" o "mi") por 
+                    la presente autorizo a <b>The Borrowing Club, LLC</b>, sus asociados, agentes y/o cesionarios 
+                    (individual y colectivamente el "Agente") el derecho de comunicarse con prestamistas independientes 
+                    ("Terceros") en mi nombre, y actuar como mi agente, bajo los siguientes términos:
+                    <br/>
+                    
+             </p>
+      <ol>
+                        <li>Por la presente otorgo y concedo a mi mencionado Agente pleno consentimiento y autoridad 
+                        para actuar en mi nombre de cualquier forma legal con respecto al consentimiento para obtener, 
+                        compartir, divulgar, discutir y proporcionar de cualquier otra forma a Terceros, y entre sí, 
+                        información personal pública y no pública contenida en o relacionada con la obtención de un 
+                        préstamo al consumo para el Prestatario. Esta información puede incluir, entre otros, el nombre, 
+                        la dirección postal, el número de teléfono, el número de la seguridad social, la puntuación 
+                        crediticia, el informe crediticio, los ingresos, los saldos de las cuentas, la elegibilidad 
+                        para el programa y la actividad de pago del Prestatario.</li>
+                        
+                        <br/>
+                        
+                        <li>Entiendo que seré plenamente responsable de revisar cualquier información que sea enviada por Terceros a mi Agente.</li>
+                    
+                        <br/>
+                        
+                        <li>Esta Autorización expira en un año a partir de la fecha en que se firme, a menos que el Prestatario notifique específicamente por
+                        escrito al Agente que esta Autorización no tiene más validez y vigencia.</li>
+                    
+                        <br/>
+                        
+                        <li>Entiendo que este Formulario puede no ser aceptado por algunos Terceros y que mi Agente me notificará por escrito si no es aceptado..</li>
+                        
+                        <br/>
+                    
+                        <li>Entiendo y acepto que mi Agente no tiene ninguna responsabilidad u obligación de verificar lo que los Terceros hacen con
+                        la información que les proporciona mi Agente, según lo autorizado por este Formulario.</li>
+                    
+                        <br/>
+                    
+                        <li>Por la presente, me comprometo a indemnizar y eximir para siempre a mi Agente de cualquier acción y causa de acción, pleito,
+                        reclamación, honorarios de abogado o demandas contra mi Agente, resultante de que mi Agente discuta, o se niegue a discutir, mi 
+                        información con Terceros, o resultante de que mi Agente proporcione, o se niegue a proporcionar, cualquier documento u otra información
+                        a Terceros.</li>
+                    </ol>
+      <br/>
+      <span> ENTIENDO Y ESTOY DE ACUERDO CON LOS TÉRMINOS DE ESTA AUTORIZACIÓN A TERCEROS.</span>
+      <br/>
+      <br/>
+      <span>Firma del Prestatario: </span>
+      <br/>
+      <br/>
+      <span>Nombre del Prestatario en letra de imprenta: </span>
+        <span t-field="o.full_name"/>
+      <br/>
+      <br/>
+      <span>Fecha: </span>
+      <br/>
+      <br/>
+      <p/>
+            
+                                 <!--For Maryland-->
+                <t t-if="o.state_id.code == 'MD' ">
+                  <div style="page-break-before: always;"/>
+                  <h4><center><u>NOTIFICACIÓN DE CANCELACIÓN</u></center></h4>
+                  <br/>
+                  
+                  <p>Usted puede cancelar este contrato, sin penalización ni obligación alguna, en cualquier momento antes 
+                  de la medianoche del tercer día hábil posterior a la fecha de la firma del contrato. Si cancela, 
+                  cualquier pago realizado por usted en virtud de este contrato será devuelto dentro de los
+                   10 días posteriores a la recepción por parte del vendedor de su notificación de cancelación.
+                   Para cancelar este contrato, envíe por correo o entregue una copia firmada y fechada de esta
+                   notificación de cancelación, o cualquier otra notificación por escrito, a </p><br/>
+                  
+                  <p>The Borrowing Club, LLC 555 SW 12th Ave. Ste. 202, Pompano Beach, FL 33069<br/>
+                    A más tardar a la medianoche de (fecha)_____________ por la presente cancelo esta transacción.</p><br/>
+                    
+                    <div class="row">
+                        <div class="col-5">
+                            <div class="row">
+                                <div class="col-5">(Fecha) :</div>
+                                <div class="col-7"/>
+                            </div>
+                        </div>
+                        <div class="col-7">
+                            <div class="row">
+                                <div class="col-7">(Firma del consumidor) :</div>
+                                <div class="col-5"/>
+                            </div>
+                        </div>
+                    </div>  
+                  
+                </t>       
+
+
+                                    <!--For Oklohama-->
+                <t t-if="o.state_id.code == 'OK' ">
+                  <div style="page-break-before: always;"/>
+                  <h5><center><u><b>NOTIFICACIÓN DE CANCELACIÓN</b></u></center></h5>
+                  <br/>
+                  
+                  <p>Usted podrá cancelar este contrato, sin penalización ni obligación alguna, dentro de los cinco 
+                  (5) días siguientes a la fecha de la firma del contrato.</p>
+                  <br/>
+                  <p>Si cancela, cualquier pago realizado por usted en virtud de este contrato, será devuelto dentro 
+                     de los diez (10) días siguientes a la recepción por parte del vendedor de su notificación de
+                     cancelación. Para cancelar este contrato, envíe por correo o entregue una copia fechada y
+                     firmada de esta notificación de cancelación, o cualquier otro aviso por escrito a The Borrowing Club, LLC en 555 SW 12th Ave. Ste. 202, Pompano Beach, FL 
+                     33069 antes de la media noche del __________</p>
+                  <br/>
+                  <p>Por la presente cancelo esta transacción, __________________ (fecha)</p>
+                    <br/>
+                    <br/>
+                    <div class="row">
+                        <div class="col-5">
+                            <div class="row">
+                                <div class="col-7">______________________</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-7">Firma :</div>
+                            </div>
+                        </div>
+                        <div class="col-7">
+                        </div>
+                    </div>  
+                  <div style="page-break-before: always;"/>
+                  <h4><center><u><b>DECLARACIÓN DE INFORMACIÓN</b></u></center></h4>
+                  <br/>
+                  
+                  <p>The Borrowing Club, LLC </p>
+                  
+                  <p>555 SW 12th Ave. Ste. 202</p>
+                  
+                  <p>Pompano Beach, FL 33069</p>
+                  
+                  <br/>
+                  
+                  <p>Estamos obligados por ley a proporcionar esta declaración de información antes de la ejecución de un 
+                  contrato o antes de recibir cualquier dinero u otra contraprestación económica.</p>
+                  
+                  <ol>
+                      <li>Tiene derecho a revisar cualquier archivo mantenido por cualquier agencia de informes 
+                      crediticios del consumidor, según lo dispuesto en la Ley Federal de Informes Justos
+                      de Crédito, 15 U.S.C., Secciones 1681 a 1681t.</li>
+                      
+                      <br/>
+                      
+                      <li>Tiene derecho a revisar el archivo mencionado anteriormente sin cargo si se realiza una 
+                      solicitud a la agencia de informes crediticios del consumidor dentro de los treinta (30) 
+                      días posteriores a la recepción de la notificación de que se ha denegado el crédito. Si 
+                      no se denegó el crédito, el precio aproximado para revisar dicho expediente será de $100,00.</li>
+                      
+                      <br/>
+                      
+                      <li>Tiene derecho a disputar la integridad o precisión de cualquier elemento contenido en su
+                       archivo que mantiene una agencia de informes crediticios del consumidor.</li>
+                      
+                      <br/>
+                      
+                      <li>En este párrafo, proporcione a su cliente una descripción detallada de los servicios que 
+                      realizará su compañía, incluido el monto total que el comprador deberá pagar, o estará 
+                      obligado a pagar, por sus servicios.</li>
+                      
+                      <br/>
+                      
+                      <li>Tiene derecho a proceder contra la cuenta de fianza o fideicomiso que la ley nos exige mantener. 
+                      El nombre y dirección de la compañía garante que emitió la fianza es International Fidelity
+                       Insurance Company.</li>
+                      
+                      <br/>
+                  </ol>
+                  
+                  <p>He recibido una copia de la declaración de información anterior.</p>
+                  
+                  
+                  <br/>
+                  <br/>
+                  
+                  <p>_______________________________</p>
+                  
+                  <p>Firma del cliente</p>
+                  
+                  <p>_______________________________</p>
+                  
+                  <p>Fecha</p>
+                  
+                  
+                </t> 
+
+                                        <!--For Nebraska-->
+                <t t-if="o.state_id.code == 'NE' ">
+                  <div style="page-break-before: always;"/>
+                  <h5><center><u><b>NOTIFICACIÓN DE CANCELACIÓN</b></u></center></h5>
+                  <br/>
+                  
+                
+                  <p>Usted podrá cancelar este contrato, sin penalización ni obligación alguna, dentro de los cinco (5) 
+                  días siguientes a la fecha de la firma del contrato.</p>
+                  <br/>
+                  <br/>
+                  <p>Si cancela, cualquier pago realizado por usted en virtud de este contrato, será devuelto dentro de 
+                  los cinco (5) días siguientes a la recepción por parte del vendedor de su notificación de cancelación. 
+                  Para cancelar este contrato, envíe por correo o entregue una copia fechada y firmada de esta notificación 
+                  de cancelación, o cualquier otro aviso por escrito a The Borrowing Club, LLC en 555 SW 12th Ave. Ste. 202 
+                  Pompano Beach, FL 33069 antes de la media noche del __________
+                  </p>
+                  <br/>
+                  <br/>
+                  <p>Por la presente cancelo esta transacción, __________________ (fecha)</p>
+                    <br/>
+                    <br/>
+                    <p>_______________________________</p><br/>              
+                    <p>Firma</p>
+                </t>
+
+                                    <!--For Pennsylvania-->
+                 <t t-if="o.state_id.code == 'PA' ">
+                  <div style="page-break-before: always;"/>
+                  <h5><center><u><b>NOTIFICACIÓN DE CANCELACIÓN</b></u></center></h5>
+                  <br/>
+                  
+                  <p>Usted puede cancelar este contrato, sin penalización ni obligación alguna, en cualquier 
+                  momento antes de la medianoche del quinto día hábil posterior a la fecha de la firma del 
+                  contrato. Si cancela, cualquier pago realizado por usted en virtud de este contrato será 
+                  devuelto dentro de los 10 días posteriores a la recepción por parte del vendedor de su 
+                  notificación de cancelación. Para cancelar este contrato, envíe por correo o entregue 
+                  una copia firmada y fechada de esta notificación de cancelación, o cualquier otra notificación 
+                  por escrito, a </p>
+
+                  <p>The Borrowing Club, LLC 555 SW 12th Ave. Ste. 202, Pompano Beach, FL 33069  </p>  <br/>
+                  <p>A más tardar a la medianoche de (fecha)_____________ por la presente cancelo esta transacción.</p>  
+                  
+                    <br/>
+                    <br/>
+                  <p>(Fecha)</p>    
+                  <p>_________________________________</p><br/>
+                  <p>(Firma del consumidor)</p>    
+                  <p>___________________________</p>
+
+                </t>
+
+                                        <!--For Wisconsin-->
+                <t t-if="o.state_id.code == 'WI' ">
+                  <div style="page-break-before: always;"/>
+                  <h5><center><u><b>NOTIFICACIÓN DE CANCELACIÓN</b></u></center></h5>
+                  <br/>
+                  
+                  <p>Usted puede cancelar este contrato, sin penalización ni obligación alguna, en cualquier 
+                  momento antes de la medianoche del quinto día hábil posterior a la fecha de la firma del 
+                  contrato. Si cancela, cualquier pago realizado por usted en virtud de este contrato será 
+                  devuelto dentro de los 10 días posteriores a la recepción por parte del vendedor de su 
+                  notificación de cancelación. Para cancelar este contrato, envíe por correo o entregue 
+                  una copia firmada y fechada de esta notificación de cancelación, o cualquier otra notificación 
+                  por escrito, a </p>
+
+                  <p>The Borrowing Club, LLC 555 SW 12th Ave. Ste. 202, Pompano Beach, FL 33069  </p>  
+                  <p>A más tardar a la medianoche de (fecha)_____________ por la presente cancelo esta transacción.</p>  
+                  
+                    <br/>
+                    <br/>
+                  <p>(Fecha)</p>    
+                  <p>_________________________________</p><br/>
+                  <p>(Firma del consumidor)</p>    
+                  <p>___________________________</p>
+
+                    <br/>
+                    <br/>
+                    <p>--------------------------------------------------------------------------------------------------------------------------------</p>
+                    <br/>
+                    <br/>
+                    <p>Usted puede cancelar este contrato, sin penalización ni obligación alguna, en cualquier 
+                  momento antes de la medianoche del quinto día hábil posterior a la fecha de la firma del 
+                  contrato. Si cancela, cualquier pago realizado por usted en virtud de este contrato será 
+                  devuelto dentro de los 10 días posteriores a la recepción por parte del vendedor de su 
+                  notificación de cancelación. Para cancelar este contrato, envíe por correo o entregue 
+                  una copia firmada y fechada de esta notificación de cancelación, o cualquier otra notificación 
+                  por escrito, a </p>
+
+                  <p>The Borrowing Club, LLC 555 SW 12th Ave. Ste. 202, Pompano Beach, FL 33069  </p> 
+                  <p>A más tardar a la medianoche de (fecha)_____________ por la presente cancelo esta transacción.</p>  
+                  
+                    <br/>
+                    <br/>
+                  <p>(Fecha)</p>    
+                  <p>_________________________________</p><br/>
+                  <p>(Firma del consumidor)</p>    
+                  <p>___________________________</p>
+                    
+                </t>
+                
+                
+                                        <!--For WestVirginia-->
+                <t t-if="o.state_id.code == 'WV' ">
+                  <div style="page-break-before: always;"/>
+                  <h5><center><u><b>NOTIFICACIÓN DE CANCELACIÓN</b></u></center></h5>
+                  <br/>
+                  
+                  <p>Usted puede cancelar este contrato, sin penalización ni obligación alguna, en cualquier 
+                  momento antes de la medianoche del quinto día hábil posterior a la fecha de la firma del 
+                  contrato. Si cancela, cualquier pago realizado por usted en virtud de este contrato será 
+                  devuelto dentro de los 10 días posteriores a la recepción por parte del vendedor de su 
+                  notificación de cancelación. Para cancelar este contrato, envíe por correo o entregue 
+                  una copia firmada y fechada de esta notificación de cancelación, o cualquier otra notificación 
+                  por escrito, a </p>
+
+                  <p>The Borrowing Club, LLC 555 SW 12th Ave. Ste. 202, Pompano Beach, FL 33069  </p> <br/> 
+                  <p>A más tardar a la medianoche de (fecha)_____________ por la presente cancelo esta transacción.</p>  
+                  
+                    <br/>
+                    <br/>
+                  <p>(Fecha)</p>    
+                  <p>_________________________________</p><br/>
+                  <p>(Firma del consumidor)</p>    
+                  <p>___________________________</p>
+                    
+                </t>
+
+
+
+
+
+          </div>
+    </div>
+                </t>
+               </t>
+           </t>
+       </t>
+   </template>
+</odoo>
