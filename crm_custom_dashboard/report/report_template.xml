@@ -5,7 +5,7 @@
     <t t-name="crm_custom_dashboard.report_weekly_sales_pdf">
     <t t-call="web.html_container">
         <t t-call="web.external_layout">
-            <t t-set="state" t-value="data['state'] if data else {}"/>
+            <t t-set="state" t-value="state if state else {}"/>
             <div class="page">
                 <h2 style="text-align:center">Weekly Sales Report</h2>
                 <div>
@@ -67,240 +67,153 @@
                                 <td/>
                                 <td/>
                                 <td> <!--total Crm leads -->
-                                     <span t-esc="state['totalCrmLeads']"/>
+                                     <span t-esc="state.get('totalCrmLeads')"/>
                                 </td>
                                 <td>  <!--total Crm leads -->
-                                    <!-- <span t-esc="state.totalCrmLeads"/> -->
+                                    <span t-esc="state.get('totalCrmLeads')"/>
                                 </td>
                                 <td>   <!--total Crm Duplicates leads -->
-                                    <!-- <span t-esc="state.totalCrmDuplicates"/> -->
+                                    <span t-esc="state.get('totalCrmDuplicates')"/>
                                 </td>
                                 <td> <!-- total Crm Duplicates leads percentage-->
-                                    <!-- <span t-esc="state.totalCrmDuplicatesPer"/> -->
+                                    <span t-esc="state.get('totalCrmDuplicatesPer')"/>
                                 </td>
                                 <td>   <!--total Crm DNMC leads -->
-                                    <!-- <span t-esc="state.totalCrmDnmc"/> -->
+                                    <span t-esc="state.get('totalCrmDnmc')"/>
                                 </td>
                                 <td>  <!-- total Crm DNMC leads percentage-->
-                                    <!-- <span t-esc="state.totalCrmDnmcPer"/> -->
+                                    <span t-esc="state.get('totalCrmDnmcPer')"/>
                                 </td>
                                 <td>   <!--total Crm Workable leads -->
-                                    <!-- <span t-esc="state.totalCrmWorkable"/> -->
+                                    <span t-esc="state.get('totalCrmWorkable')"/>
                                 </td>
                                 <td> <!-- total Crm workable leads percentage-->
-                                    <!-- <span t-esc="state.totalCrmWorkablePer"/> -->
+                                    <span t-esc="state.get('totalCrmWorkablePer')"/>
                                 </td>
                                 <td>  <!-- Total Crm Workable leads-->
-                                    <!-- <span t-esc="state.totalCrmWorkable"/> -->
+                                    <span t-esc="state.get('totalCrmWorkable')"/>
                                 </td>
                                 <td>  <!-- Total Crm Declined leads-->
-                                    <!-- <span t-esc="state.totalCrmDeclinedLead"/> -->
+                                    <span t-esc="state.get('totalCrmDeclinedLead')"/>
                                 </td>
                                 <td>  <!--Total Crm Declined leads Per -->
-                                    <!-- <span t-esc="state.totalCrmDeclinedLeadPer"/> -->
+                                    <span t-esc="state.get('totalCrmDeclinedLeadPer')"/>
                                 </td>
                                 <td>  <!-- Total Crm Dnc leads -->
-                                    <!-- <span t-esc="state.totalCrmDncLead"/> -->
+                                    <span t-esc="state.get('totalCrmDncLead')"/>
                                 </td>
                                 <td>  <!--Total Crm Dnc leads Per -->
-                                    <!-- <span t-esc="state.totalCrmDncLeadPer"/> -->
+                                    <span t-esc="state.get('totalCrmDncLeadPer')"/>
                                 </td>
                                 <td>  <!-- Total Crm Transferred leads -->
-                                    <!-- <span t-esc="state.totalCrmTransferredLead"/> -->
+                                    <span t-esc="state.get('totalCrmTransferredLead')"/>
                                 </td>
                                 <td>  <!--Total Crm Transferred leads Per -->
-                                    <!-- <span t-esc="state.totalCrmTransferredLeadPer"/> -->
+                                    <span t-esc="state.get('totalCrmTransferredLeadPer')"/>
                                 </td>
                                 <td>  <!-- Total Crm No Contact leads -->
-                                    <!-- <span t-esc="state.totalCrmNoContactLead"/> -->
+                                    <span t-esc="state.get('totalCrmNoContactLead')"/>
                                 </td>
                                 <td>  <!--Total Crm No Contact leads Per -->
-                                    <!-- <span t-esc="state.totalCrmNoContactLeadPer"/> -->
+                                    <span t-esc="state.get('totalCrmNoContactLeadPer')"/>
                                 </td>
                                 <td>  <!-- Total Crm No Response leads -->
-                                    <!-- <span t-esc="state.totalCrmNoResponseLead"/> -->
+                                    <span t-esc="state.get('totalCrmNoResponseLead')"/>
                                 </td>
                                 <td>  <!-- Total Crm No Response leads Per -->
-                                    <!-- <span t-esc="state.totalCrmNoResponseLeadPer"/> -->
+                                    <span t-esc="state.get('totalCrmNoResponseLeadPer')"/>
                                 </td>
                                 <td/>
                             </tr>
                             <tr>
                                 <td colspan="2">Total Live</td>
-                                <td> <!--total live leads -->
-                                    <!-- <span t-esc="state.totalLiveLeads"/> -->
-                                </td>
-                                <td> <!--total live leads -->
-                                    <!-- <span t-esc="state.totalLiveLeads"/> -->
-                                </td>
-                                <td>   <!--total live Duplicates leads -->
-                                    <!-- <span t-esc="state.totalLiveDuplicates"/> -->
-                                </td>
+                                <td><span t-esc="state.get('totalLiveLeads')"/></td>
+                                <td><span t-esc="state.get('totalLiveLeads')"/></td>
+                                <td><span t-esc="state.get('totalLiveDuplicates')"/></td>
                                 <td/>
-                                <td> <!--tota Live dnmc leads -->
-                                    <!-- <span t-esc="state.totalLiveDnmc"/> -->
-                                </td>
+                                <td><span t-esc="state.get('totalLiveDnmc')"/></td>
                                 <td/>
-                                <td> <!--tota Live Workable leads -->
-                                    <!-- <span t-esc="state.totalLiveWorkable"/> -->
-                                </td>
+                                <td><span t-esc="state.get('totalLiveWorkable')"/></td>
                                 <td/>
-                                <td> <!--tota Live Workable leads -->
-                                    <!-- <span t-esc="state.totalLiveWorkable"/> -->
-                                </td>
-                                <td> <!--tota Live Declined leads -->
-                                    <!-- <span t-esc="state.totalLiveDeclinedLead"/> -->
-                                </td>
+                                <td><span t-esc="state.get('totalLiveWorkable')"/></td>
+                                <td><span t-esc="state.get('totalLiveDeclinedLead')"/></td>
                                 <td/>
-                                <td> <!--tota Live Dnc leads -->
-                                    <!-- <span t-esc="state.totalLiveDncLead"/> -->
-                                </td>
-                                <td/>  <!--Total Live Dnc leads Per -->
-                                <td>  <!-- Total Live Transferred leads -->
-                                    <!-- <span t-esc="state.totalLiveTransferredLead"/> -->
-                                </td>
-                                <td/>  <!--Total Live Transferred leads Per -->
-                                <td>  <!-- Total Live No Contact leads -->
-                                    <!-- <span t-esc="state.totalLiveNoContactLead"/> -->
-                                </td>
-                                <td/>  <!--Total Live No Contact leads Per -->
-                                <td>  <!-- Total Live No Response leads -->
-                                    <!-- <span t-esc="state.totalLiveNoResponseLead"/> -->
-                                </td>
+                                <td><span t-esc="state.get('totalLiveDncLead')"/></td>
+                                <td/>
+                                <td><span t-esc="state.get('totalLiveTransferredLead')"/></td>
+                                <td/>
+                                <td><span t-esc="state.get('totalLiveNoContactLead')"/></td>
+                                <td/>
+                                <td><span t-esc="state.get('totalLiveNoResponseLead')"/></td>
                                 <td/>
                             </tr>
                             <tr>
                                 <td colspan="2">Total Portal</td>
-                                <td> <!--total Portal leads -->
-                                    <!-- <span t-esc="state.totalPortalLeads"/> -->
-                                </td>
-                                <td> <!--total Portal leads -->
-                                    <!-- <span t-esc="state.totalPortalLeads"/> -->
-                                </td>
-                                <td> <!--total Portal Duplicates -->
-                                    <!-- <span t-esc="state.totalPortalDuplicates"/> -->
-                                </td>
+                                <td><span t-esc="state.get('totalPortalLeads')"/></td>
+                                <td><span t-esc="state.get('totalPortalLeads')"/></td>
+                                <td><span t-esc="state.get('totalPortalDuplicates')"/></td>
                                 <td/>
-                                <td> <!--tota Portal dnmc leads -->
-                                    <!-- <span t-esc="state.totalPortalDnmc"/> -->
-                                </td>
+                                <td><span t-esc="state.get('totalPortalDnmc')"/></td>
                                 <td/>
-                                <td> <!--tota Portal Workable leads -->
-                                    <!-- <span t-esc="state.totalPortalWorkable"/> -->
-                                </td>
+                                <td><span t-esc="state.get('totalPortalWorkable')"/></td>
                                 <td/>
-                                <td> <!--tota Portal Workable leads -->
-                                    <!-- <span t-esc="state.totalPortalWorkable"/> -->
-                                </td>
-                                <td> <!--total Portal Declined leads -->
-                                    <!-- <span t-esc="state.totalPortalDeclinedLead"/> -->
-                                </td>
+                                <td><span t-esc="state.get('totalPortalWorkable')"/></td>
+                                <td><span t-esc="state.get('totalPortalDeclinedLead')"/></td>
                                 <td/>
-                                <td> <!--tota Portal Dnc leads -->
-                                    <!-- <span t-esc="state.totalPortalDncLead"/> -->
-                                </td>
-                                <td/>  <!--Total Portal Dnc leads Per -->
-                                <td>  <!-- Total Portal Transferred leads -->
-                                    <!-- <span t-esc="state.totalPortalTransferredLead"/> -->
-                                </td>
-                                <td/>  <!--Total Portal Transferred leads Per -->
-                                <td>  <!-- Total Portal No Contact leads -->
-                                    <!-- <span t-esc="state.totalPortalNoContactLead"/> -->
-                                </td>
-                                <td/>  <!--Total Portal No Contact leads Per -->
-                                <td>  <!-- Total Portal No Response leads -->
-                                    <!-- <span t-esc="state.totalPortalNoResponseLead"/> -->
-                                </td>
+                                <td><span t-esc="state.get('totalPortalDncLead')"/></td>
+                                <td/>
+                                <td><span t-esc="state.get('totalPortalTransferredLead')"/></td>
+                                <td/>
+                                <td><span t-esc="state.get('totalPortalNoContactLead')"/></td>
+                                <td/>
+                                <td><span t-esc="state.get('totalPortalNoResponseLead')"/></td>
                                 <td/>
                             </tr>
                             <tr>
                                 <td colspan="2">Total Prime</td>
-                                <td> <!--total Prime leads -->
-                                    <!-- <span t-esc="state.totalPrimeLead"/> -->
-                                </td>
-                                <td> <!--total Prime leads -->
-                                    <!-- <span t-esc="state.totalPrimeLead"/> -->
-                                </td>
-                                <td> <!--total Prime Duplicate leads -->
-                                    <!-- <span t-esc="state.totalPrimeDupLead"/> -->
-                                </td>
+                                <td><span t-esc="state.get('totalPrimeLead')"/></td>
+                                <td><span t-esc="state.get('totalPrimeLead')"/></td>
+                                <td><span t-esc="state.get('totalPrimeDupLead')"/></td>
                                 <td/>
-                                <td> <!--total Prime Dnmc leads -->
-                                    <!-- <span t-esc="state.totalPrimeDnmcLead"/> -->
-                                </td>
+                                <td><span t-esc="state.get('totalPrimeDnmcLead')"/></td>
                                 <td/>
-                                <td> <!--total Prime Workable leads -->
-                                    <!-- <span t-esc="state.totalPrimeWorkableLead"/> -->
-                                </td>
+                                <td><span t-esc="state.get('totalPrimeWorkableLead')"/></td>
                                 <td/>
-                                <td> <!--total Prime Workable leads -->
-                                    <!-- <span t-esc="state.totalPrimeWorkableLead"/> -->
-                                </td>
-                                <td> <!--total Prime Declined leads -->
-                                    <!-- <span t-esc="state.totalPrimeDeclinedLead"/> -->
-                                </td>
+                                <td><span t-esc="state.get('totalPrimeWorkableLead')"/></td>
+                                <td><span t-esc="state.get('totalPrimeDeclinedLead')"/></td>
                                 <td/>
-                                <td> <!--total Prime Dnc leads -->
-                                    <!-- <span t-esc="state.totalPrimeDncLead"/> -->
-                                </td>
+                                <td><span t-esc="state.get('totalPrimeDncLead')"/></td>
                                 <td/>
-                                <td> <!--total Prime Transferred leads -->
-                                    <!-- <span t-esc="state.totalPrimeTransferredLead"/> -->
-                                </td>
+                                <td><span t-esc="state.get('totalPrimeTransferredLead')"/></td>
                                 <td/>
-                                <td> <!--total Prime No Contact leads -->
-                                    <!-- <span t-esc="state.totalPrimeNoContactLead"/> -->
-                                </td>
+                                <td><span t-esc="state.get('totalPrimeNoContactLead')"/></td>
                                 <td/>
-                                <td> <!--total Prime No Response leads -->
-                                    <!-- <span t-esc="state.totalPrimeNoResponseLead"/> -->
-                                </td>
+                                <td><span t-esc="state.get('totalPrimeNoResponseLead')"/></td>
                                 <td/>
                             </tr>
                             <tr>
                                 <td colspan="2">Total Sub-Prime</td>
-                                <td> <!--total Subprime leads -->
-                                    <!-- <span t-esc="state.totalSubPrimeLead"/> -->
-                                </td>
-                                <td> <!--total Subprime leads -->
-                                    <!-- <span t-esc="state.totalSubPrimeLead"/> -->
-                                </td>
-                                <td> <!--total Subprime Duplicate leads -->
-                                    <!-- <span t-esc="state.totalSubPrimeDupLead"/> -->
-                                </td>
+                                <td><span t-esc="state.get('totalSubPrimeLead')"/></td>
+                                <td><span t-esc="state.get('totalSubPrimeLead')"/></td>
+                                <td><span t-esc="state.get('totalSubPrimeDupLead')"/></td>
                                 <td/>
-                                <td> <!--total Subprime Dnmc leads -->
-                                    <!-- <span t-esc="state.totalSubPrimeDnmcLead"/> -->
-                                </td>
+                                <td><span t-esc="state.get('totalSubPrimeDnmcLead')"/></td>
                                 <td/>
-                                <td> <!--total Subprime Workable leads -->
-                                    <!-- <span t-esc="state.totalSubPrimeWorkableLead"/> -->
-                                </td>
+                                <td><span t-esc="state.get('totalSubPrimeWorkableLead')"/></td>
                                 <td/>
-                                <td> <!--total Subprime Workable leads -->
-                                    <!-- <span t-esc="state.totalSubPrimeWorkableLead"/> -->
-                                </td>
-                                <td> <!--total Subprime Declined leads -->
-                                    <!-- <span t-esc="state.totalSubPrimeDeclinedLead"/> -->
-                                </td>
+                                <td><span t-esc="state.get('totalSubPrimeWorkableLead')"/></td>
+                                <td><span t-esc="state.get('totalSubPrimeDeclinedLead')"/></td>
                                 <td/>
-                                <td> <!--total Subprime Dnc leads -->
-                                    <!-- <span t-esc="state.totalSubPrimeDncLead"/> -->
-                                </td>
+                                <td><span t-esc="state.get('totalSubPrimeDncLead')"/></td>
                                 <td/>
-                                <td> <!--total Subprime Transferred leads -->
-                                    <!-- <span t-esc="state.totalSubPrimeTransferredLead"/> -->
-                                </td>
+                                <td><span t-esc="state.get('totalSubPrimeTransferredLead')"/></td>
                                 <td/>
-                                <td> <!--total Subprime No Contact leads -->
-                                    <!-- <span t-esc="state.totalSubPrimeNoContactLead"/> -->
-                                </td>
+                                <td><span t-esc="state.get('totalSubPrimeNoContactLead')"/></td>
                                 <td/>
-                                <td> <!--total Subprime No Response leads -->
-                                    <!-- <span t-esc="state.totalSubPrimeNoResponseLead"/> -->
-                                </td>
+                                <td><span t-esc="state.get('totalSubPrimeNoResponseLead')"/></td>
                                 <td/>
                             </tr>
+
                     </tbody>
                 </table>
             </div>
