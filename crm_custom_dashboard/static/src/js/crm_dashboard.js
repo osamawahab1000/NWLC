@@ -348,21 +348,66 @@ export class OdooCRMDashboard extends Component {
 
             //---------------------- Owner Sales Dashboard ----------------------------
 
-    async print_pdf() {
-        const dashboardData = await rpc('/crm_dashboard/get_total_leads', {
-            params: {}
-        });
+    async print_pdf(ev) {
+        if (ev) {
+            ev.preventDefault();
+        }
         // console.log('🟢 DASHBOARD DATA:', dashboardData);
         this.action.doAction({
             type: 'ir.actions.report',
             report_name: 'crm_custom_dashboard.report_weekly_sales_pdf',
             report_type: 'qweb-pdf',
             data: {
-                weekly_sales_rep_dashboard:[
-                    {'user_name': e.user_name},
-                ]
+                // weekly_sales_rep_dashboard:[
+                //     {'user_name': e.user_name},
+                // ]
+                 weekly_sales_rep_dashboard: this.state.weekly_sales_rep_dashboard,
+                 state: {
+                    totalCrmLeads: this.state.totalCrmLeads,
+                    totalLiveLeads: this.state.totalLiveLeads,
+                    totalPortalLeads: this.state.totalPortalLeads,
+                    totalCrmDuplicates: this.state.totalCrmDuplicates,
+                    totalCrmDuplicatesPer: this.state.totalCrmDuplicatesPer,
+                    totalCrmDnmc: this.state.totalCrmDnmc,
+                    totalCrmDnmcPer: this.state.totalCrmDnmcPer,
+                    totalCrmWorkable: this.state.totalCrmWorkable,
+                    totalCrmWorkablePer: this.state.totalCrmWorkablePer,
+                    totalCrmDeclinedLead: this.state.totalCrmDeclinedLead,
+                    totalCrmDeclinedLeadPer: this.state.totalCrmDeclinedLeadPer,
+                    totalCrmDncLead: this.state.totalCrmDncLead,
+                    totalCrmDncLeadPer: this.state.totalCrmDncLeadPer,
+                    totalCrmTransferredLead: this.state.totalCrmTransferredLead,
+                    totalCrmTransferredLeadPer: this.state.totalCrmTransferredLeadPer,
+                    totalCrmNoContactLead: this.state.totalCrmNoContactLead,
+                    totalCrmNoContactLeadPer: this.state.totalCrmNoContactLeadPer,
+                    totalCrmNoResponseLead: this.state.totalCrmNoResponseLead,
+                    totalCrmNoResponseLeadPer: this.state.totalCrmNoResponseLeadPer,
+                    totalPrimeLead: this.state.totalPrimeLead,
+                    totalSubPrimeLead: this.state.totalSubPrimeLead,
+                    totalPrimeDupLead: this.state.totalPrimeDupLead,
+                    totalSubPrimeDupLead: this.state.totalSubPrimeDupLead,
+                    totalPrimeDnmcLead: this.state.totalPrimeDnmcLead,
+                    totalSubPrimeDnmcLead: this.state.totalSubPrimeDnmcLead,
+                    totalPrimeWorkableLead: this.state.totalPrimeWorkableLead,
+                    totalSubPrimeWorkableLead: this.state.totalSubPrimeWorkableLead,
+                    totalPrimeDeclinedLead: this.state.totalPrimeDeclinedLead,
+                    totalSubPrimeDeclinedLead: this.state.totalSubPrimeDeclinedLead,
+                    totalPrimeDncLead: this.state.totalPrimeDncLead,
+                    totalSubPrimeDncLead: this.state.totalSubPrimeDncLead,
+                    totalPrimeTransferredLead: this.state.totalPrimeTransferredLead,
+                    totalSubPrimeTransferredLead: this.state.totalSubPrimeTransferredLead,
+                    totalPrimeNoContactLead: this.state.totalPrimeNoContactLead,
+                    totalSubPrimeNoContactLead: this.state.totalSubPrimeNoContactLead,
+                    totalPrimeNoResponseLead: this.state.totalPrimeNoResponseLead,
+                    totalSubPrimeNoResponseLead: this.state.totalSubPrimeNoResponseLead,
+                }
+
             }
         });
+        debugger;
+        console.log("weekly_sales_rep_dashboard", this.state.weekly_sales_rep_dashboard)
+        console.log("state values", this.state.totalCrmLeads)  // Should NOT be undefined
+
     }
     // weekly_sales_rep_dashboard: dashboardData.get_total_leads_new
 

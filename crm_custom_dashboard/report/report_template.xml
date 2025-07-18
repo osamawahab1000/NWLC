@@ -5,7 +5,7 @@
     <t t-name="crm_custom_dashboard.report_weekly_sales_pdf">
     <t t-call="web.html_container">
         <t t-call="web.external_layout">
-            <t t-set="state" t-value="data.get('state') if data else {}"/>
+            <t t-set="state" t-value="data['state'] if data else {}"/>
             <div class="page">
                 <h2 style="text-align:center">Weekly Sales Report</h2>
                 <div>
@@ -42,32 +42,32 @@
                         <tr t-foreach="weekly_sales_rep_dashboard" t-as="data">
                             <td><t t-esc="data['user_name']"/></td>
                             <td>Live<br/>Portal</td>
-                            <!-- <td><t t-esc="data.total_live_leads"/><br/><t t-esc="data.total_portal_leads"/></td>
-                            <td><t t-esc="data.total_crm_leads"/></td>
-                            <td><t t-esc="data.total_live_duplicates"/><br/><t t-esc="data.total_portal_duplicates"/></td>
-                            <td><t t-esc="data.total_live_duplicates_per"/>%<br/><t t-esc="data.total_portal_duplicates_per"/>%</td>
-                            <td><t t-esc="data.total_live_dnmc_leads"/><br/><t t-esc="data.total_portal_dnmc_leads"/></td>
-                            <td><t t-esc="data.total_live_dnmc_leads_per"/>%<br/><t t-esc="data.total_portal_dnmc_leads_per"/>%</td>
-                            <td><t t-esc="data.total_live_workables"/><br/><t t-esc="data.total_portal_workables"/></td>
-                            <td><t t-esc="data.total_live_workables_per"/>%<br/><t t-esc="data.total_portal_workables_per"/>%</td>
-                            <td><t t-esc="data.total_workables"/></td>
-                            <td><t t-esc="data.total_live_declined_leads"/><br/><t t-esc="data.total_portal_declined_leads"/></td>
-                            <td><t t-esc="data.total_live_declined_leads_per"/>%<br/><t t-esc="data.total_portal_declined_leads_per"/>%</td>
-                            <td><t t-esc="data.total_live_dnc_leads"/><br/><t t-esc="data.total_portal_dnc_leads"/></td>
-                            <td><t t-esc="data.total_live_dnc_leads_per"/>%<br/><t t-esc="data.total_portal_dnc_leads_per"/>%</td>
-                            <td><t t-esc="data.total_live_transferred_leads"/><br/><t t-esc="data.total_portal_transferred_leads"/></td>
-                            <td><t t-esc="data.total_live_transferred_leads_per"/>%<br/><t t-esc="data.total_portal_transferred_leads_per"/>%</td>
-                            <td><t t-esc="data.total_live_no_contact_leads"/><br/><t t-esc="data.total_portal_no_contact_leads"/></td>
-                            <td><t t-esc="data.total_live_no_contact_leads_per"/>%<br/><t t-esc="data.total_portal_no_contact_leads_per"/>%</td>
-                            <td><t t-esc="data.total_live_no_response_leads"/><br/><t t-esc="data.total_portal_no_response_leads"/></td>
-                            <td><t t-esc="data.total_live_no_response_leads_per"/>%<br/><t t-esc="data.total_portal_no_response_leads_per"/>%</td>
-                            <td><t t-esc="data.total_live_deal_leads"/><br/><t t-esc="data.total_portal_deal_leads"/></td> -->
+                            <td><t t-esc="data['total_live_leads']"/><br/><t t-esc="data['total_portal_leads']"/></td>
+                            <td><t t-esc="data['total_crm_leads']"/></td>
+                            <td><t t-esc="data['total_live_duplicates']"/><br/><t t-esc="data['total_portal_duplicates']"/></td>
+                            <td><t t-esc="data['total_live_duplicates_per']"/>%<br/><t t-esc="data['total_portal_duplicates_per']"/>%</td>
+                            <td><t t-esc="data['total_live_dnmc_leads']"/><br/><t t-esc="data['total_portal_dnmc_leads']"/></td>
+                            <td><t t-esc="data['total_live_dnmc_leads_per']"/>%<br/><t t-esc="data['total_portal_dnmc_leads_per']"/>%</td>
+                            <td><t t-esc="data['total_live_workables']"/><br/><t t-esc="data['total_portal_workables']"/></td>
+                            <td><t t-esc="data['total_live_workables_per']"/>%<br/><t t-esc="data['total_portal_workables_per']"/>%</td>
+                            <td><t t-esc="data['total_workables']"/></td>
+                            <td><t t-esc="data['total_live_declined_leads']"/><br/><t t-esc="data['total_portal_declined_leads']"/></td>
+                            <td><t t-esc="data['total_live_declined_leads_per']"/>%<br/><t t-esc="data['total_portal_declined_leads_per']"/>%</td>
+                            <td><t t-esc="data['total_live_dnc_leads']"/><br/><t t-esc="data['total_portal_dnc_leads']"/></td>
+                            <td><t t-esc="data['total_live_dnc_leads_per']"/>%<br/><t t-esc="data['total_portal_dnc_leads_per']"/>%</td>
+                            <td><t t-esc="data['total_live_transferred_leads']"/><br/><t t-esc="data['total_portal_transferred_leads']"/></td>
+                            <td><t t-esc="data['total_live_transferred_leads_per']"/>%<br/><t t-esc="data['total_portal_transferred_leads_per']"/>%</td>
+                            <td><t t-esc="data['total_live_no_contact_leads']"/><br/><t t-esc="data['total_portal_no_contact_leads']"/></td>
+                            <td><t t-esc="data['total_live_no_contact_leads_per']"/>%<br/><t t-esc="data['total_portal_no_contact_leads_per']"/>%</td>
+                            <td><t t-esc="data['total_live_no_response_leads']"/><br/><t t-esc="data['total_portal_no_response_leads']"/></td>
+                            <td><t t-esc="data['total_live_no_response_leads_per']"/>%<br/><t t-esc="data['total_portal_no_response_leads_per']"/>%</td>
+                            <td><t t-esc="data['total_live_deal_leads']"/><br/><t t-esc="data['total_portal_deal_leads']"/></td>
                         </tr>
                         <tr style="background: #f2f2f2">
                                 <td/>
                                 <td/>
                                 <td> <!--total Crm leads -->
-                                    <!-- <span t-esc="state.totalCrmLeads"/> -->
+                                     <span t-esc="state['totalCrmLeads']"/>
                                 </td>
                                 <td>  <!--total Crm leads -->
                                     <!-- <span t-esc="state.totalCrmLeads"/> -->
